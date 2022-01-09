@@ -6,8 +6,35 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.App{
+  background: #20222B;
+  backdrop-filter: blur(13.743px);
+}
+
+/*HOME*/
+.novelty{
+  margin-top: 15vh;
+}
+.games{
+  display: flex;
+  margin-top: 5vh;
+  justify-content: space-around;
+}
+/*CARDS*/
+.cards-games{
+  display: flex;
+}
+.MuiSvgIcon-root{
+  color:#2CF4B8 !important
+}
+.MuiPaper-root{
+  background-color: #dbdbdf59 !important;
+  backdrop-filter: blur(13.743px);
+}
+.MuiToolbar-root {
+  background-color: #343744 !important;
 }
