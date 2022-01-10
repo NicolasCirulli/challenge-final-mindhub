@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -16,20 +17,88 @@ code {
 }
 
 /*HOME*/
-.novelty{
+.title{
+  color: #fff;
+  font-weight: normal !important;
+}
+.Recommended{
   margin-top: 15vh;
 }
 .games{
+  width: 70%;
   display: flex;
   margin-top: 5vh;
-  justify-content: space-around;
+  justify-content: space-between;
+  flex-wrap: wrap !important;
+}
+.text{
+  color: #fff !important;
+}
+.MuiButtonBase-root{
+  color: #fff !important;
+
+}
+.cont-search{
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.search{
+  width: 40vw;
+  padding: .3rem;
+  background: rgba(240, 238, 238, 0.5);
+  box-sizing: border-box;
+  border-radius: 2rem;
+}
+.icon{
+  color: #fff !important;
+  font-size: 1.5rem;
 }
 /*CARDS*/
-.cards-games{
+.card{
+  border: none !important;
+  border-radius: 5rem !important;
+}
+.box-recommended{
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: .5rem;
+  width: 100%;
+}
+/* .hijo{
+  grid-row: 2 / 3 ;
+  grid-column: 2 / 3 ;
+} */
+.games{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  gap: .5rem;
+  width: 100%;
+}
+.card-img{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 2px 2px 2px rgba(145, 144, 144, 0.377);
+  width: 80vw;
+  height: 25vh;
   display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-title{
+  background: rgba(221, 218, 218, 0.43);
+  backdrop-filter: blur(4px);
+  width: 100%;
+  margin: 0 !important;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: .5rem;
 }
 .MuiSvgIcon-root{
-  color:#2CF4B8 !important
+  color:#fff !important
 }
 .MuiPaper-root{
   background-color: #dbdbdf59 !important;
@@ -37,4 +106,7 @@ code {
 }
 .MuiToolbar-root {
   background-color: #343744 !important;
+}
+.favorite{
+  color: #2CF4B8 !important;
 }

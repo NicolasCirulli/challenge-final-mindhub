@@ -16,11 +16,21 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
+import SvgIcon from "@mui/material/SvgIcon";
 import MailIcon from "@mui/icons-material/Mail";
 import CardGames from "./CardGames";
-import Grid from '@mui/material/Grid';
-
+import HomeIcon from '@mui/icons-material/Home';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 const drawerWidth = 240;
+
+const list = [
+    { name: "Home", icon: <HomeIcon /> },
+    { name: "Store", icon: <LocalGroceryStoreIcon /> },
+    { name: "Library", icon: <MenuBookIcon /> },
+    { name: "About us", icon: <SportsEsportsIcon /> },
+];
 
 const openedMixin = (theme) => ({
     width: drawerWidth,
@@ -120,6 +130,13 @@ export default function Navigation() {
                         <Typography variant="h6" noWrap component="div">
                             Xtreme
                         </Typography>
+                        <div className="cont-search">
+                            <input
+                                type="text"
+                                className="search"
+                                placeholder="Search a Game"
+                            />
+                        </div>
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
@@ -133,62 +150,80 @@ export default function Navigation() {
                         </IconButton>
                     </DrawerHeader>
                     <Divider />
-                    <List>
-                        {["Home", "Store", "Library", "About us"].map(
-                            (text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? (
-                                            <InboxIcon />
-                                        ) : (
-                                            <MailIcon />
-                                        )}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            )
-                        )}
+                    <List className="text">
+                        {list.map((text, index) => (
+                            <ListItem button key={index}>
+                                <ListItemIcon className="icon">
+                                    {text.icon}
+                                </ListItemIcon>
+                                <ListItemText primary={text.name} />
+                            </ListItem>
+                        ))}
                     </List>
                     <Divider />
-                    <List>
+                    <List className="text">
                         {["All mail", "Trash", "Spam"].map((text, index) => (
                             <ListItem button key={text}>
                                 <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                    {index % 2 === 0 ? (
+                                        <InboxIcon />
+                                    ) : (
+                                        <MailIcon />
+                                    )}
                                 </ListItemIcon>
                                 <ListItemText primary={text} />
                             </ListItem>
                         ))}
                     </List>
                 </Drawer>
-                <div className="container novelty">
-                    <DrawerHeader>
-                        <Box sx={{ flexGrow: 1 }}>
-                            <Grid container spacing={2}>
-                                <Grid item xs={8}>
+                <div className="container">
+                    <div className="container Recommended">
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            className="title"
+                        >
+                            Recommended
+                        </Typography>
+                        <DrawerHeader>
+                            <Box sx={{ flexGrow: 1 }}>
+                                <div className="box-recommended">
+                                        <CardGames className="hijo" />
+                                        <CardGames />
+                                        <CardGames />
+                                        <CardGames />
+                                        <CardGames />
+                                        <CardGames />
+                                </div>
+                            </Box>
+                        </DrawerHeader>
+                    </div>
+                    <div className="container " sx={{ display: "flex", flexGrow: 1, flexDirection:"column" }}>
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                component="div"
+                                className="title"
+                            >
+                                Offers
+                            </Typography>
+                            <div className="games" >
                                 <CardGames />
-                                </Grid>
-                                <Grid item xs={4}>
-                                    <CardGames />
-                                </Grid>
-                                <Grid item xs={4}>
-                                    <CardGames />
-                                </Grid>
-                                <Grid item xs={8}>
                                 <CardGames />
-                                </Grid>
-                            </Grid>
-                        </Box>
-                    </DrawerHeader>
+                                <CardGames />
+                                <CardGames />
+                                <CardGames />
+                                <CardGames />
+                                <CardGames />
+                                <CardGames />
+                                <CardGames />
+                            </div>
+                            
+                        
+                    </div>
                 </div>
             </Box>
-                <div className="container games">
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    
-                </div>
-                
         </div>
     );
 }
