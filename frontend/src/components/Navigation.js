@@ -15,15 +15,12 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import HomeIcon from '@mui/icons-material/Home';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import CardGames from "./CardGames";
-
-
+import Home from "./HomeCommponent"
 const drawerWidth = 240;
 
 const list = [
@@ -131,13 +128,6 @@ export default function Navigation() {
                         <Typography variant="h6" noWrap component="div">
                             Xtreme
                         </Typography>
-                        <div className="cont-search">
-                            <input
-                                type="text"
-                                className="search"
-                                placeholder="Search a Game"
-                            />
-                        </div>
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
@@ -163,91 +153,17 @@ export default function Navigation() {
                     </List>
                     <Divider />
                     <List className="text">
-                        {["All mail", "Trash", "Spam"].map((text, index) => (
+                        {["Contact Us"].map((text, index) => (
                             <ListItem button key={text}>
                                 <ListItemIcon>
-                                    {index % 2 === 0 ? (
-                                        <InboxIcon />
-                                    ) : (
-                                        <MailIcon />
-                                    )}
+                                    <MailIcon />
                                 </ListItemIcon>
                                 <ListItemText primary={text} />
                             </ListItem>
                         ))}
                     </List>
                 </Drawer>
-                <div className="container">
-                    <div className="container Recommended">
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="div"
-                            className="title"
-                        >
-                            Recommended
-                        </Typography>
-                        <DrawerHeader>
-                            <Box sx={{ flexGrow: 1 }}>
-                                <div className="box-recommended">
-                                        <CardGames />
-                                        <CardGames />
-                                        <CardGames />
-                                        <CardGames />
-                                        <CardGames />
-                                </div>
-                            </Box>
-                        </DrawerHeader>
-                    </div>
-                    <div className="container offerts" >
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="div"
-                            className="title"
-                        >
-                            Offers
-                        </Typography>
-                        <DrawerHeader>
-                            <Box sx={{ flexGrow: 1 }}>
-                                <div className="box-offerts" >
-                                    <div className="box-card">
-                                        <CardGames />
-                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
-                                    </div>
-                                    <div className="box-card">
-                                        <CardGames />
-                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
-                                    </div>
-                                    <div className="box-card">
-                                        <CardGames />
-                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
-                                    </div>
-                                    <div className="box-card">
-                                        <CardGames />
-                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
-                                    </div>
-                                    <div className="box-card">
-                                        <CardGames />
-                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
-                                    </div>
-                                    <div className="box-card">
-                                        <CardGames />
-                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
-                                    </div>
-                                    <div className="box-card">
-                                        <CardGames />
-                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
-                                    </div>
-                                    <div className="box-card">
-                                        <CardGames />
-                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
-                                    </div>
-                                </div>
-                            </Box>
-                        </DrawerHeader>
-                    </div>
-                </div>
+                
             </Box>
         </div>
     );

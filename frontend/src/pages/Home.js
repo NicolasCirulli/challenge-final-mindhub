@@ -1,9 +1,8 @@
-import OffCanvasExample from '../components/Navigation'
-
+import HomeCommponent from "../components/HomeCommponent"
 export default function Home() {
     return(
         <div>
-            <OffCanvasExample />
+            <HomeCommponent />
         </div>
     )
 } 
