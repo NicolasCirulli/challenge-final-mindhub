@@ -20,12 +20,13 @@ import HomeIcon from '@mui/icons-material/Home';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import Home from "./HomeCommponent"
+import {useNavigate} from "react-router-dom"
+
 const drawerWidth = 240;
 
 const list = [
-    { name: "Home", icon: <HomeIcon />, path: "/" },
-    { name: "Store", icon: <LocalGroceryStoreIcon />, path: "/" },
+    { name: "Home", icon: <HomeIcon />, path: "/home" },
+    { name: "Store", icon: <LocalGroceryStoreIcon />, path: "/store" },
     { name: "Library", icon: <MenuBookIcon />, path: "/" },
     { name: "About us", icon: <SportsEsportsIcon />, path: "/" },
 ];
@@ -96,6 +97,8 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function Navigation() {
+    
+    const navigate = useNavigate()
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
@@ -143,7 +146,7 @@ export default function Navigation() {
                     <Divider />
                     <List className="text">
                         {list.map((text, index) => (
-                            <ListItem button key={index}>
+                            <ListItem button onClick={()=>{navigate(text.path)}} key={index}>
                                 <ListItemIcon  className="icon">
                                     {text.icon}
                                 </ListItemIcon>
@@ -154,7 +157,7 @@ export default function Navigation() {
                     <Divider />
                     <List className="text">
                         {["Contact Us"].map((text, index) => (
-                            <ListItem button key={text}>
+                            <ListItem button onClick={()=>{navigate(text.path)}} key={text}>
                                 <ListItemIcon>
                                     <MailIcon />
                                 </ListItemIcon>
