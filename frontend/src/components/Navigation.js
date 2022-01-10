@@ -24,10 +24,10 @@ import Home from "./HomeCommponent"
 const drawerWidth = 240;
 
 const list = [
-    { name: "Home", icon: <HomeIcon /> },
-    { name: "Store", icon: <LocalGroceryStoreIcon /> },
-    { name: "Library", icon: <MenuBookIcon /> },
-    { name: "About us", icon: <SportsEsportsIcon /> },
+    { name: "Home", icon: <HomeIcon />, path: "/" },
+    { name: "Store", icon: <LocalGroceryStoreIcon />, path: "/" },
+    { name: "Library", icon: <MenuBookIcon />, path: "/" },
+    { name: "About us", icon: <SportsEsportsIcon />, path: "/" },
 ];
 
 const openedMixin = (theme) => ({
@@ -144,7 +144,7 @@ export default function Navigation() {
                     <List className="text">
                         {list.map((text, index) => (
                             <ListItem button key={index}>
-                                <ListItemIcon className="icon">
+                                <ListItemIcon  className="icon">
                                     {text.icon}
                                 </ListItemIcon>
                                 <ListItemText primary={text.name} />

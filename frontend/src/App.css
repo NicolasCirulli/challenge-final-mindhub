@@ -48,9 +48,18 @@ code {
 .search{
   width: 40vw;
   padding: .3rem;
+  padding-left: .8rem;
   background: rgba(240, 238, 238, 0.5);
   box-sizing: border-box;
   border-radius: 2rem;
+  color:#fff
+}
+::placeholder{
+  color: rgb(206, 205, 205);
+  font-weight: normal;
+}
+.search:focus{
+  outline:none;
 }
 .icon{
   color: #fff !important;
