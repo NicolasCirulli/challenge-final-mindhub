@@ -17,11 +17,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import CardGames from "./CardGames";
 import HomeIcon from '@mui/icons-material/Home';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import CardGames from "./CardGames";
+
 
 const drawerWidth = 240;
 
@@ -189,7 +190,6 @@ export default function Navigation() {
                         <DrawerHeader>
                             <Box sx={{ flexGrow: 1 }}>
                                 <div className="box-recommended">
-                                        <CardGames className="hijo" />
                                         <CardGames />
                                         <CardGames />
                                         <CardGames />
@@ -211,15 +211,38 @@ export default function Navigation() {
                         <DrawerHeader>
                             <Box sx={{ flexGrow: 1 }}>
                                 <div className="box-offerts" >
-                                    <CardGames />
-                                    <CardGames />
-                                    <CardGames />
-                                    <CardGames />
-                                    <CardGames />
-                                    <CardGames />
-                                    <CardGames />
-                                    <CardGames />
-                                    <CardGames />
+                                    <div className="box-card">
+                                        <CardGames />
+                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
+                                    </div>
+                                    <div className="box-card">
+                                        <CardGames />
+                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
+                                    </div>
+                                    <div className="box-card">
+                                        <CardGames />
+                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
+                                    </div>
+                                    <div className="box-card">
+                                        <CardGames />
+                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
+                                    </div>
+                                    <div className="box-card">
+                                        <CardGames />
+                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
+                                    </div>
+                                    <div className="box-card">
+                                        <CardGames />
+                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
+                                    </div>
+                                    <div className="box-card">
+                                        <CardGames />
+                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
+                                    </div>
+                                    <div className="box-card">
+                                        <CardGames />
+                                        <button className="btn-add-cart">Price <LocalGroceryStoreIcon/></button>
+                                    </div>
                                 </div>
                             </Box>
                         </DrawerHeader>

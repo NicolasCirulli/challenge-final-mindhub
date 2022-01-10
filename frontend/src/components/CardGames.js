@@ -7,8 +7,7 @@ import image from "../assets/fornite.jpg"
 export default function RecipeReviewCard() {
     
     return (
-        <div >
-            <div disableSpacing className="card">
+            <div className="card">
                 <div
                     className="card-img"
                     style={{ backgroundImage: `url("${image}")`}}
@@ -19,6 +18,5 @@ export default function RecipeReviewCard() {
                     <h3 className="card-title">Nombre</h3>
                 </div>
             </div>
-        </div>
     );
 }
