@@ -16,13 +16,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
-import SvgIcon from "@mui/material/SvgIcon";
 import MailIcon from "@mui/icons-material/Mail";
 import CardGames from "./CardGames";
 import HomeIcon from '@mui/icons-material/Home';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+
 const drawerWidth = 240;
 
 const list = [
@@ -199,28 +199,30 @@ export default function Navigation() {
                             </Box>
                         </DrawerHeader>
                     </div>
-                    <div className="container " sx={{ display: "flex", flexGrow: 1, flexDirection:"column" }}>
-                            <Typography
-                                variant="h6"
-                                noWrap
-                                component="div"
-                                className="title"
-                            >
-                                Offers
-                            </Typography>
-                            <div className="games" >
-                                <CardGames />
-                                <CardGames />
-                                <CardGames />
-                                <CardGames />
-                                <CardGames />
-                                <CardGames />
-                                <CardGames />
-                                <CardGames />
-                                <CardGames />
-                            </div>
-                            
-                        
+                    <div className="container offerts" >
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            className="title"
+                        >
+                            Offers
+                        </Typography>
+                        <DrawerHeader>
+                            <Box sx={{ flexGrow: 1 }}>
+                                <div className="box-offerts" >
+                                    <CardGames />
+                                    <CardGames />
+                                    <CardGames />
+                                    <CardGames />
+                                    <CardGames />
+                                    <CardGames />
+                                    <CardGames />
+                                    <CardGames />
+                                    <CardGames />
+                                </div>
+                            </Box>
+                        </DrawerHeader>
                     </div>
                 </div>
             </Box>
