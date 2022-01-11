@@ -6,7 +6,8 @@ const SignInComp = () => {
         <div className="backgroundSignIn">
             <div className="cardSign">
                 <div className='contentSignIn'>
-                    <h1 className='titleSignIn'>Sign in Xplore now!</h1>
+                <h1 className='titleSignIn'>It's great to see you again</h1>
+                    <h2>Sign in Xplore</h2>
                     <form>
                         <div className='inputsSignIn'>
                             <input type="text" className='label-SI' placeholder=' Email'  />

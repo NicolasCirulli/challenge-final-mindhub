@@ -8,8 +8,9 @@ const SignUpComp = () => {
             <div className="cardSignUp">
                 <div>
                     <div className='titlesSU'>
-                    <h1 className='titleSignIn'>Register and enjoy the benefits of beeing an Xplore user</h1>
-                    <h3 className='subtitle'>Sign up Xplore</h3>
+                    <h1 className='titleSignUp'>Enjoy the benefits</h1>
+                    <h2>of beeing an Xplore user</h2>
+                    <h3 className='titleSignUp'>Sign up Xplore</h3>
                     </div>
                     <form>
                         <div className='bodyFormSU'>
