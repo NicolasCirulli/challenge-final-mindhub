@@ -17,7 +17,10 @@ code {
 }
 
 /*NAV*/
-
+.icon-logo{
+  width: 3.5rem;
+  height: auto;
+}
 .icon{
   color: #fff !important;
   margin-left: .4rem;
@@ -28,29 +31,32 @@ code {
   flex-direction: column !important;
   justify-content: space-between !important;
 }
-.MuiSvgIcon-root{
-  color:#fff !important
-}
 .MuiPaper-root{
   background-color: #dbdbdf21 !important;
   backdrop-filter: blur(13.743px);
   
 }
-.css-1u2mxbp{
+.MuiButtonBase-root{
   justify-content: flex-start !important;
-  margin-left: .3vw !important;
 }
 
 /*BUTTONS*/
 
+.btn-icon{
+  font-size: 1.1rem !important;
+  margin-left: .4rem;
+  color: #373A42;
+  transition: .3s;
+}
 .btn-add-cart{
   width: 100%;
   border-radius: 1rem;
-  background-color: #2cf4b8d7;
-  border: #2AD5A3 solid 2px;
+  background-color: #11EDD5;
+  border: #11EDD5 solid 2px;
   text-align: center;
   margin-top: .5rem;
-  color: #fff;
+  color: #373A42;
+  font-weight:bold;
   padding: .1rem;
   transition: .3s;
 }
@@ -58,12 +64,14 @@ code {
   background-color: rgba(255, 255, 255, 0);
   border: #fff solid 2px;
   padding: .1rem;
+  color:#fff !important;
   transition: .3s;
 }
-.btn-icon{
-  font-size: 1.1rem !important;
-  margin-left: .4rem;
+.btn-add-cart:hover>.btn-icon{
+  color:#fff !important;
+  transition: .3s;
 }
+
 
 /*CARDS*/
 
@@ -153,14 +161,14 @@ code {
 }
 .btn-search{
   font-weight: normal;
-  border: #2AD5A3 solid 2px;
-  background-color: #2cf4b8d7;
+  border: #11EDD5 solid 2px;
+  background-color: #11EDD5;
   height: 5vh;
   width: 6vw;
   border-radius: 1rem;
   align-self: center;
   margin-left: .5rem;
-  color: #fff;
+  color: #373A42;
   transition: .3s;
 }
 .btn-search:hover{
@@ -205,7 +213,7 @@ code {
 }
 .welcome2{
   color: #fff;
-  font-weight: bolder;
+  font-weight: bold !important;
 }
 .logo-welcome{
   height: auto;
