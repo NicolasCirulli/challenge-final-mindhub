@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -38,7 +37,6 @@ code {
   backdrop-filter: blur(13.743px);
   
 }
-
 .css-1u2mxbp{
   justify-content: flex-start !important;
   margin-left: .3vw !important;
@@ -88,7 +86,6 @@ code {
 .search:focus{
   outline:none;
 }
-
 .box-recommended{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr ;
