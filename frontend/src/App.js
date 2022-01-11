@@ -5,6 +5,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
 import Navigation from "./components/Navigation";
+import Game from "./pages/Game";
 function App() {
   return (
     <>
@@ -13,6 +14,7 @@ function App() {
           <Navigation />
           <Routes>
             <Route path="/" element={<Home />}></Route>
+            <Route path="/game" element={<Game/>}></Route>
             <Route path="*" element={<Home />}></Route>
           </Routes>
         </div>
