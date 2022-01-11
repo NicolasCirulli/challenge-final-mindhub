@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import "./App.css";
+import "./Sign.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
 import Navigation from "./components/Navigation";
 import Game from "./pages/Game";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import About from "./pages/About"
+
 function App() {
   return (
     <>
@@ -16,6 +20,9 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/game" element={<Game/>}></Route>
             <Route path="*" element={<Home />}></Route>
+            <Route path="/signin" element={<SignIn />}></Route>
+            <Route path="/signup" element={<SignUp />}></Route>
+            <Route path="/about" element={<About />}></Route>
           </Routes>
         </div>
       </BrowserRouter>
