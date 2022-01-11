@@ -1,4 +1,4 @@
-
+import image from '../assets/signIn.jpg'
 
 const SignInComp = () => {
 
@@ -18,6 +18,18 @@ const SignInComp = () => {
 
                     </div>
 
+                </div>
+                <div
+                    className="signUpImg"
+                    style={{ backgroundImage: `url("${image}")`}}
+                >
+                    <div  className="parrSignUp">
+                    <h1>Hello!</h1>
+                    <p>Welcome again to our site. We have so many captivating projects for
+                 you. Just sign up and visit our app store with different selections. And don't forget to share your
+                 achievements with!
+                    </p>
+                    </div>
                 </div>
             </div>
       
