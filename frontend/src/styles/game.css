@@ -1,5 +1,12 @@
 .gamePath{
     color: rgba(255, 255, 255, 0.76);
     font-size: 22px;
-    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+}
+.gamebg{
+    background-image: url(../assets/reddead.jpg);
+    height: 30rem;
+    background-position:center;
+    background-size:cover;
+    background-repeat: no-repeat;
 }
