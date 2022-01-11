@@ -14,6 +14,7 @@ import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import HomeIcon from '@mui/icons-material/Home';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PersonIcon from '@mui/icons-material/Person';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -23,14 +24,15 @@ const drawerWidth = 240;
 
 const list = [
     { name: "Home", icon: <HomeIcon />, path: "/home" },
-    { name: "Store", icon: <LocalGroceryStoreIcon />, path: "/store" },
+    { name: "Cart", icon: <LocalGroceryStoreIcon />, path: "/cart" },
     { name: "Library", icon: <MenuBookIcon />, path: "/library" },
     { name: "About us", icon: <SportsEsportsIcon />, path: "/about" },
 ];
 const list2 = [
     { name: "Support", icon: <SupportAgentIcon />, path: "/contact" },
-    { name: "Settings", icon: <SettingsIcon />, path: "/Settings" },
-    { name: "Profile", icon: <PersonIcon />, path: "/profile" },
+    /* { name: "Settings", icon: <SettingsIcon />, path: "/Settings" }, */
+    { name: "Sign In", icon: <PersonIcon />, path: "/signIn" },
+    { name: "Sign Up", icon: <PersonAddIcon />, path: "/signUp" },
 ];
 
 const openedMixin = (theme) => ({
@@ -81,7 +83,6 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function Navigation() {
-    
     const navigate = useNavigate()
     const [open, setOpen] = React.useState(false);
 

@@ -23,6 +23,7 @@ export default function HomeCommponent() {
                     className="search"
                     placeholder="Search a Game"
                 />
+                <button className="btn-search">Search</button>
             </div>
             <div className="container Recommended">
                 <Typography

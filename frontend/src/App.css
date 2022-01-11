@@ -33,7 +33,7 @@ code {
   color:#fff !important
 }
 .MuiPaper-root{
-  background-color: #dbdbdf59 !important;
+  background-color: #dbdbdf21 !important;
   backdrop-filter: blur(13.743px);
   
 }
@@ -74,7 +74,8 @@ code {
   width: 40vw;
   padding: .3rem;
   padding-left: .8rem;
-  background: rgba(240, 238, 238, 0.5);
+  background-color: #dbdbdf2c;
+  border:none !important;
   box-sizing: border-box;
   border-radius: 2rem;
   color:#fff;
@@ -86,6 +87,16 @@ code {
 }
 .search:focus{
   outline:none;
+}
+.btn-search{
+  border:none !important;
+  background-color: #2cf4b8d7;
+  height: 5vh;
+  width: 6vw;
+  border-radius: 1rem;
+  align-self: center;
+  margin-left: .5rem;
+  color: #fff;
 }
 .box-recommended{
   display: grid;
@@ -153,7 +164,7 @@ code {
 .btn-add-cart{
   width: 100%;
   border-radius: 1rem;
-  background-color: #2cf4b8b9;
+  background-color: #2cf4b8d7;
   text-align: center;
   margin-top: .5rem;
   color: #fff;
