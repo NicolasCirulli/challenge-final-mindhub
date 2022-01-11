@@ -26,7 +26,7 @@ const drawerWidth = 240;
 const list = [
     { name: "Home", icon: <HomeIcon />, path: "/home" },
     { name: "Cart", icon: <LocalGroceryStoreIcon />, path: "/cart" },
-    { name: "Library", icon: <MenuBookIcon />, path: "/library" },
+    { name: "Games", icon: <MenuBookIcon />, path: "/games" },
     { name: "About us", icon: <SportsEsportsIcon />, path: "/about" },
 ];
 const list2 = [
