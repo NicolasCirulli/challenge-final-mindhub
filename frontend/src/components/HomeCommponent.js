@@ -61,49 +61,49 @@ export default function HomeCommponent() {
                             <div className="box-card">
                                 <CardGames />
                                 <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon />
+                                    Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
                                 <CardGames />
                                 <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon />
+                                    Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
                                 <CardGames />
                                 <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon />
+                                    Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
                                 <CardGames />
                                 <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon />
+                                    Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
                                 <CardGames />
                                 <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon />
+                                    Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
                                 <CardGames />
                                 <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon />
+                                    Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
                                 <CardGames />
                                 <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon />
+                                    Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
                                 <CardGames />
                                 <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon />
+                                    Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                         </div>

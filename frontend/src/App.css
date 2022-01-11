@@ -14,7 +14,6 @@ code {
   background-image:url("./assets/Desktop3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 
 /*NAV*/
@@ -89,7 +88,8 @@ code {
   outline:none;
 }
 .btn-search{
-  border:none !important;
+  font-weight: normal;
+  border: #2AD5A3 solid 2px;
   background-color: #2cf4b8d7;
   height: 5vh;
   width: 6vw;
@@ -97,6 +97,13 @@ code {
   align-self: center;
   margin-left: .5rem;
   color: #fff;
+  transition: .3s;
+}
+.btn-search:hover{
+  background-color: rgba(255, 255, 255, 0);
+  border: #fff solid 2px;
+  padding: .1rem;
+  transition: .3s;
 }
 .box-recommended{
   display: grid;
@@ -150,7 +157,6 @@ code {
   padding: .5rem;
   border-radius: 0 0 1rem 1rem;
 }
-
 .favorite{
   color: #AF3181 !important;
 }
@@ -165,7 +171,20 @@ code {
   width: 100%;
   border-radius: 1rem;
   background-color: #2cf4b8d7;
+  border: #2AD5A3 solid 2px;
   text-align: center;
   margin-top: .5rem;
   color: #fff;
+  padding: .1rem;
+  transition: .3s;
+}
+.btn-add-cart:hover{
+  background-color: rgba(255, 255, 255, 0);
+  border: #fff solid 2px;
+  padding: .1rem;
+  transition: .3s;
+}
+.btn-icon{
+  font-size: 1.1rem !important;
+  margin-left: .4rem;
 }
