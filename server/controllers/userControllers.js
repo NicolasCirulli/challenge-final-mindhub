@@ -74,7 +74,7 @@ const userControllers = {
       res.json({ res: user });
     } catch (err) {
       return res.status(400).json({
-        message: "cannot fetch itinerary",
+        message: "cannot fetch user",
         res: err.message,
       });
     }
