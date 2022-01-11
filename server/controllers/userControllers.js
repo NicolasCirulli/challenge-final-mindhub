@@ -62,10 +62,10 @@ const userControllers = {
     }
   },
   verifyToken: (req, res) => {
-    res.json({
+    res.json({success: true, res : {
       userName: req.user.userName,
       image: req.user.image,
-      _id: req.user._id,
+      _id: req.user._id}
     });
   },
   getUser: async (req, res) => {
