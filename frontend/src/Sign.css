@@ -16,10 +16,21 @@
     border: 1px white solid;
     height: 2rem;
     width: 100%;
+    background-color: transparent !important;
+    color: white;
+    padding-left: .5rem;
+}
+
+.labelSU:focus{
+outline: none;
 }
 
 .titleSignUp{
   color:rgb(30, 142, 240);
+}
+
+.color-country::placeholder{
+    color: white !important;
 }
 
 .signUpImg{
@@ -68,7 +79,14 @@
     height: 2rem;
     width: 80%;
     margin: 3% !important;
+    background-color: transparent !important;
+    color: white;
+    padding-left: .5rem;
 }
+
+.label-SI:focus{
+    outline: none;
+    }
 
 .linkSignIn{
     text-decoration: none;
