@@ -8,6 +8,7 @@ const gameControllers = {
       await newGame.save();
       return res.status(200).json({
         message: "Game added succesfully",
+        res: newGame,
       });
     } catch (err) {
       return res.status(400).json({
