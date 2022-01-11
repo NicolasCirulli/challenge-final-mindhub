@@ -40,6 +40,70 @@ code {
   justify-content: flex-start !important;
   margin-left: .3vw !important;
 }
+
+/*BUTTONS*/
+
+.btn-add-cart{
+  width: 100%;
+  border-radius: 1rem;
+  background-color: #2cf4b8d7;
+  border: #2AD5A3 solid 2px;
+  text-align: center;
+  margin-top: .5rem;
+  color: #fff;
+  padding: .1rem;
+  transition: .3s;
+}
+.btn-add-cart:hover{
+  background-color: rgba(255, 255, 255, 0);
+  border: #fff solid 2px;
+  padding: .1rem;
+  transition: .3s;
+}
+.btn-icon{
+  font-size: 1.1rem !important;
+  margin-left: .4rem;
+}
+
+/*CARDS*/
+
+.card{
+  border: none !important;
+  border-radius: 5rem !important;
+}
+.card-img{
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 2px 2px 2px rgba(145, 144, 144, 0.377);
+  width: 80vw;
+  min-height: 25vh;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 1rem !important;
+}
+.card-title{
+  background: rgba(221, 218, 218, 0.43);
+  backdrop-filter: blur(4px);
+  width: 100%;
+  margin: 0 !important;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: normal;
+  padding: .5rem;
+  border-radius: 0 0 1rem 1rem;
+}
+.favorite{
+  color: #AF3181 !important;
+}
+.favorite2{
+  color: #dbdbdf59 !important;
+  backdrop-filter: blur(13.743px);
+}
+
 /*HOME*/
 
 .title{
@@ -126,65 +190,28 @@ code {
   padding-bottom: 3rem;
 }
 
-/*CARDS*/
+/*ABOUT US*/
 
-.card{
-  border: none !important;
-  border-radius: 5rem !important;
+.about-us{
+  height: 100vh;
 }
-.card-img{
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  box-shadow: 2px 2px 2px rgba(145, 144, 144, 0.377);
-  width: 80vw;
-  min-height: 25vh;
-  height: 100%;
+.cont-welcome{
   display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 1rem !important;
+  justify-content: space-around;
 }
-.card-title{
-  background: rgba(221, 218, 218, 0.43);
-  backdrop-filter: blur(4px);
-  width: 100%;
-  margin: 0 !important;
+.welcome{
   color: #fff;
-  font-size: 1.5rem;
-  font-weight: normal;
-  padding: .5rem;
-  border-radius: 0 0 1rem 1rem;
+  align-self: center;
 }
-.favorite{
-  color: #AF3181 !important;
-}
-.favorite2{
-  color: #dbdbdf59 !important;
-  backdrop-filter: blur(13.743px);
-}
-
-/*BUTTONS*/
-
-.btn-add-cart{
-  width: 100%;
-  border-radius: 1rem;
-  background-color: #2cf4b8d7;
-  border: #2AD5A3 solid 2px;
-  text-align: center;
-  margin-top: .5rem;
+.welcome2{
   color: #fff;
-  padding: .1rem;
-  transition: .3s;
+  font-weight: bolder;
 }
-.btn-add-cart:hover{
-  background-color: rgba(255, 255, 255, 0);
-  border: #fff solid 2px;
-  padding: .1rem;
-  transition: .3s;
+.logo-welcome{
+  height: auto;
+  width: 40%;
+  align-self: center;
 }
-.btn-icon{
-  font-size: 1.1rem !important;
-  margin-left: .4rem;
+.subtitle{
+  font-weight:300 !important;
 }
