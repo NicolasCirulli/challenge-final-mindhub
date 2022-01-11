@@ -2,8 +2,8 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
-import CardGames from "./CardGames"
+import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
+import CardGames from "./CardGames";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
@@ -17,14 +17,14 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function HomeCommponent() {
     return (
         <div className="container">
+            <div className="cont-search">
+                <input
+                    type="text"
+                    className="search"
+                    placeholder="Search a Game"
+                />
+            </div>
             <div className="container Recommended">
-                <div className="cont-search">
-                    <input
-                        type="text"
-                        className="search"
-                        placeholder="Search a Game"
-                    />
-                </div>
                 <Typography
                     variant="h6"
                     noWrap

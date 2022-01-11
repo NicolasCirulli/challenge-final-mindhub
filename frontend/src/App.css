@@ -47,9 +47,6 @@ code {
   color: #fff;
   font-weight: normal !important;
 }
-.Recommended{
-  margin-top: 15vh;
-}
 .games{
   width: 70%;
   display: flex;
@@ -65,19 +62,23 @@ code {
 
 }
 .cont-search{
+  height: 10vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-content: center;
+
 }
 .search{
+  height: 5vh;
   width: 40vw;
   padding: .3rem;
   padding-left: .8rem;
   background: rgba(240, 238, 238, 0.5);
   box-sizing: border-box;
   border-radius: 2rem;
-  color:#fff
+  color:#fff;
+  align-self: center;
 }
 ::placeholder{
   color: rgb(206, 205, 205);
@@ -104,6 +105,7 @@ code {
 }
 .offerts{
   margin-top: 2rem;
+  padding-bottom: 3rem;
 }
 
 /*CARDS*/
@@ -140,6 +142,10 @@ code {
 
 .favorite{
   color: #AF3181 !important;
+}
+.favorite2{
+  color: #dbdbdf59 !important;
+  backdrop-filter: blur(13.743px);
 }
 
 /*BUTTONS*/
