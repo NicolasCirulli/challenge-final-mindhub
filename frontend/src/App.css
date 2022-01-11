@@ -12,10 +12,37 @@ code {
     monospace;
 }
 .App{
-  background: #20222B;
-  backdrop-filter: blur(13.743px);
+  background-image:url("./assets/Desktop3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 
+/*NAV*/
+
+.icon{
+  color: #fff !important;
+  margin-left: .4rem;
+}
+.cont-icons{
+  height: 1800px;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+.MuiSvgIcon-root{
+  color:#fff !important
+}
+.MuiPaper-root{
+  background-color: #dbdbdf59 !important;
+  backdrop-filter: blur(13.743px);
+  
+}
+
+.css-1u2mxbp{
+  justify-content: flex-start !important;
+  margin-left: .3vw !important;
+}
 /*HOME*/
 
 .title{
@@ -61,10 +88,7 @@ code {
 .search:focus{
   outline:none;
 }
-.icon{
-  color: #fff !important;
-  font-size: 1.5rem;
-}
+
 .box-recommended{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr ;
@@ -116,16 +140,7 @@ code {
   padding: .5rem;
   border-radius: 0 0 1rem 1rem;
 }
-.MuiSvgIcon-root{
-  color:#fff !important
-}
-.MuiPaper-root{
-  background-color: #dbdbdf59 !important;
-  backdrop-filter: blur(13.743px);
-}
-.MuiToolbar-root {
-  background-color: #343744 !important;
-}
+
 .favorite{
   color: #AF3181 !important;
 }

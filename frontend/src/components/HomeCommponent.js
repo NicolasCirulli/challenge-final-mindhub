@@ -5,9 +5,6 @@ import Typography from "@mui/material/Typography";
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import CardGames from "./CardGames"
 
-const drawerWidth = 240;
-
-
 const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
     alignItems: "center",
