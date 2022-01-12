@@ -17,6 +17,7 @@ code {
 }
 
 /*NAV*/
+
 .icon-logo{
   width: 3.5rem;
   height: auto;
@@ -71,6 +72,9 @@ code {
   color:#fff !important;
   transition: .3s;
 }
+.btn-add-cart>.btn-icon{
+  transition: .3s;
+}
 
 /*CARDS*/
 
@@ -113,6 +117,15 @@ code {
 
 /*HOME*/
 
+.header{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.logo-home{
+  width: 8vw;
+  align-self: center;
+}
 .title{
   color: #fff;
   font-weight: normal !important;
@@ -137,7 +150,7 @@ code {
   display: flex;
   justify-content: center;
   align-content: center;
-
+  align-self: center;
 }
 .search{
   height: 5vh;
