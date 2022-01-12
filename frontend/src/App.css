@@ -15,7 +15,14 @@ code {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+::-webkit-scrollbar{
+  width: 10px ;
+  background: #343744;
+}
+::-webkit-scrollbar-thumb{
+  background: rgba(235, 231, 231, 0.801) ;
+  border-radius: 5px ;
+}
 /*NAV*/
 
 .icon-logo{
@@ -40,13 +47,17 @@ code {
 .MuiButtonBase-root{
   justify-content: flex-start !important;
 }
+.MuiSvgIcon-root{
+  color: #fff !important;
+  
+}
 
 /*BUTTONS*/
 
 .btn-icon{
   font-size: 1.1rem !important;
   margin-left: .4rem;
-  color: #373A42;
+  color: #373A42 !important;
   transition: .3s;
 }
 .btn-add-cart{
@@ -111,8 +122,8 @@ code {
   color: #AF3181 !important;
 }
 .favorite2{
-  color: #dbdbdf59 !important;
-  backdrop-filter: blur(13.743px);
+  color: #7b9eb9d3 !important;
+  /* backdrop-filter: blur(13.743px) */;
 }
 
 /*HOME*/
@@ -200,13 +211,13 @@ code {
 .box-recommended>:first-child{
   grid-row: 1/3;
 }
-.box-offerts{
+.box-offers{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr ;
   gap: .8rem;
   width: 100%;
 }
-.offerts{
+.offers{
   margin-top: 2rem;
   padding-bottom: 3rem;
 }
@@ -272,6 +283,87 @@ code {
 .all-games{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 1rem;
+  gap: 2.5rem 1rem;
   width: 100%;
+}
+.logo-game{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.title-games{
+  color: #fff;
+  align-self: center;
+  width: 100%;
+  text-align: center;
+}
+.cont-search-game{
+  display: flex;
+  justify-content: start;
+  align-content: center;
+  align-self: center;
+}
+.cont-filter{
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  background-color: #dbdbdf21 ;
+  backdrop-filter: blur(13.743px);
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+}
+.search-game, .select-genders{
+  background-color: #dbdbdf21 !important;
+  backdrop-filter: blur(13.743px);
+  color: #fff;
+  border: #fff solid 2px;
+  width: 15vw;
+  height: 5vh;
+  border-radius: 1rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  align-self: center;
+}
+.search-game{
+  width: 40vw;
+}
+.select-genders{
+  appearance: 1rem;
+}
+.select-genders:focus, .search-game:focus{
+  outline: none;
+}
+.color-gender{
+  background-color: #343744;
+}
+.cont-filter-games{
+  display: flex;
+}
+.filter-games{
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: normal;
+  padding-top: .5rem;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+}
+.filter-games:hover{
+  text-decoration: underline;
+}
+.card-game{
+  height: 600vh;
+}
+.views{
+  align-self: flex-start;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.list-icon{
+  font-size: 2rem !important;
+  align-self: center;
+  margin-left: 1rem;
+}
+.view-icon{
+  align-self: center;
 }

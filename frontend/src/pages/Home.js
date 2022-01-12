@@ -50,7 +50,7 @@ export default function Home() {
                     </Box>
                 </DrawerHeader>
             </div>
-            <div className="container offerts">
+            <div className="container offers">
                 <Typography
                     variant="h6"
                     noWrap
@@ -61,7 +61,7 @@ export default function Home() {
                 </Typography>
                 <DrawerHeader>
                     <Box sx={{ flexGrow: 1 }}>
-                        <div className="box-offerts">
+                        <div className="box-offers">
                             <div className="box-card">
                                 <CardGames />
                                 <button className="btn-add-cart">
