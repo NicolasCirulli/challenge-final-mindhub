@@ -17,7 +17,7 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PersonIcon from "@mui/icons-material/Person";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 /* import SettingsIcon from "@mui/icons-material/Settings"; */
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../assets/joystick.png";
 
 const drawerWidth = 240;
@@ -76,6 +76,7 @@ const Drawer = styled(MuiDrawer, {
 export default function Navigation() {
     const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
+    let location = useLocation()
 
     return (
         <div>
@@ -95,7 +96,7 @@ export default function Navigation() {
                                         navigate(text.path);
                                     }}
                                     key={index}
-                                >
+                                    className={location.pathname === text.path && "active"}                                >
                                     <ListItemIcon className="icon">
                                         {text.icon}
                                     </ListItemIcon>

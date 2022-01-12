@@ -2,8 +2,9 @@ import * as React from "react";
 import CardGames from "../components/CardGames";
 import logo from "../assets/logo.png";
 import ListIcon from '@mui/icons-material/List';
-import AppsIcon from '@mui/icons-material/Apps';
 import ViewComfyIcon from '@mui/icons-material/ViewComfy';
+import { useState } from "react";
+
 const genders = [
     "Action",
     "Adventure",
@@ -20,7 +21,8 @@ const genders = [
     "Strategy",
 ];
 export default function Store() {
-    
+    const [view, setview] = useState(false)
+
     return (
         <div>
             <div className="container logo-game">
@@ -51,9 +53,11 @@ export default function Store() {
                 </select>
                 <select type="text" className="select-genders" placeholder="Genders">
                     <option disabled selected>Sort by price</option>
+                    
                     <option className="color-select">higher to lower</option>
                     <option className="color-select">lower to higher</option>
                 </select>
+                
                 <button className="btn-search">Search</button>
             </div>
             <div className="container cont-filter-games">
@@ -62,42 +66,44 @@ export default function Store() {
                 <h6 className="filter-games">OFFERS</h6>
                 <h6 className="filter-games">FAVORITES</h6>
                 <div className="views">
-                    <ViewComfyIcon className="view-icon"/>
-                    <ListIcon className="list-icon"/>
+                    <ViewComfyIcon onClick={()=> setview(false)} className="view-icon"/>
+                    <ListIcon onClick={()=> setview(true)} className="list-icon"/>
                 </div>
             </div>
-            <div className="container all-games">
-                <CardGames className="card-game" />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                <CardGames />
-                
+            <div className="container">
+                <div className={view ? "list-grid" : "all-games"}>
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    <CardGames />
+                    
+                </div>
             </div>
         </div>
     );
