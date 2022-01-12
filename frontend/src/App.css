@@ -106,6 +106,7 @@ code {
   flex-direction: column;
   justify-content: space-between;
   border-radius: 1rem !important;
+  cursor: pointer;
 }
 .card-title{
   background: rgba(221, 218, 218, 0.43);
@@ -333,7 +334,7 @@ code {
 .select-genders:focus, .search-game:focus{
   outline: none;
 }
-.color-gender{
+.color-select{
   background-color: #343744;
 }
 .cont-filter-games{
@@ -346,6 +347,7 @@ code {
   padding-top: .5rem;
   margin-right: 1rem;
   margin-bottom: 2rem;
+  cursor: pointer;
 }
 .filter-games:hover{
   text-decoration: underline;
@@ -363,7 +365,9 @@ code {
   font-size: 2rem !important;
   align-self: center;
   margin-left: 1rem;
+  cursor: pointer;
 }
 .view-icon{
   align-self: center;
+  cursor: pointer;
 }

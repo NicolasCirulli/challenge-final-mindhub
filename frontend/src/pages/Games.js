@@ -5,7 +5,6 @@ import ListIcon from '@mui/icons-material/List';
 import AppsIcon from '@mui/icons-material/Apps';
 import ViewComfyIcon from '@mui/icons-material/ViewComfy';
 const genders = [
-    "Genders",
     "Action",
     "Adventure",
     "Massively Multiplayer",
@@ -37,17 +36,23 @@ export default function Store() {
                     />
                 </div>
                 <select type="text" className="select-genders" placeholder="Genders">
+                    <option disabled selected>Genders</option>
                     {genders.map((gender, index) => {
                         return (
                             <option
                                 value="gender"
                                 key={index}
-                                className="color-gender"
+                                className="color-select"
                             >
                                 {gender}
                             </option>
                         );
                     })}
+                </select>
+                <select type="text" className="select-genders" placeholder="Genders">
+                    <option disabled selected>Sort by price</option>
+                    <option className="color-select">higher to lower</option>
+                    <option className="color-select">lower to higher</option>
                 </select>
                 <button className="btn-search">Search</button>
             </div>
