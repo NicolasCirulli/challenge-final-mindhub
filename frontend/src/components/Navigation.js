@@ -88,7 +88,7 @@ export default function Navigation() {
                     </IconButton>
                     <Divider />
                     <div className="cont-icons">
-                        <List className="text">
+                        <List className="nav-icons">
                             {list.map((text, index) => (
                                 <ListItem
                                     button

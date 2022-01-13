@@ -26,7 +26,7 @@ outline: none;
 }
 
 .titleSignUp{
-  color:rgb(30, 142, 240);
+    color:rgb(30, 142, 240);
 }
 
 .color-country::placeholder{
@@ -34,11 +34,11 @@ outline: none;
 }
 
 .signUpImg{
-  height: 100%;
-  width: 55%;
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
+    height: 100%;
+    width: 55%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .parrSignUp{
@@ -68,7 +68,7 @@ outline: none;
 }
 
 .titleSignIn{
-  color: rgb(30, 142, 240);
+    color: rgb(30, 142, 240);
 }
 
 .label-SI{
@@ -86,7 +86,7 @@ outline: none;
 
 .label-SI:focus{
     outline: none;
-    }
+}
 
 .linkSignIn{
     text-decoration: none;
