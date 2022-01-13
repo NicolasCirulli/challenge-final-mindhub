@@ -298,9 +298,12 @@ code {
     width: 100%;
 }
 .list-grid{
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     gap: 2rem;
-
+}
+.description-list-game{
+    color: #fff;
 }
 .logo-game {
     width: 100%;

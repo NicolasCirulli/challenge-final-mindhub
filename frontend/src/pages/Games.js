@@ -73,35 +73,39 @@ export default function Store() {
             <div className="container">
                 <div className={view ? "list-grid" : "all-games"}>
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     
                 </div>
             </div>
