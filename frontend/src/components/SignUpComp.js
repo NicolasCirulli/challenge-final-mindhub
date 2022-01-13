@@ -63,7 +63,7 @@ const SignUpComp = () => {
                     <div className='titlesSU'>
                         <h1 className='titleSignUp'>Enjoy the benefits</h1>
                         <h2>of beeing an Xplore user</h2>
-                        <h3 className='titleSignUp'>Sign up Xplore</h3>
+                        <h3 className='titleSignUp'>Sign up Xtreme</h3>
                     </div>
                     <form>
                         <div className='bodyFormSU'>
