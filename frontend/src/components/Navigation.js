@@ -6,7 +6,6 @@ import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -18,7 +17,7 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PersonIcon from "@mui/icons-material/Person";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 /* import SettingsIcon from "@mui/icons-material/Settings"; */
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../assets/joystick.png";
 
 const drawerWidth = 240;
@@ -57,15 +56,6 @@ const closedMixin = (theme) => ({
     },
 });
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-}));
-
 const Drawer = styled(MuiDrawer, {
     shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
@@ -86,6 +76,7 @@ const Drawer = styled(MuiDrawer, {
 export default function Navigation() {
     const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
+    let location = useLocation()
 
     return (
         <div>
@@ -105,7 +96,7 @@ export default function Navigation() {
                                         navigate(text.path);
                                     }}
                                     key={index}
-                                >
+                                    className={location.pathname === text.path && "active"}                                >
                                     <ListItemIcon className="icon">
                                         {text.icon}
                                     </ListItemIcon>

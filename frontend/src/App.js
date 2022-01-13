@@ -9,6 +9,7 @@ import Game from "./pages/Game";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import About from "./pages/About"
+import Games from "./pages/Games"
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
             <Route path="/about" element={<About />}></Route>
+            <Route path="/games" element={<Games />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

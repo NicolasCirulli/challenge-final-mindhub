@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CardGames from "../components/CardGames";
+import logo from "../assets/logo.png"
 
 const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
@@ -17,13 +18,16 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function Home() {
     return (
         <div className="container">
-            <div className="cont-search">
-                <input
-                    type="text"
-                    className="search"
-                    placeholder="Search a Game"
-                />
-                <button className="btn-search">Search</button>
+            <div className="container header">
+                <div className="cont-search">
+                    <input
+                        type="text"
+                        className="search"
+                        placeholder="Search a Game"
+                    />
+                    <button className="btn-search">Search</button>
+                </div>
+                <img src={logo} className="logo-home" />
             </div>
             <div className="container Recommended">
                 <Typography
@@ -46,7 +50,7 @@ export default function Home() {
                     </Box>
                 </DrawerHeader>
             </div>
-            <div className="container offerts">
+            <div className="container offers">
                 <Typography
                     variant="h6"
                     noWrap
@@ -57,7 +61,7 @@ export default function Home() {
                 </Typography>
                 <DrawerHeader>
                     <Box sx={{ flexGrow: 1 }}>
-                        <div className="box-offerts">
+                        <div className="box-offers">
                             <div className="box-card">
                                 <CardGames />
                                 <button className="btn-add-cart">

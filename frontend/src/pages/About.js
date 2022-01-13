@@ -7,21 +7,24 @@ export default function About() {
         <div className="container about-us">
             <div className="container cont-welcome">
                 <div className="welcome">
-                    <Typography
-                        variant="h2"
-                        component="div"
-                        className="welcome2"
-                    >
-                        Welcome to Xtreme
-                    </Typography>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        className="subtitle"
-                    >
-                        We are the best place to play, talk about games, and create games.
-                    </Typography>
+                    <div className="text-welcome">
+                        <Typography
+                            variant="h2"
+                            component="div"
+                            className="welcome2"
+                        >
+                            Welcome to Xtreme
+                        </Typography>
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            className="subtitle"
+                        >
+                            We are the best place to play, talk about games, and create games.
+                        </Typography>
+                    </div>
+                <button className="call-to-action">Visit our store</button>
                 </div>
                 <img src={logo} className="logo-welcome"/>
             </div>
