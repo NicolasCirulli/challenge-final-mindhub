@@ -22,6 +22,16 @@ const genders = [
 ];
 export default function Store() {
     const [view, setview] = useState(false)
+    const [active, setactive] = useState(false)
+
+    function activate(){
+        setactive(true)
+        setview(true)
+    }
+    function deactivate(){
+        setactive(false)
+        setview(false)
+    }
 
     return (
         <div>
@@ -66,12 +76,18 @@ export default function Store() {
                 <h6 className="filter-games">OFFERS</h6>
                 <h6 className="filter-games">FAVORITES</h6>
                 <div className="views">
-                    <ViewComfyIcon onClick={()=> setview(false)} className="view-icon"/>
-                    <ListIcon onClick={()=> setview(true)} className="list-icon"/>
+                    <ViewComfyIcon onClick={()=> deactivate()} className={active ? "view-icon-w" : "view-icon-r"}/>
+                    <ListIcon onClick={()=> activate()} className={active ? "list-icon-r" : "list-icon-w"}/>
                 </div>
             </div>
             <div className="container">
                 <div className={view ? "list-grid" : "all-games"}>
+                    <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
+                    <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
+                    <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
                     {view && <p className="description-list-game">Description</p>}
                     <CardGames />
