@@ -6,6 +6,7 @@ import ViewComfyIcon from '@mui/icons-material/ViewComfy';
 import { useState } from "react";
 
 const genders = [
+    "All Genders",
     "Action",
     "Adventure",
     "Massively Multiplayer",
