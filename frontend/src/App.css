@@ -23,6 +23,7 @@ code {
     background: rgba(235, 231, 231, 0.801);
     border-radius: 5px;
 }
+
 /*NAV*/
 
 .icon-logo {
@@ -275,6 +276,7 @@ code {
     border-color: #fff;
     transition: 0.3s;
 }
+
 /*GAMES*/
 
 .all-games {
@@ -284,8 +286,8 @@ code {
     width: 100%;
 }
 .list-grid{
-  grid-template-columns: 1fr;
-  gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
 
 }
 .logo-game {
@@ -373,7 +375,6 @@ code {
     align-self: center;
     cursor: pointer;
 }
-
 .active {
     background-color: #af3181b0 !important;
 }

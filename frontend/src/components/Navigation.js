@@ -23,7 +23,7 @@ import logo from "../assets/joystick.png";
 const drawerWidth = 240;
 
 const list = [
-    { name: "Home", icon: <HomeIcon />, path: "/home" },
+    { name: "Home", icon: <HomeIcon />, path: "/" },
     { name: "Cart", icon: <LocalGroceryStoreIcon />, path: "/cart" },
     { name: "Games", icon: <MenuBookIcon />, path: "/games" },
     { name: "About us", icon: <SportsEsportsIcon />, path: "/about" },
