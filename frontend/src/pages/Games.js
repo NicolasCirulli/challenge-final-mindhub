@@ -23,6 +23,7 @@ const genders = [
 export default function Store() {
     const [view, setview] = useState(false)
     const [active, setactive] = useState(false)
+    const [filter, setfilter] = useState("all")
 
     function activate(){
         setactive(true)
@@ -71,10 +72,10 @@ export default function Store() {
                 <button className="btn-search">Search</button>
             </div>
             <div className="container cont-filter-games">
-                <h6 className="filter-games">ALL</h6>
-                <h6 className="filter-games">RECOMMENDED</h6>
-                <h6 className="filter-games">OFFERS</h6>
-                <h6 className="filter-games">FAVORITES</h6>
+                <h6 onClick={()=> setfilter("all")} className={filter === "all" ? "filter-games-active" : "filter-games"}>ALL</h6>
+                <h6 onClick={()=> setfilter("recommended")} className={filter === "recommended" ?"filter-games-active":"filter-games"}>RECOMMENDED</h6>
+                <h6 onClick={()=> setfilter("offers")} className={filter ==="offers" ?"filter-games-active":"filter-games"}>OFFERS</h6>
+                <h6 onClick={()=> setfilter("favorites")} className={filter ==="favorites" ?"filter-games-active":"filter-games"}>FAVORITES</h6>
                 <div className="views">
                     <ViewComfyIcon onClick={()=> deactivate()} className={active ? "view-icon-w" : "view-icon-r"}/>
                     <ListIcon onClick={()=> activate()} className={active ? "list-icon-r" : "list-icon-w"}/>
