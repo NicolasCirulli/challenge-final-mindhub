@@ -62,10 +62,13 @@ const userControllers = {
     }
   },
   verifyToken: (req, res) => {
-    res.json({success: true, res : {
-      userName: req.user.userName,
-      image: req.user.image,
-      _id: req.user._id}
+    res.json({
+      success: true,
+      res: {
+        userName: req.user.userName,
+        image: req.user.image,
+        _id: req.user._id,
+      },
     });
   },
   getUser: async (req, res) => {
@@ -77,6 +80,54 @@ const userControllers = {
         message: "cannot fetch user",
         res: err.message,
       });
+    }
+  },
+  getAllUsers: async (req, res) => {
+    try {
+      let user = await User.find();
+      res.json({ res: user });
+    } catch (err) {
+      return res.status(400).json({
+        message: "cannot fetch user",
+        res: err.message,
+      });
+    }
+  },
+  deleteUser: async (req, res) => {
+    try {
+      let user = await User.findOneAndDelete({ _id: req.params.id });
+      res.json({ res: user });
+    } catch (err) {
+      return res.status(400).json({
+        message: "cannot fetch user",
+        res: err.message,
+      });
+    }
+  },
+  updateUser: async (req, res) => {
+    if (req.body.password) {
+      let cryptPass = bcryptjs.hashSync(req.body.password);
+      let newPassword = { password: cryptPass };
+
+      User.findOneAndUpdate(
+        { _id: req.params.id },
+        { ...newPassword },
+        { new: true }
+      )
+        .then((response) => res.json({ success: true, respuesta: response }))
+        .catch((error) =>
+          res.json({ success: false, response: error.message })
+        );
+    } else {
+      User.findOneAndUpdate(
+        { _id: req.params.id },
+        { ...req.body },
+        { new: true }
+      )
+        .then((response) => res.json({ success: true, respuesta: response }))
+        .catch((error) =>
+          res.json({ success: false, response: error.message })
+        );
     }
   },
 };
