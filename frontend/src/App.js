@@ -1,5 +1,7 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import authActions from "./redux/actions/authActions";
 import "./App.css";
 import "./Sign.css"
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,8 +12,22 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import About from "./pages/About"
 import Games from "./pages/Games"
+import AdminPanel from './pages/AdminPanel'
 
 function App() {
+
+  const dispatch = useDispatch()
+
+  const user = useSelector(state => state.userReducer.user)
+  
+  const token = localStorage.getItem('token')
+
+
+  useEffect(() => {
+    token && dispatch(authActions.signInWithToken(token))
+  }, [])
+
+
   return (
     <>
       <BrowserRouter>
@@ -20,11 +36,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/game" element={<Game/>}></Route>
-            <Route path="*" element={<Home />}></Route>
-            <Route path="/signin" element={<SignIn />}></Route>
-            <Route path="/signup" element={<SignUp />}></Route>
+            {!user && <Route path="/signin" element={<SignIn />}></Route>}
+            {!user && <Route path="/signup" element={<SignUp />}></Route>}
             <Route path="/about" element={<About />}></Route>
             <Route path="/games" element={<Games />}></Route>
+            <Route path="/admin" element={<AdminPanel />}></Route>
+            <Route path="*" element={<Home />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

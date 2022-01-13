@@ -7,14 +7,13 @@ const userReducer = (state = initialState, action)=>{
         case 'signIn':
                 return{
                     ...state,
-                    ...action.payload,
-                    
-                }   
+                    user : action.payload,  
+                }
 
         case 'logOut':
             return{
                 ...state,
-                ...action.payload,
+                user : action.payload, 
             }
         
         default: 

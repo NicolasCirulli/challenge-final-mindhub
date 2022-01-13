@@ -1,0 +1,73 @@
+.btnAdmin{
+    width: 150px;
+    height: 50px;
+    background-color: white; 
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    border: none;
+}
+
+
+.btnAdmin_text{
+    color: black;
+}
+
+
+.card-user-admin{
+    width: 250px;
+    min-height: 400px;
+    background-color: rgba(0, 0, 0, 0.133);
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(204, 204, 206, 0.249);
+}
+
+.card-user-admin-text{
+    
+    color: white;
+}
+
+.card-user-admin-img{
+    width: 70%;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.user-admin-img{
+    border-radius: 10px;
+    width: 100%;
+    padding-top: 10px;
+}
+.card-user-admin-icon{
+    background-color: white;
+    color: black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+}
+
+
+.card-user-admin-fields{
+    width: 90%;
+    height: 40px;
+    position: relative;
+}
+
+.card-user-admin-delete{
+    border:none;
+    padding: 5px;
+}
+.input-icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+}
