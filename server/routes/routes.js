@@ -1,26 +1,36 @@
 const router = require("express").Router();
 const passport = require("passport");
-const validator = require('../config/validator')
+const validator = require("../config/validator");
 const userControllers = require("../controllers/userControllers");
 const gameControllers = require("../controllers/gameControllers");
 
-const { addNewUser, signInUser, getUser } = userControllers;
-const { addGame, getGame } = gameControllers;
+const { addNewUser, signInUser, getUser, getAllUsers, deleteUser, updateUser } =
+  userControllers;
+const { addGame, getGame, getAllGame,deleteGame,updateGame } = gameControllers;
 
-router.route("/user/signup").post(validator,addNewUser);
+// USER
 
+router.route('/users').get(getAllUsers)
+
+router.route("/user/signup").post(validator, addNewUser);
 router.route("/user/signin").post(signInUser);
 
-router.route("/user/:id").get(getUser);
+router.route("/user/:id")
+.get(getUser)
+.delete(deleteUser)
+.put(updateUser)
 
-router.route("/game").post(addGame);
-router.route("/game/:id").get(getGame);
-
-router
-  .route("/verifyToken")
-  .post(
+router.route("/verifyToken")
+.post(
     passport.authenticate("jwt", { session: false }),
     userControllers.verifyToken
   );
 
+// GAME
+router.route("/allgames").get(getAllGame);
+router.route("/game").post(addGame);
+router.route("/game/:id")
+.get(getGame)
+.delete(deleteGame)
+.put(updateGame)
 module.exports = router;

@@ -28,6 +28,41 @@ const gameControllers = {
       });
     }
   },
+  getAllGame: async (req, res) => {
+    try {
+      let games = await Game.find();
+      res.json({ success:true, res: games });
+    } catch (err) {
+      return res.status(400).json({
+        message: "cannot fetch the games",
+        res: err.message,
+      });
+    }
+  },
+  updateGame: async (req, res) => {
+    
+      Game.findOneAndUpdate(
+        { _id: req.params.id },
+        { ...req.body },
+        { new: true }
+      )
+        .then((response) => res.json({ success: true, respuesta: response }))
+        .catch((error) =>
+          res.json({ success: false, response: error.message })
+        );
+  },
+  deleteGame: async (req, res) => {
+    try {
+      let game = await Game.findOneAndDelete({ _id: req.params.id });
+      res.json({ res: game });
+    } catch (err) {
+      return res.status(400).json({
+        message: "cannot fetch user",
+        res: err.message,
+      });
+    }
+  },
+
 };
 
 module.exports = gameControllers;

@@ -11,12 +11,16 @@ import Game from "./pages/Game";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import About from "./pages/About"
-
+import AdminPanel from './pages/AdminPanel'
 function App() {
 
   const dispatch = useDispatch()
+
   const user = useSelector(state => state.userReducer.user)
+  
   const token = localStorage.getItem('token')
+
+
   useEffect(() => {
     token && dispatch(authActions.signInWithToken(token))
   }, [])
@@ -33,6 +37,7 @@ function App() {
             {!user && <Route path="/signin" element={<SignIn />}></Route>}
             {!user && <Route path="/signup" element={<SignUp />}></Route>}
             <Route path="/about" element={<About />}></Route>
+            <Route path="/admin" element={<AdminPanel />}></Route>
             <Route path="*" element={<Home />}></Route>
           </Routes>
         </div>
