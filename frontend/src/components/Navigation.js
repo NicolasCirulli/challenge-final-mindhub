@@ -30,7 +30,7 @@ const list = [
 ];
 const list2 = [
     { name: "Support", icon: <SupportAgentIcon />, path: "/contact" },
-    /* { name: "Settings", icon: <SettingsIcon />, path: "/Settings" }, */
+    { name: "Settings", icon: <SettingsIcon />, path: "/Settings" },
     { name: "Sign In", icon: <PersonIcon />, path: "/signIn" },
     { name: "Sign Up", icon: <PersonAddIcon />, path: "/signUp" },
 ];
