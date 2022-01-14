@@ -39,11 +39,36 @@ const gameControllers = {
       });
     }
   },
+  getGameByGenre: async (req, res) => {
+    try {
+      let game = await Game.find({ "genres.name" : req.params.genre});
+      res.json({ res: game });
+    } catch (err) {
+      return res.status(400).json({
+        message: "cannot fetch user",
+        res: err.message,
+      });
+    }
+  }, 
+  getGamesByName: async (req, res) => {
+    console.log(req.params.name)
+    try {
+      let game = await Game.find({ slug: {$regex : "^" + req.params.name}});
+      res.json({ res: game });
+    } catch (err) {
+      return res.status(400).json({
+        message: "cannot fetch user",
+        res: err.message,
+      });
+    }
+  }, 
   updateGame: async (req, res) => {
-    
+      
+      const {body} = req.body
+      console.log(body)
       Game.findOneAndUpdate(
         { _id: req.params.id },
-        { ...req.body },
+        { ...body },
         { new: true }
       )
         .then((response) => res.json({ success: true, respuesta: response }))
@@ -62,6 +87,7 @@ const gameControllers = {
       });
     }
   },
+ 
 
 };
 
