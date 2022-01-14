@@ -66,11 +66,11 @@ export default function Store() {
                 <select type="text" className="select-genders" placeholder="Genders">
                     <option disabled selected>Sort by price</option>
                     
-                    <option className="color-select">higher to lower</option>
-                    <option className="color-select">lower to higher</option>
+                    <option className="color-select">Higher to Lower</option>
+                    <option className="color-select">Lower to Higher</option>
                 </select>
                 
-                <button className="btn-search">Search</button>
+                
             </div>
             <div className="container cont-filter-games">
                 <h6 onClick={()=> setfilter("all")} className={filter === "all" ? "filter-games-active" : "filter-games"}>ALL</h6>
@@ -82,7 +82,7 @@ export default function Store() {
                     <ListIcon onClick={()=> activate()} className={active ? "list-icon-r" : "list-icon-w"}/>
                 </div>
             </div>
-            <div className="container">
+            <div className="container box-games">
                 <div className={view ? "list-grid" : "all-games"}>
                     <CardGames />
                     {view && <p className="description-list-game">Description</p>}

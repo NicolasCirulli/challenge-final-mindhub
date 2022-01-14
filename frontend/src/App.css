@@ -297,6 +297,10 @@ code {
 
 /*GAMES*/
 
+.box-games{
+    min-height: 60vh;
+    padding-bottom: 2rem;
+}
 .all-games {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
