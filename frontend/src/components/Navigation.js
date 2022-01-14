@@ -16,13 +16,8 @@ import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PersonIcon from "@mui/icons-material/Person";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
-<<<<<<< HEAD
-import SettingsIcon from "@mui/icons-material/Settings"; 
-import { useNavigate } from "react-router-dom";
-=======
 /* import SettingsIcon from "@mui/icons-material/Settings"; */
 import { useNavigate, useLocation } from "react-router-dom";
->>>>>>> 95de46bd706fb668742809c173b9ab298b41e329
 import logo from "../assets/joystick.png";
 
 const drawerWidth = 240;
