@@ -21,7 +21,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function Home() {
 
-    const [allGames, setAllGames] = useState([])
+    const [allGames, setAllGames] = useState(false)
 
 
     useEffect(() => {
@@ -58,11 +58,16 @@ export default function Home() {
                 <DrawerHeader>
                     <Box sx={{ flexGrow: 1 }}>
                         <div className="box-recommended">
-                            <CardGames  game={allGames[0]}/>
-                            <CardGames game={allGames[0]}/>
-                            <CardGames game={allGames[0]}/>
-                            <CardGames game={allGames[0]}/>
-                            <CardGames game={allGames[0]}/>
+                            { allGames && 
+                                <>
+                                <CardGames  game={allGames[0]}/>
+                                <CardGames game={allGames[0]}/>
+                                <CardGames game={allGames[0]}/>
+                                <CardGames game={allGames[0]}/>
+                                <CardGames game={allGames[0]}/>
+                                </>
+
+                            }
                         </div>
                     </Box>
                 </DrawerHeader>
@@ -78,7 +83,7 @@ export default function Home() {
                 </Typography>
                 <DrawerHeader>
                     <Box sx={{ flexGrow: 1 }}>
-                        <div className="box-offers">
+                       { allGames &&  <div className="box-offers">
                             <div className="box-card">
                                 <CardGames  game={allGames[0]}/>
                                 <button className="btn-add-cart">
@@ -127,7 +132,7 @@ export default function Home() {
                                     Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
-                        </div>
+                        </div>}
                     </Box>
                 </DrawerHeader>
             </div>
