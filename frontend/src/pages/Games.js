@@ -23,6 +23,7 @@ const genders = [
 ];
 export default function Store() {
     const [view, setview] = useState(false);
+    const [filter, setfilter] = useState("all");
     const [allGames, setAllGames] = useState([]);
     const [gamesRender, setGamesRender] = useState([]);
     const [gender, setGender] = useState([]);
@@ -95,9 +96,11 @@ export default function Store() {
                         Sort by price
                     </option>
 
-                    <option className="color-select">Higher to Lower</option>
-                    <option className="color-select">Lower to Higher</option>
+                    <option className="color-select">higher to lower</option>
+                    <option className="color-select">lower to higher</option>
                 </select>
+
+                <button className="btn-search">Search</button>
             </div>
             <div className="container cont-filter-games">
                 <h6
@@ -142,12 +145,12 @@ export default function Store() {
                 </h6>
                 <div className="views">
                     <ViewComfyIcon
-                        onClick={() => deactivate()}
-                        className={active ? "view-icon-w" : "view-icon-r"}
+                        onClick={() => setview(false)}
+                        className="view-icon"
                     />
                     <ListIcon
-                        onClick={() => activate()}
-                        className={active ? "list-icon-r" : "list-icon-w"}
+                        onClick={() => setview(true)}
+                        className="list-icon"
                     />
                 </div>
             </div>
@@ -155,6 +158,7 @@ export default function Store() {
                 <div className={view ? "list-grid" : "all-games"}>
                     {gamesRender.map((game) => (
                         <CardGames key={game._id} game={game} />
+                        
                     ))}
                 </div>
             </div>
