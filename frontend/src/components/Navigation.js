@@ -16,21 +16,26 @@ import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PersonIcon from "@mui/icons-material/Person";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
+<<<<<<< HEAD
 import SettingsIcon from "@mui/icons-material/Settings"; 
 import { useNavigate } from "react-router-dom";
+=======
+/* import SettingsIcon from "@mui/icons-material/Settings"; */
+import { useNavigate, useLocation } from "react-router-dom";
+>>>>>>> 95de46bd706fb668742809c173b9ab298b41e329
 import logo from "../assets/joystick.png";
 
 const drawerWidth = 240;
 
 const list = [
-    { name: "Home", icon: <HomeIcon />, path: "/home" },
+    { name: "Home", icon: <HomeIcon />, path: "/" },
     { name: "Cart", icon: <LocalGroceryStoreIcon />, path: "/cart" },
     { name: "Games", icon: <MenuBookIcon />, path: "/games" },
     { name: "About us", icon: <SportsEsportsIcon />, path: "/about" },
 ];
 const list2 = [
     { name: "Support", icon: <SupportAgentIcon />, path: "/contact" },
-    { name: "Settings", icon: <SettingsIcon />, path: "/Settings" },
+    /* { name: "Settings", icon: <SettingsIcon />, path: "/Settings" }, */
     { name: "Sign In", icon: <PersonIcon />, path: "/signIn" },
     { name: "Sign Up", icon: <PersonAddIcon />, path: "/signUp" },
 ];
@@ -88,7 +93,7 @@ export default function Navigation() {
                     </IconButton>
                     <Divider />
                     <div className="cont-icons">
-                        <List className="text">
+                        <List className="nav-icons">
                             {list.map((text, index) => (
                                 <ListItem
                                     button
