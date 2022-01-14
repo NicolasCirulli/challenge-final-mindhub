@@ -1,7 +1,11 @@
 import React,{useEffect} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+<<<<<<< HEAD
+import Profile from "./pages/Profile"
+=======
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "./redux/actions/authActions";
+>>>>>>> 2c196f01568506d370a3540e2aee1707a6de39f6
 import "./App.css";
 import "./Sign.css"
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -42,6 +46,7 @@ function App() {
             <Route path="/games" element={<Games />}></Route>
             <Route path="/admin" element={<AdminPanel />}></Route>
             <Route path="*" element={<Home />}></Route>
+            <Route path="profile" element={<Profile/>}></Route>
           </Routes>
         </div>
       </BrowserRouter>
