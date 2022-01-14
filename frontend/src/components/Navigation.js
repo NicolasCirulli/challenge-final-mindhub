@@ -1,31 +1,31 @@
 import * as React from "react";
-import { styled} from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import HomeIcon from '@mui/icons-material/Home';
-import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
-import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import PersonIcon from '@mui/icons-material/Person';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
-import SettingsIcon from '@mui/icons-material/Settings';
-import {useNavigate} from "react-router-dom"
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import HomeIcon from "@mui/icons-material/Home";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import PersonIcon from "@mui/icons-material/Person";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+/* import SettingsIcon from "@mui/icons-material/Settings"; */
+import { useNavigate, useLocation } from "react-router-dom";
+import logo from "../assets/joystick.png";
 
 const drawerWidth = 240;
 
 const list = [
-    { name: "Home", icon: <HomeIcon />, path: "/home" },
+    { name: "Home", icon: <HomeIcon />, path: "/" },
     { name: "Cart", icon: <LocalGroceryStoreIcon />, path: "/cart" },
-    { name: "Library", icon: <MenuBookIcon />, path: "/library" },
+    { name: "Games", icon: <MenuBookIcon />, path: "/games" },
     { name: "About us", icon: <SportsEsportsIcon />, path: "/about" },
 ];
 const list2 = [
@@ -56,15 +56,6 @@ const closedMixin = (theme) => ({
     },
 });
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-}));
-
 const Drawer = styled(MuiDrawer, {
     shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
@@ -83,25 +74,30 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function Navigation() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
+    let location = useLocation()
 
     return (
         <div>
             <Box sx={{ display: "flex" }}>
                 <CssBaseline />
                 <Drawer variant="permanent" open={open}>
-                    <DrawerHeader>
-                        <IconButton onClick={() => setOpen(!open)}>
-                            <MenuIcon />
-                        </IconButton>
-                    </DrawerHeader>
+                    <IconButton onClick={() => setOpen(!open)}>
+                        <img src={logo} className="icon-logo" />
+                    </IconButton>
                     <Divider />
                     <div className="cont-icons">
-                        <List className="text">
+                        <List className="nav-icons">
                             {list.map((text, index) => (
-                                <ListItem button onClick={()=>{navigate(text.path)}} key={index}>
-                                    <ListItemIcon  className="icon">
+                                <ListItem
+                                    button
+                                    onClick={() => {
+                                        navigate(text.path);
+                                    }}
+                                    key={index}
+                                    className={location.pathname === text.path && "active"}                                >
+                                    <ListItemIcon className="icon">
                                         {text.icon}
                                     </ListItemIcon>
                                     <ListItemText primary={text.name} />
@@ -110,7 +106,13 @@ export default function Navigation() {
                         </List>
                         <List className="text">
                             {list2.map((text, index) => (
-                                <ListItem button onClick={()=>{navigate(text.path)}} key={index}>
+                                <ListItem
+                                    button
+                                    onClick={() => {
+                                        navigate(text.path);
+                                    }}
+                                    key={index}
+                                >
                                     <ListItemIcon className="icon">
                                         {text.icon}
                                     </ListItemIcon>

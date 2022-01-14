@@ -1,0 +1,94 @@
+const Game = require("../models/game");
+const user = require("../models/User");
+
+const gameControllers = {
+  addGame: async (req, res) => {
+    const newGame = new Game({ ...req.body });
+    try {
+      await newGame.save();
+      return res.status(200).json({
+        message: "Game added succesfully",
+        res: newGame,
+      });
+    } catch (err) {
+      return res.status(400).json({
+        message: "failed request ",
+        res: err.message,
+      });
+    }
+  },
+  getGame: async (req, res) => {
+    try {
+      let game = await Game.findById(req.params.id);
+      res.json({ res: game });
+    } catch (err) {
+      return res.status(400).json({
+        message: "cannot fetch the game",
+        res: err.message,
+      });
+    }
+  },
+  getAllGame: async (req, res) => {
+    try {
+      let games = await Game.find();
+      res.json({ success:true, res: games });
+    } catch (err) {
+      return res.status(400).json({
+        message: "cannot fetch the games",
+        res: err.message,
+      });
+    }
+  },
+  getGameByGenre: async (req, res) => {
+    try {
+      let game = await Game.find({ "genres.name" : req.params.genre});
+      res.json({ res: game });
+    } catch (err) {
+      return res.status(400).json({
+        message: "cannot fetch user",
+        res: err.message,
+      });
+    }
+  }, 
+  getGamesByName: async (req, res) => {
+    console.log(req.params.name)
+    try {
+      let game = await Game.find({ slug: {$regex : "^" + req.params.name}});
+      res.json({ res: game });
+    } catch (err) {
+      return res.status(400).json({
+        message: "cannot fetch user",
+        res: err.message,
+      });
+    }
+  }, 
+  updateGame: async (req, res) => {
+      
+      const {body} = req.body
+      console.log(body)
+      Game.findOneAndUpdate(
+        { _id: req.params.id },
+        { ...body },
+        { new: true }
+      )
+        .then((response) => res.json({ success: true, respuesta: response }))
+        .catch((error) =>
+          res.json({ success: false, response: error.message })
+        );
+  },
+  deleteGame: async (req, res) => {
+    try {
+      let game = await Game.findOneAndDelete({ _id: req.params.id });
+      res.json({ res: game });
+    } catch (err) {
+      return res.status(400).json({
+        message: "cannot fetch user",
+        res: err.message,
+      });
+    }
+  },
+ 
+
+};
+
+module.exports = gameControllers;
