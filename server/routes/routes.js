@@ -6,7 +6,7 @@ const gameControllers = require("../controllers/gameControllers");
 
 const { addNewUser, signInUser, getUser, getAllUsers, deleteUser, updateUser } =
   userControllers;
-const { addGame, getGame, getAllGame,deleteGame,updateGame } = gameControllers;
+const { addGame, getGame, getAllGame,deleteGame,updateGame,getGameByGenre,getGamesByName } = gameControllers;
 
 // USER
 
@@ -27,8 +27,18 @@ router.route("/verifyToken")
   );
 
 // GAME
-router.route("/allgames").get(getAllGame);
-router.route("/game").post(addGame);
+router.route("/allgames")
+.get(getAllGame);
+
+router.route('/gameByGenre/:genre')
+.get(getGameByGenre)
+
+router.route('/gameByName/:name')
+.get(getGamesByName)
+
+router.route("/game")
+.post(addGame);
+
 router.route("/game/:id")
 .get(getGame)
 .delete(deleteGame)

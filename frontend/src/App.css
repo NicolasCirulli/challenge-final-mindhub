@@ -23,6 +23,7 @@ code {
     background: rgba(235, 231, 231, 0.801);
     border-radius: 5px;
 }
+
 /*NAV*/
 
 .icon-logo {
@@ -90,6 +91,7 @@ code {
 .card {
     border: none !important;
     border-radius: 5rem !important;
+    background: none !important;
 }
 .card-img {
     background-position: top;
@@ -104,7 +106,6 @@ code {
     flex-direction: column;
     justify-content: space-between;
     border-radius: 1rem !important;
-    cursor: pointer;
 }
 .card-title {
     background: rgba(221, 218, 218, 0.43);
@@ -112,18 +113,26 @@ code {
     width: 100%;
     margin: 0 !important;
     color: #fff;
-    font-size: 1.5rem;
-    font-weight: normal;
     padding: 0.5rem;
     border-radius: 0 0 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.name-game{
+    font-size: 1rem;
+    font-weight: normal;
+    color:#fff;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+.name-game:hover{
+    color: #11edd5 !important;
 }
 .favorite {
     color: #af3181 !important;
 }
-.favorite2 {
-    color: #7b9eb9d3 !important;
-    /* backdrop-filter: blur(13.743px) */
-}
+
 
 /*HOME*/
 
@@ -147,7 +156,7 @@ code {
     justify-content: space-between;
     flex-wrap: wrap !important;
 }
-.text {
+.nav-icons {
     color: #fff !important;
 }
 .MuiButtonBase-root {
@@ -218,6 +227,7 @@ code {
 .offers {
     margin-top: 2rem;
     padding-bottom: 3rem;
+    min-height: 100vh;
 }
 
 /*ABOUT US*/
@@ -275,8 +285,13 @@ code {
     border-color: #fff;
     transition: 0.3s;
 }
+
 /*GAMES*/
 
+.box-games{
+    min-height: 60vh;
+    padding-bottom: 2rem;
+}
 .all-games {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -284,9 +299,12 @@ code {
     width: 100%;
 }
 .list-grid{
-  grid-template-columns: 1fr;
-  gap: 2rem;
-
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+.description-list-game{
+    color: #fff;
 }
 .logo-game {
     width: 100%;
@@ -343,6 +361,16 @@ code {
     display: flex;
 }
 .filter-games {
+    color: rgb(150, 149, 149);
+    font-size: 1.5rem;
+    font-weight: normal;
+    padding-top: 0.5rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+.filter-games-active{
+    text-decoration: underline;
     color: #fff;
     font-size: 1.5rem;
     font-weight: normal;
@@ -363,17 +391,36 @@ code {
     display: flex;
     justify-content: flex-end;
 }
-.list-icon {
+.list-icon-w {
     font-size: 2rem !important;
     align-self: center;
     margin-left: 1rem;
     cursor: pointer;
+    color: rgb(150, 149, 149) !important;
 }
-.view-icon {
+.list-icon-r {
+    font-size: 2rem !important;
+    align-self: center;
+    margin-left: 1rem;
+    cursor: pointer;
+    color: #fff !important;
+}
+.view-icon-w {
+    color:rgb(150, 149, 149) !important;
     align-self: center;
     cursor: pointer;
 }
-
+.view-icon-r {
+    color:#fff !important;
+    align-self: center;
+    cursor: pointer;
+}
 .active {
     background-color: #af3181b0 !important;
+}
+.price-game{
+    margin: 0 !important;
+}
+.card-img-precio{
+    height: 40vh !important;
 }

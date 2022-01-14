@@ -74,3 +74,25 @@
     right: 0;
     border: none;
 }
+
+.margin-250{
+    margin-top: 150px;
+}
+
+.container-admin{
+    width: 90%;
+    margin-left: 100px;
+    min-height: 100vh;
+}
+
+.main-admin{
+   width: 90%;
+   margin: auto;
+   margin-top: 5vh;
+   border: 1px solid white;
+}
+
+.container-card-admin{
+    display: flex;
+    flex-wrap: wrap;
+}
