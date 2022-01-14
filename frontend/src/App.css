@@ -106,7 +106,6 @@ code {
     flex-direction: column;
     justify-content: space-between;
     border-radius: 1rem !important;
-    cursor: pointer;
 }
 .card-title {
     background: rgba(221, 218, 218, 0.43);
@@ -125,6 +124,10 @@ code {
     font-weight: normal;
     color:#fff;
     text-decoration: none !important;
+    cursor: pointer;
+}
+.name-game:hover{
+    color: #11edd5 !important;
 }
 .favorite {
     color: #af3181 !important;
