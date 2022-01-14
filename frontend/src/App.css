@@ -133,9 +133,15 @@ code {
     background-color: #11edd5;
     border-radius: .5rem;
     color: #343744;
-    padding: .3rem;
+    padding: .3rem .5rem;
     font-size: .8rem;
     align-self: center;
+    transition: .3s;
+}
+.link-game:hover{
+    background-color: #00b8a2;
+    color: #ffffff;
+    transition: .3s;
 }
 
 /*HOME*/
@@ -298,9 +304,12 @@ code {
     width: 100%;
 }
 .list-grid{
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     gap: 2rem;
-
+}
+.description-list-game{
+    color: #fff;
 }
 .logo-game {
     width: 100%;
@@ -357,6 +366,16 @@ code {
     display: flex;
 }
 .filter-games {
+    color: rgb(150, 149, 149);
+    font-size: 1.5rem;
+    font-weight: normal;
+    padding-top: 0.5rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+.filter-games-active{
+    text-decoration: underline;
     color: #fff;
     font-size: 1.5rem;
     font-weight: normal;
@@ -377,13 +396,27 @@ code {
     display: flex;
     justify-content: flex-end;
 }
-.list-icon {
+.list-icon-w {
     font-size: 2rem !important;
     align-self: center;
     margin-left: 1rem;
     cursor: pointer;
+    color: rgb(150, 149, 149) !important;
 }
-.view-icon {
+.list-icon-r {
+    font-size: 2rem !important;
+    align-self: center;
+    margin-left: 1rem;
+    cursor: pointer;
+    color: #fff !important;
+}
+.view-icon-w {
+    color:rgb(150, 149, 149) !important;
+    align-self: center;
+    cursor: pointer;
+}
+.view-icon-r {
+    color:#fff !important;
     align-self: center;
     cursor: pointer;
 }

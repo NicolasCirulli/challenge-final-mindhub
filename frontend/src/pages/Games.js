@@ -6,6 +6,7 @@ import ViewComfyIcon from '@mui/icons-material/ViewComfy';
 import { useState } from "react";
 
 const genders = [
+    "All Genders",
     "Action",
     "Adventure",
     "Massively Multiplayer",
@@ -22,6 +23,17 @@ const genders = [
 ];
 export default function Store() {
     const [view, setview] = useState(false)
+    const [active, setactive] = useState(false)
+    const [filter, setfilter] = useState("all")
+
+    function activate(){
+        setactive(true)
+        setview(true)
+    }
+    function deactivate(){
+        setactive(false)
+        setview(false)
+    }
 
     return (
         <div>
@@ -61,47 +73,57 @@ export default function Store() {
                 <button className="btn-search">Search</button>
             </div>
             <div className="container cont-filter-games">
-                <h6 className="filter-games">ALL</h6>
-                <h6 className="filter-games">RECOMMENDED</h6>
-                <h6 className="filter-games">OFFERS</h6>
-                <h6 className="filter-games">FAVORITES</h6>
+                <h6 onClick={()=> setfilter("all")} className={filter === "all" ? "filter-games-active" : "filter-games"}>ALL</h6>
+                <h6 onClick={()=> setfilter("recommended")} className={filter === "recommended" ?"filter-games-active":"filter-games"}>RECOMMENDED</h6>
+                <h6 onClick={()=> setfilter("offers")} className={filter ==="offers" ?"filter-games-active":"filter-games"}>OFFERS</h6>
+                <h6 onClick={()=> setfilter("favorites")} className={filter ==="favorites" ?"filter-games-active":"filter-games"}>FAVORITES</h6>
                 <div className="views">
-                    <ViewComfyIcon onClick={()=> setview(false)} className="view-icon"/>
-                    <ListIcon onClick={()=> setview(true)} className="list-icon"/>
+                    <ViewComfyIcon onClick={()=> deactivate()} className={active ? "view-icon-w" : "view-icon-r"}/>
+                    <ListIcon onClick={()=> activate()} className={active ? "list-icon-r" : "list-icon-w"}/>
                 </div>
             </div>
             <div className="container">
                 <div className={view ? "list-grid" : "all-games"}>
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
+                    {view && <p className="description-list-game">Description</p>}
                     
                 </div>
             </div>
