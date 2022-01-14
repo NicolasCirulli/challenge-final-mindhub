@@ -1,11 +1,11 @@
-import  React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CardGames from "../components/CardGames";
-import logo from "../assets/logo.png"
-import {getAllGames} from '../helpers/querys'
+import logo from "../assets/logo.png";
+import { getAllGames } from "../helpers/querys";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
@@ -16,22 +16,16 @@ const DrawerHeader = styled("div")(({ theme }) => ({
     ...theme.mixins.toolbar,
 }));
 
-
-
-
 export default function Home() {
-
-    const [allGames, setAllGames] = useState(false)
-
+    const [allGames, setAllGames] = useState(false);
 
     useEffect(() => {
         getAllGames()
-         .then(res => {
-             setAllGames(res.response.res)
-             
-         })
-         .catch(err => console.log(err))
-     }, [])
+            .then((res) => {
+                setAllGames(res.response.res);
+            })
+            .catch((err) => console.log(err));
+    }, []);
 
     return (
         <div className="container">
@@ -44,7 +38,7 @@ export default function Home() {
                     />
                     <button className="btn-search">Search</button>
                 </div>
-                <img src={logo} className="logo-home" alt='logo-home'/>
+                <img src={logo} className="logo-home" alt="logo-home" />
             </div>
             <div className="container Recommended">
                 <Typography
@@ -58,16 +52,17 @@ export default function Home() {
                 <DrawerHeader>
                     <Box sx={{ flexGrow: 1 }}>
                         <div className="box-recommended">
-                            { allGames && 
-                                <>
-                                <CardGames  game={allGames[0]}/>
-                                <CardGames game={allGames[0]}/>
-                                <CardGames game={allGames[0]}/>
-                                <CardGames game={allGames[0]}/>
-                                <CardGames game={allGames[0]}/>
-                                </>
-
-                            }
+                            {allGames &&
+                                allGames.map((game, index) => {
+                                    if (index < 5) {
+                                        return (
+                                            <CardGames
+                                                key={game._id}
+                                                game={game}
+                                            />
+                                        );
+                                    }
+                                })}
                         </div>
                     </Box>
                 </DrawerHeader>
@@ -83,56 +78,19 @@ export default function Home() {
                 </Typography>
                 <DrawerHeader>
                     <Box sx={{ flexGrow: 1 }}>
-                       { allGames &&  <div className="box-offers">
-                            <div className="box-card">
-                                <CardGames  game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
+                        {allGames && (
+                            <div className="box-offers">
+                                {allGames.map((game) => (
+                                    <div className="box-card">
+                                        <CardGames key={game._id} game={game} />
+                                        <button className="btn-add-cart">
+                                            Price{" "}
+                                            <LocalGroceryStoreIcon className="btn-icon" />
+                                        </button>
+                                    </div>
+                                ))}
                             </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                        </div>}
+                        )}
                     </Box>
                 </DrawerHeader>
             </div>
