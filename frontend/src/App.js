@@ -11,7 +11,9 @@ import Game from "./pages/Game";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import About from "./pages/About"
+import Games from "./pages/Games"
 import AdminPanel from './pages/AdminPanel'
+
 function App() {
 
   const dispatch = useDispatch()
@@ -37,6 +39,7 @@ function App() {
             {!user && <Route path="/signin" element={<SignIn />}></Route>}
             {!user && <Route path="/signup" element={<SignUp />}></Route>}
             <Route path="/about" element={<About />}></Route>
+            <Route path="/games" element={<Games />}></Route>
             <Route path="/admin" element={<AdminPanel />}></Route>
             <Route path="*" element={<Home />}></Route>
           </Routes>

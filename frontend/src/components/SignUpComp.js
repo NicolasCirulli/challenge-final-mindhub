@@ -62,8 +62,8 @@ const SignUpComp = () => {
                 <div>
                     <div className='titlesSU'>
                         <h1 className='titleSignUp'>Enjoy the benefits</h1>
-                        <h2>of beeing an Xplore user</h2>
-                        <h3 className='titleSignUp'>Sign up Xtreme</h3>
+                        <h2>of beeing an xtreme user</h2>
+                        <h3 className='titleSignUp'>Sign up xtreme</h3>
                     </div>
                     <form>
                         <div className='bodyFormSU'>
@@ -122,8 +122,8 @@ const SignUpComp = () => {
                 >
                     <div  className="parrSignUp">
                     <h1>Hello!</h1>
-                    <p>It's great to see you in our game store. We have so many captivating projects for
-                 you. Just sign up and visit our app store with different selections. And don't forget to invite
+                    <p>It's great to see you in our game store. We have so many captivating games for
+                 you. Just sign up and visit our game store with different selections. And don't forget to invite
                  your friends to play together!
                     </p>
                     </div>
