@@ -91,6 +91,7 @@ code {
 .card {
     border: none !important;
     border-radius: 5rem !important;
+    background: none !important;
 }
 .card-img {
     background-position: top;
@@ -116,33 +117,19 @@ code {
     padding: 0.5rem;
     border-radius: 0 0 1rem 1rem;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 .name-game{
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: normal;
+    color:#fff;
+    text-decoration: none !important;
 }
 .favorite {
     color: #af3181 !important;
 }
-.favorite2 {
-    color: #7b9eb9d3 !important;
-}
-.link-game{
-    text-decoration: none !important;
-    background-color: #11edd5;
-    border-radius: .5rem;
-    color: #343744;
-    padding: .3rem .5rem;
-    font-size: .8rem;
-    align-self: center;
-    transition: .3s;
-}
-.link-game:hover{
-    background-color: #00b8a2;
-    color: #ffffff;
-    transition: .3s;
-}
+
 
 /*HOME*/
 
@@ -237,6 +224,7 @@ code {
 .offers {
     margin-top: 2rem;
     padding-bottom: 3rem;
+    min-height: 100vh;
 }
 
 /*ABOUT US*/
@@ -426,4 +414,10 @@ code {
 }
 .active {
     background-color: #af3181b0 !important;
+}
+.price-game{
+    margin: 0 !important;
+}
+.card-img-precio{
+    height: 40vh !important;
 }

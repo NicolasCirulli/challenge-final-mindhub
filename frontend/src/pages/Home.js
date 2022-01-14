@@ -84,7 +84,7 @@ export default function Home() {
                                     <div className="box-card">
                                         <CardGames key={game._id} game={game} />
                                         <button className="btn-add-cart">
-                                            Price{" "}
+                                            $ {game.price}{" "}
                                             <LocalGroceryStoreIcon className="btn-icon" />
                                         </button>
                                     </div>

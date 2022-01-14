@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import CardGames from "../components/CardGames";
+import CardGames from "../components/CardGamesPrecio";
 import logo from "../assets/logo.png";
 import ListIcon from "@mui/icons-material/List";
 import ViewComfyIcon from "@mui/icons-material/ViewComfy";
@@ -23,6 +23,7 @@ const genders = [
 ];
 export default function Store() {
     const [view, setview] = useState(false);
+    const [active, setactive] = useState(false)
     const [filter, setfilter] = useState("all");
     const [allGames, setAllGames] = useState([]);
     const [gamesRender, setGamesRender] = useState([]);
@@ -49,6 +50,15 @@ export default function Store() {
             setGamesRender(allGames);
         }
     };
+
+    function activate(){
+        setactive(true)
+        setview(true)
+    }
+    function deactivate(){
+        setactive(false)
+        setview(false)
+    }
 
     return (
         <div>
@@ -96,11 +106,9 @@ export default function Store() {
                         Sort by price
                     </option>
 
-                    <option className="color-select">higher to lower</option>
-                    <option className="color-select">lower to higher</option>
+                    <option className="color-select">Higher to Lower</option>
+                    <option className="color-select">Lower to Higher</option>
                 </select>
-
-                <button className="btn-search">Search</button>
             </div>
             <div className="container cont-filter-games">
                 <h6
@@ -145,21 +153,32 @@ export default function Store() {
                 </h6>
                 <div className="views">
                     <ViewComfyIcon
-                        onClick={() => setview(false)}
-                        className="view-icon"
+                        onClick={() => deactivate()}
+                        className={active ? "view-icon-w" : "view-icon-r"}
                     />
                     <ListIcon
-                        onClick={() => setview(true)}
-                        className="list-icon"
+                        onClick={() => activate()}
+                        className={active ? "list-icon-r" : "list-icon-w"}
                     />
                 </div>
             </div>
             <div className="container box-games">
                 <div className={view ? "list-grid" : "all-games"}>
-                    {gamesRender.map((game) => (
-                        <CardGames key={game._id} game={game} />
-                        
-                    ))}
+                    {gamesRender.map((game) => {
+                        if(view){
+                            return(
+                                <>
+                                    <CardGames key={game._id} game={game} />
+                                    <p className="description-list-game">{game.description_raw}</p>
+                                </>
+                            )
+                        }else{
+                            return(
+                                <CardGames key={game._id} game={game} />
+                            )
+                        }
+                    }
+                    )}
                 </div>
             </div>
         </div>

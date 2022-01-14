@@ -1,7 +1,6 @@
 import * as React from "react";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import image from "../assets/fornite.jpg"
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -17,8 +16,7 @@ export default function RecipeReviewCard({game}) {
                         {like? <FavoriteIcon className="favorite"/> : <FavoriteIcon className="favorite2"/>}
                     </IconButton>
                     <div className="card-title">
-                        <h3 className="name-game">{game.name}</h3>
-                        <Link className="link-game" to="/game">View More</Link>
+                        <Link className="name-game " to="/game">{game.name}</Link>
                     </div>
                 </div>
             </div>
