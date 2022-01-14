@@ -1,10 +1,11 @@
-import * as React from "react";
+import  React,{useEffect, useState} from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CardGames from "../components/CardGames";
 import logo from "../assets/logo.png"
+import {getAllGames} from '../helpers/querys'
 
 const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
@@ -15,7 +16,23 @@ const DrawerHeader = styled("div")(({ theme }) => ({
     ...theme.mixins.toolbar,
 }));
 
+
+
+
 export default function Home() {
+
+    const [allGames, setAllGames] = useState([])
+
+
+    useEffect(() => {
+        getAllGames()
+         .then(res => {
+             setAllGames(res.response.res)
+             
+         })
+         .catch(err => console.log(err))
+     }, [])
+
     return (
         <div className="container">
             <div className="container header">
@@ -27,7 +44,7 @@ export default function Home() {
                     />
                     <button className="btn-search">Search</button>
                 </div>
-                <img src={logo} className="logo-home" />
+                <img src={logo} className="logo-home" alt='logo-home'/>
             </div>
             <div className="container Recommended">
                 <Typography
@@ -41,11 +58,11 @@ export default function Home() {
                 <DrawerHeader>
                     <Box sx={{ flexGrow: 1 }}>
                         <div className="box-recommended">
-                            <CardGames />
-                            <CardGames />
-                            <CardGames />
-                            <CardGames />
-                            <CardGames />
+                            <CardGames  game={allGames[0]}/>
+                            <CardGames game={allGames[0]}/>
+                            <CardGames game={allGames[0]}/>
+                            <CardGames game={allGames[0]}/>
+                            <CardGames game={allGames[0]}/>
                         </div>
                     </Box>
                 </DrawerHeader>
@@ -63,49 +80,49 @@ export default function Home() {
                     <Box sx={{ flexGrow: 1 }}>
                         <div className="box-offers">
                             <div className="box-card">
-                                <CardGames />
+                                <CardGames  game={allGames[0]}/>
                                 <button className="btn-add-cart">
                                     Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
-                                <CardGames />
+                                <CardGames game={allGames[0]}/>
                                 <button className="btn-add-cart">
                                     Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
-                                <CardGames />
+                                <CardGames game={allGames[0]}/>
                                 <button className="btn-add-cart">
                                     Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
-                                <CardGames />
+                                <CardGames game={allGames[0]}/>
                                 <button className="btn-add-cart">
                                     Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
-                                <CardGames />
+                                <CardGames game={allGames[0]}/>
                                 <button className="btn-add-cart">
                                     Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
-                                <CardGames />
+                                <CardGames game={allGames[0]}/>
                                 <button className="btn-add-cart">
                                     Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
-                                <CardGames />
+                                <CardGames game={allGames[0]}/>
                                 <button className="btn-add-cart">
                                     Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>
                             </div>
                             <div className="box-card">
-                                <CardGames />
+                                <CardGames game={allGames[0]}/>
                                 <button className="btn-add-cart">
                                     Price <LocalGroceryStoreIcon className="btn-icon" />
                                 </button>

@@ -1,11 +1,12 @@
-import * as React from "react";
+import React,{useState,useEffect, useRef} from "react";
 import CardGames from "../components/CardGames";
 import logo from "../assets/logo.png";
 import ListIcon from '@mui/icons-material/List';
 import ViewComfyIcon from '@mui/icons-material/ViewComfy';
-import { useState } from "react";
+import {getAllGames,searchGame,getGameByGenre} from '../helpers/querys'
 
 const genders = [
+    'All',
     "Action",
     "Adventure",
     "Massively Multiplayer",
@@ -22,12 +23,38 @@ const genders = [
 ];
 export default function Store() {
     const [view, setview] = useState(false)
+    const [allGames, setAllGames] = useState([])
+    const [gamesRender, setGamesRender] = useState([])
+    const [gender,setGender] = useState([])
+    const inputSearch = useRef()
+
+
+    useEffect(() => {
+       getAllGames()
+        .then(res => {
+            setAllGames(res.response.res)
+            setGamesRender(res.response.res)
+        })
+        .catch(err => console.log(err))
+    }, [])
+
+   const search = async()=>{
+       if(inputSearch.current.value.length > 0){
+           searchGame(inputSearch.current.value.toLowerCase().replace(" ", "-"))
+           .then(res => setGamesRender(res.res))
+           .catch(err => console.log(err))
+        }else{
+            setGamesRender(allGames)
+        }
+   }
+
+
 
     return (
         <div>
             <div className="container logo-game">
                 <h1 className="title-games">Game Library</h1>
-                <img src={logo} className="logo-home" />
+                <img src={logo} className="logo-home" alt='logo' />
             </div>
             <div className="container cont-filter">
                 <div className="cont-search-game">
@@ -35,14 +62,16 @@ export default function Store() {
                         type="text"
                         className="search-game"
                         placeholder="Search a Game"
+                        ref={inputSearch}
+                        onChange={search}
                     />
                 </div>
-                <select type="text" className="select-genders" placeholder="Genders">
-                    <option disabled selected>Genders</option>
+                <select type="text" className="select-genders" placeholder="Genders"  onChange={(e) => setGender(e.target.value) }>
+                    <option disabled selected >Genders</option>
                     {genders.map((gender, index) => {
                         return (
                             <option
-                                value="gender"
+                                value={gender}
                                 key={index}
                                 className="color-select"
                             >
@@ -72,36 +101,9 @@ export default function Store() {
             </div>
             <div className="container">
                 <div className={view ? "list-grid" : "all-games"}>
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
-                    <CardGames />
+                    {
+                        gamesRender.map(game => <CardGames key={game._id} game={game}/>)
+                    }
                     
                 </div>
             </div>
