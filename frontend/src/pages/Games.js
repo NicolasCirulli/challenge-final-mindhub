@@ -1,12 +1,12 @@
-import React,{useState,useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CardGames from "../components/CardGames";
 import logo from "../assets/logo.png";
-import ListIcon from '@mui/icons-material/List';
-import ViewComfyIcon from '@mui/icons-material/ViewComfy';
-import {getAllGames,searchGame,getGameByGenre} from '../helpers/querys'
+import ListIcon from "@mui/icons-material/List";
+import ViewComfyIcon from "@mui/icons-material/ViewComfy";
+import { getAllGames, searchGame, getGameByGenre } from "../helpers/querys";
 
 const genders = [
-    'All',
+    "All",
     "Action",
     "Adventure",
     "Massively Multiplayer",
@@ -22,39 +22,39 @@ const genders = [
     "Strategy",
 ];
 export default function Store() {
-    const [view, setview] = useState(false)
-    const [allGames, setAllGames] = useState([])
-    const [gamesRender, setGamesRender] = useState([])
-    const [gender,setGender] = useState([])
-    const inputSearch = useRef()
-
+    const [view, setview] = useState(false);
+    const [filter, setfilter] = useState("all");
+    const [allGames, setAllGames] = useState([]);
+    const [gamesRender, setGamesRender] = useState([]);
+    const [gender, setGender] = useState([]);
+    const inputSearch = useRef();
 
     useEffect(() => {
-       getAllGames()
-        .then(res => {
-            setAllGames(res.response.res)
-            setGamesRender(res.response.res)
-        })
-        .catch(err => console.log(err))
-    }, [])
+        getAllGames()
+            .then((res) => {
+                setAllGames(res.response.res);
+                setGamesRender(res.response.res);
+            })
+            .catch((err) => console.log(err));
+    }, []);
 
-   const search = async()=>{
-       if(inputSearch.current.value.length > 0){
-           searchGame(inputSearch.current.value.toLowerCase().replace(" ", "-"))
-           .then(res => setGamesRender(res.res))
-           .catch(err => console.log(err))
-        }else{
-            setGamesRender(allGames)
+    const search = async () => {
+        if (inputSearch.current.value.length > 0) {
+            searchGame(
+                inputSearch.current.value.toLowerCase().replace(" ", "-")
+            )
+                .then((res) => setGamesRender(res.res))
+                .catch((err) => console.log(err));
+        } else {
+            setGamesRender(allGames);
         }
-   }
-
-
+    };
 
     return (
         <div>
             <div className="container logo-game">
                 <h1 className="title-games">Game Library</h1>
-                <img src={logo} className="logo-home" alt='logo' />
+                <img src={logo} className="logo-home" alt="logo" />
             </div>
             <div className="container cont-filter">
                 <div className="cont-search-game">
@@ -66,8 +66,15 @@ export default function Store() {
                         onChange={search}
                     />
                 </div>
-                <select type="text" className="select-genders" placeholder="Genders"  onChange={(e) => setGender(e.target.value) }>
-                    <option disabled selected >Genders</option>
+                <select
+                    type="text"
+                    className="select-genders"
+                    placeholder="Genders"
+                    onChange={(e) => setGender(e.target.value)}
+                >
+                    <option disabled selected>
+                        Genders
+                    </option>
                     {genders.map((gender, index) => {
                         return (
                             <option
@@ -80,35 +87,81 @@ export default function Store() {
                         );
                     })}
                 </select>
-                <select type="text" className="select-genders" placeholder="Genders">
-                    <option disabled selected>Sort by price</option>
-                    
+                <select
+                    type="text"
+                    className="select-genders"
+                    placeholder="Genders"
+                >
+                    <option disabled selected>
+                        Sort by price
+                    </option>
+
                     <option className="color-select">higher to lower</option>
                     <option className="color-select">lower to higher</option>
                 </select>
-                
+
                 <button className="btn-search">Search</button>
             </div>
             <div className="container cont-filter-games">
-                <h6 className="filter-games">ALL</h6>
-                <h6 className="filter-games">RECOMMENDED</h6>
-                <h6 className="filter-games">OFFERS</h6>
-                <h6 className="filter-games">FAVORITES</h6>
+                <h6
+                    onClick={() => setfilter("all")}
+                    className={
+                        filter === "all"
+                            ? "filter-games-active"
+                            : "filter-games"
+                    }
+                >
+                    ALL
+                </h6>
+                <h6
+                    onClick={() => setfilter("recommended")}
+                    className={
+                        filter === "recommended"
+                            ? "filter-games-active"
+                            : "filter-games"
+                    }
+                >
+                    RECOMMENDED
+                </h6>
+                <h6
+                    onClick={() => setfilter("offers")}
+                    className={
+                        filter === "offers"
+                            ? "filter-games-active"
+                            : "filter-games"
+                    }
+                >
+                    OFFERS
+                </h6>
+                <h6
+                    onClick={() => setfilter("favorites")}
+                    className={
+                        filter === "favorites"
+                            ? "filter-games-active"
+                            : "filter-games"
+                    }
+                >
+                    FAVORITES
+                </h6>
                 <div className="views">
-                    <ViewComfyIcon onClick={()=> setview(false)} className="view-icon"/>
-                    <ListIcon onClick={()=> setview(true)} className="list-icon"/>
+                    <ViewComfyIcon
+                        onClick={() => setview(false)}
+                        className="view-icon"
+                    />
+                    <ListIcon
+                        onClick={() => setview(true)}
+                        className="list-icon"
+                    />
                 </div>
             </div>
-            <div className="container">
+            <div className="container box-games">
                 <div className={view ? "list-grid" : "all-games"}>
-                    {
-                        gamesRender.map(game => <CardGames key={game._id} game={game}/>)
-                    }
-                    
+                    {gamesRender.map((game) => (
+                        <CardGames key={game._id} game={game} />
+                        
+                    ))}
                 </div>
             </div>
         </div>
     );
 }
-
-
