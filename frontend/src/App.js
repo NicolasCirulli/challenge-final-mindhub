@@ -36,7 +36,7 @@ function App() {
           <Navigation />
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route path="/game" element={<Game/>}></Route>
+            <Route path="/game/:id" element={<Game/>}></Route>
             {!user && <Route path="/signin" element={<SignIn />}></Route>}
             {!user && <Route path="/signup" element={<SignUp />}></Route>}
             <Route path="/about" element={<About />}></Route>
