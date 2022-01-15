@@ -18,6 +18,7 @@ const gameControllers = {
     }
   },
   getGame: async (req, res) => {
+    console.log(req.params.id);
     try {
       let game = await Game.findById(req.params.id);
       res.json({ res: game });
