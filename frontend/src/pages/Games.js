@@ -22,32 +22,44 @@ const genders = [
     "Strategy",
 ];
 export default function Store() {
+
+    // estados
     const [view, setview] = useState(false);
     const [active, setactive] = useState(false)
     const [filter, setfilter] = useState("all");
     const [allGames, setAllGames] = useState([]);
     const [gamesRender, setGamesRender] = useState([]);
-    const [gender, setGender] = useState([]);
-    const inputSearch = useRef();
+    const [gender, setGender] = useState('');
+    const [sortPrice, setSortPrice] = useState('Higher to Lower');
 
+    // ref 
+    const inputSearch = useRef();
+    const genderSelect =useRef();
+
+    // component did mount
     useEffect(() => {
         getAllGames()
             .then((res) => {
                 setAllGames(res.response.res);
-                setGamesRender(res.response.res);
+                render(true,res.response.res);
             })
             .catch((err) => console.log(err));
     }, []);
 
+
+    // Funciones
     const search = async () => {
+        genderSelect.current.value = 'All'
         if (inputSearch.current.value.length > 0) {
-            searchGame(
-                inputSearch.current.value.toLowerCase().replace(" ", "-")
-            )
-                .then((res) => setGamesRender(res.res))
+            searchGame(inputSearch.current.value.toLowerCase().replace(" ", "-"))
+                .then((res) => {
+                    let bool = sortPrice === 'Higher to Lower' ? true : false
+                    render(bool,res.res)
+                })
                 .catch((err) => console.log(err));
         } else {
-            setGamesRender(allGames);
+            let bool = sortPrice === 'Higher to Lower' ? true : false
+            render(bool,allGames)
         }
     };
 
@@ -59,6 +71,46 @@ export default function Store() {
         setactive(false)
         setview(false)
     }
+
+
+    const handelSort = (e) =>{
+        setSortPrice(e)
+        let bool = e === 'Higher to Lower' ? true : false
+        setGamesRender(sort(bool, gamesRender))    
+    }
+
+    const handleGender = (e)=>{
+        inputSearch.current.value = ''
+        setGender(e)
+        
+        if(e !== '' && e !== 'All'){
+
+            getGameByGenre(e)
+            .then((games) =>{
+                let bool = sortPrice === 'Higher to Lower' ? true : false
+                render(bool,games.data.res);
+            })
+            .catch((err) =>console.log(err))
+        }else{
+            setGamesRender(allGames)
+        }
+    }
+
+    const render = (bool,array) => {
+       const aux = sort(bool, array)
+       setGamesRender(aux)
+    }
+    
+
+    const sort = (bool,array) =>{
+        let aux;
+        bool ?  aux = array.sort((a,b) => b.price - a.price)
+             :  aux = array.sort((a,b) => a.price - b.price)
+
+        return aux
+    }
+
+    
 
     return (
         <div>
@@ -80,7 +132,8 @@ export default function Store() {
                     type="text"
                     className="select-genders"
                     placeholder="Genders"
-                    onChange={(e) => setGender(e.target.value)}
+                    onChange={(e) => handleGender(e.target.value)}
+                    ref={genderSelect}
                 >
                     <option disabled selected>
                         Genders
@@ -101,6 +154,7 @@ export default function Store() {
                     type="text"
                     className="select-genders"
                     placeholder="Genders"
+                    onChange={(e)=> handelSort(e.target.value)}
                 >
                     <option disabled selected>
                         Sort by price
