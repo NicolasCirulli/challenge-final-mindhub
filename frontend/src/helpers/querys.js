@@ -39,6 +39,17 @@ export const getAllGames = async () => {
         return { success: false, error: err };
     }
 };
+
+export const getGameById = async(gameId) =>{
+    try {
+        const res = await axios.get("http://localhost:4000/api/game/"+gameId);
+
+        return { success: true, error: null, response: res.data };
+    } catch (err) {
+        return { success: false, error: err };
+    }
+}
+
 export const updateGame = async (id, body) => {
     try {
         const res = await axios.put(`http://localhost:4000/api/game/${id}`, {

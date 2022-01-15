@@ -2,6 +2,7 @@ import React,{useEffect} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "./redux/actions/authActions";
+import Profile from "./pages/Profile"
 import "./App.css";
 import "./Sign.css"
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,7 +14,6 @@ import SignUp from "./pages/SignUp";
 import About from "./pages/About"
 import Games from "./pages/Games"
 import AdminPanel from './pages/AdminPanel'
-import Profile from './pages/Profile'
 
 function App() {
 
@@ -36,7 +36,7 @@ function App() {
           <Navigation />
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route path="/game" element={<Game/>}></Route>
+            <Route path="/game/:id" element={<Game/>}></Route>
             {!user && <Route path="/signin" element={<SignIn />}></Route>}
             {!user && <Route path="/signup" element={<SignUp />}></Route>}
             <Route path="/about" element={<About />}></Route>
