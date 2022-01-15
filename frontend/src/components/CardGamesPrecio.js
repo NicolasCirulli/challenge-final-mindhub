@@ -6,7 +6,6 @@ import Favorite from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
 
 export default function CardGame({ game }) {
-
     return (
         <div className="card">
             <div
@@ -20,7 +19,7 @@ export default function CardGame({ game }) {
                     />
                 </IconButton>
                 <div className="card-title">
-                    <Link className="name-game " to="/game">
+                    <Link className="name-game " to={`/game/${game._id}`}>
                         {game.name}
                     </Link>
                     <p className="price-game">$ {game.price}</p>

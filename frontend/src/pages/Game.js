@@ -1,44 +1,59 @@
 import "../styles/game.css"
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useState } from "react";
+import React,{ useState, useEffect } from "react";
 import IconButton from "@mui/material/IconButton";
 import imagen from "../assets/gtav.jpg"
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
+import { useParams } from "react-router-dom";
+import {getGameById} from '../helpers/querys'
 
 export default function Game () {
+
+
     const [like, setlike] = useState(false)
+    const [data,setData] = useState(null)
+    const params = useParams()
+
+    useEffect(() => {
+        getGameById(params.id)
+            .then((res) =>{
+                setData(res.response.res);
+            })
+            .catch((err) => console.log(err))
+    },[])
+
     return (
         <>
-            <div className="gamebg ">
+           { data && <> <div className="gamebg ">
                 <div className="container">
-                    <h1 className="gamePath">STORE/*Categoria*/*nombre del juego*</h1>
+                    <h1 className="gamePath">{`${data.genres[0].name} / ${data.name}`}</h1>
                     <div className="divgen">
                         <div >
-                            <img className="avatar" src={imagen}/>
+                            <img className="avatar" src={data.background_image}/>
                         </div>
                         <div className="nameandlike">
                             <div className="gameinfo ">
-                                 <h2 className="gametitle">*Nombre del Juego*</h2>
+                                 <h2 className="gametitle">{data.name}</h2>
                                  <IconButton aria-label="add to favorites" className="fav" onClick={() => setlike(!like)}>
                                  {like? <FavoriteIcon className="favorite"/> : <FavoriteIcon className="favorite2"/>}
                                  </IconButton>
                         
                             </div> 
                             <div className="dev">
-                                 <h3 >*Developer*</h3> 
+                                 <h3 >{data.developers[0].name}</h3> 
                             </div> 
                     
                             <div className="release">
-                                <h4 className="date">RELEASE DATE: *fecha*</h4>
-                                <h4 className="date">REVIEWS: *rating*</h4>
+                                <h4 className="date">RELEASE DATE: {data.released}</h4>
+                                <h4 className="date">REVIEWS: {data.rating}</h4>
                             </div>
                         </div>
                     </div>
                  </div>
-                <div className="container screen">
+                {/* <div className="container screen">
                     <div className="e-card-ht">
                         <div className="e-card-image-1" > <img className="cardimg" src="https://as01.epimg.net/meristation/imagenes/2020/05/14/noticias/1589454136_132592_1590065418_noticia_normal.jpg"/> </div>         
                     </div>
@@ -48,26 +63,22 @@ export default function Game () {
                     <div className="e-card-ht">
                         <div className="e-card-image-1" > <img className="cardimg" src="https://as01.epimg.net/meristation/imagenes/2020/05/14/noticias/1589454136_132592_1590065418_noticia_normal.jpg"/> </div>         
                     </div>
-                </div>
+                </div> */}
             </div>
             <div  className="container buttons-bottom">      
                 <Stack direction="row" spacing={2}>
-                     <Button className="btn-cat" variant="contained" disabled>
-                         *categoria*
-                     </Button>
-                     <Button className="btn-cat" variant="contained" disabled>
-                         *categoria2*
-                     </Button>
-                     <Button className="btn-cat" variant="contained" disabled>
-                         *categoria3*
-                     </Button>
-                     <Button className="btn-cat" variant="contained" disabled>
-                         *categoria4*
-                     </Button>            
+                    {
+                        data.genres.map(genre => {
+                           return <Button className="btn-cat" variant="contained" disabled>
+                                    {genre.name}
+                                   </Button>
+                        })
+                    }
+                               
                 </Stack> 
                 <div className="div-btn-price">
                      <Button className="btn-price" variant="contained" disabled>
-                         *precio*
+                        $ {data.price}
                      </Button>
                 </div>
             </div>
@@ -75,7 +86,7 @@ export default function Game () {
                 <div className="text">
                     <h4 className="game-desc-title">GAME DESCRIPTION</h4>
                     <p className="game-desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pharetra congue metus, sed egestas mi. Suspendisse at enim ultrices, fringilla tortor eu, consequat arcu. Proin elementum libero sit amet eros pellentesque, a consequat leo suscipit. Maecenas vel condimentum ipsum. Nam a euismod risus. Nam eleifend pretium odio, eget consequat ex molestie id. Aenean convallis sed massa a interdum. Curabitur et tellus feugiat, mattis turpis ac, vulputate dui. Integer efficitur, sapien ac mattis fringilla, diam orci cursus est, eu lacinia eros mi vel turpis. Maecenas non lacinia ante, et elementum mauris. Cras non nisl feugiat felis imperdiet aliquam eu non est.
+                    {data.description_raw}
                     </p> 
                 </div>
                 <div className="div-table">
@@ -112,7 +123,7 @@ export default function Game () {
                          <div className="e-card-image-1" > <img className="card-trailer" src="https://as01.epimg.net/meristation/imagenes/2020/05/14/noticias/1589454136_132592_1590065418_noticia_normal.jpg"/> </div>         
                     </div>   
                 </div>
-            </div>
+            </div> </>}
         </>
     )
 }
