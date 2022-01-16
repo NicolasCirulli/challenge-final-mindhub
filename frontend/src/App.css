@@ -263,7 +263,8 @@ code {
 .welcome3{
     color: #fff;
     font-weight: normal !important;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.815); ;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.815); 
+    margin-bottom: 1rem !important;
 }
 .welcome4{
     color: #fff;
@@ -288,9 +289,13 @@ code {
 }
 .call-to-action:hover>.visit-store{
     margin-right: 1rem;
+    transition: .3s;
 }
 .visit-store, .arrow-icon{
     color: #11edd5 !important;
+    margin-bottom: 0 !important;
+    align-self: center;
+    transition: .3s;
 }
 .access-game{
     border-radius: 2rem;
@@ -322,6 +327,64 @@ code {
     color: #626775 !important;
 }
 
+/*CARDS ABOUT US*/
+
+.cont-characteristics{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0 15vh 0;
+}
+.card-about{
+    width: 20vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    transition: .3s;
+}
+.icon-card-about{
+    align-self: center;
+    background-color: #373a428f;
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    padding: 1rem;
+    transition: .3s;
+}
+.icon-card-about>svg{
+    font-size: 2rem;
+}
+.title-about, .text-about{
+    color: #fff;
+    text-align: center;
+    padding: .8rem;
+    margin: 0;
+}
+.text-about{
+    padding-top: 0;
+    font-weight: lighter;
+}
+.card-about:hover>.icon-card-about{
+    background-color: #11edd3;
+    backdrop-filter: blur(4px);
+    transition: .3s;
+}
+.card-about>.icon-card-about>svg{
+    transition: .3s;
+}
+.card-about:hover>.icon-card-about>svg{
+    color: #343744 !important;
+    transition: .3s;
+}
+.cont-card-about{
+    display: flex;
+    justify-content: center;
+}
+.text-characteristics{
+    width: 30%;
+    text-align: center;
+}
 
 /*GAMES*/
 
@@ -475,7 +538,6 @@ code {
 .card-img-precio{
     height: 40vh !important;
 }
-
 .title-label{
     color: #fff;
     margin-bottom: .5rem;
