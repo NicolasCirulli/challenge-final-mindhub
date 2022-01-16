@@ -4,6 +4,11 @@ import logo from "../assets/logo.png";
 import ListIcon from "@mui/icons-material/List";
 import ViewComfyIcon from "@mui/icons-material/ViewComfy";
 import { getAllGames, searchGame, getGameByGenre } from "../helpers/querys";
+import FormControl from "@mui/material/FormControl";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
 
 const genders = [
     "All",
@@ -23,7 +28,7 @@ const genders = [
 ];
 export default function Store() {
     const [view, setview] = useState(false);
-    const [active, setactive] = useState(false)
+    const [active, setactive] = useState(false);
     const [filter, setfilter] = useState("all");
     const [allGames, setAllGames] = useState([]);
     const [gamesRender, setGamesRender] = useState([]);
@@ -51,13 +56,13 @@ export default function Store() {
         }
     };
 
-    function activate(){
-        setactive(true)
-        setview(true)
+    function activate() {
+        setactive(true);
+        setview(true);
     }
-    function deactivate(){
-        setactive(false)
-        setview(false)
+    function deactivate() {
+        setactive(false);
+        setview(false);
     }
 
     return (
@@ -67,37 +72,78 @@ export default function Store() {
                 <img src={logo} className="logo-home" alt="logo" />
             </div>
             <div className="container cont-filter">
-                <div className="cont-search-game">
-                    <input
-                        type="text"
-                        className="search-game"
-                        placeholder="Search a Game"
-                        ref={inputSearch}
-                        onChange={search}
-                    />
+                <div className="cont-search-g">
+                    <label className="title-label">Search</label>
+                    <div className="cont-search-game">
+                        <input
+                            type="text"
+                            className="search-game"
+                            placeholder="Search a Game"
+                            ref={inputSearch}
+                            onChange={search}
+                        />
+                    </div>
                 </div>
-                <select
-                    type="text"
-                    className="select-genders"
-                    placeholder="Genders"
-                    onChange={(e) => setGender(e.target.value)}
-                >
-                    <option disabled selected>
-                        Genders
-                    </option>
-                    {genders.map((gender, index) => {
-                        return (
-                            <option
-                                value={gender}
-                                key={index}
-                                className="color-select"
-                            >
-                                {gender}
-                            </option>
-                        );
-                    })}
-                </select>
-                <select
+                <div className="cont-select-genders">
+                    <label className="title-label">Genders</label>
+                    <select
+                        type="text"
+                        className="select-genders"
+                        onChange={(e) => setGender(e.target.value)}
+                    >
+                        <option disabled selected>
+                            Genders
+                        </option>
+                        {genders.map((gender, index) => {
+                            return (
+                                <option
+                                    value={gender}
+                                    key={index}
+                                    className="color-select"
+                                >
+                                    {gender}
+                                </option>
+                            );
+                        })}
+                    </select>
+                </div>
+                <div className="cont-range">
+                    <label className="title-label">Range</label>
+                    <div className="range">
+                        <input
+                            className="input-renge rigth"
+                            type="number"
+                            placeholder="Min"
+                        />
+                        <input
+                            className="input-renge"
+                            type="number"
+                            placeholder="Max"
+                        />
+                    </div>
+                </div>
+                <FormControl component="fieldset">
+                    <FormLabel component="legend" className="sort" >Sort by Price</FormLabel>
+                    <RadioGroup
+                        row
+                        aria-label="gender"
+                        name="row-radio-buttons-group"
+                    >
+                        <FormControlLabel
+                            value="Higher"
+                            control={<Radio />}
+                            className="option-radio"
+                            label="Higher to Lower"
+                        />
+                        <FormControlLabel
+                            value="Lower"
+                            control={<Radio />}
+                            className="option-radio"
+                            label="Lower to Higher"
+                        />
+                    </RadioGroup>
+                </FormControl>
+                {/* <select
                     type="text"
                     className="select-genders"
                     placeholder="Genders"
@@ -108,7 +154,7 @@ export default function Store() {
 
                     <option className="color-select">Higher to Lower</option>
                     <option className="color-select">Lower to Higher</option>
-                </select>
+                </select> */}
             </div>
             <div className="container cont-filter-games">
                 <h6
@@ -165,20 +211,19 @@ export default function Store() {
             <div className="container box-games">
                 <div className={view ? "list-grid" : "all-games"}>
                     {gamesRender.map((game) => {
-                        if(view){
-                            return(
+                        if (view) {
+                            return (
                                 <>
                                     <CardGames key={game._id} game={game} />
-                                    <p className="description-list-game">{game.description_raw}</p>
+                                    <p className="description-list-game">
+                                        {game.description_raw}
+                                    </p>
                                 </>
-                            )
-                        }else{
-                            return(
-                                <CardGames key={game._id} game={game} />
-                            )
+                            );
+                        } else {
+                            return <CardGames key={game._id} game={game} />;
                         }
-                    }
-                    )}
+                    })}
                 </div>
             </div>
         </div>
