@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "./redux/actions/authActions";
+import gamesActions from "./redux/actions/gamesActions";
 import "./App.css";
 import "./Sign.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,6 +27,7 @@ function App() {
 
   useEffect(() => {
     token && dispatch(authActions.signInWithToken(token));
+    dispatch(gamesActions.getAllGames());
   }, []);
 
   return (
