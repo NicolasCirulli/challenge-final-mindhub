@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import authActions from "../redux/actions/authActions";
 import countries from "./Countries";
 import image from "../assets/signUp.jpg";
+import Swal from 'sweetalert2'
 
 const SignUpComp = () => {
     const dispatch = useDispatch();
@@ -35,19 +36,55 @@ const SignUpComp = () => {
                 const res = await dispatch(authActions.newUser(user));
                 console.log(res);
                 if (res.success) {
-                    alert("cuenta creada");
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Welcome! Your account was created successfully',
+                        background: '#343744',
+                        iconColor: '#11edd3',
+                        color: '#fff',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 } else {
                     if (res.error) {
-                        res.response.map((e) => alert(e.message));
+                        res.response.map((e) => Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            background: '#343744',
+                            iconColor: '#af3181',
+                            color: '#fff',
+                            title: e.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        }));
                     } else {
-                        alert(res.res);
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            background: '#343744',
+                            iconColor: '#af3181',
+                            color: '#fff',
+                            title: res.res,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                     }
                 }
             } catch (err) {
                 console.log(err);
             }
         } else {
-            alert("Todos los campos son obligatorios");
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                background: '#343744',
+                iconColor: '#af3181',
+                color: '#fff',
+                title: 'All fields are required',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     };
 
@@ -130,6 +167,7 @@ const SignUpComp = () => {
                                             className="labelSU"
                                             onChange={handleCountry}
                                         >
+                                            <option disabled selected>Country of origin</option>
                                             {countries
                                                 .sort()
                                                 .map((country, index) => {

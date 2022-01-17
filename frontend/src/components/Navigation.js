@@ -22,6 +22,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import authActions from "../redux/actions/authActions";
 import logo from "../assets/joystick.png";
+import Swal from "sweetalert2";
 
 const drawerWidth = 240;
 
@@ -81,6 +82,46 @@ function Navigation(props) {
     const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
     let location = useLocation();
+
+    function logOut() {
+        Swal.fire({
+            title: "Do you want to save the changes?",
+            showDenyButton: true,
+            showCancelButton: true,
+            background: "#343744",
+            iconColor: "#11edd3",
+            color: "#fff",
+            confirmButtonText: "Save",
+            denyButtonText: `Don't save`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                props.signOut();
+                navigate("/");
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Closed account',
+                    background: '#343744',
+                    iconColor: '#11edd3',
+                    color: '#fff',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            } else if (result.isDenied) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'info',
+                    title: 'Closed account',
+                    background: '#343744',
+                    iconColor: '#af3181',
+                    color: '#fff',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        });
+    }
 
     return (
         <div>
@@ -166,8 +207,7 @@ function Navigation(props) {
                                     <ListItem
                                         button
                                         onClick={() => {
-                                            navigate("/");
-                                            props.signOut();
+                                            logOut();
                                         }}
                                     >
                                         <ListItemIcon className="icon">

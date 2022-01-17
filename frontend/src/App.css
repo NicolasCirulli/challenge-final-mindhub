@@ -24,6 +24,39 @@ code {
     border-radius: 5px;
 }
 
+/*ALERT*/
+
+.swal2-confirm{
+    background-color: #11edd5 !important;
+    color: #343744 !important;
+    border-radius: 1rem !important;
+    border: #11edd5 solid 2px !important;
+}
+.swal2-deny{
+    background-color:#af3181 !important;
+    border: #af3181 solid 2px !important;
+    border-radius: 1rem !important;
+}
+.swal2-cancel, .swal2-modal, .swal2-popup{
+    border-radius: 1rem !important;
+}
+.swal2-cancel{
+    border: #6E7881 solid 2px !important;
+}
+.swal2-popup{
+    background-color: #343744 !important;
+    color: #fff !important
+}
+.swal2-info{
+    color: #fff !important;
+    
+}
+.swal2-confirm:hover, .swal2-deny:hover, .swal2-cancel:hover{
+    background-color: #11edd300 !important;
+    border: #fff solid 2px !important;
+    color: #fff !important;
+
+}
 /*NAV*/
 
 .icon-logo {

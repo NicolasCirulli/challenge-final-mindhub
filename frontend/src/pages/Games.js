@@ -9,7 +9,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormLabel from "@mui/material/FormLabel";
-import {connect} from "react-redux";
+import { useSelector } from "react-redux";
 
 const genders = [
     "All",
@@ -27,8 +27,8 @@ const genders = [
     "Simulation",
     "Strategy",
 ];
-function Games(props) {
 
+export default function Games() {
     // estados
     const [view, setview] = useState(false);
     const [active, setactive] = useState(false);
@@ -37,6 +37,7 @@ function Games(props) {
     const [gamesRender, setGamesRender] = useState([]);
     const [gender, setGender] = useState('');
     const [sortPrice, setSortPrice] = useState('Higher to Lower');
+    const user = useSelector((state)=> state.userReducer.user)
 
     // ref 
     const inputSearch = useRef();
@@ -218,7 +219,8 @@ function Games(props) {
                 >
                     OFFERS
                 </h6>
-                {props.user && <h6
+                {user && 
+                <h6
                     onClick={() => setfilter("favorites")}
                     className={
                         filter === "favorites"
@@ -227,7 +229,8 @@ function Games(props) {
                     }
                 >
                     FAVORITES
-                </h6>}
+                </h6>
+                }
                 <div className="views">
                     <ViewComfyIcon
                         onClick={() => deactivate()}
@@ -260,12 +263,3 @@ function Games(props) {
         </div>
     );
 }
-
-
-const mapStateToProps = (state) => {
-    return {
-        user: state.userReducer.user,
-    };
-};
-
-export default connect(mapStateToProps, null)(Games);
