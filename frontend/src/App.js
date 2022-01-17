@@ -42,10 +42,7 @@ function App() {
             <Route path="/games" element={<Games />}></Route>
             <Route path="/admin" element={<AdminPanel />}></Route>
             <Route path="*" element={<Home />}></Route>
-<<<<<<< HEAD
-=======
             <Route path="profile" element={<Profile/>}></Route>
->>>>>>> 4b89e266248651402ce8a1fdd519ba735c49bdf9
             <Route path="/chat" element={<Chat />}></Route>
             <Route path="/support" element={<Support />}></Route>
           </Routes>
