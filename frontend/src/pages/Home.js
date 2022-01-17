@@ -30,6 +30,7 @@ export default function Home() {
 
     useEffect(() =>{
         setOffer(allGames.filter(games => games.offer))
+        setRecommended(allGames.filter(games => games.rating > 4))
     },[allGames])
     
 
