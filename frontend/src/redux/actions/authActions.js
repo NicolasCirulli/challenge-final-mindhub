@@ -93,5 +93,12 @@ const usuarioActions = {
     };
   },
 };
+    logOut: () => {
+        localStorage.removeItem("token")
+    return (dispatch, getState) => {
+        dispatch({type: 'logOut', payload: ""})
+    }
+    
+}
 
 export default usuarioActions;
