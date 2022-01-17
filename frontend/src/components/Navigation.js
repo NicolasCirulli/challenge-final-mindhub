@@ -112,12 +112,16 @@ function Navigation(props) {
                                 </ListItem>
                             ))}
                         </List>
-                        <List className="text">
+                        <List className="nav-icons">
                             <ListItem
                                 button
                                 onClick={() => {
                                     navigate("/support");
                                 }}
+                                className={
+                                    location.pathname === "/support" &&
+                                    "active"
+                                }
                             >
                                 <ListItemIcon className="icon">
                                     <SupportAgentIcon />
@@ -131,6 +135,10 @@ function Navigation(props) {
                                         onClick={() => {
                                             navigate("/signIn");
                                         }}
+                                        className={
+                                            location.pathname === "/signIn" &&
+                                            "active"
+                                        }
                                     >
                                         <ListItemIcon className="icon">
                                             <PersonIcon />
@@ -142,6 +150,10 @@ function Navigation(props) {
                                         onClick={() => {
                                             navigate("/signUp");
                                         }}
+                                        className={
+                                            location.pathname === "/signUp" &&
+                                            "active"
+                                        }
                                     >
                                         <ListItemIcon className="icon">
                                             <PersonAddIcon />
@@ -157,6 +169,7 @@ function Navigation(props) {
                                             navigate("/");
                                             props.signOut();
                                         }}
+                                        
                                     >
                                         <ListItemIcon className="icon">
                                             <LogoutIcon />
@@ -168,6 +181,10 @@ function Navigation(props) {
                                         onClick={() => {
                                             navigate("/profile");
                                         }}
+                                        className={
+                                            location.pathname === "/profile" &&
+                                            "active"
+                                        }
                                     >
                                         <ListItemIcon>
                                             <img

@@ -323,10 +323,18 @@ code {
 .go-down{
     width: 100%;
     display: flex;
+    justify-content: center;
+}
+.cont-down{
+    align-self: center;
+    width: 20%;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
     cursor: pointer;
+}
+.cont-down:hover>.color-hover{
+    color: #fff !important;
 }
 .more-i{
     text-align: center;
