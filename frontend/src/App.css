@@ -418,6 +418,8 @@ code {
 .description-list-game{
     color: #fff;
     font-weight: lighter !important;
+    max-height: 40vh;
+    overflow: scroll;
 }
 .logo-game {
     width: 100%;

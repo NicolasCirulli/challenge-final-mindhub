@@ -111,11 +111,8 @@ export default function Store() {
         let aux;
         bool ?  aux = array.sort((a,b) => b.price - a.price)
              :  aux = array.sort((a,b) => a.price - b.price)
-
         return aux
     }
-
-    
 
     return (
         <div>
