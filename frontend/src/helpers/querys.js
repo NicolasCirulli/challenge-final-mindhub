@@ -1,8 +1,11 @@
 import axios from "axios";
 
+const url = 'http://localhost:4000/api/'
+const token = localStorage.getItem('token')
+
 export const getAllUsers = async () => {
     try {
-        const res = await axios.get("http://localhost:4000/api/users");
+        const res = await axios.get(url+"users");
         return { success: true, error: null, response: res.data };
     } catch (err) {
         return { success: false, error: err };
@@ -11,7 +14,7 @@ export const getAllUsers = async () => {
 
 export const updateUser = async (id, body) => {
     try {
-        const res = await axios.put("http://localhost:4000/api/user/" + id, {
+        const res = await axios.put(url+"user/" + id, {
             ...body,
         });
 
@@ -22,7 +25,7 @@ export const updateUser = async (id, body) => {
 };
 export const deleteUser = async (id, body) => {
     try {
-        const res = await axios.delete("http://localhost:4000/api/user/" + id);
+        const res = await axios.delete(url+"user/" + id);
 
         return { success: true, error: null, response: res.data };
     } catch (err) {
@@ -32,7 +35,7 @@ export const deleteUser = async (id, body) => {
 
 export const getAllGames = async () => {
     try {
-        const res = await axios.get("http://localhost:4000/api/allgames");
+        const res = await axios.get(url+"allgames");
 
         return { success: true, error: null, response: res.data };
     } catch (err) {
@@ -42,7 +45,7 @@ export const getAllGames = async () => {
 
 export const getGameById = async(gameId) =>{
     try {
-        const res = await axios.get("http://localhost:4000/api/game/"+gameId);
+        const res = await axios.get(url+"game/"+gameId);
 
         return { success: true, error: null, response: res.data };
     } catch (err) {
@@ -52,7 +55,7 @@ export const getGameById = async(gameId) =>{
 
 export const updateGame = async (id, body) => {
     try {
-        const res = await axios.put(`http://localhost:4000/api/game/${id}`, {
+        const res = await axios.put(`${url}game/${id}`, {
             ...body,
         });
 
@@ -64,7 +67,7 @@ export const updateGame = async (id, body) => {
 
 export const deleteGame = async (id) => {
     try {
-        const res = await axios.delete(`http://localhost:4000/api/game/${id}`);
+        const res = await axios.delete(`${url}game/${id}`);
 
         return { success: true, error: null, response: res.data };
     } catch (err) {
@@ -74,7 +77,7 @@ export const deleteGame = async (id) => {
 
 export const addGame = async (body) => {
     try {
-        const res = await axios.post("http://localhost:4000/api/game", {
+        const res = await axios.post(url+"game", {
             ...body,
         });
 
@@ -87,7 +90,7 @@ export const addGame = async (body) => {
 export const getGameByGenre = async (genre) => {
     try {
         const res = await axios.get(
-            "http://localhost:4000/api/gameByGenre/" + genre
+            url+"gameByGenre/" + genre
         );
         return res;
     } catch (err) {
@@ -98,7 +101,7 @@ export const getGameByGenre = async (genre) => {
 export const searchGame = async (text) => {
     try {
         const res = await axios.get(
-            "http://localhost:4000/api/gameByName/" + text
+            url+"gameByName/" + text
         );
         return res.data;
     } catch (err) {
