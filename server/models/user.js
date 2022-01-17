@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
   cart: { type: Array, default: [] },
   address: String,
   wishList: { type: Array, default: [] },
+  role : {type : String, default : 'user'},
 });
 
 const user = mongoose.model("user", userSchema);

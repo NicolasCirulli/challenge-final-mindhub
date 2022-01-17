@@ -64,6 +64,12 @@ function CardAdmin({user}) {
                 <BsPencilSquare />
              </button>
           </div>
+          <div className="card-user-admin-fields">
+            <p>Role: {data.role} </p>
+            <button className="card-user-admin-icon" onClick={()=> handleInput('Role', 'role')}>
+                <BsPencilSquare />
+             </button>
+          </div>
           
           {render && 
           <div className="card-user-admin-fields">

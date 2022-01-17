@@ -29,6 +29,7 @@ const usuarioActions = {
               userName: user.data.res.userName,
               image: user.data.res.image,
               id: user.data.res.id,
+              role : user.data.res.role
             },
           });
           return user.data;
@@ -55,6 +56,7 @@ const usuarioActions = {
               userName: user.data.res.userName,
               image: user.data.res.image,
               id: user.data.res._id,
+              role : user.data.res.role
             },
           });
           return user.data;
@@ -85,6 +87,7 @@ const usuarioActions = {
               userName: user.data.res.userName,
               image: user.data.res.image,
               id: user.data.res._id,
+              role : user.data.res.role
             },
           });
       } catch (err) {

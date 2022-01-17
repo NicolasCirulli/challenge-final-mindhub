@@ -40,7 +40,7 @@ function App() {
             {!user && <Route path="/signup" element={<SignUp />}></Route>}
             <Route path="/about" element={<About />}></Route>
             <Route path="/games" element={<Games />}></Route>
-            <Route path="/admin" element={<AdminPanel />}></Route>
+            { user.role === 'admin' && <Route path="/admin" element={<AdminPanel />}></Route>}
             <Route path="*" element={<Home />}></Route>
             <Route path="profile" element={<Profile/>}></Route>
             <Route path="/chat" element={<Chat />}></Route>
