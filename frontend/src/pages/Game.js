@@ -9,6 +9,7 @@ import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
 import { useParams } from "react-router-dom";
 import {getGameById} from '../helpers/querys'
+import { getThemeProps } from "@mui/system";
 
 export default function Game () {
 
@@ -25,9 +26,12 @@ export default function Game () {
             .catch((err) => console.log(err))
     },[])
 
+    const background = {
+       backgroundImage: "url("+data.background_image+")"}
+
     return (
         <>
-           { data && <> <div className="gamebg ">
+           { data && <> <div className="gamebg" style={background} >
                 <div className="container">
                     <h1 className="gamePath">{`${data.genres[0].name} / ${data.name}`}</h1>
                     <div className="divgen">

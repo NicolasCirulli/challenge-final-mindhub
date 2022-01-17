@@ -29,7 +29,7 @@ const list = [
     { name: "About us", icon: <SportsEsportsIcon />, path: "/about" },
 ];
 const list2 = [
-    { name: "Support", icon: <SupportAgentIcon />, path: "/contact" },
+    { name: "Support", icon: <SupportAgentIcon />, path: "/support" },
     /* { name: "Settings", icon: <SettingsIcon />, path: "/Settings" }, */
     { name: "Sign In", icon: <PersonIcon />, path: "/signIn" },
     { name: "Sign Up", icon: <PersonAddIcon />, path: "/signUp" },
