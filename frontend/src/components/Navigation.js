@@ -27,9 +27,9 @@ const drawerWidth = 240;
 
 const list = [
     { name: "Home", icon: <HomeIcon />, path: "/" },
-    { name: "Cart", icon: <LocalGroceryStoreIcon />, path: "/cart" },
-    { name: "Games", icon: <MenuBookIcon />, path: "/games" },
     { name: "About us", icon: <SportsEsportsIcon />, path: "/about" },
+    { name: "Games", icon: <MenuBookIcon />, path: "/games" },
+    { name: "Cart", icon: <LocalGroceryStoreIcon />, path: "/cart" },
 ];
 
 const openedMixin = (theme) => ({
@@ -107,21 +107,6 @@ function Navigation(props) {
                             ))}
                         </List>
                         <List className="nav-icons">
-                            <ListItem
-                                button
-                                onClick={() => {
-                                    navigate("/support");
-                                }}
-                                className={
-                                    location.pathname === "/support" &&
-                                    "active"
-                                }
-                            >
-                                <ListItemIcon className="icon">
-                                    <SupportAgentIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="Support" />
-                            </ListItem>
                             {!props.user ? (
                                 <>
                                     <ListItem
@@ -160,10 +145,24 @@ function Navigation(props) {
                                     <ListItem
                                         button
                                         onClick={() => {
+                                            navigate("/support");
+                                        }}
+                                        className={
+                                            location.pathname === "/support" &&
+                                            "active"
+                                        }
+                                    >
+                                        <ListItemIcon className="icon">
+                                            <SupportAgentIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Support" />
+                                    </ListItem>
+                                    <ListItem
+                                        button
+                                        onClick={() => {
                                             navigate("/");
                                             props.signOut();
                                         }}
-                                        
                                     >
                                         <ListItemIcon className="icon">
                                             <LogoutIcon />
