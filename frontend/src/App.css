@@ -428,7 +428,7 @@ code {
     font-weight: lighter !important;
     max-height: 41vh;
     overflow-y: scroll;
-    padding-right: .6rem;
+    padding-right: 1rem;
 }
 .description-list-game::-webkit-scrollbar{
     background-color: rgba(255, 255, 255, 0);
