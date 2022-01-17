@@ -3,34 +3,18 @@ import { getAllUsers, getAllGames, getGameByGenre } from "../helpers/querys";
 import "../styles/admin.css";
 import CardAdmin from "../components/CardAdmin";
 import CardAdminGame from "../components/CardAdminGame";
+import {useSelector} from "react-redux"
 function AdminPanel() {
   const [allUsers, setAllusers] = useState([]);
-  const [allGames, setAllgames] = useState([]);
-  const [action, setAciton] = useState([])
   const [render, setRender] = useState(true);
+  const allGames = useSelector(store => store.gamesReducer.games)
 
   useEffect(() => {
     getAllUsers()
       .then((res) => setAllusers(res.response.res))
       .catch((err) => console.log(err));
-
-    getAllGames()
-      .then((res) => {
-        
-        setAllgames(res.response.res);
-      })
-      .catch((err) => console.log(err));
-
-      getGameByGenre('Action')
-        .then(res=> setAciton(res.data.res))
   }, []);
 
-  action.forEach(game => {
-    console.log('---------------------------------------')
-    game.genres.forEach(genero => console.log(genero.name))
-    console.log('---------------------------------------')
-   
-  })
 
   return (
     <>

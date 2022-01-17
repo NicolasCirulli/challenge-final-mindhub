@@ -40,6 +40,7 @@ function CardAdminGame({ item }) {
             updateGame(item._id, { body }).then((res) => {
                 reset();
                 setData(res.response.respuesta)
+                console.log(res);
             }).catch(res => console.log(res))
         }else{
             const body = {
@@ -50,6 +51,7 @@ function CardAdminGame({ item }) {
             updateGame(item._id, { body }).then((res) => {
                 reset();
                 setData(res.response.respuesta)
+                
             }).catch(res => console.log(res))
         }
     };
