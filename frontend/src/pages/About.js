@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import logo from "../assets/logo.png";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import {Link} from "react-router-dom"
 
 export default function About() {
     return (
@@ -39,7 +40,7 @@ export default function About() {
             </div>
             <div className="container access-game">
                 <Typography variant="h4" component="div" className="welcome3">
-                    Access games instantly
+                    Access Games Instantly
                 </Typography>
                 <Typography variant="h6" component="div" className="welcome4">
                     Large number of published games; from large companies to
@@ -47,10 +48,10 @@ export default function About() {
                     exclusive offers, automatic updates and other great
                     benefits.
                 </Typography>
-                <div className="call-to-action">
+                <Link className="call-to-action" to="/games">
                     <h5 className="visit-store">Visit our store</h5>
                     <ArrowForwardIosIcon className="arrow-icon" />
-                </div>
+                </Link>
             </div>
         </div>
     );

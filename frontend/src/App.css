@@ -263,6 +263,7 @@ code {
 .welcome3{
     color: #fff;
     font-weight: normal !important;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.815); ;
 }
 .welcome4{
     color: #fff;
@@ -283,6 +284,7 @@ code {
     cursor: pointer;
     justify-content: center;
     padding: 1rem;
+    text-decoration: none !important;
 }
 .call-to-action:hover>.visit-store{
     margin-right: 1rem;
@@ -291,8 +293,6 @@ code {
     color: #11edd5 !important;
 }
 .access-game{
-    /* background: rgba(221, 218, 218, 0.253);
-    backdrop-filter: blur(13.743px); */
     border-radius: 2rem;
     padding: 1rem;
     text-align: center ;
@@ -309,6 +309,7 @@ code {
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    cursor: pointer;
 }
 .more-i{
     text-align: center;
@@ -320,6 +321,7 @@ code {
     align-self: center;
     color: #626775 !important;
 }
+
 
 /*GAMES*/
 
@@ -353,27 +355,39 @@ code {
     width: 100%;
     text-align: center;
 }
+.cont-search-g{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
 .cont-search-game {
     display: flex;
     justify-content: start;
     align-content: center;
     align-self: center;
+    width: 100%;
 }
 .cont-filter {
-    height: 10vh;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     background-color: #dbdbdf21;
     backdrop-filter: blur(13.743px);
     border-radius: 1.5rem;
     margin-bottom: 2rem;
+    padding: 1rem;
+}
+.cont-select-genders{
+    width: 15%;
+    display: flex;
+    flex-direction: column;
 }
 .search-game,
 .select-genders {
     background-color: #dbdbdf00 !important;
     color: #fff;
     border: #fff solid 1px;
-    width: 15vw;
+    width: 100%;
     height: 5vh;
     border-radius: 1rem;
     padding-left: 0.5rem;
@@ -381,10 +395,11 @@ code {
     align-self: center;
 }
 .search-game {
-    width: 40vw;
+    width: 100%;
 }
 .select-genders {
     appearance: 1rem;
+    color: #CDCCCC;
 }
 .select-genders:focus,
 .search-game:focus {
@@ -459,4 +474,41 @@ code {
 }
 .card-img-precio{
     height: 40vh !important;
+}
+
+.title-label{
+    color: #fff;
+    margin-bottom: .5rem;
+}
+.cont-range{
+    width: 15%;
+}
+.range{
+    display: flex;
+    height: 5vh;
+    align-self: center;
+
+    justify-content: center;
+}
+.input-renge{
+    background-color: rgba(255, 255, 255, 0);
+    border: 1.5px #fff solid;
+    border-radius: 1rem;
+    width: 100%;
+    padding: .5rem;
+    color: #fff;
+}
+.input-renge:focus{
+    outline: none !important;
+}
+.sort{
+    color: #fff !important;
+    margin: 0 !important;
+}
+.option-radio{
+    color: #fff !important;
+    height: 7vh !important;
+}
+.rigth{
+    margin-right: .5rem;
 }
