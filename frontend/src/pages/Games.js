@@ -159,31 +159,6 @@ export default function Store() {
                         })}
                     </select>
                 </div>
-<<<<<<< HEAD
-                <select
-                    type="text"
-                    className="select-genders"
-                    placeholder="Genders"
-                    onChange={(e) => handleGender(e.target.value)}
-                    ref={genderSelect}
-                >
-                    <option disabled selected>
-                        Genders
-                    </option>
-                    {genders.map((gender, index) => {
-                        return (
-                            <option
-                                value={gender}
-                                key={index}
-                                className="color-select"
-                            >
-                                {gender}
-                            </option>
-                        );
-                    })}
-                </select>
-                <select
-=======
                 <div className="cont-range">
                     <label className="title-label">Range</label>
                     <div className="range">
@@ -221,7 +196,6 @@ export default function Store() {
                     </RadioGroup>
                 </FormControl>
                 {/* <select
->>>>>>> b80c6838435117853728d652d9b2937ef7e5d293
                     type="text"
                     className="select-genders"
                     placeholder="Genders"
