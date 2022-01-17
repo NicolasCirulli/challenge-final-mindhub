@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Profile from "./pages/Profile"
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "./redux/actions/authActions";
 import "./App.css";
@@ -15,7 +16,6 @@ import Games from "./pages/Games";
 import AdminPanel from "./pages/AdminPanel";
 import Chat from "./pages/Chat";
 import Support from "./pages/Support";
-import Profile from "./pages/Profile"
 
 function App() {
   const dispatch = useDispatch();

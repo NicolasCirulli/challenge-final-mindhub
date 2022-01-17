@@ -31,12 +31,6 @@ const list = [
     { name: "Games", icon: <MenuBookIcon />, path: "/games" },
     { name: "About us", icon: <SportsEsportsIcon />, path: "/about" },
 ];
-/* const list2 = [
-    { name: "Support", icon: <SupportAgentIcon />, path: "/contact" },
-    { name: "Settings", icon: <SettingsIcon />, path: "/Admin" },
-    { name: "Sign In", icon: <PersonIcon />, path: "/signIn" },
-    { name: "Sign Up", icon: <PersonAddIcon />, path: "/signUp" },
-]; */
 
 const openedMixin = (theme) => ({
     width: drawerWidth,

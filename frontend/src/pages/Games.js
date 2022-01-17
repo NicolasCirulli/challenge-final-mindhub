@@ -192,6 +192,19 @@ export default function Store() {
                         />
                     </RadioGroup>
                 </FormControl>
+                {/* <select
+                    type="text"
+                    className="select-genders"
+                    placeholder="Genders"
+                    onChange={(e)=> handelSort(e.target.value)}
+                >
+                    <option disabled selected>
+                        Sort by price
+                    </option>
+
+                    <option className="color-select">Higher to Lower</option>
+                    <option className="color-select">Lower to Higher</option>
+                </select> */}
             </div>
             <div className="container cont-filter-games">
                 <h6
