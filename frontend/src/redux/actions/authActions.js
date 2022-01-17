@@ -48,6 +48,12 @@ const usuarioActions = {
                 
             }catch(err){console.log(err)}
         }
+    },
+    logOut: () => {
+        localStorage.removeItem("token")
+    return (dispatch, getState) => {
+        dispatch({type: 'logOut', payload: ""})
+    }
     }
 }
 
