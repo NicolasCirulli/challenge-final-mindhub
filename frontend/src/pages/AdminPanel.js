@@ -36,7 +36,7 @@ function AdminPanel() {
     <>
       <div className="container-admin">
         <div className="main-admin">
-          <h1>admin</h1>
+          <h1 className="title-admin-1">Administrator</h1>
 
           <div className="d-flex">
             <button className="btnAdmin" onClick={() => setRender(true)}>
@@ -48,7 +48,7 @@ function AdminPanel() {
             </button>
           </div>
           {render ? (
-            <p>Amount of registered users: {allUsers.length}</p>
+            <p className="title-users-r">Amount of registered users: {allUsers.length}</p>
           ) : (
             <p>Amount of available games: {allGames.length}</p>
           )}

@@ -50,6 +50,18 @@ code {
 .MuiSvgIcon-root {
     color: #fff !important;
 }
+.nav-img{
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 50%; 
+    align-self: center;
+    object-fit: cover;
+    margin: 0 !important;
+}
+.icon-image{
+    padding-left: 0.4rem !important;
+}
+
 
 /*BUTTONS*/
 
@@ -311,10 +323,18 @@ code {
 .go-down{
     width: 100%;
     display: flex;
+    justify-content: center;
+}
+.cont-down{
+    align-self: center;
+    width: 20%;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
     cursor: pointer;
+}
+.cont-down:hover>.color-hover{
+    color: #fff !important;
 }
 .more-i{
     text-align: center;
@@ -406,6 +426,12 @@ code {
 .description-list-game{
     color: #fff;
     font-weight: lighter !important;
+    max-height: 41vh;
+    overflow-y: scroll;
+    padding-right: 1rem;
+}
+.description-list-game::-webkit-scrollbar{
+    background-color: rgba(255, 255, 255, 0);
 }
 .logo-game {
     width: 100%;

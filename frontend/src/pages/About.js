@@ -8,7 +8,7 @@ import CardAbout from "../components/CardAbout";
 
 export default function About() {
     return (
-        <div className="container about-us">
+        <div className="container">
             <div className="cont-about">
                 <div className="container cont-welcome">
                     <div className="welcome">
@@ -35,8 +35,10 @@ export default function About() {
                     <img src={logo} className="logo-welcome" />
                 </div>
                 <div className="go-down">
-                    <p className="more-i">More information </p>
-                    <KeyboardArrowDownIcon className="icon-arrow" />
+                    <div className="cont-down">
+                        <p className="more-i color-hover">More information </p>
+                        <KeyboardArrowDownIcon className="icon-arrow color-hover" />
+                    </div>
                 </div>
             </div>
             <div className="container access-game">

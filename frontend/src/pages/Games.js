@@ -111,11 +111,8 @@ export default function Store() {
         let aux;
         bool ?  aux = array.sort((a,b) => b.price - a.price)
              :  aux = array.sort((a,b) => a.price - b.price)
-
         return aux
     }
-
-    
 
     return (
         <div>
@@ -160,7 +157,7 @@ export default function Store() {
                     </select>
                 </div>
                 <div className="cont-range">
-                    <label className="title-label">Range</label>
+                    <label className="title-label">Price range</label>
                     <div className="range">
                         <input
                             className="input-renge rigth"
@@ -195,19 +192,6 @@ export default function Store() {
                         />
                     </RadioGroup>
                 </FormControl>
-                {/* <select
-                    type="text"
-                    className="select-genders"
-                    placeholder="Genders"
-                    onChange={(e)=> handelSort(e.target.value)}
-                >
-                    <option disabled selected>
-                        Sort by price
-                    </option>
-
-                    <option className="color-select">Higher to Lower</option>
-                    <option className="color-select">Lower to Higher</option>
-                </select> */}
             </div>
             <div className="container cont-filter-games">
                 <h6
