@@ -426,8 +426,12 @@ code {
 .description-list-game{
     color: #fff;
     font-weight: lighter !important;
-    max-height: 40vh;
-    overflow: scroll;
+    max-height: 41vh;
+    overflow-y: scroll;
+    padding-right: .6rem;
+}
+.description-list-game::-webkit-scrollbar{
+    background-color: rgba(255, 255, 255, 0);
 }
 .logo-game {
     width: 100%;
