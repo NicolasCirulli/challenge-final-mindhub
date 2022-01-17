@@ -14,6 +14,7 @@ import SignUp from "./pages/SignUp";
 import About from "./pages/About"
 import Games from "./pages/Games"
 import AdminPanel from './pages/AdminPanel'
+import Profile from './pages/Profile'
 
 function App() {
 
