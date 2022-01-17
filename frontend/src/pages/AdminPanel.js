@@ -48,9 +48,9 @@ function AdminPanel() {
             </button>
           </div>
           {render ? (
-            <p>Cantidad de usuarios registrados es: {allUsers.length}</p>
+            <p>Amount of registered users: {allUsers.length}</p>
           ) : (
-            <p>Cantidad de Juegos disponibles es: {allGames.length}</p>
+            <p>Amount of available games: {allGames.length}</p>
           )}
           <div className="container-card-admin">
             {render
