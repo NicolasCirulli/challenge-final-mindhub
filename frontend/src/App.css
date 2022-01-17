@@ -37,6 +37,9 @@ code {
     border: #af3181 solid 2px !important;
     border-radius: 1rem !important;
 }
+.swal2-icon-content{
+    color: #af3181 !important;
+}
 .swal2-cancel, .swal2-modal, .swal2-popup{
     border-radius: 1rem !important;
 }
@@ -49,7 +52,6 @@ code {
 }
 .swal2-info{
     color: #fff !important;
-    
 }
 .swal2-confirm:hover, .swal2-deny:hover, .swal2-cancel:hover{
     background-color: #11edd300 !important;

@@ -23,7 +23,7 @@ const SignInComp = () => {
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: 'welcome'  + res.res.userName,
+                        title: 'welcome '  + res.res.userName + '!',
                         background: '#343744',
                         iconColor: '#11edd3',
                         color: '#fff',

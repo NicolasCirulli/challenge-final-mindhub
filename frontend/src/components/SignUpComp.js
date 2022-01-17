@@ -44,7 +44,7 @@ const SignUpComp = () => {
                         iconColor: '#11edd3',
                         color: '#fff',
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 2000
                     })
                 } else {
                     if (res.error) {

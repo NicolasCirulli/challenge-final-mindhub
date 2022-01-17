@@ -91,8 +91,8 @@ function Navigation(props) {
             background: "#343744",
             iconColor: "#11edd3",
             color: "#fff",
-            confirmButtonText: "Save",
-            denyButtonText: `Don't save`,
+            confirmButtonText: "Accept",
+            denyButtonText: `Don't accept`,
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
