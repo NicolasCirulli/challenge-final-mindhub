@@ -76,14 +76,11 @@ export default function Store() {
         setactive(false);
         setview(false);
     }
-
-
     const handelSort = (e) =>{
         setSortPrice(e)
         let bool = e === 'Higher to Lower' ? true : false
         setGamesRender(sort(bool, gamesRender))    
     }
-
     const handleGender = (e)=>{
         inputSearch.current.value = ''
         setGender(e)
@@ -100,17 +97,15 @@ export default function Store() {
             setGamesRender(allGames)
         }
     }
-
     const render = (bool,array) => {
        const aux = sort(bool, array)
        setGamesRender(aux)
     }
-    
 
     const sort = (bool,array) =>{
         let aux;
         bool ?  aux = array.sort((a,b) => b.price - a.price)
-             :  aux = array.sort((a,b) => a.price - b.price)
+            :  aux = array.sort((a,b) => a.price - b.price)
         return aux
     }
 
