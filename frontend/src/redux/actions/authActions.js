@@ -59,15 +59,46 @@ const usuarioActions = {
           });
           return user.data;
         }
-    }catch (err) {
-      console.log(err);
-    }
-    logOut: () => {
-        localStorage.removeItem("token")
-    return (dispatch, getState) => {
-        dispatch({type: 'logOut', payload: ""})
-    }
-    }
-}
+        return user.data;
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  },
+  signInWithToken: (token) => {
+    return async (dispatch) => {
+      try {
+        const user = await axios.post(
+          "http://localhost:4000/api/verifyToken",
+          {},
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
+        console.log(user);
+        user.data.success &&
+          dispatch({
+            type: "signIn",
+            payload: {
+              userName: user.data.res.userName,
+              image: user.data.res.image,
+              id: user.data.res._id,
+            },
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  },
+  logOut: () => {
+    localStorage.removeItem("token")
+  return (dispatch, getState) => {
+    dispatch({type: 'logOut', payload: ""})
+  }
+  },
+};
 
 export default usuarioActions;
+
