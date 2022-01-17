@@ -17,7 +17,7 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
-/* import SettingsIcon from "@mui/icons-material/Settings"; */
+import SettingsIcon from "@mui/icons-material/Settings"; 
 import { useNavigate, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import authActions from "../redux/actions/authActions";
@@ -31,13 +31,6 @@ const list = [
     { name: "Games", icon: <MenuBookIcon />, path: "/games" },
     { name: "About us", icon: <SportsEsportsIcon />, path: "/about" },
 ];
- const list2 = [
-    { name: "Support", icon: <SupportAgentIcon />, path: "/contact" },
-    { name: "Settings", icon: <SettingsIcon />, path: "/Admin" },
-    { name: "Sign In", icon: <PersonIcon />, path: "/signIn" },
-    { name: "Sign Up", icon: <PersonAddIcon />, path: "/signUp" },
-];
-
 const openedMixin = (theme) => ({
     width: drawerWidth,
     transition: theme.transitions.create("width", {

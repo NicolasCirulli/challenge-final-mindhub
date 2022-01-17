@@ -2,7 +2,6 @@ import "../styles/game.css"
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import React,{ useState, useEffect } from "react";
 import IconButton from "@mui/material/IconButton";
-import imagen from "../assets/gtav.jpg"
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import DoneIcon from '@mui/icons-material/Done';
@@ -25,9 +24,10 @@ export default function Game () {
             })
             .catch((err) => console.log(err))
     },[])
-
-    const background = {
-       backgroundImage: "url("+data.background_image+")"}
+    let background;
+     if (data) {
+         background ={
+       backgroundImage: "url("+data.background_image+")"}}
 
     return (
         <>
