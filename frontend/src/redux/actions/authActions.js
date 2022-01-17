@@ -59,7 +59,9 @@ const usuarioActions = {
           });
           return user.data;
         }
-    },
+    }catch (err) {
+      console.log(err);
+    }
     logOut: () => {
         localStorage.removeItem("token")
     return (dispatch, getState) => {
@@ -68,4 +70,4 @@ const usuarioActions = {
     }
 }
 
-export default usuarioActions
+export default usuarioActions;
