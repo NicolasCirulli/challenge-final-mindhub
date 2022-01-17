@@ -154,24 +154,34 @@ code {
     justify-content: space-between;
     border-radius: 1rem !important;
 }
-.card-title {
+.cont-card-title{
     background: rgba(221, 218, 218, 0.43);
     backdrop-filter: blur(4px);
     width: 100%;
-    margin: 0 !important;
-    color: #fff;
     padding: 0.5rem;
     border-radius: 0 0 1rem 1rem;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
 }
+.card-title {
+    margin: 0 !important;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: flex-start;
+
+}
 .name-game{
+    padding: .5rem;
     font-size: 1rem;
     font-weight: normal;
     color:#fff;
     text-decoration: none !important;
     cursor: pointer;
+}
+.name-price{
+    padding: 0 !important;
 }
 .name-game:hover{
     color: #11edd5 !important;
@@ -179,7 +189,27 @@ code {
 .favorite {
     color: #af3181 !important;
 }
+.cont-btn-cart{
+    align-self: flex-end;
+    transition: .3s;
+    text-decoration: none !important;
+}
+.btn-cart{
+    background-color: #11edd5;
+    border: #11edd5 solid 1.8px;
+    border-radius: 50%;
+    padding: .18rem;
+    font-size: 2rem !important ;
+    color: #343744 !important;
+    transition: .3s;
 
+}
+.btn-cart:hover{
+    background-color: #11edd300;
+    border: #fff solid 1.8px;
+    color: #fff !important;
+    transition: .3s;
+}
 
 /*HOME*/
 
