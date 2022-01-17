@@ -29,7 +29,6 @@
     margin-top: 10%;
 }
 
-
 .card-user-admin{
     width: 250px;
     min-height: 400px;
@@ -44,8 +43,7 @@
     color: white;
 }
 
-.card-user-admin-text{
-    
+.card-user-admin-text{ 
     color: white;
 }
 
@@ -56,11 +54,20 @@
 }
 
 .user-admin-img{
-    border-radius: 10px;
+    border-radius: 50%;
     width: 100%;
     height: 10rem;
     object-fit: cover;
 }
+
+.user-admin-img-games{
+    border-radius: 8%;
+    width: 100%;
+    height: 9rem;
+    object-fit: cover;
+    margin-top: .3rem;
+}
+
 .card-user-admin-icon{
     background-color: #373a42;
     color: white;
@@ -73,13 +80,41 @@
 
 .card-user-admin-icon:hover{
     background-color: #11edd5;
+    color: rgb(185, 178, 164);
 }
 
+.btn-close-adm{
+    background-color: #373a42;
+    color: white; 
+    border: none;
+    border-radius: .5rem;
+    margin-top: .2rem;
+}
+
+.btn-close-adm:hover{
+    background-color: #11edd5;
+    color: rgb(185, 178, 164);
+}
 
 .card-user-admin-fields{
     width: 90%;
     height: 40px;
     position: relative;
+}
+
+.btns-games{
+    border: #11edd5 solid 2px;
+    margin: .1rem;
+    border-radius: 1rem;
+    padding: 0 .5rem;
+    background-color: #11edd5;
+}
+
+.btns-games:hover{
+    background-color: rgba(255, 255, 255, 0);
+    border: #fff solid 2px;
+    color: #fff !important;
+    transition: 0.3s;
 }
 
 .card-user-admin-delete{
@@ -97,11 +132,27 @@
     padding: .2rem;
 }
 
+.card-user-admin-delete:hover{
+    background-color: rgba(255, 255, 255, 0);
+    border: #fff solid 2px;
+    padding: 0.1rem;
+    color: #fff !important;
+    transition: 0.3s;
+}
+
 .input-icon{
     position: absolute;
     top: 0;
     right: 0;
     border: none;
+    background-color: #373a42;
+    color: white;
+    border-radius: .5rem;
+}
+
+.input-icon:hover{
+    background-color: #11edd5;
+    color: rgb(185, 178, 164);
 }
 
 .margin-250{
@@ -120,6 +171,7 @@
    margin: auto;
    margin-top: 5vh;
    border: 1px solid white;
+   border-radius: 2rem;
 }
 
 .container-card-admin{

@@ -50,7 +50,7 @@ function AdminPanel() {
           {render ? (
             <p className="title-users-r">Amount of registered users: {allUsers.length}</p>
           ) : (
-            <p>Amount of available games: {allGames.length}</p>
+            <p className="title-users-r">Amount of available games: {allGames.length}</p>
           )}
           <div className="container-card-admin">
             {render
