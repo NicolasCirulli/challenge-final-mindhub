@@ -22,13 +22,13 @@ const usuarioActions = {
           address,
         });
         if (user.data.success) {
-          localStorage.setItem("token", user.data.response.token);
+          localStorage.setItem("token", user.data.res.token);
           dispatch({
             type: "signIn",
             payload: {
-              userName: user.data.response.userName,
-              image: user.data.response.image,
-              id: user.data.response.id,
+              userName: user.data.res.userName,
+              image: user.data.res.image,
+              id: user.data.res.id,
             },
           });
           return user.data;

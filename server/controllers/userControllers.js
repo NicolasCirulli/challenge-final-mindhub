@@ -55,6 +55,7 @@ const userControllers = {
           userName: userExist.userName,
           id: userExist._id,
           token,
+          image: userExist.image,
         },
       });
     } catch (err) {
