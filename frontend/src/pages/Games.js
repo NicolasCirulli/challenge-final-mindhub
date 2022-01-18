@@ -112,7 +112,6 @@ function Games(props) {
         inputSearch.current.value = "";
         setGender(e);
     };
-
     const sort = (bool, array) => {
         let aux;
         bool
@@ -120,7 +119,6 @@ function Games(props) {
             : (aux = array.sort((a, b) => a.price - b.price));
         return priceMinMax(aux);
     };
-
     const priceMinMax = (array) => {
         const priceMin = min.current.value || 0;
         const priceMax = max.current.value || 999999;
