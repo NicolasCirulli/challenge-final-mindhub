@@ -51,60 +51,60 @@ const SignInComp = () => {
   })
     }
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const email = useRef();
-    const password = useRef();
+  const email = useRef();
+  const password = useRef();
 
-    const signIn = async () => {
-        const user = {
-            mail: email.current.value,
-            password: password.current.value,
-        };
-        if (!Object.values(user).some((value) => value === "")) {
-            try {
-                const res = await dispatch(authActions.signIn(user));
-                console.log(res);
-                if (res.success) {
-                    alert("welcome " + res.res.userName);
-                } else {
-                    alert(res.res);
-                }
-            } catch (err) {
-                console.log(err);
-            }
-        } else {
-            alert("Todos los campos son obligatorios");
-        }
+  const signIn = async () => {
+    const user = {
+      mail: email.current.value,
+      password: password.current.value,
     };
+    if (!Object.values(user).some((value) => value === "")) {
+      try {
+        const res = await dispatch(authActions.signIn(user));
+        console.log(res);
+        if (res.success) {
+          alert("welcome " + res.res.userName);
+        } else {
+          alert(res.res);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      alert("Todos los campos son obligatorios");
+    }
+  };
 
-    return (
-        <div className="backgroundSignIn">
-            <div className="cardSign">
-                <div className="contentSignIn">
-                    <h1 className="titleSignIn">It's great to see you again</h1>
-                    <h2>Sign in xtreme</h2>
-                    <form>
-                        <div className="inputsSignIn">
-                            <input
-                                type="text"
-                                className="label-SI"
-                                placeholder=" Email"
-                                ref={email}
-                            />
-                            <input
-                                type="password"
-                                className="label-SI"
-                                placeholder=" Password"
-                                ref={password}
-                            />
-                            <input
-                                type="button"
-                                className="linkSignIn"
-                                value="Sign in"
-                                onClick={signIn}
-                            />
-                            <p className="or-sign-in">or</p>
+  return (
+    <div className="backgroundSignIn">
+      <div className="cardSign">
+        <div className="contentSignIn">
+          <h1 className="titleSignIn">It's great to see you again</h1>
+          <h2>Sign in xtreme</h2>
+          <form>
+            <div className="inputsSignIn">
+              <input
+                type="text"
+                className="label-SI email"
+                placeholder=" Email"
+                ref={email}
+              />
+              <input
+                type="password"
+                className="label-SI password"
+                placeholder=" Password"
+                ref={password}
+              />
+              <input
+                type="button"
+                className="linkSignIn"
+                value="Sign in"
+                onClick={signIn}
+              />
+               <p className="or-sign-in">or</p>
                             <GoogleLogin
                                     className='googleBtn'
                                     clientId="441570016693-jv03t22mt950it3camu7if135vkr4bok.apps.googleusercontent.com"
@@ -113,26 +113,22 @@ const SignInComp = () => {
                                     onFailure={responseGoogle}
                                     cookiePolicy={'single_host_origin'}
                                 />
-                        </div>
-                    </form>
-                </div>
             </div>
-            <div
-                className="signUpImg"
-                style={{ backgroundImage: `url("${image}")` }}
-            >
-                <div className="parrSignUp">
-                    <h1>Hello!</h1>
-                    <p>
-                        Welcome again to our site. We have so many captivating
-                        games for you. Just sign up and visit our game store
-                        with different selections. And don't forget to share
-                        your opinions with!
-                    </p>
-                </div>
-            </div>
+          </form>
         </div>
-    );
+      </div>
+      <div className="signUpImg" style={{ backgroundImage: `url("${image}")` }}>
+        <div className="parrSignUp">
+          <h1>Hello!</h1>
+          <p>
+            Welcome again to our site. We have so many captivating games for
+            you. Just sign up and visit our game store with different
+            selections. And don't forget to share your opinions with!
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default SignInComp;

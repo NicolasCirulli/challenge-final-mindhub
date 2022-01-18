@@ -6,8 +6,15 @@ const gameControllers = require("../controllers/gameControllers");
 const messageControllers = require("../controllers/messageControllers");
 const conversationControllers = require("../controllers/conversationControllers");
 
-const { addNewUser, signInUser, getUser, getAllUsers, deleteUser, updateUser } =
-  userControllers;
+const {
+  addNewUser,
+  signInUser,
+  getUser,
+  getAllUsers,
+  deleteUser,
+  updateUser,
+  mailVerification,
+} = userControllers;
 const {
   addGame,
   getGame,
@@ -36,6 +43,8 @@ router
     passport.authenticate("jwt", { session: false }),
     userControllers.verifyToken
   );
+
+router.route("/verify/:uniqueString").get(mailVerification);
 
 // GAME
 router.route("/allgames").get(getAllGame);
