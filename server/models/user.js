@@ -12,8 +12,9 @@ const userSchema = new mongoose.Schema({
   wishList: { type: Array, default: [] },
   uniqueString: { type: String, required: true },
   verifiedAccount: { type: Boolean, required: true },
-  google: { type: Boolean, required: true },
-  role : {type : String, default : 'user'},
+  google: { type: Boolean, default: true },
+
+  role: { type: String, default: "user" },
 });
 
 const user = mongoose.model("user", userSchema);

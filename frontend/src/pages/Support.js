@@ -8,10 +8,11 @@ const Support = ({ user }) => {
   const handleContact = () => {
     axios.post("http://localhost:4000/api/conversations", {
       senderId: user.id,
-      receiverId: "61df6de8ffe6ff94e92c60c6",
+      receiverId: "61e5cf6695c2ea1c79630857",
     });
     navigate("/chat", { replace: true });
   };
+  console.log(user);
   return (
     <div>
       <div>
