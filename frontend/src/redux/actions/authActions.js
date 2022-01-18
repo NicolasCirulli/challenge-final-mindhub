@@ -47,7 +47,7 @@ const usuarioActions = {
           mail,
           password,
         });
-        console.log(user);
+
         if (user.data.success) {
           localStorage.setItem("token", user.data.res.token);
           dispatch({
@@ -79,7 +79,7 @@ const usuarioActions = {
             },
           }
         );
-        console.log(user);
+
         user.data.success &&
           dispatch({
             type: "signIn",

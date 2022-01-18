@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import authActions from "../redux/actions/authActions";
 import image from "../assets/signIn.jpg";
+import Swal from 'sweetalert2'
 
 const SignInComp = () => {
     const dispatch = useDispatch();
@@ -19,9 +20,27 @@ const SignInComp = () => {
                 const res = await dispatch(authActions.signIn(user));
                 console.log(res);
                 if (res.success) {
-                    alert("welcome " + res.res.userName);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'welcome '  + res.res.userName + '!',
+                        background: '#343744',
+                        iconColor: '#11edd3',
+                        color: '#fff',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 } else {
-                    alert(res.res);
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        background: '#343744',
+                        iconColor: '#af3181',
+                        color: '#fff',
+                        title: res.res,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             } catch (err) {
                 console.log(err);
@@ -30,6 +49,8 @@ const SignInComp = () => {
             alert("Todos los campos son obligatorios");
         }
     };
+
+    
 
     return (
         <div className="backgroundSignIn">
