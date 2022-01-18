@@ -193,6 +193,7 @@ const userControllers = {
         userName: req.user.userName,
         mail: req.user.mail,
         image: req.user.image,
+        address: req.user.address,
         _id: req.user._id,
         role: req.user.role,
       },
