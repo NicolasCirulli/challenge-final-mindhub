@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Profile from "./pages/Profile"
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "./redux/actions/authActions";
+import gamesActions from "./redux/actions/gamesActions";
 import "./App.css";
 import "./Sign.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,6 +27,7 @@ function App() {
 
   useEffect(() => {
     token && dispatch(authActions.signInWithToken(token));
+    dispatch(gamesActions.getAllGames());
   }, []);
 
   return (
@@ -40,9 +42,9 @@ function App() {
             {!user && <Route path="/signup" element={<SignUp />}></Route>}
             <Route path="/about" element={<About />}></Route>
             <Route path="/games" element={<Games />}></Route>
-            <Route path="/admin" element={<AdminPanel />}></Route>
+            { user.role === 'admin' && <Route path="/admin" element={<AdminPanel />}></Route>}
             <Route path="*" element={<Home />}></Route>
-            <Route path="profile" element={<Profile/>}></Route>
+            <Route path="/profile" element={<Profile/>}></Route>
             <Route path="/chat" element={<Chat />}></Route>
             <Route path="/support" element={<Support />}></Route>
           </Routes>

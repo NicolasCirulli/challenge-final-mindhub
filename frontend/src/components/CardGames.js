@@ -20,7 +20,7 @@ export default function RecipeReviewCard({game}) {
                     />
                     </IconButton>
                     <div className="card-title">
-                        <Link className="name-game " to="/game">{game.name}</Link>
+                        <Link className="name-game " to={`/game/${game._id}`}>{game.name}</Link>
                     </div>
                 </div>
             </div>

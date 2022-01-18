@@ -6,6 +6,7 @@ import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CardGames from "../components/CardGames";
 import logo from "../assets/logo.png";
 import { getAllGames } from "../helpers/querys";
+import { useSelector } from "react-redux";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
@@ -17,15 +18,21 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function Home() {
-    const [allGames, setAllGames] = useState(false);
+
+    const allGames = useSelector(store => store.gamesReducer.games)
+    const [offer,setOffer] = useState([])
+    const [recommended, setRecommended] = useState([])
 
     useEffect(() => {
-        getAllGames()
-            .then((res) => {
-                setAllGames(res.response.res);
-            })
-            .catch((err) => console.log(err));
-    }, []);
+       allGames && setOffer(allGames.filter(games => games.offer))
+       allGames && setRecommended(allGames.filter(games => games.rating > 4))
+    },[])
+
+    useEffect(() =>{
+        setOffer(allGames.filter(games => games.offer))
+        setRecommended(allGames.filter(games => games.rating > 4))
+    },[allGames])
+    
 
     return (
         <div className="container">
@@ -52,8 +59,8 @@ export default function Home() {
                 <DrawerHeader>
                     <Box sx={{ flexGrow: 1 }}>
                         <div className="box-recommended">
-                            {allGames &&
-                                allGames.map((game, index) => {
+                            {recommended &&
+                                recommended.map((game, index) => {
                                     if (index < 5) {
                                         return (
                                             <CardGames
@@ -80,7 +87,7 @@ export default function Home() {
                     <Box sx={{ flexGrow: 1 }}>
                         {allGames && (
                             <div className="box-offers">
-                                {allGames.map((game) => (
+                                {offer.map((game) => (
                                     <div className="box-card">
                                         <CardGames key={game._id} game={game} />
                                         <button className="btn-add-cart">

@@ -9,6 +9,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormLabel from "@mui/material/FormLabel";
+import {connect, useSelector} from "react-redux";
 
 const genders = [
     "All",
@@ -26,30 +27,62 @@ const genders = [
     "Simulation",
     "Strategy",
 ];
-export default function Store() {
+function Games(props) {
 
     // estados
     const [view, setview] = useState(false);
     const [active, setactive] = useState(false);
     const [filter, setfilter] = useState("all");
-    const [allGames, setAllGames] = useState([]);
+
+    
     const [gamesRender, setGamesRender] = useState([]);
-    const [gender, setGender] = useState('');
-    const [sortPrice, setSortPrice] = useState('Higher to Lower');
+
+
+    const [gender, setGender] = useState('All');
+    const [sortPrice, setSortPrice] = useState(true);
+    const [priceMin, setPriceMin] = useState(false)
+    const [priceMax, setPriceMax] = useState(false)
+
+    const allGames = useSelector(store => store.gamesReducer.games)
+    
+    useEffect(() => {
+
+        renderGames(allGames)
+
+    },[allGames])
+
+    useEffect(() => {
+        if(gender === 'All') {
+            renderGames(allGames)
+        }else{
+            getGameByGenre(gender)
+                .then(res => renderGames(res.data.res))
+                .catch(err => console.log(err))
+        }
+        },[gender,sortPrice,priceMin,priceMax])
 
     // ref 
     const inputSearch = useRef();
     const genderSelect =useRef();
+    const min = useRef();
+    const max = useRef();
+    const sortRadio = useRef();
 
-    // component did mount
-    useEffect(() => {
-        getAllGames()
-            .then((res) => {
-                setAllGames(res.response.res);
-                render(true,res.response.res);
-            })
-            .catch((err) => console.log(err));
-    }, []);
+   const renderGames = (array)=>{
+        const aux = sort(sortPrice,array)
+        let priceFilter;
+        if(priceMin && priceMax){
+            priceFilter = aux.filter( game => game.price >= priceMin && game.price <= priceMax)
+        }else if(priceMin){
+            priceFilter = aux.filter( game => game.price >= priceMin )
+        }else if(priceMax){
+            priceFilter = aux.filter( game => game.price <= priceMax )
+        }else{
+            priceFilter = [...aux]
+        }
+        setGamesRender(priceFilter) 
+   }
+    
 
 
     // Funciones
@@ -58,16 +91,14 @@ export default function Store() {
         if (inputSearch.current.value.length > 0) {
             searchGame(inputSearch.current.value.toLowerCase().replace(" ", "-"))
                 .then((res) => {
-                    let bool = sortPrice === 'Higher to Lower' ? true : false
-                    render(bool,res.res)
+                    renderGames(res.res)
+                    
                 })
                 .catch((err) => console.log(err));
         } else {
-            let bool = sortPrice === 'Higher to Lower' ? true : false
-            render(bool,allGames)
+            renderGames(allGames)
         }
     };
-
     function activate() {
         setactive(true);
         setview(true);
@@ -78,41 +109,33 @@ export default function Store() {
     }
 
 
-    const handelSort = (e) =>{
-        setSortPrice(e)
-        let bool = e === 'Higher to Lower' ? true : false
-        setGamesRender(sort(bool, gamesRender))    
-    }
 
+    const handelSort = (bool) =>{
+        setSortPrice(bool)
+        // setGamesRender(sort(bool, gamesRender))    
+    }
     const handleGender = (e)=>{
         inputSearch.current.value = ''
         setGender(e)
-        
-        if(e !== '' && e !== 'All'){
-
-            getGameByGenre(e)
-            .then((games) =>{
-                let bool = sortPrice === 'Higher to Lower' ? true : false
-                render(bool,games.data.res);
-            })
-            .catch((err) =>console.log(err))
-        }else{
-            setGamesRender(allGames)
-        }
-    }
-
-    const render = (bool,array) => {
-       const aux = sort(bool, array)
-       setGamesRender(aux)
     }
     
 
     const sort = (bool,array) =>{
         let aux;
         bool ?  aux = array.sort((a,b) => b.price - a.price)
-             :  aux = array.sort((a,b) => a.price - b.price)
+            :  aux = array.sort((a,b) => a.price - b.price)
+        return priceMinMax(aux)
+    }
+
+    const priceMinMax = (array) => {
+      
+        const priceMin = min.current.value || 0
+        const priceMax = max.current.value || 999999
+        const aux = array.filter( game => game.price > priceMin && game.price < priceMax)
         return aux
     }
+    const recommended = () => renderGames(allGames.filter(game => game.rating > 4)) 
+    const offer = () => renderGames(allGames.filter(game => game.offer)) 
 
     return (
         <div>
@@ -138,7 +161,8 @@ export default function Store() {
                     <select
                         type="text"
                         className="select-genders"
-                        onChange={(e) => setGender(e.target.value)}
+                        onChange={(e) => handleGender(e.target.value)}
+                        ref={genderSelect}
                     >
                         <option disabled selected>
                             Genders
@@ -157,17 +181,21 @@ export default function Store() {
                     </select>
                 </div>
                 <div className="cont-range">
-                    <label className="title-label">Range</label>
+                    <label className="title-label">Price range</label>
                     <div className="range">
                         <input
                             className="input-renge rigth"
                             type="number"
                             placeholder="Min"
+                            ref={min}
+                            onChange={()=> setPriceMin(Number(min.current.value))}
                         />
                         <input
                             className="input-renge"
                             type="number"
                             placeholder="Max"
+                            ref={max}
+                            onChange={()=> setPriceMax(Number(max.current.value))}
                         />
                     </div>
                 </div>
@@ -177,18 +205,24 @@ export default function Store() {
                         row
                         aria-label="gender"
                         name="row-radio-buttons-group"
+                        ref={sortRadio}
+                       
                     >
                         <FormControlLabel
                             value="Higher"
                             control={<Radio />}
                             className="option-radio"
                             label="Higher to Lower"
-                        />
+                            onClick={() =>handelSort(true)}
+                            
+                            />
                         <FormControlLabel
                             value="Lower"
                             control={<Radio />}
                             className="option-radio"
                             label="Lower to Higher"
+                            onClick={() =>handelSort(false)}
+                            
                         />
                     </RadioGroup>
                 </FormControl>
@@ -218,7 +252,7 @@ export default function Store() {
                     ALL
                 </h6>
                 <h6
-                    onClick={() => setfilter("recommended")}
+                    onClick={() => recommended()}
                     className={
                         filter === "recommended"
                             ? "filter-games-active"
@@ -228,7 +262,7 @@ export default function Store() {
                     RECOMMENDED
                 </h6>
                 <h6
-                    onClick={() => setfilter("offers")}
+                    onClick={() => offer()}
                     className={
                         filter === "offers"
                             ? "filter-games-active"
@@ -237,7 +271,7 @@ export default function Store() {
                 >
                     OFFERS
                 </h6>
-                <h6
+                {props.user && <h6
                     onClick={() => setfilter("favorites")}
                     className={
                         filter === "favorites"
@@ -246,7 +280,7 @@ export default function Store() {
                     }
                 >
                     FAVORITES
-                </h6>
+                </h6>}
                 <div className="views">
                     <ViewComfyIcon
                         onClick={() => deactivate()}
@@ -279,3 +313,12 @@ export default function Store() {
         </div>
     );
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.userReducer.user,
+    };
+};
+
+export default connect(mapStateToProps, null)(Games);
