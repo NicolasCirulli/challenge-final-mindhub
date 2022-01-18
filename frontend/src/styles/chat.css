@@ -1,5 +1,5 @@
 .messenger {
-  height: calc(100vh - 70px);
+  height: calc(100vh - 80px);
   display: flex;
   margin-top: 80px;
 }
@@ -34,6 +34,8 @@
 
 .chatBoxBottom {
   margin-top: 5px;
+  margin-bottom: 20px;
+  margin-right: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,6 +45,7 @@
   width: 80%;
   height: 90px;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .chatSubmitButton {
@@ -51,7 +54,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: teal;
+  background-color: #11edd5;
   color: white;
 }
 

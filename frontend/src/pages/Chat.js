@@ -36,13 +36,6 @@ const Messenger = ({ user }) => {
   }, [receivedMessage, currentChat]);
 
   useEffect(() => {
-    socket.current.emit("addUser", user.id);
-    socket.current.on("getUsers", (users) => {
-      console.log(users);
-    });
-  }, [user]);
-
-  useEffect(() => {
     const getConversations = async () => {
       try {
         let res = await axios.get(
@@ -55,7 +48,11 @@ const Messenger = ({ user }) => {
       }
     };
     getConversations();
-  }, [user.id]);
+    socket.current.emit("addUser", user.id);
+    socket.current.on("getUsers", (users) => {
+      console.log(users);
+    });
+  }, [user]);
 
   useEffect(() => {
     const getMessages = async () => {
@@ -140,7 +137,7 @@ const Messenger = ({ user }) => {
                     e.key === "Enter" && handleSubmit(e);
                   }}
                 ></textarea>
-                <button className="chatSubmitbutton" onClick={handleSubmit}>
+                <button className="chatSubmitButton" onClick={handleSubmit}>
                   Send
                 </button>
               </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../styles/support.css";
 
 const Support = ({ user }) => {
   const navigate = useNavigate();
@@ -12,12 +13,20 @@ const Support = ({ user }) => {
     });
     navigate("/chat", { replace: true });
   };
-  console.log(user);
+
   return (
-    <div>
+    <div style={{ marginLeft: 100, color: "white" }} className="support">
       <div>
-        <p>Start a chat with a support staff member.</p>
-        <button onClick={handleContact}>Let`s talk</button>
+        <p>
+          If you need assistance please contact with us
+          <address>
+            <a href="mailto:support@xtreme.com">support@xtreme.com</a>
+          </address>
+        </p>
+        <p>or start a chat with a support staff member.</p>
+        <button onClick={handleContact} className="talkButton">
+          Let`s talk
+        </button>
       </div>
     </div>
   );
