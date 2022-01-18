@@ -155,7 +155,7 @@ code {
     border-radius: 1rem !important;
 }
 .cont-card-title{
-    background: rgba(221, 218, 218, 0.43);
+    background: rgba(129, 129, 129, 0.43);
     backdrop-filter: blur(4px);
     width: 100%;
     padding: 0.5rem;
@@ -195,19 +195,20 @@ code {
     text-decoration: none !important;
 }
 .btn-cart{
-    background-color: #11edd5;
-    border: #11edd5 solid 1.8px;
+    background-color: #1b1b1b4f;
+    border: #fff solid 1.8px;
+    color: #fff !important;
     border-radius: 50%;
     padding: .18rem;
-    font-size: 2rem !important ;
-    color: #343744 !important;
+    box-shadow: 1px 1px 1px 1px rgba(90, 90, 90, 0.815) !important; 
+    font-size: 2.2rem !important ;
     transition: .3s;
 
 }
 .btn-cart:hover{
-    background-color: #11edd300;
-    border: #fff solid 1.8px;
-    color: #fff !important;
+    background-color: #11edd5;
+    border: #11edd5 solid 1.8px;
+    color: #343744 !important;
     transition: .3s;
 }
 
@@ -479,7 +480,7 @@ code {
 }
 .all-games {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
     gap: 2.5rem 1rem;
     width: 100%;
 }
