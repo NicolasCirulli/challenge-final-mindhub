@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Profile from "./pages/Profile"
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "./redux/actions/authActions";
-import Profile from "./pages/Profile"
 import gamesActions from "./redux/actions/gamesActions";
 import "./App.css";
 import "./Sign.css";
