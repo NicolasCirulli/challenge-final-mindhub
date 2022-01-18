@@ -1,21 +1,21 @@
-const joi = require('joi')
+const joi = require ("joi")
 
 const validator = (req, res, next) => {
 
     const schema = joi.object({
-        firstName: joi.string().max(12).min(3).trim().pattern(new RegExp('[a-zA-Z]')).required().messages({
+        firstName: joi.string().min(3).trim().pattern(new RegExp('[a-zA-Z]')).required().messages({
             'string.min': 'The name must have more than three letters',
             'string.max': 'The name must have less than twelve letters',
             'string.empty':'The name is required',
             'string.pattern.base':'the name can only have letters'
         }),
-        lastName: joi.string().max(16).min(3).trim().pattern(new RegExp('[a-zA-Z]')).required().messages({
+        lastName: joi.string().min(3).trim().pattern(new RegExp('[a-zA-Z]')).required().messages({
            'string.empty' : 'The last name is required',
             'string.min': 'The last name must have more than three letters',
             'string.max': 'The last name must have less than sixteen letters',
             'string.pattern.base':'the last name can only contain letters'
         }),
-        userName: joi.string().max(8).min(3).trim().pattern(new RegExp('^[a-zA-Z0-9]')).required().messages({
+        userName: joi.string().min(3).trim().pattern(new RegExp('^[a-zA-Z0-9]')).required().messages({
            'string.empty' : 'The user name is required',
             'string.min': 'The user name must have more than three letters or numbers',
             'string.max': 'The user name must have less than eight letters or numbers',

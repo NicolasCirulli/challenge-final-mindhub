@@ -6,6 +6,10 @@ import GoogleLogin from 'react-google-login';
 import Swal from 'sweetalert2';
 
 const SignInComp = () => {
+    const dispatch = useDispatch();
+
+    const email = useRef();
+    const password = useRef();
     const Alert = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -25,7 +29,7 @@ const SignInComp = () => {
             password: response.profileObj.googleId,
             flagGoogle: true
         }
-        await dispatch (authActions.newUser(googleUser))
+        await dispatch (authActions.signIn(googleUser))
     .then(res => {
         if (res.success){
             console.log(res)
@@ -51,32 +55,43 @@ const SignInComp = () => {
   })
     }
 
-  const dispatch = useDispatch();
-
-  const email = useRef();
-  const password = useRef();
-
-  const signIn = async () => {
-    const user = {
-      mail: email.current.value,
-      password: password.current.value,
-    };
-    if (!Object.values(user).some((value) => value === "")) {
-      try {
-        const res = await dispatch(authActions.signIn(user));
-        console.log(res);
-        if (res.success) {
-          alert("welcome " + res.res.userName);
-        } else {
-          alert(res.res);
-        }
-      } catch (err) {
-        console.log(err);
+    const signIn = async () => {
+      const user = {
+          mail: email.current.value,
+          password: password.current.value,
+      };
+      if (!Object.values(user).some((value) => value === "")) {
+          try {
+              const res = await dispatch(authActions.signIn(user));
+              console.log(res);
+              if (res.success) {
+                  Swal.fire({
+                      position: 'center',
+                      icon: 'success',
+                      title: 'welcome '  + res.res.userName + '!',
+                      background: '#343744',
+                      iconColor: '#11edd3',
+                      color: '#fff',
+                      showConfirmButton: false,
+                      timer: 1500
+                  })
+              } else {
+                  Swal.fire({
+                      position: 'center',
+                      icon: 'error',
+                      background: '#343744',
+                      iconColor: '#af3181',
+                      color: '#fff',
+                      title: res.res,
+                      showConfirmButton: false,
+                      timer: 1500
+                  })
+              }
+          } catch (err) {
+              console.log(err);
+          }
       }
-    } else {
-      alert("Todos los campos son obligatorios");
-    }
-  };
+};
 
   return (
     <div className="backgroundSignIn">
