@@ -1,9 +1,125 @@
 const User = require("../models/User");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+const crypto = require("crypto");
+
+const sendEmail = async (mail, uniqueString) => {
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: "useremailverifyMindHub@gmail.com",
+      pass: "mindhub2021",
+    },
+    tls: { rejectUnauthorized: false },
+  });
+
+  let sender = "useremailverifyMindHub@gmail.com";
+  let mailOptions = {
+    from: sender,
+    to: mail,
+    subject: "Xtreme user verification",
+    html: `Click <a href=http://localhost:4000/api/verify/${uniqueString}>aqui</a>to confirm and verify your accout`,
+  };
+  await transporter.sendMail(mailOptions, function (error, response) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Mensaje enviado");
+    }
+  });
+};
 
 const userControllers = {
   addNewUser: async (req, res) => {
+    const {
+      firstName,
+      lastName,
+      userName,
+      mail,
+      password,
+      image,
+      address,
+      google,
+    } = req.body;
+
+    try {
+      const userExists = await User.findOne({ mail: mail });
+      if (userExists) {
+        if (google) {
+          const hashedPassword = bcryptjs.hashSync(password);
+          userExists.password = hashedPassword;
+          userExists.verifiedAccount = true;
+          userExist.google = true;
+          userExists.save();
+          res.json({
+            succes: true,
+            message: "User created succesfully with google account",
+          });
+        } else {
+          res.json({ succes: false, res: "Username already in use" });
+        }
+      } else {
+        const uniqueString = crypto.randomBytes(15).toString("hex");
+        const verifiedAccount = false;
+        const hashedPassword = bcryptjs.hashSync(password);
+        const newUser = new User({
+          firstName,
+          lastName,
+          userName,
+          mail,
+          password: hashedPassword,
+          uniqueString,
+          verifiedAccount,
+          google,
+          address,
+          image,
+        });
+        const token = await jwt.sign({ ...newUser }, process.env.SECRETOKEN);
+
+        if (google) {
+          newUser.verifiedAccount = true;
+          newUser.google = true;
+          await newUser.save();
+          res.json({
+            succes: true,
+            response: { token, newUser },
+            message: "Account created with google",
+          });
+        } else {
+          newUser.verifiedAccount = false;
+          newUser.google = false;
+          await newUser.save();
+          await sendEmail(mail, uniqueString);
+          res.json({
+            succes: true,
+            response: { token, newUser },
+            message: "An email has been sent to verified the account",
+          });
+        }
+      }
+    } catch (err) {
+      console.log(err);
+      res.json({ succes: false, response: null, error: err });
+    }
+  },
+
+  mailVerification: async (req, res) => {
+    const { uniqueString } = req.params;
+    const user = await User.findOne({ uniqueString: uniqueString });
+
+    if (user) {
+      user.verifiedAccount = true;
+      await user.save();
+      res.redirect("http://localhost:3000/");
+    } else {
+      res.json({ succes: false, response: "Mail not verified" });
+    }
+  },
+
+  /* addNewUser: async (req, res) => {
     const { firstName, lastName, userName, mail, password, image, address } =
       req.body;
     const hashedPassword = bcryptjs.hashSync(password);
@@ -38,7 +154,7 @@ const userControllers = {
     } catch (err) {
       res.json({ success: false, res: err.message });
     }
-  },
+  }, */
   signInUser: async (req, res) => {
     const { mail, password } = req.body;
     try {
