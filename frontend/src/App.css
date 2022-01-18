@@ -476,6 +476,9 @@ code {
 
 /*GAMES*/
 
+.PrivateSwitchBase-input{
+    display: none !important;
+}
 .box-games{
     min-height: 60vh;
     padding-bottom: 2rem;
