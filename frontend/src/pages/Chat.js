@@ -147,7 +147,7 @@ const Messenger = ({ user }) => {
             </>
           ) : (
             <span className="noConversationText">
-              Select a conversationto start a chat.
+              Select a conversation to start a chat.
             </span>
           )}
         </div>
