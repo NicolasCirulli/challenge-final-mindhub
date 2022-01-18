@@ -29,7 +29,7 @@ const SignInComp = () => {
             password: response.profileObj.googleId,
             flagGoogle: true
         }
-        await dispatch (authActions.newUser(googleUser))
+        await dispatch (authActions.signIn(googleUser))
     .then(res => {
         if (res.success){
             console.log(res)

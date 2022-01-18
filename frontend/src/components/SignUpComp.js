@@ -22,13 +22,13 @@ const SignUpComp = () => {
     const responseGoogle = async (response) => {
         console.log(response);
         let googleUser = {
-            firstname: response.profileObj.givenName,
-            lastname: response.profileObj.familyName,
-            username: response.profileObj.name,
-            mail: response.profileObj.email,
+            firstName: response.profileObj.givenName,
+            lastName: response.profileObj.familyName,
+            userName: response.profileObj.name,
             password: response.profileObj.googleId,
-            photo: response.profileObj.imageUrl,
-            country: "Argentina",
+            mail: response.profileObj.email,
+            image: response.profileObj.imageUrl,
+            address: "Argentina",
             google: true
         }
         await dispatch (authActions.newUser(googleUser))
