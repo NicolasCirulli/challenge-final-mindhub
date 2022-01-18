@@ -29,6 +29,8 @@ export default function Game () {
          background ={
        backgroundImage: "url("+data.background_image+")"}}
 
+   
+
     return (
         <>
            { data && <> <div className="gamebg" style={background} >
@@ -36,7 +38,7 @@ export default function Game () {
                     <h1 className="gamePath">{`${data.genres[0].name} / ${data.name}`}</h1>
                     <div className="divgen">
                         <div >
-                            <img className="avatar" src={data.background_image}/>
+                            <img className="avatar" style={{ backgroundImage: `url(${data.creator_img})` }} />
                         </div>
                         <div className="nameandlike">
                             <div className="gameinfo ">
@@ -124,7 +126,7 @@ export default function Game () {
                 <div className=" trailer">
                     <h4 className="game-desc-title">WATCH THE GAME TRAILER</h4>   
                     <div className="e-card-ht-trailer">
-                         <div className="e-card-image-1" > <img className="card-trailer" src="https://as01.epimg.net/meristation/imagenes/2020/05/14/noticias/1589454136_132592_1590065418_noticia_normal.jpg"/> </div>         
+                         <div className="e-card-image-1" ><iframe className="card-trailer" src={`https://www.youtube.com/embed/${data.trailer.slice(17,-1)}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>         
                     </div>   
                 </div>
             </div> </>}

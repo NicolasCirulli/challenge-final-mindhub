@@ -323,7 +323,6 @@ code {
 .go-down{
     width: 100%;
     display: flex;
-<<<<<<< HEAD
     justify-content: center;
 }
 .cont-down{
@@ -337,13 +336,6 @@ code {
 .cont-down:hover>.color-hover{
     color: #fff !important;
 }
-=======
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    cursor: pointer;
-}
->>>>>>> 5920bb9f0444b9949a88fd0a8adfe3203d8e6571
 .more-i{
     text-align: center;
     align-self: center;
@@ -434,15 +426,12 @@ code {
 .description-list-game{
     color: #fff;
     font-weight: lighter !important;
-<<<<<<< HEAD
     max-height: 41vh;
     overflow-y: scroll;
     padding-right: .6rem;
 }
 .description-list-game::-webkit-scrollbar{
     background-color: rgba(255, 255, 255, 0);
-=======
->>>>>>> 5920bb9f0444b9949a88fd0a8adfe3203d8e6571
 }
 .logo-game {
     width: 100%;

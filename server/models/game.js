@@ -33,7 +33,7 @@ const gameSchema = new mongoose.Schema({
     url: String,
   }],
   trailer: String,
-  
+  creator_img: String,
 });
 
 const game = mongoose.model("game", gameSchema);

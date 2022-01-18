@@ -98,7 +98,10 @@ function CardAdminGame({ item }) {
             <button onClick={() => handleInput("Url screenshot", "screenshot",'text')}>
                 Add screenshot
             </button>    
-
+            
+            {!data.creator_img &&<button onClick={() => handleInput("new creator image", "creator_img",'text')}>
+                Add creator image
+            </button> }
             <div>
                 {data.offer ? (
                     <>
