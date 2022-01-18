@@ -34,6 +34,14 @@ const gameSchema = new mongoose.Schema({
   }],
   trailer: String,
   creator_img: String,
+  comments: [
+    {
+        comment:{type:String},
+        idUser:{ type:mongoose.Types.ObjectId, ref:'user' },
+        imageUser: {type:String},
+        nameUser: {type:String}
+    }
+],
 });
 
 const game = mongoose.model("game", gameSchema);

@@ -3,6 +3,8 @@ const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
+const Game = require("../models/game");
+
 
 const sendEmail = async (mail, uniqueString) => {
   const transporter = nodemailer.createTransport({
@@ -258,6 +260,28 @@ const userControllers = {
         );
     }
   },
+  wishList: (req, res) => {
+    let {idGame} = req.body
+    Game.findOne({ _id: req.params.id })
+        .then((user) => {
+          
+          if (user.wishList.includes(idGame)) {
+            User.findOneAndUpdate({ _id: req.params.id }, { $pull: { wishList: idGame} }, { new: true })
+            .then((userUpdated) => res.json({ success: true, response: userUpdated.favs }))
+            .catch((error) => console.log(error))
+          }
+          else {
+
+            User.findOneAndUpdate({ _id: req.params.id }, { $push: { wishList: idGame} }, { new: true })
+                    .then((usuarioActualizado) => res.json({ success: true, response: usuarioActualizado.peliculasLikeadas }))
+                    .catch((error) => console.log(error))
+            }
+        })
+    .catch((error) => res.json({ success: false, response: error }))
+
+
+
+}
 };
 
 module.exports = userControllers;
