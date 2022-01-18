@@ -71,11 +71,18 @@ function Games(props) {
         setview(false);
     }
 
+    const handelSort = (bool) => {
+        setSortPrice(bool);
+    };
+   
+
+
     // Filtro
     const renderGames = () => {
         const array = filterByGender(filterGames(inputSearch.current.value),gender)
         const aux = sort(sortPrice, array);
         setGamesRender(aux);
+        setfilter("all")
     };
     const search = async () => renderGames(filterByGender(filterGames(inputSearch.current.value),gender))
     const filterGames = (search) => allGames.filter((game) => game.name.toLowerCase().startsWith( search.toLowerCase().trim() ) ) 
@@ -118,6 +125,11 @@ function Games(props) {
         setGamesRender(allGames);
         setfilter("all")
     } 
+
+
+
+    
+
     return (
         <div>
             <div className="container logo-game">
@@ -199,14 +211,14 @@ function Games(props) {
                             control={<Radio />}
                             className="option-radio"
                             label="Higher to Lower"
-                            onClick={() => setSortPrice(true)}
+                            onClick={() => handelSort(true)}
                         />
                         <FormControlLabel
                             value="Lower"
                             control={<Radio />}
                             className="option-radio"
                             label="Lower to Higher"
-                            onClick={() => setSortPrice(false)}
+                            onClick={() => handelSort(false)}
                         />
                     </RadioGroup>
                 </FormControl>
