@@ -262,18 +262,18 @@ const userControllers = {
   },
   wishList: (req, res) => {
     let {idGame} = req.body
-    Game.findOne({ _id: req.params.id })
+    let id = req.user._id
+    User.findOne({ _id: id })
         .then((user) => {
-          
           if (user.wishList.includes(idGame)) {
-            User.findOneAndUpdate({ _id: req.params.id }, { $pull: { wishList: idGame} }, { new: true })
-            .then((userUpdated) => res.json({ success: true, response: userUpdated.favs }))
+            User.findOneAndUpdate({ _id:  req.user._id }, { $pull: { wishList: idGame} }, { new: true })
+            .then((userUpdated) => res.json({ success: true, response: userUpdated }))
             .catch((error) => console.log(error))
           }
           else {
 
-            User.findOneAndUpdate({ _id: req.params.id }, { $push: { wishList: idGame} }, { new: true })
-                    .then((usuarioActualizado) => res.json({ success: true, response: usuarioActualizado.peliculasLikeadas }))
+            User.findOneAndUpdate({ _id:  req.user._id }, { $push: { wishList: idGame} }, { new: true })
+                    .then((userUpdated) => res.json({ success: true, response: userUpdated }))
                     .catch((error) => console.log(error))
             }
         })

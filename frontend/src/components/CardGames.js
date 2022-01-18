@@ -9,15 +9,15 @@ import authActions from "../redux/actions/authActions";
 
 export default function RecipeReviewCard({game}) {
     const dispatch = useDispatch()
-    const favs = useSelector(store => store.userReducer.user.wishList)
-    console.log(favs);
+    const user = useSelector(store => store.userReducer.user)
 
     const handleFavs = ()=>{
-        dispatch(authActions.wishList)
+        dispatch(authActions.wishList(game._id))
     }
 
     return (
             <div className="card">
+                {/* <button onClick={handleFavs}>favs</button> */}
                 <div
                     className="card-img"
                     style={{ backgroundImage: `url("${game.background_image}")`}}

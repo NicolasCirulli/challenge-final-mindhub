@@ -110,15 +110,19 @@ const authActions = {
     dispatch({type: 'logOut', payload: ""})
   }
   },
-  wishList : (id,idGame) => {
+  wishList : (idGame) => {
     return async (dispatch) =>{
       try{
-        const res = await axios.put(url+"wishList/"+id,{idGame},{
+        const res = await axios.put(url+"wishList/",{idGame},{
             headers:{
                 'Authorization':'Bearer '+token 
             }
         });
-        console.log(res);
+        console.log(res.data.response);
+        dispatch({
+          type: "signIn",
+          payload: {...res.data.response},
+        });
     }catch (err) {console.log(err);}
     }
   }

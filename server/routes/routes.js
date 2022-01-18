@@ -53,7 +53,7 @@ router
 
 router.route("/verify/:uniqueString").get(mailVerification);
 
-router.route("/wishList/:id").put(passport.authenticate('jwt',{session:false}),wishList);
+router.route("/wishList/").put(passport.authenticate('jwt',{session:false}),wishList);
 
 // GAME
 router.route("/allgames").get(getAllGame);
