@@ -399,17 +399,17 @@ code {
     cursor: pointer;
 }
 .cont-down:hover>.color-hover{
-    color: #fff !important;
+    color: #11edd5 !important;
 }
 .more-i{
     text-align: center;
     align-self: center;
     margin: 0 !important;
-    color: #626775;
+    color: #fff;
 }
 .icon-arrow{
     align-self: center;
-    color: #626775 !important;
+    color: #fff !important;
 }
 
 /*CARDS ABOUT US*/
