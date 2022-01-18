@@ -3,8 +3,60 @@ import { useDispatch } from "react-redux";
 import authActions from "../redux/actions/authActions";
 import countries from "./Countries";
 import image from "../assets/signUp.jpg";
+import GoogleLogin from 'react-google-login';
+import Swal from 'sweetalert2';
 
 const SignUpComp = () => {
+    const Alert = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: toast => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+    
+    const responseGoogle = async (response) => {
+        console.log(response);
+        let googleUser = {
+            firstname: response.profileObj.givenName,
+            lastname: response.profileObj.familyName,
+            username: response.profileObj.name,
+            mail: response.profileObj.email,
+            password: response.profileObj.googleId,
+            photo: response.profileObj.imageUrl,
+            country: "Argentina",
+            google: true
+        }
+        await dispatch (authActions.newUser(googleUser))
+    .then(res => {
+      if (res.success) {
+        console.log(res)
+        Alert.fire({
+          icon: 'success',
+          title: 'Your account has been created'
+        })
+      }
+      else{
+        console.log(res)
+        Alert.fire({
+        title: res.error[0].message,
+        icon: 'error'
+      })
+    }
+    })
+    .catch((error) => {
+      console.log(error)
+      Alert.fire({
+          icon: 'error',
+          title: 'Something went wrong! Come back later!'
+        })
+  })
+    }
+
     const dispatch = useDispatch();
 
     const [country, setCountry] = useState("");
@@ -153,6 +205,15 @@ const SignUpComp = () => {
                                     className="linkSignIn"
                                     value="Sign up"
                                     onClick={newUser}
+                                />
+                                <p>or</p>
+                                <GoogleLogin
+                                    className='googleBtn'
+                                    clientId="441570016693-jv03t22mt950it3camu7if135vkr4bok.apps.googleusercontent.com"
+                                    buttonText="Sign Up with Google"
+                                    onSuccess={responseGoogle}
+                                    onFailure={responseGoogle}
+                                    cookiePolicy={'single_host_origin'}
                                 />
                             </div>
                         </div>

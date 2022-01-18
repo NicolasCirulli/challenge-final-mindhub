@@ -51,6 +51,11 @@
     width: 70%;
     font-size: large;
     padding: .5rem .8rem;
+    text-align: center;
+}
+
+.icon-checkout{
+    margin-left: .2rem;
 }
 
 .btn-checkout:hover{
