@@ -23,7 +23,6 @@ const SignInComp = () => {
     })
 
     const responseGoogle = async (response) => {
-        console.log(response);
         let googleUser = {
             email: response.profileObj.email,
             password: response.profileObj.googleId,
@@ -32,14 +31,12 @@ const SignInComp = () => {
         await dispatch (authActions.signIn(googleUser))
     .then(res => {
         if (res.success){
-            console.log(res)
             Alert.fire({
               icon: 'success',
               title: 'Welcome '+res.response.userName
         })
       }
       else{
-        console.log(res)
         Alert.fire({
           title: res.error[0].message,
           icon: 'error'
@@ -63,7 +60,6 @@ const SignInComp = () => {
       if (!Object.values(user).some((value) => value === "")) {
           try {
               const res = await dispatch(authActions.signIn(user));
-              console.log(res);
               if (res.success) {
                   Swal.fire({
                       position: 'center',

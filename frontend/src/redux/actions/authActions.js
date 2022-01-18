@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const usuarioActions = {
+const authActions = {
   newUser: ({
     firstName,
     lastName,
@@ -47,13 +47,16 @@ const usuarioActions = {
           mail,
           password,
         });
-
+        console.log(user)
         if (user.data.success) {
           localStorage.setItem("token", user.data.res.token);
           dispatch({
             type: "signIn",
             payload: {
+              firstName: user.data.res.firstName,
+              lastName: user.data.res.lastName,
               userName: user.data.res.userName,
+              mail: user.data.res.mail,
               image: user.data.res.image,
               id: user.data.res._id,
               role : user.data.res.role
@@ -79,12 +82,15 @@ const usuarioActions = {
             },
           }
         );
-
+          console.log(user.data)
         user.data.success &&
           dispatch({
             type: "signIn",
             payload: {
+              firstName: user.data.res.firstName,
+              lastName: user.data.res.lastName,
               userName: user.data.res.userName,
+              mail: user.data.res.mail,
               image: user.data.res.image,
               id: user.data.res._id,
               role : user.data.res.role
@@ -103,5 +109,5 @@ const usuarioActions = {
   },
 };
 
-export default usuarioActions;
+export default authActions;
 

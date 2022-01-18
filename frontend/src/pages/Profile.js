@@ -1,7 +1,14 @@
 import "../styles/profile.css";
 import image from "../assets/gtav.jpg";
+import {useSelector, useDispatch} from "react-redux"
+import authActions from "../redux/actions/authActions";
 
 export default function Profile() {
+  const dispatch = useDispatch();
+  const user = useSelector((store) => store.userReducer.user);
+  localStorage.getItem("token") && !user && dispatch (authActions.signInWithToken());
+  console.log(user)
+
   return (
     <>
       <div className="container profile">
