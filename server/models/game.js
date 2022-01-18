@@ -34,7 +34,11 @@ const gameSchema = new mongoose.Schema({
   }],
   trailer: String,
   creator_img: String,
-});
+  language: [{
+    type: Boolean
+  }],
+})
+
 
 const game = mongoose.model("game", gameSchema);
 module.exports = game;
