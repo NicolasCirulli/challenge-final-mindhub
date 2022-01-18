@@ -18,6 +18,7 @@ const gameControllers = {
     }
   },
   getGame: async (req, res) => {
+    console.log(req.params.id);
     try {
       let game = await Game.findById(req.params.id);
       res.json({ res: game });
@@ -65,16 +66,30 @@ const gameControllers = {
   updateGame: async (req, res) => {
       
       const {body} = req.body
-      console.log(body)
-      Game.findOneAndUpdate(
+      
+
+      const {screenshot} = body
+
+      if(screenshot){
+        Game.findOneAndUpdate(
         { _id: req.params.id },
-        { ...body },
+        { $push:{screenshot:{url:screenshot}}},
         { new: true }
-      )
-        .then((response) => res.json({ success: true, respuesta: response }))
+        ).then((response) => res.json({ success: true, respuesta: response }))
         .catch((error) =>
           res.json({ success: false, response: error.message })
         );
+      }else{
+        Game.findOneAndUpdate(
+          { _id: req.params.id },
+          { ...body },
+          { new: true }
+        )
+          .then((response) => res.json({ success: true, respuesta: response }))
+          .catch((error) =>
+            res.json({ success: false, response: error.message })
+          );
+      }
   },
   deleteGame: async (req, res) => {
     try {

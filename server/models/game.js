@@ -28,7 +28,11 @@ const gameSchema = new mongoose.Schema({
   price: Number,
   offer: Boolean,
   priceOffer: Number,
-  percentage : Number
+  percentage : Number,
+  screenshot : [{
+    url: String,
+  }],
+  trailer: String,
   
 });
 

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "./redux/actions/authActions";
 import Profile from "./pages/Profile"
+import gamesActions from "./redux/actions/gamesActions";
 import "./App.css";
 import "./Sign.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,6 +17,7 @@ import Games from "./pages/Games";
 import AdminPanel from "./pages/AdminPanel";
 import Chat from "./pages/Chat";
 import Support from "./pages/Support";
+import Profile from "./pages/Profile"
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +28,7 @@ function App() {
 
   useEffect(() => {
     token && dispatch(authActions.signInWithToken(token));
+    dispatch(gamesActions.getAllGames());
   }, []);
 
   return (
@@ -35,12 +38,12 @@ function App() {
           <Navigation />
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route path="/game" element={<Game />}></Route>
+            <Route path="/game/:id" element={<Game />}></Route>
             {!user && <Route path="/signin" element={<SignIn />}></Route>}
             {!user && <Route path="/signup" element={<SignUp />}></Route>}
             <Route path="/about" element={<About />}></Route>
             <Route path="/games" element={<Games />}></Route>
-            <Route path="/admin" element={<AdminPanel />}></Route>
+            { user.role === 'admin' && <Route path="/admin" element={<AdminPanel />}></Route>}
             <Route path="*" element={<Home />}></Route>
             <Route path="profile" element={<Profile/>}></Route>
             <Route path="/chat" element={<Chat />}></Route>

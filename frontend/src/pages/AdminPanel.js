@@ -3,40 +3,24 @@ import { getAllUsers, getAllGames, getGameByGenre } from "../helpers/querys";
 import "../styles/admin.css";
 import CardAdmin from "../components/CardAdmin";
 import CardAdminGame from "../components/CardAdminGame";
+import {useSelector} from "react-redux"
 function AdminPanel() {
   const [allUsers, setAllusers] = useState([]);
-  const [allGames, setAllgames] = useState([]);
-  const [action, setAciton] = useState([])
   const [render, setRender] = useState(true);
+  const allGames = useSelector(store => store.gamesReducer.games)
 
   useEffect(() => {
     getAllUsers()
       .then((res) => setAllusers(res.response.res))
       .catch((err) => console.log(err));
-
-    getAllGames()
-      .then((res) => {
-        
-        setAllgames(res.response.res);
-      })
-      .catch((err) => console.log(err));
-
-      getGameByGenre('Action')
-        .then(res=> setAciton(res.data.res))
   }, []);
 
-  action.forEach(game => {
-    console.log('---------------------------------------')
-    game.genres.forEach(genero => console.log(genero.name))
-    console.log('---------------------------------------')
-   
-  })
 
   return (
     <>
       <div className="container-admin">
         <div className="main-admin">
-          <h1>admin</h1>
+          <h1 className="title-admin-1">Administrator</h1>
 
           <div className="d-flex">
             <button className="btnAdmin" onClick={() => setRender(true)}>
@@ -48,9 +32,9 @@ function AdminPanel() {
             </button>
           </div>
           {render ? (
-            <p>Cantidad de usuarios registrados es: {allUsers.length}</p>
+            <p className="title-users-r">Amount of registered users: {allUsers.length}</p>
           ) : (
-            <p>Cantidad de Juegos disponibles es: {allGames.length}</p>
+            <p>Amount of available games: {allGames.length}</p>
           )}
           <div className="container-card-admin">
             {render

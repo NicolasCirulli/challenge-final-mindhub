@@ -1,11 +1,12 @@
-import  React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CardGames from "../components/CardGames";
-import logo from "../assets/logo.png"
-import {getAllGames} from '../helpers/querys'
+import logo from "../assets/logo.png";
+import { getAllGames } from "../helpers/querys";
+import { useSelector } from "react-redux";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
@@ -16,22 +17,22 @@ const DrawerHeader = styled("div")(({ theme }) => ({
     ...theme.mixins.toolbar,
 }));
 
-
-
-
 export default function Home() {
 
-    const [allGames, setAllGames] = useState(false)
-
+    const allGames = useSelector(store => store.gamesReducer.games)
+    const [offer,setOffer] = useState([])
+    const [recommended, setRecommended] = useState([])
 
     useEffect(() => {
-        getAllGames()
-         .then(res => {
-             setAllGames(res.response.res)
-             
-         })
-         .catch(err => console.log(err))
-     }, [])
+       allGames && setOffer(allGames.filter(games => games.offer))
+       allGames && setRecommended(allGames.filter(games => games.rating > 4))
+    },[])
+
+    useEffect(() =>{
+        setOffer(allGames.filter(games => games.offer))
+        setRecommended(allGames.filter(games => games.rating > 4))
+    },[allGames])
+    
 
     return (
         <div className="container">
@@ -44,7 +45,7 @@ export default function Home() {
                     />
                     <button className="btn-search">Search</button>
                 </div>
-                <img src={logo} className="logo-home" alt='logo-home'/>
+                <img src={logo} className="logo-home" alt="logo-home" />
             </div>
             <div className="container Recommended">
                 <Typography
@@ -58,16 +59,17 @@ export default function Home() {
                 <DrawerHeader>
                     <Box sx={{ flexGrow: 1 }}>
                         <div className="box-recommended">
-                            { allGames && 
-                                <>
-                                <CardGames  game={allGames[0]}/>
-                                <CardGames game={allGames[0]}/>
-                                <CardGames game={allGames[0]}/>
-                                <CardGames game={allGames[0]}/>
-                                <CardGames game={allGames[0]}/>
-                                </>
-
-                            }
+                            {recommended &&
+                                recommended.map((game, index) => {
+                                    if (index < 5) {
+                                        return (
+                                            <CardGames
+                                                key={game._id}
+                                                game={game}
+                                            />
+                                        );
+                                    }
+                                })}
                         </div>
                     </Box>
                 </DrawerHeader>
@@ -83,56 +85,19 @@ export default function Home() {
                 </Typography>
                 <DrawerHeader>
                     <Box sx={{ flexGrow: 1 }}>
-                       { allGames &&  <div className="box-offers">
-                            <div className="box-card">
-                                <CardGames  game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
+                        {allGames && (
+                            <div className="box-offers">
+                                {offer.map((game) => (
+                                    <div className="box-card">
+                                        <CardGames key={game._id} game={game} />
+                                        <button className="btn-add-cart">
+                                            $ {game.price}{" "}
+                                            <LocalGroceryStoreIcon className="btn-icon" />
+                                        </button>
+                                    </div>
+                                ))}
                             </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                            <div className="box-card">
-                                <CardGames game={allGames[0]}/>
-                                <button className="btn-add-cart">
-                                    Price <LocalGroceryStoreIcon className="btn-icon" />
-                                </button>
-                            </div>
-                        </div>}
+                        )}
                     </Box>
                 </DrawerHeader>
             </div>

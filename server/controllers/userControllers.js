@@ -131,6 +131,7 @@ const userControllers = {
       password: hashedPassword,
       image,
       address,
+      
     });
     try {
       let repeatedUser = await User.findOne({ mail: mail });
@@ -149,6 +150,7 @@ const userControllers = {
           address: newUser.address,
           id: newUser._id,
           token,
+          role: newUser.role,
         },
       });
     } catch (err) {
@@ -171,6 +173,8 @@ const userControllers = {
           userName: userExist.userName,
           id: userExist._id,
           token,
+          image: userExist.image,
+          role: userExist.role,
         },
       });
     } catch (err) {
@@ -184,6 +188,7 @@ const userControllers = {
         userName: req.user.userName,
         image: req.user.image,
         _id: req.user._id,
+        role: req.user.role,
       },
     });
   },
