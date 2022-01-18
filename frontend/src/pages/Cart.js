@@ -1,7 +1,11 @@
 import "../styles/cart.css"
+import CardCart from "../components/CardCart"
 
 export default function Cart () {
     return(
-        <h1>Your selected products</h1>
+        <div className="bg-cart-all">
+          <h1 className="title-cart">Shopping cart</h1>
+          <CardCart/>
+        </div>
     )
 }

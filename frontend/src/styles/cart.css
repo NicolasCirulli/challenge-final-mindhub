@@ -1,0 +1,96 @@
+.bg-conteiner-cart{
+    height: 100%;
+}
+
+.conteiner-all-cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.title-cart{
+    color: white;
+    margin: 2% 10%;
+}
+
+.card-all-cart{
+    width: 50%;
+    margin-left: 10%;
+}
+
+.game-img-fornite{
+    width: 50%;
+    height: 100%;
+    border-radius: 2rem;
+    margin: 1rem 0rem;
+}
+
+.table-cart{
+    color: white;
+}
+
+.cart-second{
+    border: white 1px solid;
+    height: 30%;
+    width: 30%;
+    margin-top: 10%;
+    border-radius: 1rem;
+    color: white;
+}
+
+.title-cart-buy{
+    margin-left: 5%;
+}
+
+.btn-checkout{
+    background-color: #11edd5;
+    border: #11edd5 solid 2px;
+    border-radius: 1rem;
+    margin: 2% 15%;
+    font-weight: bold;
+    width: 70%;
+    font-size: large;
+    padding: .5rem .8rem;
+}
+
+.btn-checkout:hover{
+    background-color: rgba(255, 255, 255, 0);
+    border: #fff solid 2px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.cart-subtotal{
+    margin: 1rem;
+    border-bottom:solid 1px grey;
+    width: 90%;
+}
+
+.cart-total{
+    margin-left: 1rem;
+}
+
+.btn-back-shop{
+    margin-left: 75%;
+    margin-top: 3%;
+    border: #11edd5 solid 2px;
+    background-color: #11edd5; 
+    border-radius: 2rem;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: black;
+}
+
+.btn-back-shop:hover{
+    background-color: rgba(255, 255, 255, 0);
+    border: #fff solid 2px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+@media (max-width:700px){
+    .conteiner-all-cart{
+        flex-direction: column;
+        margin-left: 20%;
+    }
+}
