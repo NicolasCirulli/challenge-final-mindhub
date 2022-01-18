@@ -17,7 +17,6 @@ import Games from "./pages/Games";
 import AdminPanel from "./pages/AdminPanel";
 import Chat from "./pages/Chat";
 import Support from "./pages/Support";
-import Profile from "./pages/Profile"
 
 function App() {
   const dispatch = useDispatch();
