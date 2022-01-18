@@ -82,7 +82,6 @@ const authActions = {
             },
           }
         );
-          console.log(user.data)
         user.data.success &&
           dispatch({
             type: "signIn",
