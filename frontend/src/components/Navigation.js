@@ -26,6 +26,8 @@ import Swal from "sweetalert2";
 
 const drawerWidth = 240;
 
+
+
 const list = [
     { name: "Home", icon: <HomeIcon />, path: "/" },
     { name: "About us", icon: <SportsEsportsIcon />, path: "/about" },
@@ -75,6 +77,7 @@ function Navigation(props) {
     const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
     let location = useLocation();
+    const ruta = props.user.role === "admin" ? '/admin' : '/profile'
 
     function logOut() {
         Swal.fire({
@@ -211,10 +214,10 @@ function Navigation(props) {
                                     <ListItem
                                         button
                                         onClick={() => {
-                                            navigate("/profile");
+                                            navigate(ruta);
                                         }}
                                         className={
-                                            location.pathname === "/profile" &&
+                                            location.pathname === ruta &&
                                             "active"
                                         }
                                     >
