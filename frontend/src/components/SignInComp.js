@@ -46,7 +46,16 @@ const SignInComp = () => {
                 console.log(err);
             }
         } else {
-            alert("Todos los campos son obligatorios");
+          Swal.fire({
+            position: 'All fields are required',
+            icon: 'error',
+            background: '#343744',
+            iconColor: '#af3181',
+            color: '#fff',
+            title: res.res,
+            showConfirmButton: false,
+            timer: 1500
+        })
         }
     };
 
