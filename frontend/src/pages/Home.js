@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CardGames from "../components/CardGames";
 import logo from "../assets/logo.png";
-import { getAllGames } from "../helpers/querys";
 import { useSelector } from "react-redux";
 
 const DrawerHeader = styled("div")(({ theme }) => ({

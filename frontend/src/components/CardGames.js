@@ -17,15 +17,15 @@ export default function RecipeReviewCard({game}) {
 
     return (
             <div className="card">
-                {/* <button onClick={handleFavs}>favs</button> */}
                 <div
                     className="card-img"
                     style={{ backgroundImage: `url("${game.background_image}")`}}
                 >
-                    <IconButton aria-label="add to favorites" className="fav" >
+                    <IconButton aria-label="add to favorites" className="fav" onClick={handleFavs}>
                     <Checkbox
-                        icon={<FavoriteBorder />}
-                        checkedIcon={<Favorite className="favorite"/>}
+                        // icon={<FavoriteBorder />}
+                        // checkedIcon={<Favorite className="favorite"/>}
+                        icon={!user.wishList.includes(game._id) ? <FavoriteBorder /> : <Favorite className="favorite"/>}
                     />
                     </IconButton>
                     <div className="card-title">

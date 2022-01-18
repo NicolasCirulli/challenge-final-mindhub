@@ -122,7 +122,7 @@ export default function Game () {
                         <p className="p-review1">*Nombre de usuario</p>
                         <p className="p-review2">*rating*</p> 
                     </div>   
-                        < Comments/>
+                         < Comments data={data.comments}/>
                 </div>
                 <div className=" trailer">
                     <h4 className="game-desc-title">WATCH THE GAME TRAILER</h4>   

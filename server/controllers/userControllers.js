@@ -180,6 +180,7 @@ const userControllers = {
           token,
           image: userExist.image,
           role: userExist.role,
+          wishList : userExist.wishList
         },
       });
     } catch (err) {
@@ -198,6 +199,7 @@ const userControllers = {
         address: req.user.address,
         _id: req.user._id,
         role: req.user.role,
+        wishList : req.user.wishList,
       },
     });
   },
