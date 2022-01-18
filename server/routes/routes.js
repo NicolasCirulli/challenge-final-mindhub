@@ -14,6 +14,7 @@ const {
   deleteUser,
   updateUser,
   mailVerification,
+  wishList
 } = userControllers;
 const {
   addGame,
@@ -23,6 +24,9 @@ const {
   updateGame,
   getGameByGenre,
   getGamesByName,
+  addComment,
+  deleteComment,
+  updateComment
 } = gameControllers;
 const { addNewMessage, getMessage } = messageControllers;
 const { newConversation, getUserConversation, getTwoUsers } =
@@ -30,12 +34,15 @@ const { newConversation, getUserConversation, getTwoUsers } =
 
 // USER
 
-router.route("/users").get(getAllUsers);
+router.route("/users").get(passport.authenticate('jwt',{session:false}),getAllUsers);
 
 router.route("/user/signup").post(validator, addNewUser);
 router.route("/user/signin").post(signInUser);
 
-router.route("/user/:id").get(getUser).delete(deleteUser).put(updateUser);
+router.route("/user/:id")
+.get(getUser)
+.delete(passport.authenticate('jwt',{session:false}),deleteUser)
+.put(passport.authenticate('jwt',{session:false}),updateUser);
 
 router
   .route("/verifyToken")
@@ -46,6 +53,8 @@ router
 
 router.route("/verify/:uniqueString").get(mailVerification);
 
+router.route("/wishList/:id").put(passport.authenticate('jwt',{session:false}),wishList);
+
 // GAME
 router.route("/allgames").get(getAllGame);
 
@@ -53,9 +62,18 @@ router.route("/gameByGenre/:genre").get(getGameByGenre);
 
 router.route("/gameByName/:name").get(getGamesByName);
 
-router.route("/game").post(addGame);
+router.route("/game").post(passport.authenticate('jwt',{session:false}),addGame);
 
-router.route("/game/:id").get(getGame).delete(deleteGame).put(updateGame);
+router.route("/game/:id")
+.get(getGame)
+.delete(passport.authenticate('jwt',{session:false}),deleteGame)
+.put(passport.authenticate('jwt',{session:false}),updateGame);
+
+// comentarios games
+router.route("/comment/:id")
+.post(passport.authenticate('jwt',{session:false}),addComment)
+.put(passport.authenticate('jwt',{session:false}),updateComment)
+.delete(passport.authenticate('jwt',{session:false}),deleteComment)
 
 // CHAT
 

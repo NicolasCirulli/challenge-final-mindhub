@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const usuarioActions = {
+const token = localStorage.getItem("token");
+const url = 'http://localhost:4000/api/'
+const authActions = {
   newUser: ({
     firstName,
     lastName,
@@ -12,7 +14,7 @@ const usuarioActions = {
   }) => {
     return async (dispatch) => {
       try {
-        const user = await axios.post("http://localhost:4000/api/user/signup", {
+        const user = await axios.post(url+"user/signup", {
           firstName,
           lastName,
           userName,
@@ -43,17 +45,20 @@ const usuarioActions = {
   signIn: ({ mail, password }) => {
     return async (dispatch) => {
       try {
-        const user = await axios.post("http://localhost:4000/api/user/signin", {
+        const user = await axios.post(url+"user/signin", {
           mail,
           password,
         });
-
+        console.log(user)
         if (user.data.success) {
           localStorage.setItem("token", user.data.res.token);
           dispatch({
             type: "signIn",
             payload: {
+              firstName: user.data.res.firstName,
+              lastName: user.data.res.lastName,
               userName: user.data.res.userName,
+              mail: user.data.res.mail,
               image: user.data.res.image,
               id: user.data.res._id,
               role : user.data.res.role
@@ -71,7 +76,7 @@ const usuarioActions = {
     return async (dispatch) => {
       try {
         const user = await axios.post(
-          "http://localhost:4000/api/verifyToken",
+          url+"verifyToken",
           {},
           {
             headers: {
@@ -79,13 +84,17 @@ const usuarioActions = {
             },
           }
         );
-
+          console.log(user.data)
         user.data.success &&
           dispatch({
             type: "signIn",
             payload: {
+              firstName: user.data.res.firstName,
+              lastName: user.data.res.lastName,
               userName: user.data.res.userName,
+              mail: user.data.res.mail,
               image: user.data.res.image,
+              address: user.data.res.address,
               id: user.data.res._id,
               role : user.data.res.role
             },
@@ -101,7 +110,19 @@ const usuarioActions = {
     dispatch({type: 'logOut', payload: ""})
   }
   },
+  wishList : (id,idGame) => {
+    return async (dispatch) =>{
+      try{
+        const res = await axios.put(url+"wishList/"+id,{idGame},{
+            headers:{
+                'Authorization':'Bearer '+token 
+            }
+        });
+        console.log(res);
+    }catch (err) {console.log(err);}
+    }
+  }
 };
 
-export default usuarioActions;
+export default authActions;
 

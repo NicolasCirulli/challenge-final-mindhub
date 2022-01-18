@@ -37,8 +37,15 @@ const gameSchema = new mongoose.Schema({
   language: [{
     type: Boolean
   }],
-})
-
+  comments: [
+    {
+        comment:{type:String},
+        idUser:{ type:mongoose.Types.ObjectId, ref:'user' },
+        imageUser: {type:String},
+        nameUser: {type:String}
+    }
+],
+});
 
 const game = mongoose.model("game", gameSchema);
 module.exports = game;

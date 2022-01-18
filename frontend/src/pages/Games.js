@@ -47,13 +47,7 @@ function Games(props) {
     }, [allGames]);
 
     useEffect(() => {
-        if (gender === "All") {
-            renderGames(allGames);
-        } else {
-            getGameByGenre(gender)
-                .then((res) => renderGames(res.data.res))
-                .catch((err) => console.log(err));
-        }
+        renderGames()
     }, [gender, sortPrice, priceMin, priceMax]);
 
     // ref
@@ -63,38 +57,11 @@ function Games(props) {
     const max = useRef();
     const sortRadio = useRef();
 
-    const renderGames = (array) => {
-        const aux = sort(sortPrice, array);
-        let priceFilter;
-        if (priceMin && priceMax) {
-            priceFilter = aux.filter(
-                (game) => game.price >= priceMin && game.price <= priceMax
-            );
-        } else if (priceMin) {
-            priceFilter = aux.filter((game) => game.price >= priceMin);
-        } else if (priceMax) {
-            priceFilter = aux.filter((game) => game.price <= priceMax);
-        } else {
-            priceFilter = [...aux];
-        }
-        setGamesRender(priceFilter);
-    };
+ 
 
     // Funciones
-    const search = async () => {
-        genderSelect.current.value = "All";
-        if (inputSearch.current.value.length > 0) {
-            searchGame(
-                inputSearch.current.value.toLowerCase().replace(" ", "-")
-            )
-                .then((res) => {
-                    renderGames(res.res);
-                })
-                .catch((err) => console.log(err));
-        } else {
-            renderGames(allGames);
-        }
-    };
+
+
     function activate() {
         setactive(true);
         setview(true);
@@ -106,12 +73,30 @@ function Games(props) {
 
     const handelSort = (bool) => {
         setSortPrice(bool);
-        // setGamesRender(sort(bool, gamesRender))
     };
-    const handleGender = (e) => {
-        inputSearch.current.value = "";
-        setGender(e);
+   
+
+
+    // Filtro
+    const renderGames = () => {
+        const array = filterByGender(filterGames(inputSearch.current.value),gender)
+        const aux = sort(sortPrice, array);
+        setGamesRender(aux);
+        setfilter("all")
     };
+    const search = async () => renderGames(filterByGender(filterGames(inputSearch.current.value),gender))
+    const filterGames = (search) => allGames.filter((game) => game.name.toLowerCase().startsWith( search.toLowerCase().trim() ) ) 
+    const filterByGender = (array,selected) => {
+        const aux = []
+        array.forEach((game) => {
+            game.genres.forEach((genre => {
+                if(genre.name === selected || selected === 'All'){
+                    !aux.includes(game) && aux.push(game)
+                }
+            }))
+        })
+        return aux
+    }
     const sort = (bool, array) => {
         let aux;
         bool
@@ -123,23 +108,27 @@ function Games(props) {
         const priceMin = min.current.value || 0;
         const priceMax = max.current.value || 999999;
         const aux = array.filter(
-            (game) => game.price > priceMin && game.price < priceMax
+            (game) => game.price >= priceMin && game.price <= priceMax
         );
         return aux;
     };
 
     function recommended(){
-        renderGames(allGames.filter((game) => game.rating > 4));
+        setGamesRender(allGames.filter((game) => game.rating > 4));
         setfilter("recommended")
     }
     function offer(){
-        renderGames(allGames.filter((game) => game.offer));
+        setGamesRender(allGames.filter((game) => game.offer));
         setfilter("offers")
     }
     function all (){
-        renderGames(allGames);
+        setGamesRender(allGames);
         setfilter("all")
     } 
+
+
+
+    
 
     return (
         <div>
@@ -165,7 +154,7 @@ function Games(props) {
                     <select
                         type="text"
                         className="select-genders"
-                        onChange={(e) => handleGender(e.target.value)}
+                        onChange={(e) => setGender(e.target.value)}
                         ref={genderSelect}
                     >
                         <option disabled selected>

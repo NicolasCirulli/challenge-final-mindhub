@@ -1,7 +1,14 @@
 import "../styles/profile.css";
-import image from "../assets/gtav.jpg";
+
+import {useSelector, useDispatch} from "react-redux"
+import authActions from "../redux/actions/authActions";
 
 export default function Profile() {
+  const dispatch = useDispatch();
+  const user = useSelector((store) => store.userReducer.user);
+  localStorage.getItem("token") && !user && dispatch (authActions.signInWithToken());
+
+
   return (
     <>
       <div className="container profile">
@@ -10,12 +17,12 @@ export default function Profile() {
         </div>
         <div className="info-profile">
           <div className="profile-img-div">
-            <img className="profile-img" src={image} />
+            <img className="profile-img" src={user.image} />
           </div>
           <div className="profile-info">
-          <h2 className="nameandcountry">*name* *lastname*</h2>
-            <h2 className="nameandcountry">*nombre usuario*</h2>
-            <h2 className="nameandcountry">*pais usuario*</h2>
+          <h2 className="nameandcountry">{user.firstName} {user.lastName}</h2>
+            <h2 className="nameandcountry">{user.userName}</h2>
+            <h2 className="nameandcountry">{user.address}</h2>
           </div>
         </div> 
       </div> 

@@ -3,6 +3,8 @@ const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
+const Game = require("../models/game");
+
 
 const sendEmail = async (mail, uniqueString) => {
   const transporter = nodemailer.createTransport({
@@ -170,7 +172,10 @@ const userControllers = {
       res.json({
         success: true,
         res: {
+          firstName: userExist.firstName,
+          lastName: userExist.lastName,
           userName: userExist.userName,
+          mail: userExist.mail,
           id: userExist._id,
           token,
           image: userExist.image,
@@ -185,8 +190,12 @@ const userControllers = {
     res.json({
       success: true,
       res: {
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
         userName: req.user.userName,
+        mail: req.user.mail,
         image: req.user.image,
+        address: req.user.address,
         _id: req.user._id,
         role: req.user.role,
       },
@@ -251,6 +260,28 @@ const userControllers = {
         );
     }
   },
+  wishList: (req, res) => {
+    let {idGame} = req.body
+    Game.findOne({ _id: req.params.id })
+        .then((user) => {
+          
+          if (user.wishList.includes(idGame)) {
+            User.findOneAndUpdate({ _id: req.params.id }, { $pull: { wishList: idGame} }, { new: true })
+            .then((userUpdated) => res.json({ success: true, response: userUpdated.favs }))
+            .catch((error) => console.log(error))
+          }
+          else {
+
+            User.findOneAndUpdate({ _id: req.params.id }, { $push: { wishList: idGame} }, { new: true })
+                    .then((usuarioActualizado) => res.json({ success: true, response: usuarioActualizado.peliculasLikeadas }))
+                    .catch((error) => console.log(error))
+            }
+        })
+    .catch((error) => res.json({ success: false, response: error }))
+
+
+
+}
 };
 
 module.exports = userControllers;

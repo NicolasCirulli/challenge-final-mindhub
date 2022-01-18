@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import CardAbout from "../components/CardAbout";
 
 export default function About() {
+    const scrollToBottom = () => window.scrollTo({top: 680, behavior: "smooth"})
     return (
         <div className="container">
             <div className="cont-about">
@@ -30,13 +31,12 @@ export default function About() {
                                 and create games.
                             </Typography>
                         </div>
-                        {/* <button className="call-to-action">Visit our store</button> */}
                     </div>
                     <img src={logo} className="logo-welcome" />
                 </div>
                 <div className="go-down">
                     <div className="cont-down">
-                        <p className="more-i color-hover">More information </p>
+                        <p className="more-i color-hover" onClick={scrollToBottom}>More information </p>
                         <KeyboardArrowDownIcon className="icon-arrow color-hover" />
                     </div>
                 </div>
