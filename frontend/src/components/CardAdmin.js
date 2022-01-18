@@ -77,7 +77,7 @@ function CardAdmin({user}) {
             <button className="input-icon" onClick={update}>
                 <BsFillArrowRightSquareFill/>
             </button>
-            <button onClick={reset}>X</button>
+            <button className="btn-close-adm" onClick={reset}>X</button>
           </div>
           }
           <button className="card-user-admin-delete" onClick={()=>deleteUser(user._id)}>Delete Account</button>

@@ -17,6 +17,7 @@ import Games from "./pages/Games";
 import AdminPanel from "./pages/AdminPanel";
 import Chat from "./pages/Chat";
 import Support from "./pages/Support";
+import Cart from "./pages/Cart"
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ function App() {
             <Route path="/profile" element={<Profile/>}></Route>
             <Route path="/chat" element={<Chat />}></Route>
             <Route path="/support" element={<Support />}></Route>
+            <Route path="/cart" element={<Cart />}></Route>
           </Routes>
         </div>
       </BrowserRouter>
