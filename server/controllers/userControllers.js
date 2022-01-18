@@ -170,7 +170,10 @@ const userControllers = {
       res.json({
         success: true,
         res: {
+          firstName: userExist.firstName,
+          lastName: userExist.lastName,
           userName: userExist.userName,
+          mail: userExist.mail,
           id: userExist._id,
           token,
           image: userExist.image,
@@ -185,7 +188,10 @@ const userControllers = {
     res.json({
       success: true,
       res: {
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
         userName: req.user.userName,
+        mail: req.user.mail,
         image: req.user.image,
         _id: req.user._id,
         role: req.user.role,
