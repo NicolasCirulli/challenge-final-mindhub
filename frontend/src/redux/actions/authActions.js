@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const token = localStorage.getItem("token");
+const url = 'http://localhost:4000/api/'
 const authActions = {
   newUser: ({
     firstName,
@@ -12,7 +14,7 @@ const authActions = {
   }) => {
     return async (dispatch) => {
       try {
-        const user = await axios.post("http://localhost:4000/api/user/signup", {
+        const user = await axios.post(url+"user/signup", {
           firstName,
           lastName,
           userName,
@@ -29,7 +31,8 @@ const authActions = {
               userName: user.data.res.userName,
               image: user.data.res.image,
               id: user.data.res.id,
-              role : user.data.res.role
+              role : user.data.res.role,
+              wishList : user.data.res.wishList,
             },
           });
           return user.data;
@@ -43,7 +46,7 @@ const authActions = {
   signIn: ({ mail, password }) => {
     return async (dispatch) => {
       try {
-        const user = await axios.post("http://localhost:4000/api/user/signin", {
+        const user = await axios.post(url+"user/signin", {
           mail,
           password,
         });
@@ -59,7 +62,8 @@ const authActions = {
               mail: user.data.res.mail,
               image: user.data.res.image,
               id: user.data.res._id,
-              role : user.data.res.role
+              role : user.data.res.role,
+              wishList : user.data.res.wishList
             },
           });
           return user.data;
@@ -74,7 +78,7 @@ const authActions = {
     return async (dispatch) => {
       try {
         const user = await axios.post(
-          "http://localhost:4000/api/verifyToken",
+          url+"verifyToken",
           {},
           {
             headers: {
@@ -93,7 +97,8 @@ const authActions = {
               image: user.data.res.image,
               address: user.data.res.address,
               id: user.data.res._id,
-              role : user.data.res.role
+              role : user.data.res.role,
+              wishList : user.data.res.wishList
             },
           });
       } catch (err) {
@@ -107,6 +112,22 @@ const authActions = {
     dispatch({type: 'logOut', payload: ""})
   }
   },
+  wishList : (idGame) => {
+    return async (dispatch) =>{
+      try{
+        const res = await axios.put(url+"wishList/",{idGame},{
+            headers:{
+                'Authorization':'Bearer '+token 
+            }
+        });
+        console.log(res.data.response);
+        dispatch({
+          type: "signIn",
+          payload: {...res.data.response},
+        });
+    }catch (err) {console.log(err);}
+    }
+  }
 };
 
 export default authActions;

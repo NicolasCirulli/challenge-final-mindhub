@@ -9,6 +9,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useParams } from "react-router-dom";
 import {getGameById} from '../helpers/querys'
 import { getThemeProps } from "@mui/system";
+import Comments from "../components/Comments";
 
 export default function Game () {
 
@@ -120,8 +121,8 @@ export default function Game () {
                     <div className="review"> 
                         <p className="p-review1">*Nombre de usuario</p>
                         <p className="p-review2">*rating*</p> 
-                        <p className="p-review3">*"comment"*</p>
                     </div>   
+                         < Comments data={data.comments}/>
                 </div>
                 <div className=" trailer">
                     <h4 className="game-desc-title">WATCH THE GAME TRAILER</h4>   
