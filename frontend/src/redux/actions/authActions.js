@@ -92,6 +92,7 @@ const authActions = {
               userName: user.data.res.userName,
               mail: user.data.res.mail,
               image: user.data.res.image,
+              address: user.data.res.address,
               id: user.data.res._id,
               role : user.data.res.role
             },
