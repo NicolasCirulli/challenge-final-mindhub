@@ -55,6 +55,44 @@ const SignInComp = () => {
   })
     }
 
+    const signIn = async () => {
+      const user = {
+          mail: email.current.value,
+          password: password.current.value,
+      };
+      if (!Object.values(user).some((value) => value === "")) {
+          try {
+              const res = await dispatch(authActions.signIn(user));
+              console.log(res);
+              if (res.success) {
+                  Swal.fire({
+                      position: 'center',
+                      icon: 'success',
+                      title: 'welcome '  + res.res.userName + '!',
+                      background: '#343744',
+                      iconColor: '#11edd3',
+                      color: '#fff',
+                      showConfirmButton: false,
+                      timer: 1500
+                  })
+              } else {
+                  Swal.fire({
+                      position: 'center',
+                      icon: 'error',
+                      background: '#343744',
+                      iconColor: '#af3181',
+                      color: '#fff',
+                      title: res.res,
+                      showConfirmButton: false,
+                      timer: 1500
+                  })
+              }
+          } catch (err) {
+              console.log(err);
+          }
+      }
+};
+
   return (
     <div className="backgroundSignIn">
       <div className="cardSign">
