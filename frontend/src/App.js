@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Profile from "./pages/Profile"
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "./redux/actions/authActions";
 import Profile from "./pages/Profile"
@@ -17,6 +18,7 @@ import Games from "./pages/Games";
 import AdminPanel from "./pages/AdminPanel";
 import Chat from "./pages/Chat";
 import Support from "./pages/Support";
+import Cart from "./pages/Cart"
 
 function App() {
   const dispatch = useDispatch();
@@ -44,9 +46,10 @@ function App() {
             <Route path="/games" element={<Games />}></Route>
             { user.role === 'admin' && <Route path="/admin" element={<AdminPanel />}></Route>}
             <Route path="*" element={<Home />}></Route>
-            <Route path="profile" element={<Profile/>}></Route>
+            <Route path="/profile" element={<Profile/>}></Route>
             <Route path="/chat" element={<Chat />}></Route>
             <Route path="/support" element={<Support />}></Route>
+            <Route path="/cart" element={<Cart />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

@@ -74,7 +74,7 @@ function CardAdminGame({ item }) {
                 <img
                     src={data.background_image}
                     alt="userImage"
-                    className="user-admin-img"
+                    className="user-admin-img-games"
                 />
             </div>
             <div className="card-user-admin-fields">
@@ -90,28 +90,31 @@ function CardAdminGame({ item }) {
                     </p>
                 </div>
             )}
-            <button onClick={() => handleInput("New price", "price",'number')}>
+            <button className="btns-games" onClick={() => handleInput("New price", "price",'number')}>
                 Update price
             </button>
-           { !data.trailer && <button onClick={() => handleInput("Url trailer", "trailer",'text')}>
+           { !data.trailer && <button className="btns-games" onClick={() => handleInput("Url trailer", "trailer",'text')}>
                 Add trailer
             </button>}
 
-            <button onClick={() => handleInput("Url screenshot", "screenshot",'text')}>
+            <button className="btns-games" onClick={() => handleInput("Url screenshot", "screenshot",'text')}>
                 Add screenshot
             </button>    
-
+            
+            {!data.creator_img &&<button onClick={() => handleInput("new creator image", "creator_img",'text')}>
+                Add creator image
+            </button> }
             <div>
                 {data.offer ? (
                     <>
-                        <button onClick={()=> handleInput('New offer: percentage %', 'percentage','number')}>Update offer</button>
-                        <button onClick={removeOffer}>Remove offer</button>
+                        <button className="btns-games" onClick={()=> handleInput('New offer: percentage %', 'percentage','number')}>Update offer</button>
+                        <button className="btns-games" onClick={removeOffer}>Remove offer</button>
                     </>
                 ) : (
-                    <button onClick={()=> handleInput('New offer: percentage %', 'percentage','number')}>Add offer</button>
+                    <button className="btns-games" onClick={()=> handleInput('New offer: percentage %', 'percentage','number')}>Add offer</button>
                 )}
             </div>
-            <button onClick={removeGame} >Delete game</button>
+            <button className="btns-games" onClick={removeGame} >Delete game</button>
 
             {render && (
                 <div className="card-user-admin-fields">
@@ -123,7 +126,7 @@ function CardAdminGame({ item }) {
                     <button className="input-icon" onClick={update}>
                         <BsFillArrowRightSquareFill />
                     </button>
-                    <button onClick={reset}>X</button>
+                    <button className="btn-close-adm" onClick={reset}>X</button>
                 </div>
             )}
         </div>

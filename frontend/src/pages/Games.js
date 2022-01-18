@@ -12,15 +12,7 @@ import FormLabel from "@mui/material/FormLabel";
 import {connect, useSelector} from "react-redux";
 
 const genders = [
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "All Genders",
-=======
-    'All',
->>>>>>> 32d8460343d0829e659d8e197343412e5c767fe3
-=======
     "All",
->>>>>>> 715d1a83882cd349afaaf16d2168b63ffe2fb929
     "Action",
     "Adventure",
     "Massively Multiplayer",
@@ -35,34 +27,12 @@ const genders = [
     "Simulation",
     "Strategy",
 ];
-<<<<<<< HEAD
-export default function Store() {
-    const [view, setview] = useState(false)
-<<<<<<< HEAD
-    const [active, setactive] = useState(false)
-    const [filter, setfilter] = useState("all")
-
-    function activate(){
-        setactive(true)
-        setview(true)
-    }
-    function deactivate(){
-        setactive(false)
-        setview(false)
-    }
-=======
-    const [allGames, setAllGames] = useState([])
-    const [gamesRender, setGamesRender] = useState([])
-    const [gender,setGender] = useState([])
-    const inputSearch = useRef()
-=======
 function Games(props) {
 
     // estados
     const [view, setview] = useState(false);
     const [active, setactive] = useState(false);
     const [filter, setfilter] = useState("all");
->>>>>>> 715d1a83882cd349afaaf16d2168b63ffe2fb929
 
     
     const [gamesRender, setGamesRender] = useState([]);
@@ -139,9 +109,6 @@ function Games(props) {
     }
 
 
-<<<<<<< HEAD
->>>>>>> 32d8460343d0829e659d8e197343412e5c767fe3
-=======
 
     const handelSort = (bool) =>{
         setSortPrice(bool)
@@ -169,7 +136,6 @@ function Games(props) {
     }
     const recommended = () => renderGames(allGames.filter(game => game.rating > 4)) 
     const offer = () => renderGames(allGames.filter(game => game.offer)) 
->>>>>>> 715d1a83882cd349afaaf16d2168b63ffe2fb929
 
     return (
         <div>
@@ -315,55 +281,6 @@ function Games(props) {
             </div>
             <div className="container box-games">
                 <div className={view ? "list-grid" : "all-games"}>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-                    <CardGames />
-                    {view && <p className="description-list-game">Description</p>}
-=======
-                    {
-                        gamesRender.map(game => <CardGames key={game._id} game={game}/>)
-                    }
->>>>>>> 32d8460343d0829e659d8e197343412e5c767fe3
-                    
-=======
                     {gamesRender.map((game) => {
                         if (view) {
                             return (
@@ -378,7 +295,6 @@ function Games(props) {
                             return <CardGames key={game._id} game={game} />;
                         }
                     })}
->>>>>>> 715d1a83882cd349afaaf16d2168b63ffe2fb929
                 </div>
             </div>
         </div>

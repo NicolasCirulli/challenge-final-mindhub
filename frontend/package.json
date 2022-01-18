@@ -19,6 +19,7 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.0",
     "react-dom": "^17.0.2",
+    "react-google-login": "^5.2.2",
     "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
@@ -28,6 +29,7 @@
     "selenium-webdriver": "^4.1.1",
     "socket.io-client": "^4.4.1",
     "styled-components": "^5.3.3",
+    "sweetalert2": "^11.3.6",
     "timeago.js": "^4.0.2",
     "web-vitals": "^2.1.2"
   },

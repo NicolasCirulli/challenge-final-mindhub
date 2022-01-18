@@ -25,6 +25,18 @@
 outline: none;
 }
 
+.buttonsSignUp{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 1rem;
+    align-items: baseline;
+}
+
+.googleBtn{
+    border-radius: 5rem;
+}
+
 .titleSignUp{
     color:rgb(30, 142, 240);
 }
@@ -69,6 +81,10 @@ outline: none;
     justify-content: center;
     align-items: center;
     font-size: large;
+}
+
+.or-sign-in{
+    margin-top: 1rem;
 }
 
 .titleSignIn{

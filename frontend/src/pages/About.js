@@ -8,7 +8,7 @@ import CardAbout from "../components/CardAbout";
 
 export default function About() {
     return (
-        <div className="container">
+        <div className="container about-us">
             <div className="cont-about">
                 <div className="container cont-welcome">
                     <div className="welcome">
