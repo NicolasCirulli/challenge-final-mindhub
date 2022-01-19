@@ -18,13 +18,11 @@ const SignUpComp = () => {
       toast.addEventListener("mouseleave", Swal.resumeTimer);
     },
   });
-  let nombre = "juanito";
 
   const responseGoogle = async (response) => {
     console.log(response);
     let googleUser = {
       firstName: response.profileObj.givenName,
-
       lastName: response.profileObj.familyName,
       userName: response.profileObj.name,
       password: response.profileObj.googleId,

@@ -94,7 +94,9 @@ const userControllers = {
         } else {
           newUser.verifiedAccount = false;
           newUser.google = false;
+
           await newUser.save();
+
           await sendEmail(mail, uniqueString);
           res.json({
             succes: true,

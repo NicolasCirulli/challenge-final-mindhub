@@ -49,9 +49,9 @@ const Messenger = ({ user }) => {
     };
     getConversations();
     socket.current.emit("addUser", user.id);
-    socket.current.on("getUsers", (users) => {
-      console.log(users);
-    });
+    //socket.current.on("getUsers", (users) => {
+    //console.log(users);
+    //});
   }, [user]);
 
   useEffect(() => {
