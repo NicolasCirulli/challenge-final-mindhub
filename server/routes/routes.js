@@ -5,6 +5,7 @@ const userControllers = require("../controllers/userControllers");
 const gameControllers = require("../controllers/gameControllers");
 const messageControllers = require("../controllers/messageControllers");
 const conversationControllers = require("../controllers/conversationControllers");
+const filesControllers = require("../controllers/filesController");
 
 const {
   addNewUser,
@@ -31,6 +32,10 @@ const {
 const { addNewMessage, getMessage } = messageControllers;
 const { newConversation, getUserConversation, getTwoUsers } =
   conversationControllers;
+
+const{
+  uploadFile,
+}= filesControllers
 
 // USER
 
@@ -83,5 +88,6 @@ router.route("/conversations").post(newConversation);
 router.route("/conversations/:userId").get(getUserConversation);
 router.route("/conversations/find/:firstUserId/:secondUserId").get(getTwoUsers);
 //router.route("/user/:id").get(getOneUser);
+
 
 module.exports = router;

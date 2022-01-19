@@ -4,6 +4,7 @@ const cors = require("cors");
 const router = require("./routes/routes");
 const passport = require("passport");
 const { Server } = require("socket.io");
+const fileUpload = require("express-fileupload");
 
 require("dotenv").config();
 require("./config/database");
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
 app.use("/api", router);
+app.use(fileUpload())
 
 let server = app.listen("4000", () =>
   console.log("Server listening on port 4000")
