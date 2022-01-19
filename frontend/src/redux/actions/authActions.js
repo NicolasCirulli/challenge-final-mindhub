@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const usuarioActions = {
+const token = localStorage.getItem("token");
+const url = 'http://localhost:4000/api/'
+const authActions = {
   newUser: ({
     firstName,
     lastName,
@@ -12,7 +14,7 @@ const usuarioActions = {
   }) => {
     return async (dispatch) => {
       try {
-        const user = await axios.post("http://localhost:4000/api/user/signup", {
+        const user = await axios.post(url+"user/signup", {
           firstName,
           lastName,
           userName,
@@ -29,7 +31,12 @@ const usuarioActions = {
               userName: user.data.res.userName,
               image: user.data.res.image,
               id: user.data.res.id,
+<<<<<<< HEAD
               role: user.data.res.role,
+=======
+              role : user.data.res.role,
+              wishList : user.data.res.wishList,
+>>>>>>> d675d2cacabed9fbd11750fa1e58e05d058d97d4
             },
           });
           return user.data;
@@ -43,20 +50,28 @@ const usuarioActions = {
   signIn: ({ mail, password }) => {
     return async (dispatch) => {
       try {
-        const user = await axios.post("http://localhost:4000/api/user/signin", {
+        const user = await axios.post(url+"user/signin", {
           mail,
           password,
         });
-
+        console.log(user)
         if (user.data.success) {
           localStorage.setItem("token", user.data.res.token);
           dispatch({
             type: "signIn",
             payload: {
+              firstName: user.data.res.firstName,
+              lastName: user.data.res.lastName,
               userName: user.data.res.userName,
+              mail: user.data.res.mail,
               image: user.data.res.image,
               id: user.data.res._id,
+<<<<<<< HEAD
               role: user.data.res.role,
+=======
+              role : user.data.res.role,
+              wishList : user.data.res.wishList
+>>>>>>> d675d2cacabed9fbd11750fa1e58e05d058d97d4
             },
           });
           return user.data;
@@ -71,7 +86,7 @@ const usuarioActions = {
     return async (dispatch) => {
       try {
         const user = await axios.post(
-          "http://localhost:4000/api/verifyToken",
+          url+"verifyToken",
           {},
           {
             headers: {
@@ -79,15 +94,23 @@ const usuarioActions = {
             },
           }
         );
-
         user.data.success &&
           dispatch({
             type: "signIn",
             payload: {
+              firstName: user.data.res.firstName,
+              lastName: user.data.res.lastName,
               userName: user.data.res.userName,
+              mail: user.data.res.mail,
               image: user.data.res.image,
+              address: user.data.res.address,
               id: user.data.res._id,
+<<<<<<< HEAD
               role: user.data.res.role,
+=======
+              role : user.data.res.role,
+              wishList : user.data.res.wishList
+>>>>>>> d675d2cacabed9fbd11750fa1e58e05d058d97d4
             },
           });
       } catch (err) {
@@ -101,6 +124,27 @@ const usuarioActions = {
       dispatch({ type: "logOut", payload: "" });
     };
   },
+  wishList : (idGame) => {
+    return async (dispatch) =>{
+      try{
+        const res = await axios.put(url+"wishList/",{idGame},{
+            headers:{
+                'Authorization':'Bearer '+token 
+            }
+        });
+        console.log(res.data.response);
+        dispatch({
+          type: "signIn",
+          payload: {...res.data.response},
+        });
+    }catch (err) {console.log(err);}
+    }
+  }
 };
 
+<<<<<<< HEAD
 export default usuarioActions;
+=======
+export default authActions;
+
+>>>>>>> d675d2cacabed9fbd11750fa1e58e05d058d97d4

@@ -102,6 +102,75 @@ const gameControllers = {
       });
     }
   },
+  addComment:async (req, res) => {
+    
+    const id = req.params.id
+    try{
+      const addComment = await Game.findOneAndUpdate(
+        {_id:id},
+        {
+          $push:{comments:{ 
+            comment : req.body.comment, 
+            idUser : req.user._id,
+            imageUser : req.user.image,
+            nameUser : req.user.userName,
+          }
+        }            
+        }, 
+        {new:true}
+      )
+      if(addComment){
+        res.json({success:true, response: addComment, error:false })
+      }else{
+        res.json({success:false, response: [{message:'error'}], error:true })
+      }
+    }catch(err){
+      console.log(err)}
+  },
+  deleteComment:async (req, res) => {
+    const idComment = req.body.idComment
+    const id = req.params.id
+    console.log(idComment);
+    try{
+      const game = await Game.findOneAndUpdate(
+        {_id : id},
+        {
+          $pull: {
+            comments:{
+              _id: idComment
+             }
+          }
+        },{new:true}
+        )
+      if(game){
+        res.json({success:true, response:game, error:false })
+      }else{
+        res.json({success:false, response:[{message:'error'}], error:true })
+      }
+    }catch(err){
+      console.log(err)}
+  },
+
+  updateComment:async (req, res) => {
+    const idComment = req.body.idComment
+    const update = req.body.update
+    try{
+      const game = await Game.findOneAndUpdate(
+
+        {'comments._id' : idComment},
+        { $set: { "comments.$.comment": update} },
+        {new:true}
+        )
+
+       if(game){
+        res.json({success:true, response:game, error:false })
+       }else{
+        res.json({success:false, response:[{message:'error'}], error:true })
+      }
+    }catch(err){
+      console.log(err)}
+
+  },
  
 
 };

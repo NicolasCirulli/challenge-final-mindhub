@@ -183,3 +183,67 @@ td .MuiSvgIcon-root {
     border-radius: 1rem;
     margin-bottom: 3rem;
 }
+
+/* COMMENTS  */
+.conteiner-comments{
+    width: 60vw;
+    background-color: black;
+    height: 50vh;
+    padding: 1rem;
+    border-radius: 2rem;
+}
+
+.title-comments{
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner-comm-ind{
+    background-color: white;
+    color: black;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: row;
+    padding: .5rem;
+    width: 80%;
+    align-items: baseline;
+}
+
+.img-comment{
+    width: 4vw;
+    height: 8vh;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: .5rem;
+}
+
+.labelComments{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    box-sizing: border-box;
+    border-radius: .8rem;
+    border: 1px white solid;
+    height: 2rem;
+    width: 80%;
+    background-color: transparent;
+    color: white;
+    padding: 1rem;
+}
+
+.leave-comment{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 15vh;
+}
+
+.btn-leave-comment{
+    border: none;
+    margin-left: .5rem;
+    background-color: white;
+    color: black;
+    border-radius: 20%;
+    height: 80%;
+}

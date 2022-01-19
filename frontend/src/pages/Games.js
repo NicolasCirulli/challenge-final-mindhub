@@ -9,7 +9,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormLabel from "@mui/material/FormLabel";
-import {connect, useSelector} from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 const genders = [
     "All",
@@ -28,77 +28,40 @@ const genders = [
     "Strategy",
 ];
 function Games(props) {
-
     // estados
     const [view, setview] = useState(false);
     const [active, setactive] = useState(false);
     const [filter, setfilter] = useState("all");
 
-    
     const [gamesRender, setGamesRender] = useState([]);
 
-
-    const [gender, setGender] = useState('All');
+    const [gender, setGender] = useState("All");
     const [sortPrice, setSortPrice] = useState(true);
-    const [priceMin, setPriceMin] = useState(false)
-    const [priceMax, setPriceMax] = useState(false)
+    const [priceMin, setPriceMin] = useState(false);
+    const [priceMax, setPriceMax] = useState(false);
 
-    const allGames = useSelector(store => store.gamesReducer.games)
-    
-    useEffect(() => {
-
-        renderGames(allGames)
-
-    },[allGames])
+    const allGames = useSelector((store) => store.gamesReducer.games);
 
     useEffect(() => {
-        if(gender === 'All') {
-            renderGames(allGames)
-        }else{
-            getGameByGenre(gender)
-                .then(res => renderGames(res.data.res))
-                .catch(err => console.log(err))
-        }
-        },[gender,sortPrice,priceMin,priceMax])
+        renderGames(allGames);
+    }, [allGames]);
 
-    // ref 
+    useEffect(() => {
+        renderGames()
+    }, [gender, sortPrice, priceMin, priceMax]);
+
+    // ref
     const inputSearch = useRef();
-    const genderSelect =useRef();
+    const genderSelect = useRef();
     const min = useRef();
     const max = useRef();
     const sortRadio = useRef();
 
-   const renderGames = (array)=>{
-        const aux = sort(sortPrice,array)
-        let priceFilter;
-        if(priceMin && priceMax){
-            priceFilter = aux.filter( game => game.price >= priceMin && game.price <= priceMax)
-        }else if(priceMin){
-            priceFilter = aux.filter( game => game.price >= priceMin )
-        }else if(priceMax){
-            priceFilter = aux.filter( game => game.price <= priceMax )
-        }else{
-            priceFilter = [...aux]
-        }
-        setGamesRender(priceFilter) 
-   }
-    
-
+ 
 
     // Funciones
-    const search = async () => {
-        genderSelect.current.value = 'All'
-        if (inputSearch.current.value.length > 0) {
-            searchGame(inputSearch.current.value.toLowerCase().replace(" ", "-"))
-                .then((res) => {
-                    renderGames(res.res)
-                    
-                })
-                .catch((err) => console.log(err));
-        } else {
-            renderGames(allGames)
-        }
-    };
+
+
     function activate() {
         setactive(true);
         setview(true);
@@ -108,34 +71,64 @@ function Games(props) {
         setview(false);
     }
 
+    const handelSort = (bool) => {
+        setSortPrice(bool);
+    };
+   
 
 
-    const handelSort = (bool) =>{
-        setSortPrice(bool)
-        // setGamesRender(sort(bool, gamesRender))    
-    }
-    const handleGender = (e)=>{
-        inputSearch.current.value = ''
-        setGender(e)
-    }
-    
-
-    const sort = (bool,array) =>{
-        let aux;
-        bool ?  aux = array.sort((a,b) => b.price - a.price)
-            :  aux = array.sort((a,b) => a.price - b.price)
-        return priceMinMax(aux)
-    }
-
-    const priceMinMax = (array) => {
-      
-        const priceMin = min.current.value || 0
-        const priceMax = max.current.value || 999999
-        const aux = array.filter( game => game.price > priceMin && game.price < priceMax)
+    // Filtro
+    const renderGames = () => {
+        const array = filterByGender(filterGames(inputSearch.current.value),gender)
+        const aux = sort(sortPrice, array);
+        setGamesRender(aux);
+        setfilter("all")
+    };
+    const search = async () => renderGames(filterByGender(filterGames(inputSearch.current.value),gender))
+    const filterGames = (search) => allGames.filter((game) => game.name.toLowerCase().startsWith( search.toLowerCase().trim() ) ) 
+    const filterByGender = (array,selected) => {
+        const aux = []
+        array.forEach((game) => {
+            game.genres.forEach((genre => {
+                if(genre.name === selected || selected === 'All'){
+                    !aux.includes(game) && aux.push(game)
+                }
+            }))
+        })
         return aux
     }
-    const recommended = () => renderGames(allGames.filter(game => game.rating > 4)) 
-    const offer = () => renderGames(allGames.filter(game => game.offer)) 
+    const sort = (bool, array) => {
+        let aux;
+        bool
+            ? (aux = array.sort((a, b) => b.price - a.price))
+            : (aux = array.sort((a, b) => a.price - b.price));
+        return priceMinMax(aux);
+    };
+    const priceMinMax = (array) => {
+        const priceMin = min.current.value || 0;
+        const priceMax = max.current.value || 999999;
+        const aux = array.filter(
+            (game) => game.price >= priceMin && game.price <= priceMax
+        );
+        return aux;
+    };
+
+    function recommended(){
+        setGamesRender(allGames.filter((game) => game.rating > 4));
+        setfilter("recommended")
+    }
+    function offer(){
+        setGamesRender(allGames.filter((game) => game.offer));
+        setfilter("offers")
+    }
+    function all (){
+        setGamesRender(allGames);
+        setfilter("all")
+    } 
+
+
+
+    
 
     return (
         <div>
@@ -161,7 +154,7 @@ function Games(props) {
                     <select
                         type="text"
                         className="select-genders"
-                        onChange={(e) => handleGender(e.target.value)}
+                        onChange={(e) => setGender(e.target.value)}
                         ref={genderSelect}
                     >
                         <option disabled selected>
@@ -188,48 +181,51 @@ function Games(props) {
                             type="number"
                             placeholder="Min"
                             ref={min}
-                            onChange={()=> setPriceMin(Number(min.current.value))}
+                            onChange={() =>
+                                setPriceMin(Number(min.current.value))
+                            }
                         />
                         <input
                             className="input-renge"
                             type="number"
                             placeholder="Max"
                             ref={max}
-                            onChange={()=> setPriceMax(Number(max.current.value))}
+                            onChange={() =>
+                                setPriceMax(Number(max.current.value))
+                            }
                         />
                     </div>
                 </div>
                 <FormControl component="fieldset">
-                    <FormLabel component="legend" className="sort" >Sort by Price</FormLabel>
+                    <FormLabel component="legend" className="sort">
+                        Sort by Price
+                    </FormLabel>
                     <RadioGroup
                         row
                         aria-label="gender"
                         name="row-radio-buttons-group"
                         ref={sortRadio}
-                       
                     >
                         <FormControlLabel
                             value="Higher"
                             control={<Radio />}
                             className="option-radio"
                             label="Higher to Lower"
-                            onClick={() =>handelSort(true)}
-                            
-                            />
+                            onClick={() => handelSort(true)}
+                        />
                         <FormControlLabel
                             value="Lower"
                             control={<Radio />}
                             className="option-radio"
                             label="Lower to Higher"
-                            onClick={() =>handelSort(false)}
-                            
+                            onClick={() => handelSort(false)}
                         />
                     </RadioGroup>
                 </FormControl>
             </div>
             <div className="container cont-filter-games">
                 <h6
-                    onClick={() => setfilter("all")}
+                    onClick={() => all()}
                     className={
                         filter === "all"
                             ? "filter-games-active"
@@ -258,16 +254,18 @@ function Games(props) {
                 >
                     OFFERS
                 </h6>
-                {props.user && <h6
-                    onClick={() => setfilter("favorites")}
-                    className={
-                        filter === "favorites"
-                            ? "filter-games-active"
-                            : "filter-games"
-                    }
-                >
-                    FAVORITES
-                </h6>}
+                {props.user && (
+                    <h6
+                        onClick={() => setfilter("favorites")}
+                        className={
+                            filter === "favorites"
+                                ? "filter-games-active"
+                                : "filter-games"
+                        }
+                    >
+                        FAVORITES
+                    </h6>
+                )}
                 <div className="views">
                     <ViewComfyIcon
                         onClick={() => deactivate()}
@@ -300,7 +298,6 @@ function Games(props) {
         </div>
     );
 }
-
 
 const mapStateToProps = (state) => {
     return {

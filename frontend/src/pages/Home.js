@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CardGames from "../components/CardGames";
 import logo from "../assets/logo.png";
-import { getAllGames } from "../helpers/querys";
 import { useSelector } from "react-redux";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -22,6 +21,7 @@ export default function Home() {
     const allGames = useSelector(store => store.gamesReducer.games)
     const [offer,setOffer] = useState([])
     const [recommended, setRecommended] = useState([])
+    const [search,setSearch] = useState(null)
 
     useEffect(() => {
        allGames && setOffer(allGames.filter(games => games.offer))
@@ -34,6 +34,8 @@ export default function Home() {
     },[allGames])
     
 
+    const filterGames = (search) => search.length > 0 ? setSearch(allGames.filter((game) => game.name.toLowerCase().startsWith( search.toLowerCase().trim() ) ) ) : setSearch(null)
+
     return (
         <div className="container">
             <div className="container header">
@@ -42,11 +44,42 @@ export default function Home() {
                         type="text"
                         className="search"
                         placeholder="Search a Game"
+                        onChange={e => filterGames(e.target.value)}
                     />
                     <button className="btn-search">Search</button>
                 </div>
                 <img src={logo} className="logo-home" alt="logo-home" />
             </div>
+            {search && 
+            
+            <div className="container">
+                <Typography
+                    variant="h6"
+                    noWrap
+                    component="div"
+                    className="title"
+                >
+                    search
+                </Typography>
+                <DrawerHeader>
+                    <Box sx={{ flexGrow: 1 }}>
+                        {search && (
+                            <div className="box-offers">
+                                {search.map((game) => (
+                                    <div className="box-card">
+                                        <CardGames key={game._id} game={game} />
+                                        <button className="btn-add-cart">
+                                            $ {game.price}{" "}
+                                            <LocalGroceryStoreIcon className="btn-icon" />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </Box>
+                </DrawerHeader>
+            </div>}
+
             <div className="container Recommended">
                 <Typography
                     variant="h6"
