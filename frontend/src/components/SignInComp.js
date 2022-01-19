@@ -24,7 +24,7 @@ const SignInComp = () => {
 
   const responseGoogle = async (response) => {
     let googleUser = {
-      email: response.profileObj.email,
+      mail: response.profileObj.email,
       password: response.profileObj.googleId,
       flagGoogle: true
     }
@@ -33,7 +33,7 @@ const SignInComp = () => {
         if (res.success) {
           Alert.fire({
             icon: 'success',
-            title: 'Welcome ' + res.response.userName
+            title: 'Welcome ' + res.res.userName
           })
         }
         else {
