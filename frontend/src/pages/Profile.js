@@ -185,7 +185,7 @@ export default function Profile() {
                 )}
             </div>
             <div className="container fav-div">
-                <h3 className="fav-title">WISH LIST:</h3>
+                <h3 className="fav-title">Wish List:</h3>
             </div>
             <div >
                 <FlipMove className="container favorites">
