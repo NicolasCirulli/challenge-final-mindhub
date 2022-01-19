@@ -99,125 +99,6 @@ const SignUpComp = () => {
     }
   };
 
-<<<<<<< HEAD
-    return (
-        <div className="backgroundSign">
-            <div className="cardSignUp">
-                <div className="sup">
-                    <div className="titlesSU">
-                        <h1 className="titleSignUp">Enjoy the benefits</h1>
-                        <h2>of beeing an xtreme user</h2>
-                        <h3 className="titleSignUp">Sign up xtreme</h3>
-                   
-                    <form>
-                        <div className="bodyFormSU">
-                            <div className="onlyInputs">
-                                <div className="namesSU">
-                                    <div className="inputName">
-                                        <label>Name</label>
-                                        <input
-                                            type="text"
-                                            id="name"
-                                            className="labelSU"
-                                            ref={name}
-                                        />
-                                    </div>
-                                    <div className="inputLastame">
-                                        <label>Lastname</label>
-                                        <input
-                                            type="text"
-                                            id="lastname"
-                                            className="labelSU"
-                                            ref={lastName}
-                                        />
-                                    </div>
-                                    <div className="inputLastame">
-                                        <label>Username</label>
-                                        <input
-                                            type="text"
-                                            id="lastname"
-                                            className="labelSU"
-                                            ref={userName}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="dataMail">
-                                    <div className="inputEmail">
-                                        <label>Email</label>
-                                        <input
-                                            type="text"
-                                            id="email"
-                                            className="labelSU"
-                                            ref={email}
-                                        />
-                                    </div>
-                                    <div className="inputPassword">
-                                        <label>Password</label>
-                                        <input
-                                            type="password"
-                                            id="password"
-                                            className="labelSU"
-                                            ref={password}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="adicionalInfo">
-                                    <div className="inputPhoto">
-                                        <label>Photo</label>
-                                        <input
-                                            type="text"
-                                            id="photo"
-                                            className="labelSU"
-                                            ref={photo}
-                                        />
-                                    </div>
-                                    <div className="inputCountry">
-                                        <label>Country</label>
-                                        <select
-                                            type="text"
-                                            id="country"
-                                            className="labelSU"
-                                            onChange={handleCountry}
-                                        >
-                                            {countries
-                                                .sort()
-                                                .map((country, index) => {
-                                                    return (
-                                                        <option
-                                                            value={country}
-                                                            key={index}
-                                                            className="color-country"
-                                                        >
-                                                            {country}
-                                                        </option>
-                                                    );
-                                                })}
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                             
-                            <div className="buttonsSignUp">
-                                <input
-                                    type="button"
-                                    className="linkSignIn"
-                                    value="Sign up"
-                                    onClick={newUser}
-                                />
-                                <p>or</p>
-                                <GoogleLogin
-                                    className="googleBtn"
-                                    clientId="441570016693-jv03t22mt950it3camu7if135vkr4bok.apps.googleusercontent.com"
-                                    buttonText="Sign Up with Google"
-                                    onSuccess={responseGoogle}
-                                    onFailure={responseGoogle}
-                                    cookiePolicy={"single_host_origin"}
-                                />
-                            </div>
-                        </div>
-                    </form>
-                    </div>
-=======
   return (
     <div className="backgroundSign">
       <div className="cardSignUp">
@@ -258,7 +139,6 @@ const SignUpComp = () => {
                       ref={userName}
                     />
                   </div>
->>>>>>> 64518aed78fff6cde2ac59fcb1fcaffbde7eb15d
                 </div>
                 <div className="dataMail">
                   <div className="inputEmail">
