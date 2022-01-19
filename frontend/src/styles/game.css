@@ -137,7 +137,6 @@ td .MuiSvgIcon-root {
     flex-direction: row;
     color: rgba(255, 255, 255, 0.952);
     justify-content: space-between;
-    margin-right: 2rem;
 }
 .review{
     display: flex;
@@ -151,8 +150,9 @@ td .MuiSvgIcon-root {
     text-decoration: underline;
 }
 .p-review1{
-    font-style: italic;
+    color: rgba(255, 255, 255, 0.856);
     font-weight: bold;
+    margin-top: .5rem;
 }
 .p-review2{
     margin-left: 2rem;
@@ -161,16 +161,14 @@ td .MuiSvgIcon-root {
     padding: .2rem;
     font-size: 15px;
 }
-.p-review3{
-    margin-left: 2rem;
-    font-size: 15px;
-}
 /*trailer*/
 .trailer{
     display: flex;
     flex-direction: column;
+    align-self: flex-end;
     color: rgba(255, 255, 255, 0.952);
-    margin-top: 2rem;
+    width: 50vh;
+    margin-right: -5rem;
 }
 .trailer h4{
     font-size: 15px;
@@ -180,39 +178,53 @@ td .MuiSvgIcon-root {
 .card-trailer{
     margin-top: 1rem;
     width: 100%;
-    height: 20rem;
+    height: 22rem;
     border-radius: 1rem;
     margin-bottom: 3rem;
 }
 
 /* COMMENTS  */
-.conteiner-comments{
-    width: 60vw;
-    background-color: black;
-    height: 50vh;
-    padding: 1rem;
-    border-radius: 2rem;
-}
-
-.title-comments{
+.comments{
+    width: 100vh;
+    height: auto;
+    padding: .5rem; 
     display: flex;
     justify-content: center;
+    flex-direction: row;
 }
-
+.comments-contenedor{
+    background-color: rgba(216, 202, 202, 0.157);
+    border-radius: 1.5rem;
+}
 .conteiner-comm-ind{
-    background-color: white;
+    background-color: rgba(212, 203, 203, 0.205);
     color: black;
     border-radius: 2rem;
     display: flex;
     flex-direction: row;
     padding: .5rem;
-    width: 80%;
-    align-items: baseline;
+    width: 100%;
+    align-items:center;
+    justify-content: space-between;
+    margin-top: .5rem;
+}
+.org-2{
+    display: flex;
+    align-self: end;
+}
+.p-data-comment{
+    color: rgba(255, 255, 255, 0.87);
+    
+    font-style: italic;
+}
+.org{
+    display: flex;
+    align-items: flex-end;
 }
 
 .img-comment{
     width: 4vw;
-    height: 8vh;
+    height: 4vw;
     border-radius: 50%;
     object-fit: cover;
     margin-right: .5rem;
@@ -229,6 +241,7 @@ td .MuiSvgIcon-root {
     width: 80%;
     background-color: transparent;
     color: white;
+    margin: 1rem;
     padding: 1rem;
 }
 
@@ -241,10 +254,17 @@ td .MuiSvgIcon-root {
 }
 
 .btn-leave-comment{
+    margin: 1rem;
     border: none;
-    margin-left: .5rem;
+    width: 2rem;
     background-color: white;
     color: black;
     border-radius: 20%;
-    height: 80%;
+    height: 2rem;
+}
+.comment-input{
+    display: flex;
+    background-color: #af318169;
+    border-radius: 1.5rem;
+    justify-content: space-between;
 }
