@@ -104,7 +104,7 @@ export default function Game () {
                         </tr>
                         </thead>
                         <tbody>
-                            
+     
 
                         {/*
                         <tr><td>Spanish</td> <td><CloseIcon className="icon-done"/></td></tr>
@@ -115,22 +115,18 @@ export default function Game () {
                 </div>
             </div>
             <div className="container finalinfo">
-                <div>
-                    <h4 className="review-text">REVIEWS</h4> 
-                
-                    <div className="review"> 
-                        <p className="p-review1">*Nombre de usuario</p>
-                        <p className="p-review2">*rating*</p> 
-                    </div>   
+                <div className="">
+                    <h4 className="review-text">REVIEWS</h4>                     
                          < Comments data={data.comments}/>
                 </div>
-                <div className=" trailer">
+                <div className="trailer">
                     <h4 className="game-desc-title">WATCH THE GAME TRAILER</h4>   
                     <div className="e-card-ht-trailer">
                          <div className="e-card-image-1" ><iframe className="card-trailer" src={`https://www.youtube.com/embed/${data.trailer.slice(17,-1)}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>         
                     </div>   
                 </div>
-            </div> </>}
+            </div>
+             </>}
         </>
     )
 }

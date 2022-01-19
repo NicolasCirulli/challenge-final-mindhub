@@ -10,10 +10,8 @@ export default function Comments({data}) {
 
     return (
       <>
-       <div className="conteiner-comments" >
-        <h1 className="title-comments">Comments</h1>
-       
-           
+       <div className="comments" >
+    
         {data.map( comment => <Comment data={comment}/>)}
        
             <input

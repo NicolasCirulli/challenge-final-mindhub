@@ -6,7 +6,7 @@ import authActions from "./redux/actions/authActions";
 import gamesActions from "./redux/actions/gamesActions";
 import cartActions from "./redux/actions/cartActions";
 import "./App.css";
-import "./Sign.css";
+import "./styles/Sign.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
 import Navigation from "./components/Navigation";
