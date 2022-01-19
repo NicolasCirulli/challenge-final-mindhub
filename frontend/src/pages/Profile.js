@@ -49,6 +49,12 @@ export default function Profile() {
         setField(null);
         setPlaceholder("");
     };
+    /*  function handleFavs (gameId) {
+        
+        user && dispatch(authActions.wishList(gameId))
+            ;
+    }; */
+
     useEffect(() => {
         setData(user);
     }, [user]);
@@ -184,7 +190,7 @@ export default function Profile() {
                 )}
             </div>
             <div className="container fav-div">
-                <h3 className="fav-title">Wishlist:</h3>
+                <h3 className="fav-title">WISH LIST:</h3>
             </div>
             <div className="container favorites">
                 {gameFav[0] &&
@@ -207,6 +213,7 @@ export default function Profile() {
                                     <h5 className="title-card-fav">
                                         {game.name}
                                     </h5>
+                                    <h4 className="delete-fav" >x</h4>
                                 </div>
                                 <div className="cont-card-title">
                                     <div className="card-title">

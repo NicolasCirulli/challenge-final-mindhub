@@ -1,36 +1,35 @@
-import "../styles/game.css"
+import "../styles/game.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import IconButton from "@mui/material/IconButton";
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import DoneIcon from '@mui/icons-material/Done';
-import CloseIcon from '@mui/icons-material/Close';
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import DoneIcon from "@mui/icons-material/Done";
+import CloseIcon from "@mui/icons-material/Close";
 import { useParams } from "react-router-dom";
-import {getGameById} from '../helpers/querys'
+import { getGameById } from "../helpers/querys";
 import { getThemeProps } from "@mui/system";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Comments from "../components/Comments";
 
-export default function Game () {
-
-
-    const [like, setlike] = useState(false)
-    const [data,setData] = useState(null)
-    const params = useParams()
+export default function Game() {
+    const [like, setlike] = useState(false);
+    const [data, setData] = useState(null);
+    const params = useParams();
 
     useEffect(() => {
         getGameById(params.id)
-            .then((res) =>{
+            .then((res) => {
                 setData(res.response.res);
             })
-            .catch((err) => console.log(err))
-    },[])
+            .catch((err) => console.log(err));
+    }, []);
     let background;
-     if (data) {
-         background ={
-       backgroundImage: "url("+data.background_image+")"}}
-
+    if (data) {
+        background = {
+            backgroundImage: "url(" + data.background_image + ")",
+        };
+    }
 
     return (
         <>
@@ -177,18 +176,29 @@ export default function Game () {
                             <h4 className="review-text">REVIEWS</h4>
                             <Comments data={data.comments} />
                         </div>
-                    </div>
-                 </div>
-                 <div className="container screen-div">
-                {
-                    data.screenshot.map(screenshot=>{
-                        return <div className="size">
-                        <div className="e-card-ht-screen">
-                            <div className="e-card-image-1-screen" > <img className="card-img-screen" src={screenshot.url} key={data.screenshot.id}/> </div>         
+                        <div className=" trailer">
+                            <h4 className="game-desc-title">
+                                WATCH THE GAME TRAILER
+                            </h4>
+                            <div className="e-card-ht-trailer">
+                                <div className="e-card-image-1">
+                                    <iframe
+                                        className="card-trailer"
+                                        src={`https://www.youtube.com/embed/${data.trailer.slice(
+                                            17,
+                                            -1
+                                        )}`}
+                                        title="YouTube video player"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen
+                                    ></iframe>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </>
             )}
         </>
-    )
+    );
 }

@@ -166,3 +166,6 @@
     backdrop-filter: blur(13.743px);
     border-radius: 1rem 1rem 0 0;
 }
+.delete-fav{
+    cursor: pointer;
+}
