@@ -24,8 +24,8 @@ export default function Home() {
     const [search,setSearch] = useState(null)
 
     useEffect(() => {
-       allGames && setOffer(allGames.filter(games => games.offer))
-       allGames && setRecommended(allGames.filter(games => games.rating > 4))
+        allGames && setOffer(allGames.filter(games => games.offer))
+        allGames && setRecommended(allGames.filter(games => games.rating > 4))
     },[])
 
     useEffect(() =>{

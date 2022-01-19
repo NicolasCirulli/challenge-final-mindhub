@@ -50,7 +50,6 @@ const authActions = {
           mail,
           password,
         });
-        console.log(user)
         if (user.data.success) {
           localStorage.setItem("token", user.data.res.token);
           dispatch({
@@ -120,7 +119,6 @@ const authActions = {
                 'Authorization':'Bearer '+token 
             }
         });
-        console.log(res.data.response);
         dispatch({
           type: "signIn",
           payload: {...res.data.response},
