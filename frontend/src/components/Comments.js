@@ -27,7 +27,6 @@ export default function Comments({data}) {
         <div className="leave-comment">
          <button className="btn-leave-comment"><BsFillArrowRightSquareFill /></button>
      </div>
-
       </>
     );
 }

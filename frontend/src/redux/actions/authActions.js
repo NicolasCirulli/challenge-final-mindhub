@@ -31,8 +31,12 @@ const authActions = {
               userName: user.data.res.userName,
               image: user.data.res.image,
               id: user.data.res.id,
+<<<<<<< HEAD
+              role: user.data.res.role,
+=======
               role : user.data.res.role,
               wishList : user.data.res.wishList,
+>>>>>>> d675d2cacabed9fbd11750fa1e58e05d058d97d4
             },
           });
           return user.data;
@@ -61,8 +65,12 @@ const authActions = {
               mail: user.data.res.mail,
               image: user.data.res.image,
               id: user.data.res._id,
+<<<<<<< HEAD
+              role: user.data.res.role,
+=======
               role : user.data.res.role,
               wishList : user.data.res.wishList
+>>>>>>> d675d2cacabed9fbd11750fa1e58e05d058d97d4
             },
           });
           return user.data;
@@ -96,8 +104,12 @@ const authActions = {
               image: user.data.res.image,
               address: user.data.res.address,
               id: user.data.res._id,
+<<<<<<< HEAD
+              role: user.data.res.role,
+=======
               role : user.data.res.role,
               wishList : user.data.res.wishList
+>>>>>>> d675d2cacabed9fbd11750fa1e58e05d058d97d4
             },
           });
       } catch (err) {
@@ -106,10 +118,10 @@ const authActions = {
     };
   },
   logOut: () => {
-    localStorage.removeItem("token")
-  return (dispatch, getState) => {
-    dispatch({type: 'logOut', payload: ""})
-  }
+    localStorage.removeItem("token");
+    return (dispatch, getState) => {
+      dispatch({ type: "logOut", payload: "" });
+    };
   },
   wishList : (idGame) => {
     return async (dispatch) =>{
@@ -125,8 +137,37 @@ const authActions = {
         });
     }catch (err) {console.log(err);}
     }
+  },
+  addToCart: (datos) =>{
+    return (dispatch) => {
+      
+    dispatch({type:'add_cart'})
+    console.log(datos);
+    
+    }
+  },
+  deleteCartItem: (idGame) =>{
+    return async (dispatch) => {
+    dispatch({type:'decrement_cart', payload:idGame})
+    }
+  },
+  deleteCart: () =>{
+    return async (dispatch) => {
+    dispatch({type:'delete_cart'})
+    }
+  },
+  setCartStore: () =>{
+    return  (dispatch) => {
+      const cartStorage = localStorage.getItem('cart')
+      dispatch({type: 'setCartStore'})
+      console.log(cartStorage);
+    }
   }
 };
 
+<<<<<<< HEAD
+export default usuarioActions;
+=======
 export default authActions;
 
+>>>>>>> d675d2cacabed9fbd11750fa1e58e05d058d97d4

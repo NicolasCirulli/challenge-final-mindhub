@@ -14,7 +14,8 @@ const {
   deleteUser,
   updateUser,
   mailVerification,
-  wishList
+  wishList,
+  addCart
 } = userControllers;
 const {
   addGame,
@@ -34,7 +35,7 @@ const { newConversation, getUserConversation, getTwoUsers } =
 
 // USER
 
-router.route("/users").get(passport.authenticate('jwt',{session:false}),getAllUsers);
+router.route("/users").get(getAllUsers);
 
 router.route("/user/signup").post(validator, addNewUser);
 router.route("/user/signin").post(signInUser);
@@ -54,6 +55,7 @@ router
 router.route("/verify/:uniqueString").get(mailVerification);
 
 router.route("/wishList/").put(passport.authenticate('jwt',{session:false}),wishList);
+router.route("/cart/").put(passport.authenticate('jwt',{session:false}),addCart);
 
 // GAME
 router.route("/allgames").get(getAllGame);
@@ -83,5 +85,6 @@ router.route("/conversations").post(newConversation);
 router.route("/conversations/:userId").get(getUserConversation);
 router.route("/conversations/find/:firstUserId/:secondUserId").get(getTwoUsers);
 //router.route("/user/:id").get(getOneUser);
+
 
 module.exports = router;

@@ -4,6 +4,7 @@ const cors = require("cors");
 const router = require("./routes/routes");
 const passport = require("passport");
 const { Server } = require("socket.io");
+const fileUpload = require("express-fileupload");
 
 require("dotenv").config();
 require("./config/database");
@@ -12,6 +13,8 @@ require("./config/passport");
 app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
+
+app.use(fileUpload());
 app.use("/api", router);
 
 let server = app.listen("4000", () =>

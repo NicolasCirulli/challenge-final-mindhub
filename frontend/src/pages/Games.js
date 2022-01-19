@@ -3,7 +3,6 @@ import CardGames from "../components/CardGamesPrecio";
 import logo from "../assets/logo.png";
 import ListIcon from "@mui/icons-material/List";
 import ViewComfyIcon from "@mui/icons-material/ViewComfy";
-import { getAllGames, searchGame, getGameByGenre } from "../helpers/querys";
 import FormControl from "@mui/material/FormControl";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -283,7 +282,7 @@ function Games(props) {
                         if (view) {
                             return (
                                 <>
-                                    <CardGames key={game._id} game={game} />
+                                    <CardGames key={game._id} game={game}/>
                                     <p className="description-list-game">
                                         {game.description_raw}
                                     </p>
