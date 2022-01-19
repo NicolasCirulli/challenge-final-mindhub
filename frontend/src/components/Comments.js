@@ -1,8 +1,8 @@
 import  React,{useRef} from "react";
 import Comment from './Comment'
-import {
-    BsFillArrowRightSquareFill,
-} from "react-icons/bs";
+import { BsFillArrowRightSquareFill,} from "react-icons/bs";
+
+
 export default function Comments({data}) {
 
     return (
