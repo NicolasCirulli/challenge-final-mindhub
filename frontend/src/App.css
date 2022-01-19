@@ -673,3 +673,7 @@ code {
 .rigth{
     margin-right: .5rem;
 }
+
+*{
+    font-family: 'Poppins', sans-serif !important;
+}
