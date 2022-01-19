@@ -31,9 +31,10 @@ const sendEmail = async (mail, uniqueString) => {
     from: sender,
     to: mail,
     subject: "Xtreme user verification",
-    html: `<h2>Welcome to Xtreme</h2>
-    Please click <a href=http://localhost:4000/api/verify/${uniqueString}>here</a> to confirm and verify your account
-    <img src="https://i.imgur.com/TJfgLFH.png" alt="Xtreme"/>`,
+    html: `<img src="https://i.imgur.com/TJfgLFHt.png" alt="Xtreme"/>
+    <h2>Welcome to Xtreme</h2>
+    <h3>Please click <a href=http://localhost:4000/api/verify/${uniqueString}>here</a> to confirm and verify your account</h3>
+    `,
     //template: "index",
   };
   await transporter.sendMail(mailOptions, function (error, response) {
