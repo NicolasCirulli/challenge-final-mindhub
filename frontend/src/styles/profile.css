@@ -4,19 +4,17 @@
     font-size: 1.5rem;
     font-weight: bold;
 }
-.titulo{
-    color: #fff;
-    font-size: 5rem;
-}
+
 /*----------CARD EDIT PROFILE----------*/
 
 /*CONTAINER EDIT*/
 .info-profile{
-    width: 50%;
+    width: 50vw;
     padding: 2rem;
     background-color: rgba(128, 128, 128, 0.226);
     margin-top: 1rem;
     border-radius: 2rem;
+    
 }
 .cont-edit-profile{
     display: flex;
@@ -123,11 +121,11 @@
     color: rgba(255, 255, 255, 0.952);
 }
 .favorites{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
     margin-top: 1rem;
     padding: 3rem;
-    flex-wrap: wrap;
     border-radius: 2rem;
     background-color: rgba(128, 128, 128, 0.144);
 }

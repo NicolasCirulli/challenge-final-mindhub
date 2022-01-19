@@ -189,7 +189,7 @@ export default function Profile() {
             <div className="container favorites">
                 {gameFav[0] &&
                     gameFav.map((game) => {
-                      const datos = {
+                        const datos = {
                         name: game.name,
                         image: game.background_image,
                         price: game.price,
