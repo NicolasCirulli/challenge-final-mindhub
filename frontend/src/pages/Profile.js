@@ -184,7 +184,7 @@ export default function Profile() {
                 )}
             </div>
             <div className="container fav-div">
-                <h3 className="fav-title">FAVORITE GAMES:</h3>
+                <h3 className="fav-title">Wishlist:</h3>
             </div>
             <div className="container favorites">
                 {gameFav[0] &&
