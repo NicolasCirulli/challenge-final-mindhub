@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const Game = require("../models/game");
-
+const user = require("../models/User");
 
 const sendEmail = async (mail, uniqueString) => {
   const transporter = nodemailer.createTransport({
@@ -180,7 +180,7 @@ const userControllers = {
           token,
           image: userExist.image,
           role: userExist.role,
-          wishList : userExist.wishList
+          wishList: userExist.wishList,
         },
       });
     } catch (err) {
@@ -199,7 +199,7 @@ const userControllers = {
         address: req.user.address,
         _id: req.user._id,
         role: req.user.role,
-        wishList : req.user.wishList,
+        wishList: req.user.wishList,
       },
     });
   },
@@ -216,7 +216,7 @@ const userControllers = {
   },
   getAllUsers: async (req, res) => {
     try {
-      let user = await User.find();
+      let user = await User.find().populate('cart.$.idGame');
       res.json({ res: user });
     } catch (err) {
       return res.status(400).json({
@@ -263,27 +263,46 @@ const userControllers = {
     }
   },
   wishList: (req, res) => {
-    let {idGame} = req.body
-    let id = req.user._id
+    let { idGame } = req.body;
+    let id = req.user._id;
     User.findOne({ _id: id })
-        .then((user) => {
-          if (user.wishList.includes(idGame)) {
-            User.findOneAndUpdate({ _id:  req.user._id }, { $pull: { wishList: idGame} }, { new: true })
-            .then((userUpdated) => res.json({ success: true, response: userUpdated }))
-            .catch((error) => console.log(error))
-          }
-          else {
+      .then((user) => {
+        if (user.wishList.includes(idGame)) {
+          User.findOneAndUpdate(
+            { _id: req.user._id },
+            { $pull: { wishList: idGame } },
+            { new: true }
+          )
+            .then((userUpdated) =>
+              res.json({ success: true, response: userUpdated })
+            )
+            .catch((error) => console.log(error));
+        } else {
+          User.findOneAndUpdate(
+            { _id: req.user._id },
+            { $push: { wishList: idGame } },
+            { new: true }
+          )
+            .then((userUpdated) =>
+              res.json({ success: true, response: userUpdated })
+            )
+            .catch((error) => console.log(error));
+        }
+      })
+      .catch((error) => res.json({ success: false, response: error }));
+  },
+  addCart: async(req, res) => {
+    
+    try{
+      const user = await User.findOneAndUpdate(
+        {_id: req.user._id},
+        {cart : req.body.cart},
+        {new:true}
+        )
 
-            User.findOneAndUpdate({ _id:  req.user._id }, { $push: { wishList: idGame} }, { new: true })
-                    .then((userUpdated) => res.json({ success: true, response: userUpdated }))
-                    .catch((error) => console.log(error))
-            }
-        })
-    .catch((error) => res.json({ success: false, response: error }))
-
-
-
-}
+      res.json({ success: true, response: user})
+    }catch(error) {console.log(error);}
+  },
 };
 
 module.exports = userControllers;
