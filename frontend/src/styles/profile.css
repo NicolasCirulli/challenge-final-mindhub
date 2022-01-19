@@ -4,7 +4,9 @@
     font-size: 1.5rem;
     font-weight: bold;
 }
-
+.cont-all-profile{
+    min-height: 100%;
+}
 /*----------CARD EDIT PROFILE----------*/
 
 /*CONTAINER EDIT*/
