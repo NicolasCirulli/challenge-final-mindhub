@@ -14,6 +14,7 @@ code {
     background-image: url("./assets/Desktop3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    min-height: 100vh;
 }
 ::-webkit-scrollbar {
     width: 10px;
@@ -536,6 +537,7 @@ code {
     border-radius: 1.5rem;
     margin-bottom: 2rem;
     padding: 1rem;
+
 }
 .cont-select-genders{
     width: 15%;

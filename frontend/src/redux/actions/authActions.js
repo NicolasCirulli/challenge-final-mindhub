@@ -89,15 +89,15 @@ const authActions = {
           dispatch({
             type: "signIn",
             payload: {
-              firstName: user.data.res.firstName,
-              lastName: user.data.res.lastName,
-              userName: user.data.res.userName,
-              mail: user.data.res.mail,
-              image: user.data.res.image,
               address: user.data.res.address,
-              id: user.data.res._id,
+              firstName: user.data.res.firstName,
+              image: user.data.res.image,
+              lastName: user.data.res.lastName,
+              mail: user.data.res.mail,
               role : user.data.res.role,
-              wishList : user.data.res.wishList
+              userName: user.data.res.userName,
+              wishList : user.data.res.wishList,
+              id: user.data.res._id,
             },
           });
       } catch (err) {
