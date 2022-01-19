@@ -16,7 +16,7 @@ export default function Comments({data}) {
                 type="text"
                 id="comment"
                 className="labelComments"
-                ref={inputComment}
+                /* ref={inputComment} */
             /> 
             <button className="btn-leave-comment"><BsFillArrowRightSquareFill /></button>
         </div> 
