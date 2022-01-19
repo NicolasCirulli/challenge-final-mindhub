@@ -161,13 +161,20 @@
 }
 .title-card-fav{
     font-family: 'Poppins', sans-serif;
-    color:#fff;
-    text-align: center;
-    padding: .5rem;
+    
+    padding: .8rem;
     background-color: #af31819d;
     backdrop-filter: blur(13.743px);
     border-radius: 1rem 1rem 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+.title-text-fav{
+    margin: 0;
+    color:#fff;
+    text-align: center;
 }
 .delete-fav{
     cursor: pointer;
+    z-index: 1000;
 }

@@ -9,6 +9,7 @@ import gamesActions from "../redux/actions/gamesActions";
 import { updateUser } from "../helpers/querys";
 import { Link } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import cartActions from "../redux/actions/cartActions";
 import FlipMove from 'react-flip-move';
 
@@ -204,11 +205,11 @@ export default function Profile() {
                                         backgroundImage: `url("${game.background_image}")`,
                                     }}
                                 >
-                                    <div>
-                                        <h5 className="title-card-fav">
+                                    <div className="title-card-fav">
+                                        <h5 className="title-text-fav">
                                             {game.name}
                                         </h5>
-                                        <h4 className="delete-fav" onClick={() => handleFavs(game._id)}>x</h4>
+                                        <span className="delete-fav" onClick={() => handleFavs(game._id)}><HighlightOffIcon /></span>
                                     </div>
                                     <div className="cont-card-title">
                                         <div className="card-title">
