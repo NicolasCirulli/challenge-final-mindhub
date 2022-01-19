@@ -40,7 +40,6 @@ export default function Profile() {
         };
         updateUser(data.id, body)
             .then((res) => {
-                console.log(res)
                 setData(res.response.respuesta);
                 reset();
             })

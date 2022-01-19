@@ -33,14 +33,13 @@ function Games(props) {
     const [filter, setfilter] = useState("all");
 
     const [gamesRender, setGamesRender] = useState([]);
-
     const [gender, setGender] = useState("All");
     const [sortPrice, setSortPrice] = useState(true);
     const [priceMin, setPriceMin] = useState(false);
     const [priceMax, setPriceMax] = useState(false);
 
     const allGames = useSelector((store) => store.gamesReducer.games);
-
+    const user = useSelector((store) => store.userReducer.user);
     useEffect(() => {
         renderGames(allGames);
     }, [allGames]);
@@ -123,6 +122,10 @@ function Games(props) {
     function all (){
         setGamesRender(allGames);
         setfilter("all")
+    } 
+    function favorites (){
+        setGamesRender(allGames.filter((game) => user?.wishList?.indexOf(game._id) >= 0))
+        setfilter("favorites")
     } 
 
 
@@ -255,7 +258,7 @@ function Games(props) {
                 </h6>
                 {props.user && (
                     <h6
-                        onClick={() => setfilter("favorites")}
+                        onClick={() => favorites()}
                         className={
                             filter === "favorites"
                                 ? "filter-games-active"
