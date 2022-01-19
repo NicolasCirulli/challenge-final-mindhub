@@ -31,12 +31,8 @@ const authActions = {
               userName: user.data.res.userName,
               image: user.data.res.image,
               id: user.data.res.id,
-<<<<<<< HEAD
-              role: user.data.res.role,
-=======
               role : user.data.res.role,
               wishList : user.data.res.wishList,
->>>>>>> d675d2cacabed9fbd11750fa1e58e05d058d97d4
             },
           });
           return user.data;
@@ -65,12 +61,8 @@ const authActions = {
               mail: user.data.res.mail,
               image: user.data.res.image,
               id: user.data.res._id,
-<<<<<<< HEAD
-              role: user.data.res.role,
-=======
               role : user.data.res.role,
               wishList : user.data.res.wishList
->>>>>>> d675d2cacabed9fbd11750fa1e58e05d058d97d4
             },
           });
           return user.data;
@@ -104,12 +96,8 @@ const authActions = {
               image: user.data.res.image,
               address: user.data.res.address,
               id: user.data.res._id,
-<<<<<<< HEAD
-              role: user.data.res.role,
-=======
               role : user.data.res.role,
               wishList : user.data.res.wishList
->>>>>>> d675d2cacabed9fbd11750fa1e58e05d058d97d4
             },
           });
       } catch (err) {
@@ -165,9 +153,5 @@ const authActions = {
   }
 };
 
-<<<<<<< HEAD
-export default usuarioActions;
-=======
 export default authActions;
 
->>>>>>> d675d2cacabed9fbd11750fa1e58e05d058d97d4
