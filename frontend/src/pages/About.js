@@ -5,9 +5,11 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Link } from "react-router-dom";
 import CardAbout from "../components/CardAbout";
-
+import { useRef } from "react";
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)  
 export default function About() {
-    const scrollToBottom = () => window.scrollTo({top: 680, behavior: "smooth"})
+    const myRef = useRef(null)
+    const executeScroll = () => scrollToRef(myRef)
     return (
         <div className="container">
             <div className="cont-about">
@@ -36,12 +38,12 @@ export default function About() {
                 </div>
                 <div className="go-down">
                     <div className="cont-down">
-                        <p className="more-i color-hover" onClick={scrollToBottom}>More information </p>
+                        <p className="more-i color-hover" onClick={executeScroll}>More information </p>
                         <KeyboardArrowDownIcon className="icon-arrow color-hover" />
                     </div>
                 </div>
             </div>
-            <div className="container access-game">
+            <div ref={myRef} className="container access-game">
                 <Typography variant="h3" component="div" className="welcome3">
                     Access Games Instantly
                 </Typography>

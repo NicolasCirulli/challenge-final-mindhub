@@ -56,26 +56,28 @@
       font-size: 20px;
   }
   /*screenshots*/
-  .screen{
+  
+  .screen-div{
       display: flex;
-      justify-content: space-evenly;
       flex-direction: column;
-      align-items: flex-end;
-      margin-top: 1rem;
       margin-right: 1.5rem;
+      width: 25%;
+      
   }
-  .e-card-ht{
-      width: 35%;
-      height: 8rem;
+  .e-card-ht-screen{
+      width: 100%;
       z-index: 50;
+      margin-top: 1rem;
+      box-shadow: 5px 4px 5px;
+      border-radius: 1rem;
 
-  }
-  .e-card-image-1{
+}
+  .e-card-image-1-screen{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
-  .cardimg{
+  .card-img-screen{
       width: 100%;
       border-radius: 1rem;
   }

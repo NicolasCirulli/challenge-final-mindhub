@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import authActions from "../redux/actions/authActions";
 import countries from "./Countries";
-import image from "../assets/signUp.jpg";
+import image from "../assets/ez.png";
 import GoogleLogin from "react-google-login";
 import Swal from "sweetalert2";
 
@@ -105,12 +105,12 @@ const SignUpComp = () => {
     return (
         <div className="backgroundSign">
             <div className="cardSignUp">
-                <div>
+                <div className="sup">
                     <div className="titlesSU">
                         <h1 className="titleSignUp">Enjoy the benefits</h1>
                         <h2>of beeing an xtreme user</h2>
                         <h3 className="titleSignUp">Sign up xtreme</h3>
-                    </div>
+                   
                     <form>
                         <div className="bodyFormSU">
                             <div className="onlyInputs">
@@ -198,6 +198,7 @@ const SignUpComp = () => {
                                     </div>
                                 </div>
                             </div>
+                             
                             <div className="buttonsSignUp">
                                 <input
                                     type="button"
@@ -217,6 +218,7 @@ const SignUpComp = () => {
                             </div>
                         </div>
                     </form>
+                    </div>
                 </div>
             </div>
             <div
