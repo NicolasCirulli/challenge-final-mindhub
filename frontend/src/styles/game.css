@@ -133,7 +133,7 @@ td .MuiSvgIcon-root {
 }
 /*comments*/
 .finalinfo{
-    
+
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
@@ -154,6 +154,7 @@ td .MuiSvgIcon-root {
 .p-review1{
     color: rgba(255, 255, 255, 0.856);
     font-weight: bold;
+    margin-top: .5rem;
 }
 .p-review2{
     margin-left: 2rem;
@@ -185,11 +186,14 @@ td .MuiSvgIcon-root {
 
 /* COMMENTS  */
 .comments{
-    width: 110vh;
+    width: 100vh;
     background-color: rgba(68, 66, 66, 0.377);
     height: auto;
     padding: 1rem;
     border-radius: 1.5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .conteiner-comm-ind{
@@ -199,19 +203,28 @@ td .MuiSvgIcon-root {
     display: flex;
     flex-direction: row;
     padding: .5rem;
-    width: 80%;
-    align-items: baseline;
+    width: 100%;
+    align-items:center;
+    justify-content: space-between;
     margin-top: 1rem;
+}
+.org-2{
+    display: flex;
+    align-self: end;
 }
 .p-data-comment{
     color: rgba(255, 255, 255, 0.87);
-    margin-left: 3rem;
+    
     font-style: italic;
+}
+.org{
+    display: flex;
+    align-items: flex-end;
 }
 
 .img-comment{
-    width: 4vw;
-    height: 6vh;
+    width: 5vw;
+    height: 8vh;
     border-radius: 50%;
     object-fit: cover;
     margin-right: .5rem;
@@ -240,10 +253,15 @@ td .MuiSvgIcon-root {
 }
 
 .btn-leave-comment{
+    
     border: none;
+    width: 2rem;
     margin-left: .5rem;
     background-color: white;
     color: black;
     border-radius: 20%;
-    height: 80%;
+    height: 2rem;
+}
+.comment-input{
+    display: flex;
 }
