@@ -148,12 +148,15 @@ justify-content: space-around;
 /*table*/
 .div-table{
     margin-top: 2rem;
+    width: 20rem;
+    margin-right: -5rem;
 }
 table{
     width: 100%;
+    height: 15rem;
 }
 th{
-    padding-left: 4rem;
+    padding-left: 6rem;
 }
 td .MuiSvgIcon-root {
     color: #05f2db!important;
