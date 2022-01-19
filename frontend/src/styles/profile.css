@@ -1,37 +1,117 @@
 .profile-title{
-    color: rgba(255, 255, 255, 0.952);
-    font-size: 24px;
     margin-top: 2rem;
+    color: rgba(255, 255, 255, 0.952);
+    font-size: 1.5rem;
     font-weight: bold;
 }
-.profile-img-div{
-    margin-top: 3rem;
-    width: 40%;
-    height: 8rem;
-}
-.profile-img{
-    width: 100%;
-    height: 8rem;
-    border-radius: 1rem;
-}
+
+/*----------CARD EDIT PROFILE----------*/
+
+/*CONTAINER EDIT*/
 .info-profile{
-    display: flex;
-    color: rgba(255, 255, 255, 0.952);
     width: 50%;
-    padding-left: 2rem;
+    padding: 2rem;
     background-color: rgba(128, 128, 128, 0.226);
     margin-top: 1rem;
     border-radius: 2rem;
-    padding-bottom: 2rem;
+}
+.cont-edit-profile{
+    display: flex;
+    color: rgba(255, 255, 255, 0.952);
 }
 .profile-info{
-    margin-top: 4rem;
     margin-left: 1.5rem;
+    
+}
+.profile-img-div{
+    width: 40%;
+    display: flex;
+    margin-right: 2rem;
+    align-self: center;
+}
+/*IMAGE*/
+.edit-img{
+    align-self: flex-start !important;
+    margin-left: .6rem;
+}
+.profile-img{
+    width: 100%;
+    height: 10rem;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+/*EDIT*/
+.edit-data-profile{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .8rem;
+}
+.cont-form{
+    display: flex;
 }
 .nameandcountry{
-    font-size: 20px;
-    margin-top: .6rem;
+    font-size: 1rem;
+    margin-bottom: 0 !important;
+    font-weight: normal !important;
+    align-self: center ;
 }
+.data-edit{
+    font-size: 1rem;
+    font-weight: lighter;
+    margin: 0;
+    align-self: center;
+    padding: .5rem;
+}
+/*INPUT EDIT*/
+.cont-input-edit{
+    display: flex;
+    justify-content: space-between;
+}
+.input-width-send{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.input-edit{
+    width: 90%;
+    border-radius: 1rem;
+    padding-left: .8rem;
+    background-color: rgba(240, 248, 255, 0);
+    border: #fff 2px solid;
+    color: #fff;
+}
+.input-edit:focus{
+    outline: none ;
+}
+/*ICON*/
+.icon-edit{
+    font-size: 1.2rem !important;
+    align-self: center;
+    cursor: pointer;
+}
+.icon-edit:hover{
+    color: #11edd3 !important;
+}
+.send-icon{
+    font-size: 1rem;
+    align-self: center;
+    cursor: pointer;
+}
+.send-icon:hover{
+    color: #11edd3 !important;
+}
+.cancel-icon{
+    align-self: center;
+    cursor: pointer;
+}
+.cancel-icon>path{
+    color: #af3181 !important;
+}
+.cancel-icon:hover{
+    font-size: 1.8rem;
+}
+
+/*----------LIST FAVORITE----------*/
 
 .fav-div{
     margin-top: 3rem;

@@ -6,88 +6,88 @@ import GoogleLogin from 'react-google-login';
 import Swal from 'sweetalert2';
 
 const SignInComp = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const email = useRef();
-    const password = useRef();
-    const Alert = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: toast => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    })
+  const email = useRef();
+  const password = useRef();
+  const Alert = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
 
-    const responseGoogle = async (response) => {
-        let googleUser = {
-            email: response.profileObj.email,
-            password: response.profileObj.googleId,
-            flagGoogle: true
-        }
-        await dispatch (authActions.signIn(googleUser))
-    .then(res => {
-        if (res.success){
-            Alert.fire({
-              icon: 'success',
-              title: 'Welcome '+res.response.userName
-        })
-      }
-      else{
-        Alert.fire({
-          title: res.error[0].message,
-          icon: 'error'
-      })
+  const responseGoogle = async (response) => {
+    let googleUser = {
+      mail: response.profileObj.email,
+      password: response.profileObj.googleId,
+      flagGoogle: true
     }
-    })
-    .catch((error) => {
-        console.log(error)
-        Alert.fire({
-            icon: 'error',
-            title: 'You have to sign up before you log in!'
+    await dispatch(authActions.signIn(googleUser))
+      .then(res => {
+        if (res.success) {
+          Alert.fire({
+            icon: 'success',
+            title: 'Welcome ' + res.res.userName
           })
-  })
-    }
+        }
+        else {
+          Alert.fire({
+            title: res.error[0].message,
+            icon: 'error'
+          })
+        }
+      })
+      .catch(() => {
+        Alert.fire({
+          icon: 'error',
+          title: 'You have to sign up before you log in!'
+        })
+      })
+  }
 
-    const signIn = async () => {
-      const user = {
-          mail: email.current.value,
-          password: password.current.value,
-      };
-      if (!Object.values(user).some((value) => value === "")) {
-          try {
-              const res = await dispatch(authActions.signIn(user));
-              if (res.success) {
-                  Swal.fire({
-                      position: 'center',
-                      icon: 'success',
-                      title: 'welcome '  + res.res.userName + '!',
-                      background: '#343744',
-                      iconColor: '#11edd3',
-                      color: '#fff',
-                      showConfirmButton: false,
-                      timer: 1500
-                  })
-              } else {
-                  Swal.fire({
-                      position: 'center',
-                      icon: 'error',
-                      background: '#343744',
-                      iconColor: '#af3181',
-                      color: '#fff',
-                      title: res.res,
-                      showConfirmButton: false,
-                      timer: 1500
-                  })
-              }
-          } catch (err) {
-              console.log(err);
-          }
+  const signIn = async () => {
+    const user = {
+      mail: email.current.value,
+      password: password.current.value,
+    };
+    if (!Object.values(user).some((value) => value === "")) {
+      try {
+        const res = await dispatch(authActions.signIn(user));
+        if (res.success) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'welcome ' + res.res.userName + '!',
+            background: '#343744',
+            iconColor: '#11edd3',
+            color: '#fff',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        } else {
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            background: '#343744',
+            iconColor: '#af3181',
+            color: '#fff',
+            title: res.res,
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      } catch (err) {
+        console.log(err);
       }
-};
+    }
+  }
+
 
   return (
     <div className="backgroundSignIn">
@@ -140,7 +140,7 @@ const SignInComp = () => {
         </div>
       </div>
     </div>
-  );
+);
 };
 
 export default SignInComp;

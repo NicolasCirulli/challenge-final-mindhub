@@ -1,0 +1,37 @@
+.support {
+  height: calc(100vh - 20px);
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.talkButton {
+  font-weight: normal;
+  border: #11edd5 solid 2px;
+  background-color: #11edd5;
+  height: 5vh;
+  width: 6vw;
+  border-radius: 1rem;
+  align-self: center;
+  margin-left: 0.5rem;
+  color: #373a42;
+  transition: 0.3s;
+}
+
+.talkButton:hover {
+  background-color: rgba(255, 255, 255, 0);
+  border: #fff solid 2px;
+  padding: 0.1rem;
+  color: #fff;
+  transition: 0.3s;
+}
+
+p {
+  font-size: larger;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}

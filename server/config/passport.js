@@ -15,7 +15,6 @@ module.exports = passport.use(
         if (!res) {
           return done(null, false);
         } else {
-          console.log(res);
           return done(null, res);
         }
       } catch (err) {

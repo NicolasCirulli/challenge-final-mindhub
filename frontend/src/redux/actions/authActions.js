@@ -31,7 +31,8 @@ const authActions = {
               userName: user.data.res.userName,
               image: user.data.res.image,
               id: user.data.res.id,
-              role : user.data.res.role
+              role : user.data.res.role,
+              wishList : user.data.res.wishList,
             },
           });
           return user.data;
@@ -49,7 +50,6 @@ const authActions = {
           mail,
           password,
         });
-        console.log(user)
         if (user.data.success) {
           localStorage.setItem("token", user.data.res.token);
           dispatch({
@@ -61,7 +61,8 @@ const authActions = {
               mail: user.data.res.mail,
               image: user.data.res.image,
               id: user.data.res._id,
-              role : user.data.res.role
+              role : user.data.res.role,
+              wishList : user.data.res.wishList
             },
           });
           return user.data;
@@ -84,7 +85,6 @@ const authActions = {
             },
           }
         );
-          console.log(user.data)
         user.data.success &&
           dispatch({
             type: "signIn",
@@ -96,7 +96,8 @@ const authActions = {
               image: user.data.res.image,
               address: user.data.res.address,
               id: user.data.res._id,
-              role : user.data.res.role
+              role : user.data.res.role,
+              wishList : user.data.res.wishList
             },
           });
       } catch (err) {
@@ -105,21 +106,49 @@ const authActions = {
     };
   },
   logOut: () => {
-    localStorage.removeItem("token")
-  return (dispatch, getState) => {
-    dispatch({type: 'logOut', payload: ""})
-  }
+    localStorage.removeItem("token");
+    return (dispatch, getState) => {
+      dispatch({ type: "logOut", payload: "" });
+    };
   },
-  wishList : (id,idGame) => {
+  wishList : (idGame) => {
     return async (dispatch) =>{
       try{
-        const res = await axios.put(url+"wishList/"+id,{idGame},{
+        const res = await axios.put(url+"wishList/",{idGame},{
             headers:{
                 'Authorization':'Bearer '+token 
             }
         });
-        console.log(res);
+        dispatch({
+          type: "signIn",
+          payload: {...res.data.response},
+        });
     }catch (err) {console.log(err);}
+    }
+  },
+  addToCart: (datos) =>{
+    return (dispatch) => {
+      
+    dispatch({type:'add_cart'})
+    console.log(datos);
+    
+    }
+  },
+  deleteCartItem: (idGame) =>{
+    return async (dispatch) => {
+    dispatch({type:'decrement_cart', payload:idGame})
+    }
+  },
+  deleteCart: () =>{
+    return async (dispatch) => {
+    dispatch({type:'delete_cart'})
+    }
+  },
+  setCartStore: () =>{
+    return  (dispatch) => {
+      const cartStorage = localStorage.getItem('cart')
+      dispatch({type: 'setCartStore'})
+      console.log(cartStorage);
     }
   }
 };

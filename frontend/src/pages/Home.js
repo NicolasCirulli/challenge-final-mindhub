@@ -5,7 +5,6 @@ import Typography from "@mui/material/Typography";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CardGames from "../components/CardGames";
 import logo from "../assets/logo.png";
-import { getAllGames } from "../helpers/querys";
 import { useSelector } from "react-redux";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -25,8 +24,8 @@ export default function Home() {
     const [search,setSearch] = useState(null)
 
     useEffect(() => {
-       allGames && setOffer(allGames.filter(games => games.offer))
-       allGames && setRecommended(allGames.filter(games => games.rating > 4))
+        allGames && setOffer(allGames.filter(games => games.offer))
+        allGames && setRecommended(allGames.filter(games => games.rating > 4))
     },[])
 
     useEffect(() =>{

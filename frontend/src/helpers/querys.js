@@ -148,3 +148,5 @@ export const wishList = async (id,idGame) => {
         console.log(res);
     }catch (err) {console.log(err);}
 }
+
+

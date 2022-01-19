@@ -4,6 +4,7 @@ import Profile from "./pages/Profile"
 import { useDispatch, useSelector } from "react-redux";
 import authActions from "./redux/actions/authActions";
 import gamesActions from "./redux/actions/gamesActions";
+import cartActions from "./redux/actions/cartActions";
 import "./App.css";
 import "./Sign.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -25,10 +26,14 @@ function App() {
   const user = useSelector((state) => state.userReducer.user);
 
   const token = localStorage.getItem("token");
-
+  const cartStorage = JSON.parse(localStorage.getItem("cart"))
+  
+  
+  
   useEffect(() => {
     token && dispatch(authActions.signInWithToken(token));
     dispatch(gamesActions.getAllGames());
+    cartStorage && dispatch(cartActions.setCartStore(cartStorage))
   }, []);
 
   return (

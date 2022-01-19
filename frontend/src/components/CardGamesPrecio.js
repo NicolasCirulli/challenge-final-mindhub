@@ -5,8 +5,21 @@ import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Favorite from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
+import {useDispatch} from 'react-redux'
+import cartActions from "../redux/actions/cartActions";
 
 export default function CardGame({ game }) {
+    
+    const dispatch = useDispatch()
+
+    const datos = {
+        "name" : game.name,
+        "image" : game.background_image,
+        "price" : game.price,
+        "amount" : 1,
+        "id": game._id
+    }
+    
     return (
         <div className="card">
             <div
@@ -26,9 +39,7 @@ export default function CardGame({ game }) {
                         </Link>
                         <p className="price-game">$ {game.price}</p>
                     </div>
-                    <Link to="/cart" className="cont-btn-cart">
-                        <AddShoppingCartIcon className="btn-cart" />
-                    </Link>
+                    <button className="cont-btn-cart" onClick={() => dispatch(cartActions.addToCart(datos))}><AddShoppingCartIcon className="btn-cart" /></button>
                 </div>
             </div>
         </div>
