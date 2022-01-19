@@ -19,7 +19,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import SettingsIcon from "@mui/icons-material/Settings"; 
 import { useNavigate, useLocation } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect,useSelector } from "react-redux";
 import authActions from "../redux/actions/authActions";
 import logo from "../assets/joystick.png";
 import Swal from "sweetalert2";
@@ -78,6 +78,8 @@ function Navigation(props) {
     const [open, setOpen] = React.useState(false);
     let location = useLocation();
     const ruta = props.user.role === "admin" ? '/admin' : '/profile'
+    const totalAmount = useSelector(store => store.cartReducer.totalAmount)
+    console.log(totalAmount);
 
     function logOut() {
         Swal.fire({

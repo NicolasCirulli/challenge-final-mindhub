@@ -7,7 +7,12 @@ const userSchema = new mongoose.Schema({
   mail: { type: String, required: true },
   password: String,
   image: String,
-  cart: { type: Array, default: [] },
+  cart:[
+        {
+          idGame:{ type:String },
+          amount: {type:Number},
+        }
+      ],
   address: String,
   wishList: { type: Array, default: [] },
   uniqueString: { type: String, required: true },

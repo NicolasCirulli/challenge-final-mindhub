@@ -139,6 +139,31 @@ const authActions = {
         });
     }catch (err) {console.log(err);}
     }
+  },
+  addToCart: (datos) =>{
+    return (dispatch) => {
+      
+    dispatch({type:'add_cart'})
+    console.log(datos);
+    
+    }
+  },
+  deleteCartItem: (idGame) =>{
+    return async (dispatch) => {
+    dispatch({type:'decrement_cart', payload:idGame})
+    }
+  },
+  deleteCart: () =>{
+    return async (dispatch) => {
+    dispatch({type:'delete_cart'})
+    }
+  },
+  setCartStore: () =>{
+    return  (dispatch) => {
+      const cartStorage = localStorage.getItem('cart')
+      dispatch({type: 'setCartStore'})
+      console.log(cartStorage);
+    }
   }
 };
 

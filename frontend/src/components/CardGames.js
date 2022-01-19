@@ -42,6 +42,7 @@ export default function RecipeReviewCard({ game }) {
                     className="fav"
                     onClick={handleFavs}
                 >
+<<<<<<< HEAD
                     <Checkbox
                         icon={
                             user ? (
@@ -61,6 +62,21 @@ export default function RecipeReviewCard({ game }) {
                     <Link className="name-game " to={`/game/${game._id}`}>
                         {game.name}
                     </Link>
+=======
+                    {
+                        user &&
+                        <IconButton aria-label="add to favorites" className="fav" onClick={handleFavs}>
+                    <Checkbox
+                        // icon={<FavoriteBorder />}
+                        // checkedIcon={<Favorite className="favorite"/>}
+                        icon={!user.wishList.includes(game._id) ? <FavoriteBorder /> : <Favorite className="favorite"/>}
+                        />
+                    </IconButton>
+                    }
+                    <div className="card-title">
+                        <Link className="name-game " to={`/game/${game._id}`}>{game.name}</Link>
+                    </div>
+>>>>>>> 391f79a5d569e65b84f7d5aa3c50cf72d9c91db3
                 </div>
             </div>
         </div>
