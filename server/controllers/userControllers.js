@@ -31,9 +31,9 @@ const sendEmail = async (mail, uniqueString) => {
     from: sender,
     to: mail,
     subject: "Xtreme user verification",
-    html: `<img src="https://i.imgur.com/TJfgLFHt.png" alt="Xtreme"/>
-    <h2>Welcome to Xtreme</h2>
+    html: `<h2>Welcome to Xtreme</h2>
     <h3>Please click <a href=http://localhost:4000/api/verify/${uniqueString}>here</a> to confirm and verify your account</h3>
+    <img src="https://i.imgur.com/TJfgLFHt.png" alt="Xtreme"/>
     `,
     //template: "index",
   };

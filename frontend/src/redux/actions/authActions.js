@@ -29,7 +29,7 @@ const usuarioActions = {
               userName: user.data.res.userName,
               image: user.data.res.image,
               id: user.data.res.id,
-              role : user.data.res.role
+              role: user.data.res.role,
             },
           });
           return user.data;
@@ -56,7 +56,7 @@ const usuarioActions = {
               userName: user.data.res.userName,
               image: user.data.res.image,
               id: user.data.res._id,
-              role : user.data.res.role
+              role: user.data.res.role,
             },
           });
           return user.data;
@@ -87,7 +87,7 @@ const usuarioActions = {
               userName: user.data.res.userName,
               image: user.data.res.image,
               id: user.data.res._id,
-              role : user.data.res.role
+              role: user.data.res.role,
             },
           });
       } catch (err) {
@@ -96,12 +96,11 @@ const usuarioActions = {
     };
   },
   logOut: () => {
-    localStorage.removeItem("token")
-  return (dispatch, getState) => {
-    dispatch({type: 'logOut', payload: ""})
-  }
+    localStorage.removeItem("token");
+    return (dispatch, getState) => {
+      dispatch({ type: "logOut", payload: "" });
+    };
   },
 };
 
 export default usuarioActions;
-

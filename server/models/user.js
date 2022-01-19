@@ -12,8 +12,7 @@ const userSchema = new mongoose.Schema({
   wishList: { type: Array, default: [] },
   uniqueString: { type: String, required: true },
   verifiedAccount: { type: Boolean, required: true },
-  google: { type: Boolean, default: true },
-
+  google: { type: Boolean, required: true },
   role: { type: String, default: "user" },
 });
 
