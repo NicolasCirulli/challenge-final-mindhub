@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import authActions from "../redux/actions/authActions";
 import countries from "./Countries";
-import image from "../assets/signUp.jpg";
+import image from "../assets/ez.png";
 import GoogleLogin from "react-google-login";
 import Swal from "sweetalert2";
 
@@ -34,7 +34,7 @@ const SignUpComp = () => {
       .then((res) => {
         if (res.succes) {
           Alert.fire({
-            icon: "success",
+            icon: "succes",
             title: "Your account has been created",
           });
         } else {
@@ -205,7 +205,7 @@ const SignUpComp = () => {
                   className="googleBtn"
                   clientId="441570016693-jv03t22mt950it3camu7if135vkr4bok.apps.googleusercontent.com"
                   buttonText="Sign Up with Google"
-                  onSuccess={responseGoogle}
+                  onSucces={responseGoogle}
                   onFailure={responseGoogle}
                   cookiePolicy={"single_host_origin"}
                 />
