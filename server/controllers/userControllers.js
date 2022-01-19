@@ -54,7 +54,7 @@ const userControllers = {
           const hashedPassword = bcryptjs.hashSync(password);
           userExists.password = hashedPassword;
           userExists.verifiedAccount = true;
-          userExist.google = true;
+          userExists.google = true;
           userExists.save();
           res.json({
             succes: true,
