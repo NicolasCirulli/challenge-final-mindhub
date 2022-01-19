@@ -3,8 +3,9 @@ const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
+const handlebars = require("nodemailer-express-handlebars");
 const Game = require("../models/game");
-
+const user = require("../models/User");
 
 const sendEmail = async (mail, uniqueString) => {
   const transporter = nodemailer.createTransport({
@@ -18,12 +19,25 @@ const sendEmail = async (mail, uniqueString) => {
     tls: { rejectUnauthorized: false },
   });
 
+  transporter.use(
+    "compile",
+    handlebars({
+      viewEngine: "express-handlebars",
+      viewPath: "views",
+      extName: ".handlebars",
+    })
+  );
+
   let sender = "useremailverifyMindHub@gmail.com";
   let mailOptions = {
     from: sender,
     to: mail,
     subject: "Xtreme user verification",
-    html: `Click <a href=http://localhost:4000/api/verify/${uniqueString}>aqui</a>to confirm and verify your accout`,
+    html: `<h2>Welcome to Xtreme</h2>
+    <h3>Please click <a href=http://localhost:4000/api/verify/${uniqueString}>here</a> to confirm and verify your account</h3>
+    <img src="https://i.imgur.com/TJfgLFHt.png" alt="Xtreme"/>
+    `,
+    //template: "index",
   };
   await transporter.sendMail(mailOptions, function (error, response) {
     if (error) {
@@ -46,26 +60,15 @@ const userControllers = {
       address,
       google,
     } = req.body;
+    console.log(google);
 
     try {
       const userExists = await User.findOne({ mail: mail });
       if (userExists) {
-        if (google) {
-          const hashedPassword = bcryptjs.hashSync(password);
-          userExists.password = hashedPassword;
-          userExists.verifiedAccount = true;
-          userExists.google = true;
-          userExists.save();
-          res.json({
-            succes: true,
-            message: "User created succesfully with google account",
-          });
-        } else {
-          res.json({ succes: false, res: "Username already in use" });
-        }
+        res.json({ res: "already in use" });
       } else {
         const uniqueString = crypto.randomBytes(15).toString("hex");
-        const verifiedAccount = false;
+        let verifiedAccount = true;
         const hashedPassword = bcryptjs.hashSync(password);
         const newUser = new User({
           firstName,
@@ -73,15 +76,15 @@ const userControllers = {
           userName,
           mail,
           password: hashedPassword,
+          image,
+          address,
           uniqueString,
           verifiedAccount,
           google,
-          address,
-          image,
         });
         const token = await jwt.sign({ ...newUser }, process.env.SECRETOKEN);
 
-        if (google) {
+        if (address === "google") {
           newUser.verifiedAccount = true;
           newUser.google = true;
           await newUser.save();
@@ -93,7 +96,9 @@ const userControllers = {
         } else {
           newUser.verifiedAccount = false;
           newUser.google = false;
+
           await newUser.save();
+
           await sendEmail(mail, uniqueString);
           res.json({
             succes: true,
@@ -115,50 +120,12 @@ const userControllers = {
     if (user) {
       user.verifiedAccount = true;
       await user.save();
-      res.redirect("http://localhost:3000/");
+      res.redirect("http://localhost:3000/signIn");
     } else {
       res.json({ succes: false, response: "Mail not verified" });
     }
   },
 
-  /* addNewUser: async (req, res) => {
-    const { firstName, lastName, userName, mail, password, image, address } =
-      req.body;
-    const hashedPassword = bcryptjs.hashSync(password);
-    const newUser = new User({
-      firstName,
-      lastName,
-      userName,
-      mail,
-      password: hashedPassword,
-      image,
-      address,
-      
-    });
-    try {
-      let repeatedUser = await User.findOne({ mail: mail });
-      if (repeatedUser) {
-        throw new Error("Mail already in use");
-      }
-      await newUser.save();
-      let token = jwt.sign({ ...newUser }, process.env.SECRETOKEN);
-      res.json({
-        success: true,
-        res: {
-          firstName: newUser.firstName,
-          lastName: newUser.lastName,
-          userName: newUser.userName,
-          image: newUser.image,
-          address: newUser.address,
-          id: newUser._id,
-          token,
-          role: newUser.role,
-        },
-      });
-    } catch (err) {
-      res.json({ success: false, res: err.message });
-    }
-  }, */
   signInUser: async (req, res) => {
     const { mail, password } = req.body;
     try {
@@ -180,6 +147,7 @@ const userControllers = {
           token,
           image: userExist.image,
           role: userExist.role,
+          wishList: userExist.wishList,
         },
       });
     } catch (err) {
@@ -198,6 +166,7 @@ const userControllers = {
         address: req.user.address,
         _id: req.user._id,
         role: req.user.role,
+        wishList: req.user.wishList,
       },
     });
   },
@@ -214,7 +183,7 @@ const userControllers = {
   },
   getAllUsers: async (req, res) => {
     try {
-      let user = await User.find();
+      let user = await User.find().populate('cart.$.idGame');
       res.json({ res: user });
     } catch (err) {
       return res.status(400).json({
@@ -261,27 +230,46 @@ const userControllers = {
     }
   },
   wishList: (req, res) => {
-    let {idGame} = req.body
-    Game.findOne({ _id: req.params.id })
-        .then((user) => {
-          
-          if (user.wishList.includes(idGame)) {
-            User.findOneAndUpdate({ _id: req.params.id }, { $pull: { wishList: idGame} }, { new: true })
-            .then((userUpdated) => res.json({ success: true, response: userUpdated.favs }))
-            .catch((error) => console.log(error))
-          }
-          else {
+    let { idGame } = req.body;
+    let id = req.user._id;
+    User.findOne({ _id: id })
+      .then((user) => {
+        if (user.wishList.includes(idGame)) {
+          User.findOneAndUpdate(
+            { _id: req.user._id },
+            { $pull: { wishList: idGame } },
+            { new: true }
+          )
+            .then((userUpdated) =>
+              res.json({ success: true, response: userUpdated })
+            )
+            .catch((error) => console.log(error));
+        } else {
+          User.findOneAndUpdate(
+            { _id: req.user._id },
+            { $push: { wishList: idGame } },
+            { new: true }
+          )
+            .then((userUpdated) =>
+              res.json({ success: true, response: userUpdated })
+            )
+            .catch((error) => console.log(error));
+        }
+      })
+      .catch((error) => res.json({ success: false, response: error }));
+  },
+  addCart: async(req, res) => {
+    
+    try{
+      const user = await User.findOneAndUpdate(
+        {_id: req.user._id},
+        {cart : req.body.cart},
+        {new:true}
+        )
 
-            User.findOneAndUpdate({ _id: req.params.id }, { $push: { wishList: idGame} }, { new: true })
-                    .then((usuarioActualizado) => res.json({ success: true, response: usuarioActualizado.peliculasLikeadas }))
-                    .catch((error) => console.log(error))
-            }
-        })
-    .catch((error) => res.json({ success: false, response: error }))
-
-
-
-}
+      res.json({ success: true, response: user})
+    }catch(error) {console.log(error);}
+  },
 };
 
 module.exports = userControllers;
