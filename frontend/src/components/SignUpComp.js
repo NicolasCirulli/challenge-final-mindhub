@@ -20,7 +20,6 @@ const SignUpComp = () => {
   });
 
   const responseGoogle = async (response) => {
-    console.log(response);
     let googleUser = {
       firstName: response.profileObj.givenName,
       lastName: response.profileObj.familyName,
@@ -33,14 +32,12 @@ const SignUpComp = () => {
     };
     await dispatch(authActions.newUser(googleUser))
       .then((res) => {
-        if (res.success) {
-          console.log(res);
+        if (res.succes) {
           Alert.fire({
             icon: "success",
             title: "Your account has been created",
           });
         } else {
-          console.log(res);
           Alert.fire({
             title: res.error[0].message,
             icon: "error",
@@ -48,7 +45,6 @@ const SignUpComp = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
         Alert.fire({
           icon: "error",
           title: "Something went wrong! Come back later!",
@@ -86,7 +82,7 @@ const SignUpComp = () => {
       try {
         const res = await dispatch(authActions.newUser(user));
         console.log(res);
-        if (res.success) {
+        if (res.succes) {
           alert("cuenta creada");
         } else {
           if (res.error) {
