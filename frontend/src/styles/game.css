@@ -133,7 +133,7 @@ td .MuiSvgIcon-root {
 }
 /*comments*/
 .finalinfo{
-
+    
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
@@ -167,9 +167,10 @@ td .MuiSvgIcon-root {
 .trailer{
     display: flex;
     flex-direction: column;
+    margin-right: -5rem;
+    align-self: flex-end;
     color: rgba(255, 255, 255, 0.952);
-    margin-top: 2rem;
-    width: 60vh;
+    width: 50vh;
 }
 .trailer h4{
     font-size: 15px;
@@ -187,17 +188,16 @@ td .MuiSvgIcon-root {
 /* COMMENTS  */
 .comments{
     width: 100vh;
-    background-color: rgba(68, 66, 66, 0.377);
+    background-color: rgba(216, 202, 202, 0.157);
     height: auto;
-    padding: 1rem;
-    border-radius: 1.5rem;
+    padding: .5rem;
+    border-radius: 1rem;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
 }
-
 .conteiner-comm-ind{
-    background-color: rgba(255, 255, 255, 0.089);
+    background-color: rgba(212, 203, 203, 0.205);
     color: black;
     border-radius: 2rem;
     display: flex;
@@ -241,6 +241,7 @@ td .MuiSvgIcon-root {
     width: 80%;
     background-color: transparent;
     color: white;
+    margin: 1rem;
     padding: 1rem;
 }
 
@@ -253,10 +254,9 @@ td .MuiSvgIcon-root {
 }
 
 .btn-leave-comment{
-    
+    margin: 1rem;
     border: none;
     width: 2rem;
-    margin-left: .5rem;
     background-color: white;
     color: black;
     border-radius: 20%;
@@ -264,4 +264,7 @@ td .MuiSvgIcon-root {
 }
 .comment-input{
     display: flex;
+    background-color: rgba(212, 203, 203, 0.205);
+    border-radius: 1rem;
+    justify-content: space-between;
 }

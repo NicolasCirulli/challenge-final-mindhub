@@ -3,7 +3,7 @@ import React from "react";
 export default function Comment({ data }) {
   return (
     <>
-      
+      <div className="container comments">
         <div className="conteiner-comm-ind">
          
             <div className="org">
@@ -18,7 +18,7 @@ export default function Comment({ data }) {
           <p className="p-review2">*rating*</p>
         </div>
         </div>
-      
+      </div>
     </>
   );
 }
