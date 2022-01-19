@@ -76,11 +76,11 @@ const userControllers = {
           userName,
           mail,
           password: hashedPassword,
+          image,
+          address,
           uniqueString,
           verifiedAccount,
           google,
-          address,
-          image,
         });
         const token = await jwt.sign({ ...newUser }, process.env.SECRETOKEN);
 

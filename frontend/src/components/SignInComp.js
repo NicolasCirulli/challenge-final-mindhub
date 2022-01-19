@@ -43,8 +43,7 @@ const SignInComp = () => {
           })
         }
       })
-      .catch((error) => {
-        console.log(error)
+      .catch(() => {
         Alert.fire({
           icon: 'error',
           title: 'You have to sign up before you log in!'
