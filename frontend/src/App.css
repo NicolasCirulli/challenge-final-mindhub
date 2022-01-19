@@ -537,6 +537,7 @@ code {
     border-radius: 1.5rem;
     margin-bottom: 2rem;
     padding: 1rem;
+
 }
 .cont-select-genders{
     width: 15%;
@@ -679,4 +680,8 @@ code {
 }
 .rigth{
     margin-right: .5rem;
+}
+
+*{
+    font-family: 'Poppins', sans-serif !important;
 }

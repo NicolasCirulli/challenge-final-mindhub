@@ -102,6 +102,7 @@
 }
   /*body page */
 .descriptions{
+    width: 100%;
     display: flex;
     color: rgba(255, 255, 255, 0.952);
     margin-top: 2rem;
@@ -119,8 +120,6 @@
 /*table*/
 .div-table{
     margin-top: 2rem;
-    margin-right: -5rem;
-    width: 20%;
 }
 table{
     width: 100%;
@@ -133,7 +132,6 @@ td .MuiSvgIcon-root {
 }
 /*comments*/
 .finalinfo{
-    
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
@@ -167,10 +165,10 @@ td .MuiSvgIcon-root {
 .trailer{
     display: flex;
     flex-direction: column;
-    margin-right: -5rem;
     align-self: flex-end;
     color: rgba(255, 255, 255, 0.952);
     width: 50vh;
+    margin-right: -5rem;
 }
 .trailer h4{
     font-size: 15px;
