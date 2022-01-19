@@ -1,5 +1,6 @@
 import "../styles/game.css";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import Favorite from "@mui/icons-material/Favorite";
 import React, { useState, useEffect } from "react";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
@@ -8,14 +9,18 @@ import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
 import { useParams } from "react-router-dom";
 import { getGameById } from "../helpers/querys";
-import { getThemeProps } from "@mui/system";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useDispatch, useSelector } from "react-redux";
+import authActions from "../redux/actions/authActions";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Comments from "../components/Comments";
+import Checkbox from "@mui/material/Checkbox";
+import Swal from "sweetalert2";
 
 export default function Game() {
-    const [like, setlike] = useState(false);
+    const dispatch = useDispatch();
     const [data, setData] = useState(null);
     const params = useParams();
+    const user = useSelector((store) => store.userReducer.user);
 
     useEffect(() => {
         getGameById(params.id)
@@ -30,7 +35,24 @@ export default function Game() {
             backgroundImage: "url(" + data.background_image + ")",
         };
     }
-
+    const handleFavs = () => {
+        user
+            ? dispatch(authActions.wishList(data._id))
+            : Swal.fire({
+                toast: true,
+                position: "top-end",
+                icon: "warning",
+                iconColor: "#af3181",
+                showConfirmButton: false,
+                timer: 3000,
+                title: "You must log in to be able to like!",
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+            });
+    };
     return (
         <>
             {data && (
@@ -55,13 +77,23 @@ export default function Game() {
                                         <IconButton
                                             aria-label="add to favorites"
                                             className="fav"
-                                            onClick={() => setlike(!like)}
+                                            onClick={handleFavs}
                                         >
-                                            {like ? (
-                                                <FavoriteIcon className="favorite" />
-                                            ) : (
-                                                <FavoriteIcon className="favorite2" />
-                                            )}
+                                            <Checkbox className="favorite-game"
+                                                icon={
+                                                    user ? (
+                                                        !user.wishList.includes(
+                                                            data._id
+                                                        ) ? (
+                                                            <FavoriteBorder />
+                                                        ) : (
+                                                            <Favorite className="favorite " />
+                                                        )
+                                                    ) : (
+                                                        <FavoriteBorder />
+                                                    )
+                                                }
+                                            />
                                         </IconButton>
                                     </div>
                                     <div className="dev">
@@ -113,12 +145,11 @@ export default function Game() {
                             })}
                         </Stack>
                         <div className="div-btn-price">
-                            <Button
-                                className="btn-price"
-                                variant="contained"
-                                disabled
-                            >
-                                $ {data.price}
+                            <Button className="btn-price" variant="contained">
+                                <h5 className="btn-price-text">
+                                    $ {data.price}{" "}
+                                </h5>
+                                <AddShoppingCartIcon />
                             </Button>
                         </div>
                     </div>
@@ -136,38 +167,65 @@ export default function Game() {
                                         <th rowSpan={2}>Language</th>
                                     </tr>
                                 </thead>
-                                {data.languages[0] && <tbody>
-                                    <tr>
-                                        <td>English</td>{" "}
-                                        <td>
-                                            {data.languages[0].english === true ?<DoneIcon className="icon-done" />: <CloseIcon className="icon-done" />}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>German</td>{" "}
-                                        <td>
-                                        {data.languages[1].german === true ?<DoneIcon className="icon-done" />: <CloseIcon className="icon-done" />}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>French</td>{" "}
-                                        <td>
-                                        {data.languages[2].french === true ?<DoneIcon className="icon-done" />: <CloseIcon className="icon-done" />}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Russian</td>{" "}
-                                        <td>
-                                        {data.languages[3].russian === true ?<DoneIcon className="icon-done" />: <CloseIcon className="icon-done" />}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Spanish</td>{" "}
-                                        <td>
-                                        {data.languages[4].spanish === true ?<DoneIcon className="icon-done" />: <CloseIcon className="icon-done" />}
-                                        </td>
-                                    </tr>
-                                </tbody>}
+                                {data.languages[0] && (
+                                    <tbody>
+                                        <tr>
+                                            <td>English</td>{" "}
+                                            <td>
+                                                {data.languages[0].english ===
+                                                true ? (
+                                                    <DoneIcon className="icon-done" />
+                                                ) : (
+                                                    <CloseIcon className="icon-done" />
+                                                )}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>German</td>{" "}
+                                            <td>
+                                                {data.languages[1].german ===
+                                                true ? (
+                                                    <DoneIcon className="icon-done" />
+                                                ) : (
+                                                    <CloseIcon className="icon-done" />
+                                                )}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>French</td>{" "}
+                                            <td>
+                                                {data.languages[2].french ===
+                                                true ? (
+                                                    <DoneIcon className="icon-done" />
+                                                ) : (
+                                                    <CloseIcon className="icon-done" />
+                                                )}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Russian</td>{" "}
+                                            <td>
+                                                {data.languages[3].russian ===
+                                                true ? (
+                                                    <DoneIcon className="icon-done" />
+                                                ) : (
+                                                    <CloseIcon className="icon-done" />
+                                                )}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Spanish</td>{" "}
+                                            <td>
+                                                {data.languages[4].spanish ===
+                                                true ? (
+                                                    <DoneIcon className="icon-done" />
+                                                ) : (
+                                                    <CloseIcon className="icon-done" />
+                                                )}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                )}
                             </table>
                         </div>
                     </div>

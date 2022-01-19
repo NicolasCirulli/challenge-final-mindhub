@@ -5,10 +5,13 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import SendIcon from "@mui/icons-material/Send";
 import { useSelector, useDispatch } from "react-redux";
 import authActions from "../redux/actions/authActions";
+import gamesActions from "../redux/actions/gamesActions";
 import { updateUser } from "../helpers/querys";
 import { Link } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import cartActions from "../redux/actions/cartActions";
+import FlipMove from 'react-flip-move';
 
 export default function Profile() {
     const dispatch = useDispatch();
@@ -24,20 +27,20 @@ export default function Profile() {
     const [field, setField] = useState(null);
     const [gameFav, setGameFav] = useState([]);
     const input = useRef();
-
     
-
     const handleInput = (placeholder, query) => {
         setPlaceholder(placeholder);
         setRender(true);
         setField(query);
     };
+    
     const update = () => {
         const body = {
             [field]: input.current.value,
         };
         updateUser(data.id, body)
             .then((res) => {
+                console.log(res)
                 setData(res.response.respuesta);
                 reset();
             })
@@ -49,31 +52,23 @@ export default function Profile() {
         setField(null);
         setPlaceholder("");
     };
-    /*  function handleFavs (gameId) {
-        
-        user && dispatch(authActions.wishList(gameId))
-            ;
-    }; */
+    function handleFavs (gameId) {
+        dispatch(authActions.wishList(gameId))
+
+    };
 
     useEffect(() => {
         setData(user);
     }, [user]);
+    !allGames[0] && dispatch(gamesActions.getAllGames());
     useEffect(() => {
-        let aux = [];
-        user &&
-            user.wishList[0] &&
-            allGames &&
-            allGames.map((game) => {
-                user.wishList.map((wish) => {
-                    if (game._id === wish) {
-                        aux.push(game);
-                    }
-                });
-            });
+        let aux = allGames.filter((game) => user?.wishList?.indexOf(game._id) >= 0);
+
         setGameFav(aux);
-    }, []);
+    }, [allGames, user]);
+
     return (
-        <>
+        <div className="cont-all-profile">
             <div className="container profile">
                 <div>
                     <h1 className="profile-title">PROFILE</h1>
@@ -190,58 +185,60 @@ export default function Profile() {
                 )}
             </div>
             <div className="container fav-div">
-                <h3 className="fav-title">WISH LIST:</h3>
+                <h3 className="fav-title">Wish List:</h3>
             </div>
-            <div className="container favorites">
-                {gameFav[0] &&
-                    gameFav.map((game) => {
-                        const datos = {
-                        name: game.name,
-                        image: game.background_image,
-                        price: game.price,
-                        amount: 1,
-                        id: game._id,
-                    };
-                        return (
-                            <div
-                                className="card-game-fav"
-                                style={{
-                                    backgroundImage: `url("${game.background_image}")`,
-                                }}
-                            >
-                                <div>
-                                    <h5 className="title-card-fav">
-                                        {game.name}
-                                    </h5>
-                                    <h4 className="delete-fav" >x</h4>
-                                </div>
-                                <div className="cont-card-title">
-                                    <div className="card-title">
-                                        <Link
-                                            className="name-game name-price"
-                                            to={`/game/${game._id}`}
-                                        >
+            <div >
+                <FlipMove className="container favorites">
+                    {gameFav[0] &&
+                        gameFav.map((game) => {
+                            const datos = {
+                                name: game.name,
+                                image: game.background_image,
+                                price: game.price,
+                                amount: 1,
+                                id: game._id,
+                            };
+                            return (
+                                <div
+                                    className="card-game-fav"
+                                    style={{
+                                        backgroundImage: `url("${game.background_image}")`,
+                                    }}
+                                >
+                                    <div className="title-card-fav">
+                                        <h5 className="title-text-fav">
                                             {game.name}
-                                        </Link>
-                                        <p className="price-game">
-                                            $ {game.price}
-                                        </p>
+                                        </h5>
+                                        <span className="delete-fav" onClick={() => handleFavs(game._id)}><HighlightOffIcon /></span>
                                     </div>
-                                    <button
-                                        className="cont-btn-cart"
-                                        onClick={() =>
-                                            dispatch(
-                                                cartActions.addToCart(datos)
-                                            )
-                                        }
-                                    >
-                                        <AddShoppingCartIcon className="btn-cart" />
-                                    </button>
+                                    <div className="cont-card-title">
+                                        <div className="card-title">
+                                            <Link
+                                                className="name-game name-price"
+                                                to={`/game/${game._id}`}
+                                            >
+                                                {game.name}
+                                            </Link>
+                                            <p className="price-game">
+                                                $ {game.price}
+                                            </p>
+                                        </div>
+                                        <button
+                                            className="cont-btn-cart"
+                                            onClick={() =>
+                                                dispatch(
+                                                    cartActions.addToCart(datos)
+                                                )
+                                            }
+                                        >
+                                            <AddShoppingCartIcon className="btn-cart" />
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })}
+                </FlipMove>
             </div>
-        </>
+        </div>
     );
 }

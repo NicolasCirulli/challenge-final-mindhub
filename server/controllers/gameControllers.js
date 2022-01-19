@@ -18,7 +18,6 @@ const gameControllers = {
     }
   },
   getGame: async (req, res) => {
-    console.log(req.params.id);
     try {
       let game = await Game.findById(req.params.id);
       res.json({ res: game });
@@ -150,7 +149,6 @@ const gameControllers = {
     }catch(err){
       console.log(err)}
   },
-
   updateComment:async (req, res) => {
     const idComment = req.body.idComment
     const update = req.body.update
@@ -171,7 +169,6 @@ const gameControllers = {
       console.log(err)}
 
   },
- 
 
 };
 
