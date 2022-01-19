@@ -572,6 +572,14 @@ code {
 .cont-filter-games {
     display: flex;
 }
+.char-bg{
+    display: flex;
+    justify-content: center;
+    margin-bottom: -2rem;
+}
+.charimg{
+    height: 17rem;
+}
 .filter-games {
     color: rgb(150, 149, 149);
     font-size: 1.5rem;

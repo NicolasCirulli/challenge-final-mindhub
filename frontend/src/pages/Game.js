@@ -9,6 +9,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useParams } from "react-router-dom";
 import {getGameById} from '../helpers/querys'
 import { getThemeProps } from "@mui/system";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Comments from "../components/Comments";
 
 export default function Game () {

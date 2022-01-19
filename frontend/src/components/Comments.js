@@ -10,7 +10,7 @@ export default function Comments({data}) {
 
     return (
       <>
-       <div  >
+       <div  className="comments-contenedor">
     
         {data.map( comment => <Comment data={comment}/>)}
        <div className="comment-input">

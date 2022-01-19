@@ -6,6 +6,7 @@ import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import CardGames from "../components/CardGames";
 import logo from "../assets/logo.png";
 import { useSelector } from "react-redux";
+import char from "../assets/home.png"
 
 const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
@@ -79,8 +80,11 @@ export default function Home() {
                     </Box>
                 </DrawerHeader>
             </div>}
-
+                
             <div className="container Recommended">
+                <div className="char-bg">
+                <img className="charimg" src={char}/>
+                </div>
                 <Typography
                     variant="h6"
                     noWrap

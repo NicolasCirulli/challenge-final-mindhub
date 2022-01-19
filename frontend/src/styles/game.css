@@ -188,13 +188,15 @@ td .MuiSvgIcon-root {
 /* COMMENTS  */
 .comments{
     width: 100vh;
-    background-color: rgba(216, 202, 202, 0.157);
     height: auto;
-    padding: .5rem;
-    border-radius: 1rem;
+    padding: .5rem; 
     display: flex;
     justify-content: center;
     flex-direction: row;
+}
+.comments-contenedor{
+    background-color: rgba(216, 202, 202, 0.157);
+    border-radius: 1.5rem;
 }
 .conteiner-comm-ind{
     background-color: rgba(212, 203, 203, 0.205);
@@ -206,7 +208,7 @@ td .MuiSvgIcon-root {
     width: 100%;
     align-items:center;
     justify-content: space-between;
-    margin-top: 1rem;
+    margin-top: .5rem;
 }
 .org-2{
     display: flex;
@@ -223,8 +225,8 @@ td .MuiSvgIcon-root {
 }
 
 .img-comment{
-    width: 5vw;
-    height: 8vh;
+    width: 4vw;
+    height: 4vw;
     border-radius: 50%;
     object-fit: cover;
     margin-right: .5rem;
@@ -264,7 +266,7 @@ td .MuiSvgIcon-root {
 }
 .comment-input{
     display: flex;
-    background-color: rgba(212, 203, 203, 0.205);
-    border-radius: 1rem;
+    background-color: #af318169;
+    border-radius: 1.5rem;
     justify-content: space-between;
 }
