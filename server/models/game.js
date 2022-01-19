@@ -34,6 +34,9 @@ const gameSchema = new mongoose.Schema({
   }],
   trailer: String,
   creator_img: String,
+  language: [{
+    type: Boolean
+  }],
   comments: [
     {
         comment:{type:String},

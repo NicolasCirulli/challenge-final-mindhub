@@ -104,6 +104,7 @@ function CardAdminGame({ item }) {
             {!data.creator_img &&<button onClick={() => handleInput("new creator image", "creator_img",'text')}>
                 Add creator image
             </button> }
+          
             <div>
                 {data.offer ? (
                     <>
