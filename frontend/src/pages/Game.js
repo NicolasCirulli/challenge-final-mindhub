@@ -30,7 +30,6 @@ export default function Game () {
          background ={
        backgroundImage: "url("+data.background_image+")"}}
 
-   
 
     return (
         <>
@@ -60,17 +59,17 @@ export default function Game () {
                         </div>
                     </div>
                  </div>
-                {/* <div className="container screen">
-                    <div className="e-card-ht">
-                        <div className="e-card-image-1" > <img className="cardimg" src="https://as01.epimg.net/meristation/imagenes/2020/05/14/noticias/1589454136_132592_1590065418_noticia_normal.jpg"/> </div>         
+                 <div className="container screen-div">
+                {
+                    data.screenshot.map(screenshot=>{
+                        return <div className="size">
+                        <div className="e-card-ht-screen">
+                            <div className="e-card-image-1-screen" > <img className="card-img-screen" src={screenshot.url} key={data.screenshot.id}/> </div>         
+                        </div>
                     </div>
-                    <div className="e-card-ht">
-                        <div className="e-card-image-1" > <img className="cardimg" src="https://as01.epimg.net/meristation/imagenes/2020/05/14/noticias/1589454136_132592_1590065418_noticia_normal.jpg"/> </div>         
-                    </div>
-                    <div className="e-card-ht">
-                        <div className="e-card-image-1" > <img className="cardimg" src="https://as01.epimg.net/meristation/imagenes/2020/05/14/noticias/1589454136_132592_1590065418_noticia_normal.jpg"/> </div>         
-                    </div>
-                </div> */}
+                    })
+                }
+                </div>
             </div>
             <div  className="container buttons-bottom">      
                 <Stack direction="row" spacing={2}>
@@ -105,11 +104,12 @@ export default function Game () {
                         </tr>
                         </thead>
                         <tbody>
-                        <tr> <td>English</td> <td><DoneIcon className="icon-done"/></td></tr>
-                        <tr> <td>German</td> <td><DoneIcon className="icon-done"/></td></tr>
+                            
+
+                        {/*
                         <tr><td>Spanish</td> <td><CloseIcon className="icon-done"/></td></tr>
                         <tr><td>French</td> <td><CloseIcon className="icon-done"/></td></tr>
-                        <tr><td>Russian</td> <td><DoneIcon className="icon-done"/></td></tr>
+                        <tr><td>Russian</td> <td><DoneIcon className="icon-done"/></td></tr> */}
                         </tbody>
                     </table>
                 </div>

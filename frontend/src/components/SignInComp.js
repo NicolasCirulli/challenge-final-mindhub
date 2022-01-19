@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import authActions from "../redux/actions/authActions";
-import image from "../assets/signIn.jpg";
-import GoogleLogin from "react-google-login";
-import Swal from "sweetalert2";
+import image from "../assets/cyber.png";
+import GoogleLogin from 'react-google-login';
+import Swal from 'sweetalert2';
 
 const SignInComp = () => {
   const dispatch = useDispatch();
@@ -89,56 +89,57 @@ const SignInComp = () => {
   }
 
 
-return (
-  <div className="backgroundSignIn">
-    <div className="cardSign">
-      <div className="contentSignIn">
-        <h1 className="titleSignIn">It's great to see you again</h1>
-        <h2>Sign in xtreme</h2>
-        <form>
-          <div className="inputsSignIn">
-            <input
-              type="text"
-              className="label-SI email"
-              placeholder=" Email"
-              ref={email}
-            />
-            <input
-              type="password"
-              className="label-SI password"
-              placeholder=" Password"
-              ref={password}
-            />
-            <input
-              type="button"
-              className="linkSignIn"
-              value="Sign in"
-              onClick={signIn}
-            />
-            <p className="or-sign-in">or</p>
-            <GoogleLogin
-              className="googleBtn"
-              clientId="441570016693-jv03t22mt950it3camu7if135vkr4bok.apps.googleusercontent.com"
-              buttonText="Sign In with Google"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={"single_host_origin"}
-            />
-          </div>
-        </form>
+  return (
+    <div className="backgroundSignIn">
+     
+      <div className="signUpImg" style={{ backgroundImage: `url("${image}")` }}>
+        <div className="parrSignUp">
+          <h1>Hello!</h1>
+          <p>
+            Welcome again to our site. We have so many captivating games for
+            you. Just sign up and visit our game store with different
+            selections. And don't forget to share your opinions with!
+          </p>
+        </div>
+      </div>
+      <div className="cardSign">
+        <div className="contentSignIn">
+          <h1 className="titleSignIn">It's great to see you again</h1>
+          <h2>Sign in xtreme</h2>
+          <form>
+            <div className="inputsSignIn">
+              <input
+                type="text"
+                className="label-SI email"
+                placeholder=" Email"
+                ref={email}
+              />
+              <input
+                type="password"
+                className="label-SI password"
+                placeholder=" Password"
+                ref={password}
+              />
+              <input
+                type="button"
+                className="linkSignIn"
+                value="Sign in"
+                onClick={signIn}
+              />
+               <p className="or-sign-in">or</p>
+                            <GoogleLogin
+                                    className='googleBtn'
+                                    clientId="441570016693-jv03t22mt950it3camu7if135vkr4bok.apps.googleusercontent.com"
+                                    buttonText="Sign In with Google"
+                                    onSuccess={responseGoogle}
+                                    onFailure={responseGoogle}
+                                    cookiePolicy={'single_host_origin'}
+                                />
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-    <div className="signUpImg" style={{ backgroundImage: `url("${image}")` }}>
-      <div className="parrSignUp">
-        <h1>Hello!</h1>
-        <p>
-          Welcome again to our site. We have so many captivating games for
-          you. Just sign up and visit our game store with different
-          selections. And don't forget to share your opinions with!
-        </p>
-      </div>
-    </div>
-  </div>
 );
 };
 
