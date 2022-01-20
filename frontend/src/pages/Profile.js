@@ -188,7 +188,7 @@ export default function Profile() {
                 <h3 className="fav-title">Wish List:</h3>
             </div>
             <div >
-                <FlipMove className="container favorites">
+                <FlipMove className=" favorites">
                     {gameFav[0] &&
                         gameFav.map((game) => {
                             const datos = {

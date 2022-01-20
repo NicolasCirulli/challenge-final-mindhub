@@ -6,6 +6,8 @@
 }
 .cont-all-profile{
     min-height: 100%;
+    margin-left: 5rem;
+    margin-right: 1rem;
 }
 /*----------CARD EDIT PROFILE----------*/
 
@@ -130,6 +132,7 @@
     padding: 3rem;
     border-radius: 2rem;
     background-color: rgba(128, 128, 128, 0.144);
+    
 }
 .e-card-image-game{
     background: url('https://images.unsplash.com/photo-1535738434100-112fb21aa536?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y291cGxlJTIwdHJhdmVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
@@ -140,14 +143,13 @@
     width: 100%;
 }
 .card-game-fav{
-    
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 20vw;
+    width: 100%;
     height: 45vh;
     margin: auto;
     border-color: rgba(250, 248, 248, 0.219) solid ;
@@ -177,4 +179,41 @@
 .delete-fav{
     cursor: pointer;
     z-index: 1000;
+}
+
+@media(max-width:1006px){
+    .info-profile{
+        width: 100%;
+    }
+    .favorites{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media(max-width:806px){
+    .favorites{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media(max-width:630px){
+    .favorites{
+        grid-template-columns: 1fr 
+    }
+}
+@media(max-width:577px){
+.cont-edit-profile{
+    flex-direction: column;
+}
+.profile-img{
+    width: 40vw;
+    justify-content: center;
+    align-content: center;
+}
+.profile-img-div{
+    width: 40%;
+    justify-content: center;
+    align-content: center;
+}
+.profile-info {
+    margin-left: 0;
+}
 }
