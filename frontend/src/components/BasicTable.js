@@ -19,7 +19,7 @@ import { connect } from "react-redux";
 
 
 
-export default function BasicTable() {
+export default function BasicTable(game, user) {
   const cartStore = useSelector((store) => store.cartReducer.cart);
   const totalPrice = useSelector((store) => store.cartReducer.totalPrice);
   const [success, setSuccess] = useState(false);
@@ -55,7 +55,7 @@ export default function BasicTable() {
     });
   };
   console.log(user.userName);
-  
+
   const onApprove = (data, actions) => {
     postPurchase();
     console.log(data);
