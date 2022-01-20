@@ -139,13 +139,33 @@ outline: none;
         display: none;
     }
     .signUpImg{
-        background-image:  none !important;
+        display: none;
     }
     .backgroundSign{
         display: grid;
         grid-template-columns: 1fr;
         margin-left: 5rem;
         margin-right: 1rem;
+    }
+    .cardSign{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-left: 5rem;
+        margin-right: 1rem;
+    }
+    .contentSignIn{
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+    .titleSignIn{
+        text-align: center;
+    }
+    .label-SI{
+        width: auto;
     }
 }
 @media(max-width:439px){
