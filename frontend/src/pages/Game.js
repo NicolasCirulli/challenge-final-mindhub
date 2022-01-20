@@ -229,8 +229,8 @@ export default function Game() {
                             </table>
                         </div>
                     </div>
-                    <div className="finalinfo">
-                        <div>
+                    <div className="container finalinfo">
+                        <div className="cont-reviews">
                             <h4 className="review-text">Reviews</h4>
                             <div className="comments-cantainer">
                                 <Comments className="comment-component" data={data.comments} game={data} />
