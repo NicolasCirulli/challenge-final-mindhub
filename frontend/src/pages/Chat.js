@@ -42,17 +42,16 @@ const Messenger = ({ user }) => {
           `http://localhost:4000/api/conversations/${user.id}`
         );
         setConversations(res.data);
-        console.log(conversations);
       } catch (err) {
         console.log(err);
       }
     };
     getConversations();
     socket.current.emit("addUser", user.id);
-    //socket.current.on("getUsers", (users) => {
-    //console.log(users);
-    //});
-  }, [user]);
+    socket.current.on("getUsers", (users) => {
+      console.log(users);
+    });
+  }, [user.id]);
 
   useEffect(() => {
     const getMessages = async () => {
