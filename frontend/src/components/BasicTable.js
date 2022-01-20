@@ -14,10 +14,12 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import CartRow from "./CartRow";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import axios from "axios";
+import { connect } from "react-redux";
 
 
 
-export default function BasicTable() {
+export default function BasicTable(game, user) {
   const cartStore = useSelector((store) => store.cartReducer.cart);
   const totalPrice = useSelector((store) => store.cartReducer.totalPrice);
   const [success, setSuccess] = useState(false);
@@ -32,7 +34,6 @@ export default function BasicTable() {
   intent: "capture",
   }
   const createOrder = (cartStore, actions) => {
-
     return actions.order.create({
       purchase_units: [
         {
@@ -44,8 +45,19 @@ export default function BasicTable() {
       ],
     });
   };
+  const postPurchase = () => {
+    axios.post("http://localhost:4000/api/purchase", {
+      articles: cartStore,
+      total: totalPrice,
+      userId: user.id,
+      mail: user.mail,
+      user: user.userName,
+    });
+  };
+  console.log(user.userName);
+
   const onApprove = (data, actions) => {
-    //recibo el resultado de mi operacion
+    // postPurchase();
     console.log(data);
     return actions.order.capture().then(function (details) {
       const { payer } = details;
