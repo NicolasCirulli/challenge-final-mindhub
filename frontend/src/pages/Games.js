@@ -33,14 +33,13 @@ function Games(props) {
     const [filter, setfilter] = useState("all");
 
     const [gamesRender, setGamesRender] = useState([]);
-
     const [gender, setGender] = useState("All");
     const [sortPrice, setSortPrice] = useState(true);
     const [priceMin, setPriceMin] = useState(false);
     const [priceMax, setPriceMax] = useState(false);
 
     const allGames = useSelector((store) => store.gamesReducer.games);
-
+    const user = useSelector((store) => store.userReducer.user);
     useEffect(() => {
         renderGames(allGames);
     }, [allGames]);
@@ -56,10 +55,7 @@ function Games(props) {
     const max = useRef();
     const sortRadio = useRef();
 
- 
-
     // Funciones
-
 
     function activate() {
         setactive(true);
@@ -73,8 +69,6 @@ function Games(props) {
     const handelSort = (bool) => {
         setSortPrice(bool);
     };
-   
-
 
     // Filtro
     const renderGames = () => {
@@ -124,13 +118,13 @@ function Games(props) {
         setGamesRender(allGames);
         setfilter("all")
     } 
-
-
-
-    
+    function favorites (){
+        setGamesRender(allGames.filter((game) => user?.wishList?.indexOf(game._id) >= 0))
+        setfilter("favorites")
+    } 
 
     return (
-        <div>
+        <div className="cont-all-page-games">
             <div className="container logo-game">
                 <h1 className="title-games">Game Library</h1>
                 <img src={logo} className="logo-home" alt="logo" />
@@ -157,7 +151,7 @@ function Games(props) {
                         ref={genderSelect}
                     >
                         <option disabled selected>
-                            Genders
+                        Genders
                         </option>
                         {genders.map((gender, index) => {
                             return (
@@ -255,7 +249,7 @@ function Games(props) {
                 </h6>
                 {props.user && (
                     <h6
-                        onClick={() => setfilter("favorites")}
+                        onClick={() => favorites()}
                         className={
                             filter === "favorites"
                                 ? "filter-games-active"

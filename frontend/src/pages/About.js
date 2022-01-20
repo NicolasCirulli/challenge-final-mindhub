@@ -6,22 +6,16 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Link } from "react-router-dom";
 import CardAbout from "../components/CardAbout";
 import { useRef } from "react";
-import fall from "../assets/fallguys1.png"
-import fall2 from "../assets/fall2.png"
-import valo from "../assets/valo.png"
+import valo from "../assets/valo.png";
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)  
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 export default function About() {
-    const myRef = useRef(null)
-    const executeScroll = () => scrollToRef(myRef)
+    const myRef = useRef(null);
+    const executeScroll = () => scrollToRef(myRef);
     return (
-        <div className="container">
-            <div className="cont-about"> 
-                {/* <div className="valo">
-                        <img  className="valoimg" src={valo}/>
-                    </div> */}
+        <div className="container cont-aboutUs">
+            <div className="cont-about">
                 <div className="container cont-welcome">
-                   
                     <div className="welcome">
                         <div className="text-welcome">
                             <Typography
@@ -33,7 +27,6 @@ export default function About() {
                             </Typography>
                             <Typography
                                 variant="h6"
-                                noWrap
                                 component="div"
                                 className="subtitle"
                             >
@@ -43,20 +36,19 @@ export default function About() {
                         </div>
                     </div>
                     <img src={logo} className="logo-welcome" />
-                
-                
-                    
-                    
                 </div>
                 <div className="go-down">
                     <div className="cont-down">
-                         <img src={valo}/>  
-                        <div className="icondown"> 
-                            <p className="more-i color-hover" onClick={executeScroll}>More information </p>
+                        <img className="photo-valo" src={valo} />
+                        <div className="icondown">
+                            <p
+                                className="more-i color-hover"
+                                onClick={executeScroll}
+                            >
+                                More information{" "}
+                            </p>
                             <KeyboardArrowDownIcon className="icon-arrow color-hover" />
-                        </div>  
-                        {/* <div><img src={fall2}/></div> */}
-                        
+                        </div>
                     </div>
                 </div>
             </div>

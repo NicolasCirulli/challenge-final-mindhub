@@ -89,21 +89,35 @@ const SignUpComp = () => {
     if (!Object.values(user).some((value) => value === "")) {
       try {
         const res = await dispatch(authActions.newUser(user));
-        console.log(res);
         if (res.succes) {
-          alert("cuenta creada");
+          Alert.fire({
+            icon: "succes",
+            title: "Your account was created, check your email to confirm it",
+          });
         } else {
           if (res.error) {
-            res.response.map((e) => alert(e.message));
+            res.response.map((e) => Alert.fire({
+              icon: "error",
+              title: e.message,
+              iconColor: '#af3181',
+            }));
           } else {
-            alert(res.res);
+            Alert.fire({
+              icon: "error",
+              title: res.res,
+              iconColor: '#af3181',
+            });
           }
         }
       } catch (err) {
         console.log(err);
       }
     } else {
-      alert("Todos los campos son obligatorios");
+      Alert.fire({
+        icon: "warning",
+        title: "All fields must be completed",
+        iconColor: '#af3181',
+      });
     }
   
   };
@@ -124,11 +138,17 @@ const SignUpComp = () => {
           setImageFirebase(url);
           const imageRef = collection(db,"images");
           addDoc(imageRef, {imageUrl : url}).then((res) => {
-            console.log(res);
-            alert('image added successfully')
+            Alert.fire({
+              icon: "success",
+              title: 'image added successfully',
+            })
             setLoad(true)
             setProgress(100)
-          }).catch(err => {alert('error and upload image')})
+          }).catch(err => {Alert.fire({
+            icon: "warning",
+            title: 'The image did not load correctly, you must wait a few seconds before registering',
+            iconColor: '#af3181',
+          })})
         })
     })
   }
