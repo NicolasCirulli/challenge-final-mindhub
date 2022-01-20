@@ -77,7 +77,19 @@ export default function CardGame({ game }) {
                     </div>
                     <button
                         className="cont-btn-cart"
-                        onClick={() => dispatch(cartActions.addToCart(datos))}
+                        onClick={() => dispatch(cartActions.addToCart(datos)) && Swal.fire({
+                            toast: true,
+                            position: "top-end",
+                            icon: "success",
+                            showConfirmButton: false,
+                            timer: 3000,
+                            title: "It has been added to the cart!",
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener("mouseenter", Swal.stopTimer);
+                                toast.addEventListener("mouseleave", Swal.resumeTimer);
+                            },
+                        })}
                     >
                         <AddShoppingCartIcon className="btn-cart" />
                     </button>

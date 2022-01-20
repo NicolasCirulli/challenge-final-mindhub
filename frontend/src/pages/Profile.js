@@ -12,6 +12,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import cartActions from "../redux/actions/cartActions";
 import FlipMove from 'react-flip-move';
+import Swal from "sweetalert2";
 
 export default function Profile() {
     const dispatch = useDispatch();
@@ -227,7 +228,19 @@ export default function Profile() {
                                             onClick={() =>
                                                 dispatch(
                                                     cartActions.addToCart(datos)
-                                                )
+                                                )  && Swal.fire({
+                                                    toast: true,
+                                                    position: "top-end",
+                                                    icon: "success",
+                                                    showConfirmButton: false,
+                                                    timer: 3000,
+                                                    title: "It has been added to the cart!",
+                                                    timerProgressBar: true,
+                                                    didOpen: (toast) => {
+                                                        toast.addEventListener("mouseenter", Swal.stopTimer);
+                                                        toast.addEventListener("mouseleave", Swal.resumeTimer);
+                                                    },
+                                                })
                                             }
                                         >
                                             <AddShoppingCartIcon className="btn-cart" />
