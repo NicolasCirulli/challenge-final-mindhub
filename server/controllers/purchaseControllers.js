@@ -28,7 +28,6 @@ const sendVoiceover = async (mail, total, articles, user) => {
   );
 
   let sender = "useremailverifyMindHub@gmail.com";
-  //let contentHTML =
 
   let mailOptions = {
     from: sender,
