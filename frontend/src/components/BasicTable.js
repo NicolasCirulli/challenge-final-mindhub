@@ -45,6 +45,17 @@ export default function BasicTable() {
       ],
     });
   };
+  const postPurchase = () => {
+    axios.post("http://localhost:4000/api/purchase", {
+      articles: cartStore,
+      total: totalPrice,
+      userId: user.id,
+      mail: user.mail,
+      user: user.userName,
+    });
+  };
+  console.log(user.userName);
+  
   const onApprove = (data, actions) => {
     postPurchase();
     console.log(data);
