@@ -61,7 +61,7 @@ export default function Game() {
                         <div className="container">
                             <h1 className="gamePath">{`${data.genres[0].name} / ${data.name}`}</h1>
                             <div className="divgen">
-                                <div>
+                                <div className="cont-img-avatar">
                                     <img
                                         className="avatar"
                                         style={{
@@ -102,10 +102,10 @@ export default function Game() {
 
                                     <div className="release">
                                         <h4 className="date">
-                                            RELEASE DATE: {data.released}
+                                            Release Date: {data.released}
                                         </h4>
                                         <h4 className="date">
-                                            REVIEWS: {data.rating}
+                                            Reviews: {data.rating}
                                         </h4>
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@ export default function Game() {
                     <div className="container descriptions">
                         <div className="text">
                             <h4 className="game-desc-title">
-                                GAME DESCRIPTION
+                                Game Descripton
                             </h4>
                             <p className="game-desc">{data.description_raw}</p>
                         </div>
@@ -231,12 +231,14 @@ export default function Game() {
                     </div>
                     <div className="container finalinfo">
                         <div>
-                            <h4 className="review-text">REVIEWS</h4>
-                            <Comments data={data.comments} />
+                            <h4 className="review-text">Reviews</h4>
+                            <div className="comments-cantainer">
+                                <Comments className="comment-component" data={data.comments} />
+                            </div>
                         </div>
                         <div className=" trailer">
                             <h4 className="game-desc-title">
-                                WATCH THE GAME TRAILER
+                                Watch the Game Trailer
                             </h4>
                             <div className="e-card-ht-trailer">
                                 <div className="e-card-image-1">
