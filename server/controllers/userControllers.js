@@ -60,7 +60,7 @@ const userControllers = {
       address,
       google,
     } = req.body;
-    console.log(google);
+    // console.log(google);
 
     try {
       const userExists = await User.findOne({ mail: mail });
@@ -183,7 +183,7 @@ const userControllers = {
   },
   getAllUsers: async (req, res) => {
     try {
-      let user = await User.find().populate('cart.$.idGame');
+      let user = await User.find().populate("cart.$.idGame");
       res.json({ res: user });
     } catch (err) {
       return res.status(400).json({
@@ -258,17 +258,18 @@ const userControllers = {
       })
       .catch((error) => res.json({ success: false, response: error }));
   },
-  addCart: async(req, res) => {
-    
-    try{
+  addCart: async (req, res) => {
+    try {
       const user = await User.findOneAndUpdate(
-        {_id: req.user._id},
-        {cart : req.body.cart},
-        {new:true}
-        )
+        { _id: req.user._id },
+        { cart: req.body.cart },
+        { new: true }
+      );
 
-      res.json({ success: true, response: user})
-    }catch(error) {console.log(error);}
+      res.json({ success: true, response: user });
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
 

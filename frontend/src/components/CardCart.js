@@ -8,8 +8,10 @@ import { useSelector } from "react-redux";
 import CartRow from "./CartRow";
 import { useState } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import axios from "axios";
+import { connect } from "react-redux";
 
-export default function CardCart({ game }) {
+function CardCart({ game, user }) {
   const cartStore = useSelector((store) => store.cartReducer.cart);
   const totalPrice = useSelector((store) => store.cartReducer.totalPrice);
   const [success, setSuccess] = useState(false);
@@ -26,8 +28,6 @@ export default function CardCart({ game }) {
   console.log(cartStore);
 
   const createOrder = (cartStore, actions) => {
-    //Creo la orden de con los datos, esta puede ser general o con detalle de items
-
     return actions.order.create({
       purchase_units: [
         {
@@ -40,8 +40,19 @@ export default function CardCart({ game }) {
     });
   };
 
+  const postPurchase = () => {
+    axios.post("http://localhost:4000/api/purchase", {
+      articles: cartStore,
+      total: totalPrice,
+      userId: user.id,
+      mail: user.mail,
+      user: user.userName,
+    });
+  };
+  console.log(user.userName);
+
   const onApprove = (data, actions) => {
-    //recibo el resultado de mi operacion
+    postPurchase();
     console.log(data);
     return actions.order.capture().then(function (details) {
       const { payer } = details;
@@ -119,3 +130,11 @@ export default function CardCart({ game }) {
     </div>
   );
 }
+
+const maspStatetoProps = (state) => {
+  return {
+    user: state.userReducer.user,
+  };
+};
+
+export default connect(maspStatetoProps)(CardCart);

@@ -5,6 +5,7 @@ const userControllers = require("../controllers/userControllers");
 const gameControllers = require("../controllers/gameControllers");
 const messageControllers = require("../controllers/messageControllers");
 const conversationControllers = require("../controllers/conversationControllers");
+const purchaseControllers = require("../controllers/purchaseControllers");
 
 const {
   addNewUser,
@@ -15,7 +16,7 @@ const {
   updateUser,
   mailVerification,
   wishList,
-  addCart
+  addCart,
 } = userControllers;
 const {
   addGame,
@@ -27,11 +28,12 @@ const {
   getGamesByName,
   addComment,
   deleteComment,
-  updateComment
+  updateComment,
 } = gameControllers;
 const { addNewMessage, getMessage } = messageControllers;
 const { newConversation, getUserConversation, getTwoUsers } =
   conversationControllers;
+const { newPurchase, mailVoiceiver } = purchaseControllers;
 
 // USER
 
@@ -40,10 +42,11 @@ router.route("/users").get(getAllUsers);
 router.route("/user/signup").post(validator, addNewUser);
 router.route("/user/signin").post(signInUser);
 
-router.route("/user/:id")
-.get(getUser)
-.delete(passport.authenticate('jwt',{session:false}),deleteUser)
-.put(passport.authenticate('jwt',{session:false}),updateUser);
+router
+  .route("/user/:id")
+  .get(getUser)
+  .delete(passport.authenticate("jwt", { session: false }), deleteUser)
+  .put(passport.authenticate("jwt", { session: false }), updateUser);
 
 router
   .route("/verifyToken")
@@ -54,8 +57,12 @@ router
 
 router.route("/verify/:uniqueString").get(mailVerification);
 
-router.route("/wishList/").put(passport.authenticate('jwt',{session:false}),wishList);
-router.route("/cart/").put(passport.authenticate('jwt',{session:false}),addCart);
+router
+  .route("/wishList/")
+  .put(passport.authenticate("jwt", { session: false }), wishList);
+router
+  .route("/cart/")
+  .put(passport.authenticate("jwt", { session: false }), addCart);
 
 // GAME
 router.route("/allgames").get(getAllGame);
@@ -64,18 +71,22 @@ router.route("/gameByGenre/:genre").get(getGameByGenre);
 
 router.route("/gameByName/:name").get(getGamesByName);
 
-router.route("/game").post(passport.authenticate('jwt',{session:false}),addGame);
+router
+  .route("/game")
+  .post(passport.authenticate("jwt", { session: false }), addGame);
 
-router.route("/game/:id")
-.get(getGame)
-.delete(passport.authenticate('jwt',{session:false}),deleteGame)
-.put(passport.authenticate('jwt',{session:false}),updateGame);
+router
+  .route("/game/:id")
+  .get(getGame)
+  .delete(passport.authenticate("jwt", { session: false }), deleteGame)
+  .put(passport.authenticate("jwt", { session: false }), updateGame);
 
 // comentarios games
-router.route("/comment/:id")
-.post(passport.authenticate('jwt',{session:false}),addComment)
-.put(passport.authenticate('jwt',{session:false}),updateComment)
-.delete(passport.authenticate('jwt',{session:false}),deleteComment)
+router
+  .route("/comment/:id")
+  .post(passport.authenticate("jwt", { session: false }), addComment)
+  .put(passport.authenticate("jwt", { session: false }), updateComment)
+  .delete(passport.authenticate("jwt", { session: false }), deleteComment);
 
 // CHAT
 
@@ -86,5 +97,7 @@ router.route("/conversations/:userId").get(getUserConversation);
 router.route("/conversations/find/:firstUserId/:secondUserId").get(getTwoUsers);
 //router.route("/user/:id").get(getOneUser);
 
+router.route("/purchase").post(newPurchase);
+//router.route("/voiceover").post(mailVoiceiver);
 
 module.exports = router;
