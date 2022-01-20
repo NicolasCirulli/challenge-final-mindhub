@@ -318,23 +318,35 @@ code {
 /*ABOUT US*/
 
 .cont-about{
-    height: 100vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+.valo{
+    margin-right: 3.3rem;
+    display: flex;
 }
 .cont-welcome {
     display: flex;
-    justify-content: space-around;
+    flex-direction:row;
     align-content: center;
-    height: 85%;
+    justify-content: center;
+    height: 26vh;
+    margin-top: 2rem;
 }
 .welcome {
-    height: 50vh;
+    height: 20vh;
     color: #fff;
     align-self: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     align-content: center;
     align-items: center;
+    
 }
 .text-welcome {
     display: flex;
@@ -357,7 +369,7 @@ code {
 }
 .logo-welcome {
     height: auto;
-    width: 40%;
+    width: 25%;
     align-self: center;
     padding: 2rem;
 }
@@ -392,15 +404,22 @@ code {
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    margin-top: 20rem;
 }
 .go-down{
     width: 100%;
+    height: 15%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+}
+.icondown{
+    display: flex;
+    flex-direction: column;
+    margin-top: -10rem;
 }
 .cont-down{
+    height: auto;
     align-self: center;
-    width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -409,6 +428,7 @@ code {
 .cont-down:hover>.color-hover{
     color: #11edd5 !important;
 }
+
 .more-i{
     text-align: center;
     align-self: center;

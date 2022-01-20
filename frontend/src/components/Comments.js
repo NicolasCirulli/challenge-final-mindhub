@@ -14,7 +14,7 @@ export default function Comments({ data }) {
                 type="text"
                 id="comment"
                 className="labelComments"
-                ref={inputComment}
+                /* ref={inputComment} */
             /> 
             <span className="btn-leave-comment"><SendIcon /></span>
         </div> 

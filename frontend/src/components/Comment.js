@@ -15,7 +15,7 @@ export default function Comment({ data }) {
           <p className="p-data-comment">"{data.comment}"</p>
         </div>
         <div className="review">
-          <p className="p-review2">*rating*</p>
+          <p className="p-review2">rating</p>
         </div>
         </div>
       </div>

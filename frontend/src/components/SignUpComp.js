@@ -5,8 +5,15 @@ import countries from "./Countries";
 import image from "../assets/ez.png";
 import GoogleLogin from "react-google-login";
 import Swal from "sweetalert2";
-
+import {ref, uploadBytesResumable,getDownloadURL} from 'firebase/storage'
+import { storage, db } from "../firebaseConfig"
+import {collection, addDoc} from "firebase/firestore"
 const SignUpComp = () => {
+
+  const [imageFirebase, setImageFirebase] = useState('')
+  const [progress,setProgress] = useState(false)
+  const [load,setLoad] =useState(false)
+
   const Alert = Swal.mixin({
     toast: true,
     position: "top-end",
@@ -68,13 +75,14 @@ const SignUpComp = () => {
   };
 
   const newUser = async () => {
+    
     const user = {
       firstName: name.current.value,
       lastName: lastName.current.value,
       userName: userName.current.value,
       mail: email.current.value,
       password: password.current.value,
-      image: photo.current.value,
+      image: imageFirebase,
       address: country,
       google: false,
     };
@@ -109,7 +117,34 @@ const SignUpComp = () => {
         title: "All fields must be completed",
       });
     }
+  
   };
+
+  const handleImage = e =>{
+    
+    const link = `/images/${Date.now()}${e.target}`
+    const storageRef = ref(storage, link)
+    const uploadImage = uploadBytesResumable(storageRef, e.target.files[0])
+    uploadImage.on("state_changed", (snapshot) =>{
+      const progressPercent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+      setProgress(progressPercent)
+    },
+    (err) => {console.log(err)},
+    () =>{
+      getDownloadURL(uploadImage.snapshot.ref)
+        .then(url =>{
+          setImageFirebase(url);
+          const imageRef = collection(db,"images");
+          addDoc(imageRef, {imageUrl : url}).then((res) => {
+            console.log(res);
+            alert('image added successfully')
+            setLoad(true)
+            setProgress(100)
+          }).catch(err => {alert('error and upload image')})
+        })
+    })
+  }
+
 
   return (
     <div className="backgroundSign">
@@ -176,10 +211,12 @@ const SignUpComp = () => {
                   <div className="inputPhoto">
                     <label>Photo</label>
                     <input
-                      type="text"
+                      type="file"
                       id="photo"
                       className="labelSU"
                       ref={photo}
+                      accept="image/*"
+                      onChange={(e)=>handleImage(e)}
                     />
                   </div>
                   <div className="inputCountry">
@@ -206,12 +243,19 @@ const SignUpComp = () => {
                 </div>
               </div>
               <div className="buttonsSignUp">
-                <input
+               {load ? <input
                   type="button"
                   className="linkSignIn"
                   value="Sign up"
                   onClick={newUser}
                 />
+                :<input
+                  type="button"
+                  className="linkSignIn"
+                  value="Sign up"
+                  onClick={newUser}
+                  dissable
+                />}
                 <p>or</p>
                 <GoogleLogin
                   className="googleBtn"
