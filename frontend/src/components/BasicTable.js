@@ -11,12 +11,66 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BsBagCheck } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import CartRow from "./CartRow";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
 
 
 export default function BasicTable() {
   const cartStore = useSelector((store) => store.cartReducer.cart);
   const totalPrice = useSelector((store) => store.cartReducer.totalPrice);
+  const [success, setSuccess] = useState(false);
+  const [orderID, setOrderID] = useState(false);
+  const [payPal, setPayPal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  
+  const initialOptions = {
+  "client-id":
+    "ASZvH8kLnEArfBqrOnXXmG4LT39seVoHdU_JEh_bbbsoP3ShhtXwptb7f8xR5gYEDgx2Apf2tn20Z0DE",
+  currency: "USD",
+  intent: "capture",
+  }
+  const createOrder = (cartStore, actions) => {
+
+    return actions.order.create({
+      purchase_units: [
+        {
+          description: "items",
+          amount: {
+            value: totalPrice,
+          },
+        },
+      ],
+    });
+  };
+  const onApprove = (data, actions) => {
+    //recibo el resultado de mi operacion
+    console.log(data);
+    return actions.order.capture().then(function (details) {
+      const { payer } = details;
+      setSuccess(true);
+      console.log("Capture result", details, JSON.stringify(details, null, 2));
+      var transaction = details.purchase_units[0].payments.captures[0];
+      alert(
+        "Transaction " +
+          transaction.status +
+          ": " +
+          transaction.id +
+          "\n\nSee console for all available details"
+      );
+      console.log(details);
+      setOrderID(transaction.id);
+    });
+  };
+  const onCancel = (data) => {
+    console.log("You have cancelled the payment!", data);
+  };
+
+  const onError = (data, actions) => {
+    setErrorMessage("An Error occured with your payment ");
+  };
+
   return (
     <>
     <div className="container title-cart">
@@ -54,9 +108,20 @@ export default function BasicTable() {
               </p>
             ))}
             <h3 className="cart-total">Total: $ {totalPrice} </h3>
-            <button className="btn-checkout">
-              Proceed to checkout <BsBagCheck className="icon-checkout" />
-            </button>
+            <button className="btn-checkout" onClick={() => setPayPal(!payPal)}>
+            Proceed to checkout
+            <BsBagCheck className="icon-checkout" />
+          </button>
+          {payPal && (
+            <PayPalScriptProvider options={initialOptions}>
+              <PayPalButtons
+                createOrder={createOrder}
+                onApprove={onApprove}
+                onError={onError}
+                onCancel={onCancel}
+              />
+            </PayPalScriptProvider>
+          )}
           </div>
         </div>
       </div>

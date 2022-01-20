@@ -27,6 +27,9 @@ border-radius: 1rem;
 .css-1ex1afd-MuiTableCell-root{
     color: white!important;
 }
+.css-11xur9t-MuiPaper-root-MuiTableContainer-root{
+    border-radius: 1rem!important;
+}
 .gametrow{
     height: 5rem;
 }
@@ -37,7 +40,7 @@ border-radius: 1rem;
     display: flex;
     margin-left: 8rem;
     width: 40vw;
-    border-radius: 2rem;
+    border-radius: 1rem;
     background-color:rgba(255, 255, 255, 0.555);
     box-shadow: 3px 3px 5px #05f2da56;
 }
@@ -51,8 +54,8 @@ border-radius: 1rem;
     justify-content: center;
     background-color: #11edd371;
     border: none;
+    margin-top: 1rem;
     border-radius: 1rem;
-    margin: 2% 15%;
     font-weight: bold;
     width: 100%;
     font-size: large;
