@@ -138,11 +138,17 @@ const SignUpComp = () => {
           setImageFirebase(url);
           const imageRef = collection(db,"images");
           addDoc(imageRef, {imageUrl : url}).then((res) => {
-            console.log(res);
-            alert('image added successfully')
+            Alert.fire({
+              icon: "success",
+              title: 'image added successfully',
+            })
             setLoad(true)
             setProgress(100)
-          }).catch(err => {alert('error and upload image')})
+          }).catch(err => {Alert.fire({
+            icon: "warning",
+            title: 'The image did not load correctly, please wait a few seconds before registering',
+            iconColor: '#af3181',
+          })})
         })
     })
   }
