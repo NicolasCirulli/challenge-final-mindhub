@@ -83,19 +83,31 @@ const SignUpComp = () => {
         const res = await dispatch(authActions.newUser(user));
         console.log(res);
         if (res.succes) {
-          alert("cuenta creada");
+          Alert.fire({
+            icon: "succes",
+            title: "Your account was created, check your email to confirm it",
+          });
         } else {
           if (res.error) {
-            res.response.map((e) => alert(e.message));
+            res.response.map((e) => Alert.fire({
+              icon: "error",
+              title: e.message,
+            }));
           } else {
-            alert(res.res);
+            Alert.fire({
+              icon: "error",
+              title: res.res,
+            });
           }
         }
       } catch (err) {
         console.log(err);
       }
     } else {
-      alert("Todos los campos son obligatorios");
+      Alert.fire({
+        icon: "warning",
+        title: "All fields must be completed",
+      });
     }
   };
 

@@ -55,10 +55,7 @@ function Games(props) {
     const max = useRef();
     const sortRadio = useRef();
 
- 
-
     // Funciones
-
 
     function activate() {
         setactive(true);
@@ -72,8 +69,6 @@ function Games(props) {
     const handelSort = (bool) => {
         setSortPrice(bool);
     };
-   
-
 
     // Filtro
     const renderGames = () => {
@@ -128,10 +123,6 @@ function Games(props) {
         setfilter("favorites")
     } 
 
-
-
-    
-
     return (
         <div>
             <div className="container logo-game">
@@ -160,7 +151,7 @@ function Games(props) {
                         ref={genderSelect}
                     >
                         <option disabled selected>
-                            Genders
+                        Genders
                         </option>
                         {genders.map((gender, index) => {
                             return (
