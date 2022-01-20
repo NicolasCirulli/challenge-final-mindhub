@@ -19,6 +19,7 @@ import AdminPanel from "./pages/AdminPanel";
 import Chat from "./pages/Chat";
 import Support from "./pages/Support";
 import Cart from "./pages/Cart"
+import BasicTable from "./components/BasicTable";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,7 +54,8 @@ function App() {
             <Route path="/profile" element={<Profile/>}></Route>
             <Route path="/chat" element={<Chat />}></Route>
             <Route path="/support" element={<Support />}></Route>
-            <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/cart" element={<BasicTable/>}></Route>
+           
           </Routes>
         </div>
       </BrowserRouter>
