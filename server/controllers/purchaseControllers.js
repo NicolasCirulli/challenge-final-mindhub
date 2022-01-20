@@ -1,8 +1,9 @@
 const Purchase = require("../models/purchase");
 const nodemailer = require("nodemailer");
+const hbs = require("nodemailer-express-handlebars");
+const path = require("path");
 
 const sendVoiceover = async (mail, total, articles, user) => {
-  console.log(total);
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -13,6 +14,19 @@ const sendVoiceover = async (mail, total, articles, user) => {
     },
     tls: { rejectUnauthorized: false },
   });
+
+  transporter.use(
+    "compile",
+    hbs({
+      viewEngine: {
+        extName: ".handlebars",
+        partialsDir: path.resolve("./views"),
+        defaultLayout: false,
+      },
+      viewPath: path.resolve("./views"),
+    })
+  );
+
   let sender = "useremailverifyMindHub@gmail.com";
   //let contentHTML =
 
@@ -20,6 +34,7 @@ const sendVoiceover = async (mail, total, articles, user) => {
     from: sender,
     to: mail,
     subject: "Xtreme purchase details",
+
     html: `<h2>Thank you for your purchase</h2>
     <table>
     <tr>
@@ -34,8 +49,7 @@ const sendVoiceover = async (mail, total, articles, user) => {
     </tr> `
     )}</table>
         <h3>Total: ${total}</h3>
-        <img src="https://i.imgur.com/TJfgLFHt.png" alt="Xtreme"/>
-        `,
+        <img src="https://i.imgur.com/TJfgLFHt.png" alt="Xtreme"/>`,
     //template: "index",
   };
   await transporter.sendMail(mailOptions, function (error, response) {

@@ -24,6 +24,7 @@ function CardCart({ game, user }) {
       "ASZvH8kLnEArfBqrOnXXmG4LT39seVoHdU_JEh_bbbsoP3ShhtXwptb7f8xR5gYEDgx2Apf2tn20Z0DE",
     currency: "USD",
     intent: "capture",
+    locale: "en_US",
   };
   console.log(cartStore);
 
