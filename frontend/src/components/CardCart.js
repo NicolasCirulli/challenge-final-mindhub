@@ -1,6 +1,4 @@
 import * as React from "react";
-
-import fornite from "../assets/fornite.jpg";
 import { Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BsBagCheck } from "react-icons/bs";

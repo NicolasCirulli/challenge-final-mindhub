@@ -1,199 +1,213 @@
-.gamePath{
+.gamePath {
     color: rgba(255, 255, 255, 0.979);
     font-size: 22px;
     padding-top: 2.5rem;
 }
-.gamebg{
+.gamebg {
     display: flex;
     height: 30rem;
-    background-position:left;
-    background-size:cover;
+    background-position: left;
+    background-size: cover;
     background-repeat: no-repeat;
     padding-left: 6rem;
 }
-.divgen{
+.divgen {
     display: flex;
     flex-direction: row;
-    margin-top: 12rem;
+    margin-top: 10rem;
+    background: rgb(52, 55, 68);
+    background: linear-gradient(
+        90deg,
+        rgba(52, 55, 68, 0.6814075972185749) 52%,
+        rgba(52, 55, 68, 0.12118350758272056) 100%
+    );
+    backdrop-filter: blur(2px);
+    padding: 0.5rem;
+    padding-left: 1rem;
+    border-radius: 2rem 0 0 2rem;
 }
-.avatar{
+.avatar {
     width: 6rem;
     height: 6rem;
-    margin-top: 1rem;
+    align-self: center;
     border-radius: 50%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.favorite{
-    color: #AF3181 !important;
+.cont-img-avatar{
+    display: flex;
 }
-.favorite2{
+.favorite {
+    color: #af3181 !important;
+}
+.favorite2 {
     color: #dbdbdf59 !important;
     backdrop-filter: blur(13.743px);
 }
-.nameandlike{
+.nameandlike {
     display: flex;
     flex-direction: column;
     margin-left: 2rem;
 }
-.gameinfo{
+.gameinfo {
     display: flex;
 }
-.gametitle{
+.gametitle {
     color: rgba(255, 255, 255, 0.959);
     font-size: 30px;
     align-self: flex-end;
-
 }
-.dev h3{
+.dev h3 {
     color: rgba(255, 255, 255, 0.952);
     font-size: 22px;
 }
-.release{
+.release {
     color: rgba(255, 255, 255, 0.952);
     margin-top: 2rem;
 }
-.date{
+.date {
     font-size: 20px;
 }
 /*screenshots*/
 
-.screen-div{
+.screen-div {
     display: flex;
     flex-direction: column;
     margin-right: 1.5rem;
     width: 25%;
-    
 }
-.e-card-ht-screen{
+.e-card-ht-screen {
     width: 100%;
     z-index: 50;
     margin-top: 1rem;
     box-shadow: 5px 4px 5px;
     border-radius: 1rem;
-
 }
-.e-card-image-1-screen{
+.e-card-image-1-screen {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card-img-screen{
+.card-img-screen {
     width: 100%;
     border-radius: 1rem;
 }
 
 /*Botones*/
-.buttons-bottom{
-margin-top: -2rem;
-display: flex;
-margin-left: -6rem;
-justify-content: space-around;
+.buttons-bottom {
+    margin-top: -2rem;
+    display: flex;
+    margin-left: -6rem;
+    justify-content: space-around;
 }
-.btn-cat{
+.btn-cat {
     background-color: #11edd5 !important;
-    border-radius: 2rem!important;
+    border-radius: 2rem !important;
     color: #343744 !important;
 }
-.div-btn-price{
+.div-btn-price {
     margin-right: -10rem;
 }
-.btn-price{
-    background-color: #AF3181!important;
-    border-radius: 2rem!important;
+.btn-price {
+    background-color: #af3181 !important;
+    border-radius: 2rem !important;
     cursor: pointer;
-    transition: .3s;
+    transition: 0.3s;
 }
-.btn-price-text{
+.btn-price-text {
     margin-bottom: 0;
-    margin-right: .5rem;
+    margin-right: 0.5rem;
     font-size: 1.5rem;
 }
-.btn-price:hover{
+.btn-price:hover {
     background-color: #11edd5 !important;
     color: #343744 !important;
-    transition: .3s;
+    transition: 0.3s;
 }
-.btn-price:hover>svg{
+.btn-price:hover > svg {
     color: #343744 !important;
-    font-weight:bold !important;
-    transition: .3s;
+    font-weight: bold !important;
+    transition: 0.3s;
 }
-.btn-price>svg{
-    transition: .3s;
+.btn-price > svg {
+    transition: 0.3s;
 }
-.favorite-game{
-    padding: .4rem !important;
+.favorite-game {
+    padding: 0.4rem !important;
 }
-  /*body page */
-.descriptions{
+/*body page */
+.descriptions {
     width: 100%;
     display: flex;
     color: rgba(255, 255, 255, 0.952);
     margin-top: 2rem;
     justify-content: space-between;
 }
-.text{
-    width: 55%;
+.text {
+    width: 50vw;
 }
-.game-desc-title{
+.game-desc-title {
     font-size: 20px;
 }
-.game-desc{
+.game-desc {
     margin-top: 1rem;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-weight: lighter !important;
+    max-height: 41vh;
+    overflow-y: scroll;
+    padding-right: .5rem;
 }
 /*table*/
-.div-table{
+.div-table {
     margin-top: 2rem;
     width: 20rem;
     margin-right: -5rem;
 }
-table{
+table {
     width: 100%;
     height: 15rem;
 }
-th{
+th {
     padding-left: 6rem;
 }
 td .MuiSvgIcon-root {
-    color: #05f2db!important;
+    color: #05f2db !important;
 }
 /*comments*/
-.finalinfo{
+.finalinfo {
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
     color: rgba(255, 255, 255, 0.952);
     justify-content: space-between;
 }
-.review{
+.review {
     display: flex;
     margin-top: 1rem;
     flex-direction: row;
     justify-content: space-evenly;
     font-size: 18px;
 }
-.review-text{
+.review-text {
     font-size: 18px;
     text-decoration: underline;
 }
-.p-review1{
+.p-review1 {
     color: rgba(255, 255, 255, 0.856);
     font-weight: bold;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
 }
-.p-review2{
+.p-review2 {
     margin-left: 2rem;
     background-color: #05f2dae1;
-    border-radius: .5rem;
-    padding: .2rem;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
     font-size: 15px;
 }
 /*trailer*/
-.trailer{
+.trailer {
     display: flex;
     flex-direction: column;
     align-self: flex-end;
@@ -201,12 +215,12 @@ td .MuiSvgIcon-root {
     width: 50vh;
     margin-right: -5rem;
 }
-.trailer h4{
+.trailer h4 {
     font-size: 15px;
     font-weight: bold;
     margin-left: 2rem;
 }
-.card-trailer{
+.card-trailer {
     margin-top: 1rem;
     width: 100%;
     height: 22rem;
@@ -215,56 +229,66 @@ td .MuiSvgIcon-root {
 }
 
 /* COMMENTS  */
-.comments{
+.comments-cantainer{
+    min-height: 40vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: rgba(216, 202, 202, 0.157);
+    border-radius: 1.5rem;
+}
+.comment-component{
+    align-self: flex-end;
+}
+.comments {
     width: 100vh;
-    height: auto;
-    padding: .5rem; 
+    padding: 0.5rem;
     display: flex;
     justify-content: center;
     flex-direction: row;
 }
-.comments-contenedor{
+.comments-contenedor {
     background-color: rgba(216, 202, 202, 0.157);
     border-radius: 1.5rem;
 }
-.conteiner-comm-ind{
+.conteiner-comm-ind {
     background-color: rgba(212, 203, 203, 0.205);
     color: black;
     border-radius: 2rem;
     display: flex;
     flex-direction: row;
-    padding: .5rem;
+    padding: 0.5rem;
     width: 100%;
-    align-items:center;
+    align-items: center;
     justify-content: space-between;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
 }
-.org-2{
+.org-2 {
     display: flex;
     align-self: end;
 }
-.p-data-comment{
+.p-data-comment {
     color: rgba(255, 255, 255, 0.87);
-    
+
     font-style: italic;
 }
-.org{
+.org {
     display: flex;
     align-items: flex-end;
 }
-.img-comment{
+.img-comment {
     width: 4vw;
     height: 4vw;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: .5rem;
+    margin-right: 0.5rem;
 }
-.labelComments{
+.labelComments {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     box-sizing: border-box;
-    border-radius: .8rem;
+    border-radius: 0.8rem;
     border: 1px white solid;
     height: 2rem;
     width: 92%;
@@ -272,26 +296,26 @@ td .MuiSvgIcon-root {
     color: white;
     padding: 1rem;
 }
-.labelComments:focus{
+.labelComments:focus {
     outline: none;
 }
-.leave-comment{
+.leave-comment {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
     margin-top: 15vh;
 }
-.btn-leave-comment{
-    margin-right: .2rem;
+.btn-leave-comment {
+    margin-right: 0.2rem;
     align-self: center;
     cursor: pointer;
-    transition: .3s;
+    transition: 0.3s;
 }
-.btn-leave-comment>svg{
-    transition: .3s;
+.btn-leave-comment > svg {
+    transition: 0.3s;
 }
-.comment-input{
+.comment-input {
     display: flex;
     background-color: #af318169;
     border-radius: 1.5rem;

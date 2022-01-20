@@ -33,7 +33,6 @@ function Games(props) {
     const [filter, setfilter] = useState("all");
 
     const [gamesRender, setGamesRender] = useState([]);
-
     const [gender, setGender] = useState("All");
     const [sortPrice, setSortPrice] = useState(true);
     const [priceMin, setPriceMin] = useState(false);
@@ -41,7 +40,6 @@ function Games(props) {
 
     const allGames = useSelector((store) => store.gamesReducer.games);
     const user = useSelector((store) => store.userReducer.user);
-
     useEffect(() => {
         renderGames(allGames);
     }, [allGames]);
@@ -57,10 +55,7 @@ function Games(props) {
     const max = useRef();
     const sortRadio = useRef();
 
- 
-
     // Funciones
-
 
     function activate() {
         setactive(true);
@@ -74,8 +69,6 @@ function Games(props) {
     const handelSort = (bool) => {
         setSortPrice(bool);
     };
-   
-
 
     // Filtro
     const renderGames = () => {
@@ -130,10 +123,6 @@ function Games(props) {
         setfilter("favorites")
     } 
 
-
-
-    
-
     return (
         <div>
             <div className="container logo-game">
@@ -162,7 +151,7 @@ function Games(props) {
                         ref={genderSelect}
                     >
                         <option disabled selected>
-                            Genders
+                        Genders
                         </option>
                         {genders.map((gender, index) => {
                             return (
@@ -259,16 +248,16 @@ function Games(props) {
                     OFFERS
                 </h6>
                 {props.user && (
-                   <h6
-                   onClick={() => favorites()}
-                   className={
-                       filter === "favorites"
-                           ? "filter-games-active"
-                           : "filter-games"
-                   }
-               >
-                   FAVORITES
-               </h6>
+                    <h6
+                        onClick={() => favorites()}
+                        className={
+                            filter === "favorites"
+                                ? "filter-games-active"
+                                : "filter-games"
+                        }
+                    >
+                        FAVORITES
+                    </h6>
                 )}
                 <div className="views">
                     <ViewComfyIcon
