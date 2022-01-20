@@ -70,7 +70,7 @@ function CardAdminGame({ item }) {
 
     return (
         <div className="card-user-admin">
-            <div className="card-user-admin-img">
+            <div className="card-user-admin-img-game">
                 <img
                     src={data.background_image}
                     alt="userImage"
@@ -90,6 +90,7 @@ function CardAdminGame({ item }) {
                     </p>
                 </div>
             )}
+            <div className="buttons-administation-game">
             <button className="btns-games" onClick={() => handleInput("New price", "price",'number')}>
                 Update price
             </button>
@@ -104,7 +105,7 @@ function CardAdminGame({ item }) {
             {!data.creator_img &&<button onClick={() => handleInput("new creator image", "creator_img",'text')}>
                 Add creator image
             </button> }
-          
+            </div>
             <div>
                 {data.offer ? (
                     <>

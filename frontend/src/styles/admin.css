@@ -30,7 +30,7 @@
 }
 
 .card-user-admin{
-    width: 250px;
+    width: 30%;
     min-height: 400px;
     background-color: rgba(0, 0, 0, 0.133);
     border-radius: 10px;
@@ -46,9 +46,18 @@
 .card-user-admin-text{ 
     color: white;
 }
-
+.card-user-admin-icon-img{
+    background-color: #373a42d0;
+    color: white;
+    position: absolute;
+    margin-right: -5vw;
+    top: 0;
+    right: 0;
+    border: none;
+    border-radius: .5rem;
+}
 .card-user-admin-img{
-    width: 70%;
+    width: 50%;
     position: relative;
     margin-bottom: 10px;
 }
@@ -69,7 +78,7 @@
 }
 
 .card-user-admin-icon{
-    background-color: #373a42;
+    background-color: #373a42d0;
     color: white;
     position: absolute;
     top: 0;
@@ -97,15 +106,16 @@
 }
 
 .card-user-admin-fields{
-    width: 90%;
+    width: 80%;
     height: 40px;
     position: relative;
+    font-size: 14px;
 }
 
 .btns-games{
     border: white solid 1px;
     color: white;
-    margin: .1rem;
+    margin: .8rem;
     border-radius: 1rem;
     padding: .1rem .5rem;
     background-color:rgba(255, 255, 255, 0);
@@ -197,4 +207,13 @@
 
 .title-users-r{
     margin-left: 2rem;
+}
+.card-user-admin-img-game{
+    width: 50%;
+    padding-top: 1rem;
+    position: relative;
+    margin-bottom: 10px;
+}
+.buttons-administation-game{
+    display: flex;
 }
