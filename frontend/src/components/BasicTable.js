@@ -14,6 +14,8 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import CartRow from "./CartRow";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import axios from "axios";
+import { connect } from "react-redux";
 
 
 
@@ -32,7 +34,6 @@ export default function BasicTable() {
   intent: "capture",
   }
   const createOrder = (cartStore, actions) => {
-
     return actions.order.create({
       purchase_units: [
         {
@@ -45,7 +46,7 @@ export default function BasicTable() {
     });
   };
   const onApprove = (data, actions) => {
-    //recibo el resultado de mi operacion
+    postPurchase();
     console.log(data);
     return actions.order.capture().then(function (details) {
       const { payer } = details;
