@@ -164,7 +164,7 @@ export default function Game() {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th rowSpan={2}>Language</th>
+                                        <th className="text-language">Language</th>
                                     </tr>
                                 </thead>
                                 {data.languages[0] && (
@@ -229,7 +229,7 @@ export default function Game() {
                             </table>
                         </div>
                     </div>
-                    <div className="container finalinfo">
+                    <div className="finalinfo">
                         <div>
                             <h4 className="review-text">Reviews</h4>
                             <div className="comments-cantainer">
