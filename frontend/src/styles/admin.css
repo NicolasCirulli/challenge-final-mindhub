@@ -30,13 +30,13 @@
 }
 
 .card-user-admin{
-    width: 250px;
-    min-height: 400px;
+    width: 18.5vw;
+    height: 70vh;
     background-color: rgba(0, 0, 0, 0.133);
     border-radius: 10px;
     margin: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     border: 1px solid rgba(204, 204, 206, 0.249);
@@ -99,17 +99,60 @@
 .card-user-admin-fields{
     width: 90%;
     height: 40px;
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.text-center{
+    padding: .8rem;
+    font-size: large;
+}
+
+.text-name-admin{
+    margin: .5rem;
+    width: 100%;
+}
+
+.text-price-admin{
+    margin: .8rem;
+    margin-top: 1rem;
+}
+
+.text-offer-admin{
+    margin: .5rem;
+}
+
+.conteiner-btns-games{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteiner-div-admin{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.div1-admin-btns{
+    display: flex;
+    flex-direction: row;
 }
 
 .btns-games{
+    width: 8.5vw;
     border: white solid 1px;
     color: white;
-    margin: .1rem;
+    margin: .2rem;
     border-radius: 1rem;
-    padding: .1rem .5rem;
+    padding: .1rem .8rem;
     background-color:rgba(255, 255, 255, 0);
     transition: .3s;
+    font-size: 1.1vw;
 }
 
 .btns-games:hover{
