@@ -77,19 +77,24 @@ function CardAdminGame({ item }) {
                     className="user-admin-img-games"
                 />
             </div>
+            <div className="conteiner-div-admin">
             <div className="card-user-admin-fields">
-                <p className="text-center">Name: {data.name} </p>
+                <p className="text-center text-name-admin">Name: {data.name} </p>
             </div>
             <div className="card-user-admin-fields">
-                <p className="text-center">Price: $ {data.price} </p>
+                <p className="text-center text-price-admin">Price: $ {data.price} </p>
             </div>
             {data.offer && (
                 <div className="card-user-admin-fields">
-                    <p className="text-center">
+                    <p className="text-center text-offer-admin">
                         Offer : $ {data.priceOffer}{" "}
                     </p>
                 </div>
             )}
+
+            </div>
+            <div className="conteiner-btns-games">
+                <div className="div1-admin-btns">
             <button className="btns-games" onClick={() => handleInput("New price", "price",'number')}>
                 Update price
             </button>
@@ -104,8 +109,8 @@ function CardAdminGame({ item }) {
             {!data.creator_img &&<button onClick={() => handleInput("new creator image", "creator_img",'text')}>
                 Add creator image
             </button> }
-          
-            <div>
+                </div>
+            <div className="div1-admin-btns">
                 {data.offer ? (
                     <>
                         <button className="btns-games" onClick={()=> handleInput('New offer: percentage %', 'percentage','number')}>Update offer</button>
@@ -117,6 +122,7 @@ function CardAdminGame({ item }) {
             </div>
             <button className="btns-games" onClick={removeGame} >Delete game</button>
 
+            </div>
             {render && (
                 <div className="card-user-admin-fields">
                     <input
