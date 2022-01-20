@@ -104,6 +104,7 @@ const gameControllers = {
   addComment:async (req, res) => {
     
     const id = req.params.id
+    console.log(req.body)
     try{
       const addComment = await Game.findOneAndUpdate(
         {_id:id},
@@ -118,6 +119,7 @@ const gameControllers = {
         }, 
         {new:true}
       )
+      console.log(addComment);
       if(addComment){
         res.json({success:true, response: addComment, error:false })
       }else{

@@ -149,4 +149,25 @@ export const wishList = async (id,idGame) => {
     }catch (err) {console.log(err);}
 }
 
+export const addComment = async (id,body)=>{
+    try{
+        const res = await axios.post(url+"comment/"+id,{...body},{
+            headers:{
+                'Authorization':'Bearer '+token 
+            }
+        });
+        return res.data
+    }catch (err) {console.log(err);}
+}
+export const deleteComment = async (idGame,body)=>{
+    try{
+        const res = await axios.post(url+"comment/"+idGame,{...body},{
+            headers:{
+                'Authorization':'Bearer '+token 
+            }
+        });
+        return res.data
+    }catch (err) {console.log(err);}
+}
+
 

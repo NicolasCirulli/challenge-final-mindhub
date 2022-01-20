@@ -233,7 +233,7 @@ export default function Game() {
                         <div>
                             <h4 className="review-text">Reviews</h4>
                             <div className="comments-cantainer">
-                                <Comments className="comment-component" data={data.comments} />
+                                <Comments className="comment-component" data={data.comments} game={data} />
                             </div>
                         </div>
                         <div className=" trailer">
