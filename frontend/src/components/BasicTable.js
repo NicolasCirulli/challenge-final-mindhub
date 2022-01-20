@@ -97,7 +97,7 @@ export default function BasicTable(game, user) {
                 <TableRow>
                 <TableCell align="right"></TableCell>
                   <TableCell align="left">Game</TableCell>
-                  <TableCell align="right">Prize</TableCell>
+                  <TableCell align="right">Price</TableCell>
                   <TableCell align="right"></TableCell>
                 </TableRow>
               </TableHead>
