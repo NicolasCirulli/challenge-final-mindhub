@@ -40,16 +40,16 @@ export default function Home() {
     const filterGames = (search) =>
         search.length > 0
             ? setSearch(
-                  allGames.filter((game) =>
-                      game.name
-                          .toLowerCase()
-                          .startsWith(search.toLowerCase().trim())
-                  )
-              )
+                    allGames.filter((game) =>
+                        game.name
+                            .toLowerCase()
+                            .startsWith(search.toLowerCase().trim())
+                    )
+                )
             : setSearch(null);
 
     return (
-        <div className="container">
+        <div className="home-cont">
             <div className="container header">
                 <div className="cont-search">
                     <input

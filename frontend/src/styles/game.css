@@ -157,6 +157,7 @@
     font-weight: lighter !important;
     max-height: 41vh;
     overflow-y: scroll;
+    padding-right: .5rem;
 }
 /*table*/
 .div-table {
