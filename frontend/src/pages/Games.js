@@ -124,7 +124,7 @@ function Games(props) {
     } 
 
     return (
-        <div>
+        <div className="cont-all-page-games">
             <div className="container logo-game">
                 <h1 className="title-games">Game Library</h1>
                 <img src={logo} className="logo-home" alt="logo" />
