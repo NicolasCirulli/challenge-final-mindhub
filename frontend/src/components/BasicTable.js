@@ -57,7 +57,7 @@ export default function BasicTable(game, user) {
   console.log(user.userName);
 
   const onApprove = (data, actions) => {
-    postPurchase();
+    // postPurchase();
     console.log(data);
     return actions.order.capture().then(function (details) {
       const { payer } = details;

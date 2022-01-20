@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import "../styles/admin.css";
-import {BsPencilSquare,BsFillBackspaceFill,BsFillArrowRightSquareFill,} from "react-icons/bs";
+import {BsFillArrowRightSquareFill,} from "react-icons/bs";
+import EditIcon from "@mui/icons-material/Edit";
 import { updateUser, deleteUser } from "../helpers/querys";
 
 function CardAdmin({ user }) {
@@ -47,43 +48,33 @@ function CardAdmin({ user }) {
                     className="card-user-admin-icon-img"
                     onClick={() => handleInput("New image", "image")}
                 >
-                    <BsPencilSquare />
+                    <EditIcon />
                 </button>
             </div>
             <div className="card-user-admin-fields">
-                <p>Name: {data.firstName} </p>
-                <button
-                    className="card-user-admin-icon"
-                    onClick={() => handleInput("New name", "firstName")}
-                >
-                    <BsPencilSquare />
-                </button>
+                <p className="text-user-edit">Name: {data.firstName} </p>
+                
             </div>
             <div className="card-user-admin-fields">
-                <p>Username: {data.userName} </p>
+                <p className="text-user-edit">Username: {data.userName} </p>
                 <button
                     className="card-user-admin-icon"
                     onClick={() => handleInput("New username", "userName")}
                 >
-                    <BsPencilSquare />
+                    <EditIcon />
                 </button>
             </div>
             <div className="card-user-admin-fields">
-                <p>Mail: {data.mail} </p>
-                <button
-                    className="card-user-admin-icon"
-                    onClick={() => handleInput("New email", "mail")}
-                >
-                     <BsPencilSquare />
-                </button>
+                <p className="text-user-edit">{data.mail}</p>
+                
             </div>
             <div className="card-user-admin-fields">
-                <p>Role: {data.role} </p>
+                <p className="text-user-edit btn-role">Role: {data.role} </p>
                 <button
                     className="card-user-admin-icon"
                     onClick={() => handleInput("Role", "role")}
                 >
-                    <BsPencilSquare />
+                    <EditIcon />
                 </button>
             </div>
 

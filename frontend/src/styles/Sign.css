@@ -10,6 +10,12 @@
 .sup{
     margin-left: 3rem;
 }
+.btn-photo{
+    border-radius: 1rem !important;
+}
+.btn-input{
+    margin-top: 1rem;
+}
 .labelSU{
     display: flex;
     box-sizing: border-box;
@@ -127,4 +133,47 @@ outline: none;
     width: 8rem;
     font-size: large;
     margin-top: 1rem;
+}
+@media(max-width:710px){
+    .parrSignUp{
+        display: none;
+    }
+    .signUpImg{
+        display: none;
+    }
+    .backgroundSign{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-left: 5rem;
+        margin-right: 1rem;
+    }
+    .cardSign{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-left: 5rem;
+        margin-right: 1rem;
+    }
+    .contentSignIn{
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+    .titleSignIn{
+        text-align: center;
+    }
+    .label-SI{
+        width: auto;
+    }
+}
+@media(max-width:439px){
+    .buttonsSignUp{
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
+
 }

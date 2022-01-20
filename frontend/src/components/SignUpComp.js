@@ -8,8 +8,8 @@ import Swal from "sweetalert2";
 import {ref, uploadBytesResumable,getDownloadURL} from 'firebase/storage'
 import { storage, db } from "../firebaseConfig"
 import {collection, addDoc} from "firebase/firestore"
-const SignUpComp = () => {
 
+const SignUpComp = () => {
   const [imageFirebase, setImageFirebase] = useState('')
   const [progress,setProgress] = useState(false)
   const [load,setLoad] =useState(false)
@@ -138,17 +138,11 @@ const SignUpComp = () => {
           setImageFirebase(url);
           const imageRef = collection(db,"images");
           addDoc(imageRef, {imageUrl : url}).then((res) => {
-            Alert.fire({
-              icon: "success",
-              title: 'image added successfully',
-            })
+            console.log(res);
+            alert('image added successfully')
             setLoad(true)
             setProgress(100)
-          }).catch(err => {Alert.fire({
-            icon: "warning",
-            title: 'The image did not load correctly, you must wait a few seconds before registering',
-            iconColor: '#af3181',
-          })})
+          }).catch(err => {alert('error and upload image')})
         })
     })
   }
@@ -167,27 +161,30 @@ const SignUpComp = () => {
             <div className="bodyFormSU">
               <div className="onlyInputs">
                 <div className="namesSU">
-                  <div className="inputName">
-                    <label>Name</label>
+                  <div className="inputName btn-input">
+
                     <input
+                    placeholder="Name"
                       type="text"
                       id="name"
                       className="labelSU"
                       ref={name}
                     />
                   </div>
-                  <div className="inputLastame">
-                    <label>Lastname</label>
+                  <div className="inputLastame btn-input">
+
                     <input
+                    placeholder="Lastname"
                       type="text"
                       id="lastname"
                       className="labelSU"
                       ref={lastName}
                     />
                   </div>
-                  <div className="inputLastame">
-                    <label>Username</label>
+                  <div className="inputLastame btn-input">
+
                     <input
+                    placeholder="Username"
                       type="text"
                       id="lastname"
                       className="labelSU"
@@ -196,18 +193,20 @@ const SignUpComp = () => {
                   </div>
                 </div>
                 <div className="dataMail">
-                  <div className="inputEmail">
-                    <label>Email</label>
+                  <div className="inputEmail btn-input">
+
                     <input
+                    placeholder="Email"
                       type="text"
                       id="email"
                       className="labelSU"
                       ref={email}
                     />
                   </div>
-                  <div className="inputPassword">
-                    <label>Password</label>
+                  <div className="inputPassword btn-input">
+       
                     <input
+                    placeholder="Password"
                       type="password"
                       id="password"
                       className="labelSU"
@@ -216,25 +215,27 @@ const SignUpComp = () => {
                   </div>
                 </div>
                 <div className="adicionalInfo">
-                  <div className="inputPhoto">
-                    <label>Photo</label>
+                  <div className="inputPhoto btn-input">
+
                     <input
                       type="file"
                       id="photo"
-                      className="labelSU"
+                      className="labelSU btn-photo"
                       ref={photo}
                       accept="image/*"
                       onChange={(e)=>handleImage(e)}
                     />
                   </div>
-                  <div className="inputCountry">
-                    <label>Country</label>
+                  <div className="inputCountry btn-input">
+  
                     <select
+
                       type="text"
                       id="country"
                       className="labelSU"
                       onChange={handleCountry}
                     >
+                      <option disabled>Country</option>
                       {countries.sort().map((country, index) => {
                         return (
                           <option
