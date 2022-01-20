@@ -26,15 +26,6 @@ export default function CartRow({ game }) {
           <td>
             <p>{game.price}</p>
           </td>
-          {/* <td className="d-flex">
-            <button onClick={() => dispatch(cartActions.decrementCartItem(game.id))}>-</button>
-            <p>{game.amount}</p>
-            <button onClick={() => dispatch(cartActions.addToCart(datos))}>+</button>
-          </td> */}
-          
-          {/* <td>
-            <p>{(game.price * game.amount).toFixed(2)}</p>
-          </td> */}
           <td>
               <button onClick={() => dispatch(cartActions.deleteCartItem(game.id))}>X</button>
           </td>
