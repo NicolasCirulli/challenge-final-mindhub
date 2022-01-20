@@ -44,7 +44,7 @@ function CardAdmin({ user }) {
                     className="user-admin-img"
                 />
                 <button
-                    className="card-user-admin-icon"
+                    className="card-user-admin-icon-img"
                     onClick={() => handleInput("New image", "image")}
                 >
                     <BsPencilSquare />
@@ -74,7 +74,7 @@ function CardAdmin({ user }) {
                     className="card-user-admin-icon"
                     onClick={() => handleInput("New email", "mail")}
                 >
-                    <BsPencilSquare />
+                     <BsPencilSquare />
                 </button>
             </div>
             <div className="card-user-admin-fields">

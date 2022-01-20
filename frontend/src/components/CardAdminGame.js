@@ -70,31 +70,27 @@ function CardAdminGame({ item }) {
 
     return (
         <div className="card-user-admin">
-            <div className="card-user-admin-img">
+            <div className="card-user-admin-img-game">
                 <img
                     src={data.background_image}
                     alt="userImage"
                     className="user-admin-img-games"
                 />
             </div>
-            <div className="conteiner-div-admin">
             <div className="card-user-admin-fields">
-                <p className="text-center text-name-admin">Name: {data.name} </p>
+                <p className="text-center">Name: {data.name} </p>
             </div>
             <div className="card-user-admin-fields">
-                <p className="text-center text-price-admin">Price: $ {data.price} </p>
+                <p className="text-center">Price: $ {data.price} </p>
             </div>
             {data.offer && (
                 <div className="card-user-admin-fields">
-                    <p className="text-center text-offer-admin">
+                    <p className="text-center">
                         Offer : $ {data.priceOffer}{" "}
                     </p>
                 </div>
             )}
-
-            </div>
-            <div className="conteiner-btns-games">
-                <div className="div1-admin-btns">
+            <div className="buttons-administation-game">
             <button className="btns-games" onClick={() => handleInput("New price", "price",'number')}>
                 Update price
             </button>
@@ -109,8 +105,8 @@ function CardAdminGame({ item }) {
             {!data.creator_img &&<button onClick={() => handleInput("new creator image", "creator_img",'text')}>
                 Add creator image
             </button> }
-                </div>
-            <div className="div1-admin-btns">
+            </div>
+            <div>
                 {data.offer ? (
                     <>
                         <button className="btns-games" onClick={()=> handleInput('New offer: percentage %', 'percentage','number')}>Update offer</button>
@@ -122,7 +118,6 @@ function CardAdminGame({ item }) {
             </div>
             <button className="btns-games" onClick={removeGame} >Delete game</button>
 
-            </div>
             {render && (
                 <div className="card-user-admin-fields">
                     <input
@@ -140,4 +135,4 @@ function CardAdminGame({ item }) {
     );
 }
 
-export default CardAdminGame;
+export default CardAdminGame

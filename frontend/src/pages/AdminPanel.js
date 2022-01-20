@@ -20,7 +20,7 @@ function AdminPanel() {
     <>
       <div className="container-admin">
         <div className="main-admin">
-          <h1 className="title-admin-1">Administrator</h1>
+          <h1 className="title-admin-1">Administration</h1>
 
           <div className="d-flex">
             <button className="btnAdmin" onClick={() => setRender(true)}>
