@@ -87,7 +87,7 @@ function CardCart({ game, user }) {
             <thead>
               <tr>
                 <th>Game</th>
-                <th>Prize</th>
+                <th>Price</th>
                 {/* <th>Amount</th>
                             <th>Subtotal</th> */}
                 <th>x</th>
