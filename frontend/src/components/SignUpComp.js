@@ -89,7 +89,6 @@ const SignUpComp = () => {
     if (!Object.values(user).some((value) => value === "")) {
       try {
         const res = await dispatch(authActions.newUser(user));
-        console.log(res);
         if (res.succes) {
           Alert.fire({
             icon: "succes",
@@ -100,11 +99,13 @@ const SignUpComp = () => {
             res.response.map((e) => Alert.fire({
               icon: "error",
               title: e.message,
+              iconColor: '#af3181',
             }));
           } else {
             Alert.fire({
               icon: "error",
               title: res.res,
+              iconColor: '#af3181',
             });
           }
         }
@@ -115,6 +116,7 @@ const SignUpComp = () => {
       Alert.fire({
         icon: "warning",
         title: "All fields must be completed",
+        iconColor: '#af3181',
       });
     }
   
@@ -136,11 +138,17 @@ const SignUpComp = () => {
           setImageFirebase(url);
           const imageRef = collection(db,"images");
           addDoc(imageRef, {imageUrl : url}).then((res) => {
-            console.log(res);
-            alert('image added successfully')
+            Alert.fire({
+              icon: "succes",
+              title: 'image added successfully',
+            })
             setLoad(true)
             setProgress(100)
-          }).catch(err => {alert('error and upload image')})
+          }).catch(err => {Alert.fire({
+            icon: "warning",
+            title: 'The image did not load correctly, you must wait a few seconds before registering',
+            iconColor: '#af3181',
+          })})
         })
     })
   }
