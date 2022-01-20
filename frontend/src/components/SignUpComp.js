@@ -139,7 +139,7 @@ const SignUpComp = () => {
           const imageRef = collection(db,"images");
           addDoc(imageRef, {imageUrl : url}).then((res) => {
             Alert.fire({
-              icon: "succes",
+              icon: "success",
               title: 'image added successfully',
             })
             setLoad(true)
