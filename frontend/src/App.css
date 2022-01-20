@@ -316,6 +316,9 @@ code {
 
 /*ABOUT US*/
 
+.cont-cont-card{
+    min-height: 100vh;
+}
 .cont-about{
     height: auto;
     display: flex;
@@ -492,9 +495,10 @@ code {
 .cont-card-about{
     display: flex;
     justify-content: center;
+    min-height: 60vh;
 }
 .text-characteristics{
-    width: 30%;
+    min-width: 30%;
     text-align: center;
 }
 
@@ -714,19 +718,63 @@ code {
         margin-left: 5vw !important;
     }
 }
+@media (max-width: 1080px){
+    .cont-cont-card{
+        margin-left: 5vw;
+        height: 100%;
+    }
+}
+@media (max-width: 985px){
+    .card-about{
+        min-width: 30vw;
+    }
+    .access-game{
+        min-width:60vw !important ;
+    }
+}
+@media (max-width: 900px){
+    .cont-welcome {
+        display: flex;
+        flex-direction:column-reverse;
+    }
+    .photo-valo{
+        max-height: 100vh;
+    }
+}
 @media (max-width: 840px){
     .home-cont{
         margin-left: 8vw !important;
+    }
+}
+@media (max-width: 780px){
+    .welcome2{
+        font-size: 2rem !important;
+    }
+    .subtitle{
+        width: 50vw;
+        font-size: 1.2rem !important;
+        text-align: center;
+        flex-wrap: wrap !important;
+    }
+}
+@media (max-width: 780px){
+    .text-about{
+        font-size: 1rem;
     }
 }
 @media (max-width: 600px){
     .box-offers{
         grid-template-columns: 1fr 1fr 1fr;
     }
-    
     .box-recommended > :first-child {
         grid-row: 1;
         grid-column: 1/3
+    }
+    .access-game{
+        margin-top: 10rem;
+    }
+    .welcome4{
+        width: 50vw;
     }
 }
 @media (max-width: 600px){
@@ -744,6 +792,24 @@ code {
         height: 2rem;
     }
 }
+@media(max-width: 560px){
+    .photo-valo{
+        width: 60vh;
+    }
+    .icondown{
+        margin-top: 0;
+    }
+    .cont-card-about {
+        flex-direction: column;
+    }
+    .card-about{
+        width: 100%;
+        padding: 0 1.5rem;
+    }
+    .logo-welcome{
+        padding: 0;
+    }
+}
 @media (max-width: 480px){
     .box-offers{
         grid-template-columns: 1fr 1fr;
@@ -754,6 +820,13 @@ code {
     .box-recommended > :first-child {
         grid-row: 1;
         grid-column: 1/3
+    }
+    .welcome4{
+        width: 60vw;
+        font-size: 1.2rem !important;
+    }
+    .welcome3{
+        font-size: 2rem !important;
     }
 }
 @media (max-width: 430px){
