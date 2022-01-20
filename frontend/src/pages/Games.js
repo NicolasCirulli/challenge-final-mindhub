@@ -143,7 +143,7 @@ function Games(props) {
                     </div>
                 </div>
                 <div className="cont-select-genders">
-                    <label className="title-label">Genders</label>
+                    <label className="title-label">Genre</label>
                     <select
                         type="text"
                         className="select-genders"
@@ -151,7 +151,7 @@ function Games(props) {
                         ref={genderSelect}
                     >
                         <option disabled selected>
-                        Genders
+                        Genre
                         </option>
                         {genders.map((gender, index) => {
                             return (
